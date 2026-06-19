@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joint Journey – Logo Comparison</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      background: var(--bg-body);
+      padding: 40px 20px;
+    }
+    .compare-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--green-700);
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      font-size: 18px;
+    }
+    .logo-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 640px) {
+      .logo-options { grid-template-columns: 1fr; }
+    }
+    .logo-option {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 2px solid var(--border-light);
+      text-align: center;
+    }
+    .logo-option h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .logo-option .desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .logo-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .logo-display .logo-text {
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo-display .logo-text-bold {
+      font-weight: 700;
+    }
+    
+    /* Context demos */
+    .context-row {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .context-demo {
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .context-demo.light {
+      background: #F0F3F2;
+    }
+    .context-demo.dark {
+      background: var(--green-700);
+    }
+    .context-demo.dark .logo-text {
+      color: white;
+    }
+    .context-demo .logo-text {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+    }
+    .context-demo .logo-text-bold {
+      font-weight: 700;
+    }
+    .context-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-align: left;
+    }
+    
+    /* SVG logos */
+    .logo-svg { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div class="compare-container">
+    <h1>Logo Options</h1>
+    <p class="subtitle">Both shown at different sizes and on light/dark backgrounds.<br>Which do you prefer?</p>
+
+    <div class="logo-options">
+      <!-- OPTION 1: Interlocking Circles (Stylised Joint) -->
+      <div class="logo-option">
+        <h2>Option 1: Stylised Joint</h2>
+        <p class="desc">Two overlapping circles representing the ball-and-socket joint – where two parts meet and work together</p>
+        
+        <!-- Large display -->
+        <div class="logo-display">
+          <svg class="logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <!-- Left circle -->
+            <circle cx="18" cy="24" r="14" stroke="#475953" stroke-width="3" fill="none"/>
+            <!-- Right circle -->
+            <circle cx="30" cy="24" r="14" stroke="#475953" stroke-width="3" fill="none"/>
+            <!-- Overlap fill -->
+            <path d="M24 11.5 C27.5 15, 29 19, 29 24 C29 29, 27.5 33, 24 36.5 C20.5 33, 19 29, 19 24 C19 19, 20.5 15, 24 11.5Z" fill="#475953" opacity="0.15"/>
+          </svg>
+          <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+        </div>
+
+        <!-- Context demos -->
+        <div class="context-row">
+          <div>
+            <div class="context-label">On light background</div>
+            <div class="context-demo light">
+              <svg class="logo-svg" width="32" height="32" viewBox="0 0 48 48" fill="none">
+                <circle cx="18" cy="24" r="14" stroke="#475953" stroke-width="3" fill="none"/>
+                <circle cx="30" cy="24" r="14" stroke="#475953" stroke-width="3" fill="none"/>
+                <path d="M24 11.5 C27.5 15, 29 19, 29 24 C29 29, 27.5 33, 24 36.5 C20.5 33, 19 29, 19 24 C19 19, 20.5 15, 24 11.5Z" fill="#475953" opacity="0.15"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">On dark background (sidebar/header)</div>
+            <div class="context-demo dark">
+              <svg class="logo-svg" width="32" height="32" viewBox="0 0 48 48" fill="none">
+                <circle cx="18" cy="24" r="14" stroke="white" stroke-width="3" fill="none"/>
+                <circle cx="30" cy="24" r="14" stroke="white" stroke-width="3" fill="none"/>
+                <path d="M24 11.5 C27.5 15, 29 19, 29 24 C29 29, 27.5 33, 24 36.5 C20.5 33, 19 29, 19 24 C19 19, 20.5 15, 24 11.5Z" fill="white" opacity="0.2"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">Icon only (favicon / small spaces)</div>
+            <div class="context-demo light" style="justify-content:center; gap:24px;">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                <circle cx="18" cy="24" r="14" stroke="#475953" stroke-width="3" fill="none"/>
+                <circle cx="30" cy="24" r="14" stroke="#475953" stroke-width="3" fill="none"/>
+                <path d="M24 11.5 C27.5 15, 29 19, 29 24 C29 29, 27.5 33, 24 36.5 C20.5 33, 19 29, 19 24 C19 19, 20.5 15, 24 11.5Z" fill="#475953" opacity="0.15"/>
+              </svg>
+              <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+                <circle cx="18" cy="24" r="14" stroke="#475953" stroke-width="3.5" fill="none"/>
+                <circle cx="30" cy="24" r="14" stroke="#475953" stroke-width="3.5" fill="none"/>
+                <path d="M24 11.5 C27.5 15, 29 19, 29 24 C29 29, 27.5 33, 24 36.5 C20.5 33, 19 29, 19 24 C19 19, 20.5 15, 24 11.5Z" fill="#475953" opacity="0.2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 5: JJ Walking Legs (Dynamic) -->
+      <div class="logo-option">
+        <h2>Option 5: JJ Striding Forward</h2>
+        <p class="desc">The letters JJ styled as two legs in a confident, purposeful stride – movement, progress, walking towards recovery</p>
+
+        <!-- Large display -->
+        <div class="logo-display">
+          <svg class="logo-svg" width="44" height="48" viewBox="0 0 44 48" fill="none">
+            <!-- Back leg (J) – angled back -->
+            <path d="M14 4 L10 30 Q8 40, 3 43" stroke="#475953" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <circle cx="14" cy="3" r="3" fill="#475953"/>
+            <!-- Front leg (J) – striding forward confidently -->
+            <path d="M20 4 L26 28 Q28 38, 22 43" stroke="#475953" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <circle cx="20" cy="3" r="3" fill="#475953"/>
+            <!-- Dynamic forward arrow/path -->
+            <path d="M30 22 L38 22 M35 18 L39 22 L35 26" stroke="#475953" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4"/>
+          </svg>
+          <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+        </div>
+
+        <!-- Context demos -->
+        <div class="context-row">
+          <div>
+            <div class="context-label">On light background</div>
+            <div class="context-demo light">
+              <svg class="logo-svg" width="28" height="32" viewBox="0 0 44 48" fill="none">
+                <path d="M10 6 L10 32 Q10 42, 4 42" stroke="#475953" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="10" cy="4" r="3" fill="#475953"/>
+                <path d="M28 6 L28 28 Q28 40, 20 42" stroke="#475953" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="28" cy="4" r="3" fill="#475953"/>
+                <path d="M2 44 Q22 40, 42 44" stroke="#475953" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">On dark background (sidebar/header)</div>
+            <div class="context-demo dark">
+              <svg class="logo-svg" width="28" height="32" viewBox="0 0 44 48" fill="none">
+                <path d="M10 6 L10 32 Q10 42, 4 42" stroke="white" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="10" cy="4" r="3" fill="white"/>
+                <path d="M28 6 L28 28 Q28 40, 20 42" stroke="white" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="28" cy="4" r="3" fill="white"/>
+                <path d="M2 44 Q22 40, 42 44" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">Icon only (favicon / small spaces)</div>
+            <div class="context-demo light" style="justify-content:center; gap:24px;">
+              <svg width="36" height="40" viewBox="0 0 44 48" fill="none">
+                <path d="M10 6 L10 32 Q10 42, 4 42" stroke="#475953" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="10" cy="4" r="3" fill="#475953"/>
+                <path d="M28 6 L28 28 Q28 40, 20 42" stroke="#475953" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="28" cy="4" r="3" fill="#475953"/>
+                <path d="M2 44 Q22 40, 42 44" stroke="#475953" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+              <svg width="20" height="24" viewBox="0 0 44 48" fill="none">
+                <path d="M10 6 L10 32 Q10 42, 4 42" stroke="#475953" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <circle cx="10" cy="4" r="3.5" fill="#475953"/>
+                <path d="M28 6 L28 28 Q28 40, 20 42" stroke="#475953" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <circle cx="28" cy="4" r="3.5" fill="#475953"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIONS 7 & 8: Mountain & Stepping Stones -->
+    <h2 style="text-align:center; color:var(--green-700); margin-top:48px; margin-bottom:8px;">More Options</h2>
+    <p class="subtitle" style="margin-bottom:32px;">Two more concepts to consider</p>
+
+    <div class="logo-options">
+      <!-- OPTION 8: Stepping Stones -->
+      <div class="logo-option">
+        <h2>Option 8: Stepping Stones</h2>
+        <p class="desc">Dots stepping upward in a diagonal – each stone a step in your preparation, suggesting steady progress</p>
+        
+        <!-- Large display -->
+        <div class="logo-display">
+          <svg class="logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="8" cy="38" r="5" fill="#475953" opacity="0.3"/>
+            <circle cx="19" cy="30" r="5.5" fill="#475953" opacity="0.5"/>
+            <circle cx="31" cy="21" r="6" fill="#475953" opacity="0.7"/>
+            <circle cx="42" cy="11" r="6" fill="#475953" opacity="1"/>
+          </svg>
+          <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+        </div>
+
+        <!-- Context demos -->
+        <div class="context-row">
+          <div>
+            <div class="context-label">On light background</div>
+            <div class="context-demo light">
+              <svg class="logo-svg" width="32" height="32" viewBox="0 0 48 48" fill="none">
+                <circle cx="8" cy="38" r="5" fill="#475953" opacity="0.3"/>
+                <circle cx="19" cy="30" r="5.5" fill="#475953" opacity="0.5"/>
+                <circle cx="31" cy="21" r="6" fill="#475953" opacity="0.7"/>
+                <circle cx="42" cy="11" r="6" fill="#475953" opacity="1"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">On dark background (sidebar/header)</div>
+            <div class="context-demo dark">
+              <svg class="logo-svg" width="32" height="32" viewBox="0 0 48 48" fill="none">
+                <circle cx="8" cy="38" r="5" fill="white" opacity="0.3"/>
+                <circle cx="19" cy="30" r="5.5" fill="white" opacity="0.5"/>
+                <circle cx="31" cy="21" r="6" fill="white" opacity="0.7"/>
+                <circle cx="42" cy="11" r="6" fill="white" opacity="1"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">Icon only (favicon / small spaces)</div>
+            <div class="context-demo light" style="justify-content:center; gap:24px;">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                <circle cx="8" cy="38" r="5" fill="#475953" opacity="0.3"/>
+                <circle cx="19" cy="30" r="5.5" fill="#475953" opacity="0.5"/>
+                <circle cx="31" cy="21" r="6" fill="#475953" opacity="0.7"/>
+                <circle cx="42" cy="11" r="6" fill="#475953" opacity="1"/>
+              </svg>
+              <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+                <circle cx="8" cy="38" r="5.5" fill="#475953" opacity="0.3"/>
+                <circle cx="19" cy="30" r="6" fill="#475953" opacity="0.5"/>
+                <circle cx="31" cy="21" r="6.5" fill="#475953" opacity="0.7"/>
+                <circle cx="42" cy="11" r="6.5" fill="#475953" opacity="1"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 7: Mountain Summit -->
+      <div class="logo-option">
+        <h2>Option 7: Mountain Summit</h2>
+        <p class="desc">A mountain peak with a marker at the top – the goal you're working towards, surgery as the summit</p>
+
+        <!-- Large display -->
+        <div class="logo-display">
+          <svg class="logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <!-- Mountain shape -->
+            <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.12"/>
+            <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+            <!-- Summit marker -->
+            <circle cx="30" cy="8" r="3.5" fill="#475953"/>
+            <!-- Flag on summit -->
+            <line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2" stroke-linecap="round"/>
+            <path d="M30 2 L38 5 L30 7" fill="#475953" opacity="0.6"/>
+          </svg>
+          <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+        </div>
+
+        <!-- Context demos -->
+        <div class="context-row">
+          <div>
+            <div class="context-label">On light background</div>
+            <div class="context-demo light">
+              <svg class="logo-svg" width="32" height="32" viewBox="0 0 48 48" fill="none">
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.12"/>
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                <circle cx="30" cy="8" r="3.5" fill="#475953"/>
+                <line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2" stroke-linecap="round"/>
+                <path d="M30 2 L38 5 L30 7" fill="#475953" opacity="0.6"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">On dark background (sidebar/header)</div>
+            <div class="context-demo dark">
+              <svg class="logo-svg" width="32" height="32" viewBox="0 0 48 48" fill="none">
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="white" opacity="0.12"/>
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="white" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                <circle cx="30" cy="8" r="3.5" fill="white"/>
+                <line x1="30" y1="8" x2="30" y2="2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M30 2 L38 5 L30 7" fill="white" opacity="0.6"/>
+              </svg>
+              <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="context-label">Icon only (favicon / small spaces)</div>
+            <div class="context-demo light" style="justify-content:center; gap:24px;">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.12"/>
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                <circle cx="30" cy="8" r="3.5" fill="#475953"/>
+                <line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2" stroke-linecap="round"/>
+                <path d="M30 2 L38 5 L30 7" fill="#475953" opacity="0.6"/>
+              </svg>
+              <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.15"/>
+                <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="3" stroke-linejoin="round" fill="none"/>
+                <circle cx="30" cy="8" r="4" fill="#475953"/>
+                <line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M30 2 L38 5 L30 7" fill="#475953" opacity="0.7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show the new colour scheme -->
+    <div style="text-align:center; margin-top:32px;">
+      <h2 style="color:var(--green-700);">New Colour Palette</h2>
+      <p style="color:var(--text-muted);">Little Greene Three Farm Green 306 (#475953)</p>
+      <div style="display:flex; gap:4px; justify-content:center; margin:24px 0; flex-wrap:wrap;">
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-900);" title="900"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-800);" title="800"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-700); border:3px solid var(--amber-500);" title="700 – Three Farm Green"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-600);" title="600"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-500);" title="500"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-400);" title="400"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-300);" title="300"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-200);" title="200"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-100);" title="100"></div>
+        <div style="width:60px; height:60px; border-radius:8px; background:var(--green-50); border:1px solid var(--border-light);" title="50"></div>
+      </div>
+      <p style="color:var(--text-muted); font-size:15px;">The swatch with the amber border is Three Farm Green (#475953)</p>
+    </div>
+
+    <!-- Button preview -->
+    <div style="text-align:center; margin-top:40px;">
+      <h3>Button Preview</h3>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+        <button class="btn btn-accent">Accent Button</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
