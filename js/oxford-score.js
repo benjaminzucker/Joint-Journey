@@ -496,15 +496,48 @@ function toggleHospitalDetails() {
 
 // ===== MOUNTAIN JOURNEY GRAPHIC =====
 function renderMountainJourney() {
-  if (!currentUser || !currentUser.profile.surgeryDate) {
-    const container = document.getElementById('mountain-journey');
-    if (container) container.style.display = 'none';
+  const container = document.getElementById('mountain-journey');
+  if (!container || !currentUser) return;
+  container.style.display = 'block';
+  
+  // If no surgery date, show prompt to set one
+  if (!currentUser.profile.surgeryDate) {
+    const staticSvg = `
+      <svg viewBox="0 0 100 100" class="mountain-svg" aria-label="Mountain journey - set your surgery date to track progress">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e0f2fe"/>
+            <stop offset="100%" stop-color="#f0fdf4"/>
+          </linearGradient>
+        </defs>
+        <rect width="100" height="100" fill="url(#skyGrad)" rx="4"/>
+        <path d="M 0 100 L 0 90 L 15 75 L 35 55 L 50 35 L 65 20 L 80 12 L 92 8 L 95 8 L 100 12 L 100 100 Z" fill="#475953" opacity="0.12"/>
+        <path d="M 0 100 L 0 92 L 10 82 L 25 68 L 40 52 L 55 38 L 70 22 L 85 13 L 95 10 L 100 14 L 100 100 Z" fill="#475953" opacity="0.08"/>
+        <path d="M 88 10 L 92 8 L 95 8 L 98 10 L 95 11 L 92 10 Z" fill="white" opacity="0.7"/>
+        <line x1="95" y1="8" x2="95" y2="3" stroke="#475953" stroke-width="0.5"/>
+        <path d="M 95 3 L 99 4.5 L 95 6" fill="#ef4444" opacity="0.8"/>
+        <path d="M 5 85 L 12 78 L 20 70 L 28 60 L 36 52 L 44 42 L 52 34 L 60 26 L 68 20 L 76 15 L 84 11 L 92 8 L 95 8" stroke="#475953" stroke-width="0.5" stroke-dasharray="2,1.5" fill="none" opacity="0.3"/>
+        <circle cx="5" cy="85" r="4" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+        <circle cx="5" cy="85" r="1.8" fill="white"/>
+        <text x="5" y="95" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Start</text>
+        <text x="82" y="5" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Surgery</text>
+      </svg>
+    `;
+    container.innerHTML = `
+      <div class="mountain-journey-card">
+        <h4 class="mountain-title">Your Journey</h4>
+        ${staticSvg}
+        <p class="mountain-days" style="margin-top: var(--space-md);">
+          <strong>Set your surgery date</strong> to see your journey progress.
+        </p>
+        <p style="font-size: var(--font-size-sm); color: var(--text-muted); text-align: center; margin-top: var(--space-xs);">
+          If you don't know the exact date, just put a date in keeping with the current waiting list. This will help you reach your goals in time.
+        </p>
+        <button class="btn btn-primary btn-sm btn-block" style="margin-top: var(--space-md);" onclick="navigateTo('account')">Set Surgery Date</button>
+      </div>
+    `;
     return;
   }
-  
-  const container = document.getElementById('mountain-journey');
-  if (!container) return;
-  container.style.display = 'block';
   
   const createdAt = new Date(currentUser.createdAt);
   const surgeryDate = new Date(currentUser.profile.surgeryDate);
