@@ -356,6 +356,14 @@
             <span class="nav-icon">🏥</span>
             <span class="nav-label">Getting Ready</span>
           </button>
+          <button class="nav-item" data-page="oxford-score" onclick="navigateTo('oxford-score')">
+            <span class="nav-icon">📋</span>
+            <span class="nav-label">My Joint Score</span>
+          </button>
+          <a class="nav-item" href="how-to-use.html" style="text-decoration:none; color:inherit;">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">How to Use</span>
+          </a>
           <a class="nav-item" href="about.html" style="text-decoration:none; color:inherit;">
             <span class="nav-icon">ℹ️</span>
             <span class="nav-label">About</span>
@@ -383,6 +391,54 @@
               <h1 id="dashboard-greeting" class="page-title"></h1>
               <p id="dashboard-subtitle" class="page-subtitle"></p>
             </div>
+          </div>
+
+          <!-- Mountain Journey Graphic -->
+          <div id="mountain-journey" class="mb-lg" style="display:none;">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Post-Op Check-In (shown after surgery date passes) -->
+          <div id="post-op-checkin-prompt" class="card mb-lg" style="display:none; border: 2px solid var(--primary); background: var(--green-50);">
+            <div class="text-center mb-lg">
+              <span class="icon-emoji-lg">🏥</span>
+              <h3 class="mt-md">Post-Surgery Check-In</h3>
+              <p>Your surgery date has passed — we'd love to know how it went.</p>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Have you had your surgery?</label>
+              <div class="option-cards">
+                <label class="option-card" onclick="toggleHospitalDetails()">
+                  <input type="radio" name="had-surgery" value="yes" onchange="toggleHospitalDetails()">
+                  <div class="option-card-content"><div class="option-card-title">Yes ✅</div></div>
+                </label>
+                <label class="option-card" onclick="toggleHospitalDetails()">
+                  <input type="radio" name="had-surgery" value="no" onchange="toggleHospitalDetails()">
+                  <div class="option-card-content"><div class="option-card-title">Not yet</div></div>
+                </label>
+                <label class="option-card" onclick="toggleHospitalDetails()">
+                  <input type="radio" name="had-surgery" value="cancelled" onchange="toggleHospitalDetails()">
+                  <div class="option-card-content"><div class="option-card-title">Cancelled / Postponed</div></div>
+                </label>
+              </div>
+            </div>
+            <div id="hospital-details" style="display:none;">
+              <div class="form-group">
+                <label class="form-label" for="hospital-nights">How many nights did you stay in hospital?</label>
+                <input type="number" id="hospital-nights" class="form-input" placeholder="e.g. 2" min="0" max="60">
+              </div>
+              <div class="form-group">
+                <label class="form-label">How would you rate your overall hospital experience?</label>
+                <div class="rating-selector">
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="1"><span>1<br><small>Poor</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="2"><span>2<br><small>Fair</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="3"><span>3<br><small>OK</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="4"><span>4<br><small>Good</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="5"><span>5<br><small>Excellent</small></span></label>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block mt-md" onclick="submitPostOpCheckIn()">Submit Check-In</button>
           </div>
 
           <!-- Surgery Countdown -->
@@ -740,6 +796,39 @@
           </div>
         </div>
 
+        <!-- ===== OXFORD SCORE PAGE ===== -->
+        <div id="page-oxford-score" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">📋 My Joint Score</h1>
+            <p class="page-subtitle">Oxford Score – a validated measure of how your joint affects your daily life</p>
+          </div>
+
+          <div class="card mb-xl">
+            <div class="alert alert-info mb-lg">
+              <strong>What is the Oxford Score?</strong> It's a set of 12 questions used by surgeons across the NHS to measure how your hip or knee affects your daily life. We record your score before surgery so that — 6 months after your operation — we can measure how much you've improved. Scoring is 0–48, with higher scores meaning better function.
+            </div>
+
+            <h3 id="oxford-score-title">Oxford Score</h3>
+            <p id="oxford-score-subtitle"></p>
+            <p id="oxford-progress" class="form-hint mb-lg"></p>
+
+            <!-- Questionnaire Form -->
+            <div id="oxford-score-form">
+              <div id="oxford-score-questions">
+                <!-- Generated by JS -->
+              </div>
+              <button id="oxford-submit-btn" class="btn btn-primary btn-lg btn-block mt-xl" onclick="submitOxfordScore()" style="display:none;">
+                Submit My Score
+              </button>
+            </div>
+
+            <!-- Result Display -->
+            <div id="oxford-score-result" style="display:none;">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+        </div>
+
         <!-- ===== ACCOUNT PAGE ===== -->
         <div id="page-account" class="app-page" style="display:none;">
           <div class="page-header">
@@ -835,6 +924,7 @@
   <script src="js/recipes.js"></script>
   <script src="js/mindset.js"></script>
   <script src="js/getting-ready.js"></script>
+  <script src="js/oxford-score.js"></script>
 
 </body>
 </html>

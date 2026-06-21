@@ -115,6 +115,7 @@ function navigateTo(page) {
     case 'nutrition': initNutrition(); break;
     case 'mindset': initMindset(); break;
     case 'getting-ready': initGettingReady(); break;
+    case 'oxford-score': initOxfordScore(); break;
     case 'account': initAccount(); break;
   }
 
@@ -230,6 +231,12 @@ function initDashboard() {
     document.getElementById('dashboard-goal').textContent = '"' + currentUser.profile.goal + '"';
     document.getElementById('dashboard-goal-card').style.display = 'block';
   }
+
+  // Mountain journey graphic
+  renderMountainJourney();
+
+  // Post-op check-in
+  initPostOpCheckIn();
 }
 
 function renderDashboardExercises() {

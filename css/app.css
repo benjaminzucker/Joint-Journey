@@ -652,3 +652,177 @@
   font-weight: 700;
   color: var(--green-800);
 }
+
+/* ===== OXFORD SCORE ===== */
+.oxford-question {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.oxford-question:last-child { border-bottom: none; }
+.oxford-question-number {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+}
+.oxford-question-text {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+.oxford-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.oxford-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.oxford-option:hover {
+  background: var(--green-50);
+  border-color: var(--primary);
+}
+.oxford-option input[type="radio"] { flex-shrink: 0; }
+.oxford-option-label {
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+}
+.oxford-option:has(input:checked) {
+  background: var(--green-50);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+/* Oxford Score Result */
+.oxford-result-card {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-xl);
+}
+.oxford-result-score {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.oxford-result-total {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.5;
+}
+.oxford-result-label {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-top: var(--space-sm);
+  color: var(--text-primary);
+}
+.oxford-result-description {
+  margin-top: var(--space-md);
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.oxford-result-date {
+  margin-top: var(--space-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+.oxford-comparison {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--green-50);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.oxford-compare-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xs) 0;
+}
+.oxford-compare-result {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-align: center;
+}
+.oxford-compare-result.positive { background: #dcfce7; color: #166534; }
+.oxford-compare-result.negative { background: #fef2f2; color: #991b1b; }
+.oxford-compare-result.neutral { background: #f3f4f6; color: #374151; }
+
+/* ===== MOUNTAIN JOURNEY ===== */
+.mountain-journey-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+.mountain-title {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+.mountain-svg {
+  width: 100%;
+  max-height: 200px;
+  border-radius: var(--radius-md);
+}
+.mountain-days {
+  margin: var(--space-sm) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ===== RATING SELECTOR ===== */
+.rating-selector {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+.rating-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.rating-option span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  transition: all 0.15s;
+  line-height: 1.1;
+}
+.rating-option small { font-size: 0.6rem; font-weight: 400; }
+.rating-option input { display: none; }
+.rating-option:has(input:checked) span {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.rating-option:hover span {
+  border-color: var(--primary);
+  background: var(--green-50);
+}
