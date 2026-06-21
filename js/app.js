@@ -183,27 +183,6 @@ function initDashboard() {
   const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   document.getElementById('daily-motivation').textContent = MOTIVATIONS[dayOfYear % MOTIVATIONS.length];
 
-  // Surgery countdown
-  if (currentUser.profile.surgeryDate) {
-    const surgeryDate = new Date(currentUser.profile.surgeryDate);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const daysUntil = Math.ceil((surgeryDate - today) / 86400000);
-
-    const countdownEl = document.getElementById('surgery-countdown');
-    if (daysUntil > 0) {
-      document.getElementById('countdown-days').textContent = daysUntil + ' days until surgery';
-      document.getElementById('countdown-text').textContent = 'That\'s ' + Math.ceil(daysUntil / 7) + ' weeks of preparation time. Use it well!';
-      countdownEl.style.display = 'block';
-    } else if (daysUntil === 0) {
-      document.getElementById('countdown-days').textContent = 'Surgery day is today! 💪';
-      document.getElementById('countdown-text').textContent = 'You\'ve prepared brilliantly. You\'re ready for this.';
-      countdownEl.style.display = 'block';
-    } else {
-      countdownEl.style.display = 'none';
-    }
-  }
-
   // Stats
   const progress = currentUser.progress;
   document.getElementById('stat-streak').textContent = progress.exerciseStreak || 0;
