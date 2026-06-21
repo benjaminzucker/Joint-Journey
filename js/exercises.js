@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Exercise Programme
+   JOINT JOURNEY - Exercise Programme
    ============================================ */
 
 function initExercises() {
@@ -7,7 +7,7 @@ function initExercises() {
 
   const joint = currentUser.profile.joint;
   const jointLabel = joint === 'hip' ? 'Hip' : joint === 'knee' ? 'Knee' : 'Hip & Knee';
-  document.getElementById('exercise-programme-type').textContent = jointLabel + ' Replacement – 12-Week Progressive Programme';
+  document.getElementById('exercise-programme-type').textContent = jointLabel + ' Replacement - 12-Week Progressive Programme';
 
   renderWeekTabs();
   renderExerciseSession();
@@ -47,7 +47,7 @@ function renderExerciseSession() {
   const completedToday = currentUser.progress.exercisesCompleted[today] || [];
 
   // Session header
-  document.getElementById('exercise-session-title').textContent = phase.name + ' – Week ' + week;
+  document.getElementById('exercise-session-title').textContent = phase.name + ' - Week ' + week;
   document.getElementById('exercise-session-subtitle').textContent = phase.description + ' • ' + phase.sessionsPerWeek + ' sessions per week • ~25 minutes';
 
   const completedCount = exercises.filter(ex => completedToday.includes(ex.id)).length;

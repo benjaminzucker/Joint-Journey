@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Data
+   JOINT JOURNEY - Data
    All exercises, recipes, mindset content, 
    and getting ready content
    ============================================ */
@@ -7,33 +7,33 @@
 // ===== MOTIVATIONAL QUOTES =====
 const MOTIVATIONS = [
   "Every rep is a step closer to getting back to what you love.",
-  "You're not just waiting for surgery – you're training for recovery.",
+  "You're not just waiting for surgery - you're training for recovery.",
   "Small daily improvements lead to stunning results over time.",
   "Your future self will thank you for every effort you make today.",
   "Consistency beats perfection. Just keep showing up.",
   "You are stronger than you think. And getting stronger every day.",
-  "This isn't just exercise – it's an investment in your independence.",
+  "This isn't just exercise - it's an investment in your independence.",
   "Picture yourself 6 months from now, doing what you love. That's why we do this.",
   "The best time to prepare was yesterday. The second best time is right now.",
-  "Every healthy meal, every exercise, every positive thought – it all adds up.",
+  "Every healthy meal, every exercise, every positive thought - it all adds up.",
   "You're not alone on this journey. Thousands of people are preparing just like you.",
   "Your body is remarkable. Give it the tools and it will rise to the challenge.",
   "Progress, not perfection. You're doing brilliantly.",
   "The wait is hard. But you're using it wisely, and that makes all the difference.",
   "Believe in your recovery. Your belief is the foundation everything else is built on.",
   "Today's effort is tomorrow's strength.",
-  "You've already taken the hardest step – you've started.",
-  "A positive outlook is not just nice to have – it's your most powerful tool.",
-  "Your garden, your grandchildren, your walks – they're all waiting for you.",
+  "You've already taken the hardest step - you've started.",
+  "A positive outlook is not just nice to have - it's your most powerful tool.",
+  "Your garden, your grandchildren, your walks - they're all waiting for you.",
   "Recovery doesn't start after surgery. It starts right now, with you."
 ];
 
 const MOOD_RESPONSES = {
   5: ["Brilliant! That positive energy is exactly what your body needs. Keep it up! 🌟", "Wonderful to hear! Days like this are fuel for the harder days. 😄", "Amazing! Your positivity is your superpower. 🎉"],
   4: ["Great to hear you're feeling good! Every good day is a building block. 😊", "That's lovely! Keep doing what you're doing. 👍", "Good days like this make all the difference. Well done! 💚"],
-  3: ["An okay day is still a day you showed up. That counts for a lot. 🙂", "Some days are just okay, and that's perfectly fine. Tomorrow might surprise you. 💛", "Steady and consistent – that's what gets results. You're doing well. 👍"],
-  2: ["Sorry to hear it's a tough day. Be gentle with yourself – tomorrow is a new day. 💙", "Hard days are part of the journey. Remember how far you've already come. 🤗", "It's okay to have a down day. Even doing a little bit today is an achievement. 💛"],
-  1: ["I'm sorry you're struggling. Please remember you're not alone, and it's okay to ask for help. 💙", "Tough days don't last, but tough people do. Be kind to yourself today. 🤗", "If you're really struggling, please reach out to someone – your GP, a friend, or the Samaritans (116 123). You matter. 💙"]
+  3: ["An okay day is still a day you showed up. That counts for a lot. 🙂", "Some days are just okay, and that's perfectly fine. Tomorrow might surprise you. 💛", "Steady and consistent - that's what gets results. You're doing well. 👍"],
+  2: ["Sorry to hear it's a tough day. Be gentle with yourself - tomorrow is a new day. 💙", "Hard days are part of the journey. Remember how far you've already come. 🤗", "It's okay to have a down day. Even doing a little bit today is an achievement. 💛"],
+  1: ["I'm sorry you're struggling. Please remember you're not alone, and it's okay to ask for help. 💙", "Tough days don't last, but tough people do. Be kind to yourself today. 🤗", "If you're really struggling, please reach out to someone - your GP, a friend, or the Samaritans (116 123). You matter. 💙"]
 };
 
 // ===== EXERCISE PROGRAMMES =====
@@ -245,7 +245,7 @@ const HIP_EXERCISES = {
         name: "Step Ups with Controlled Descent",
         video: "wfhXnLILqdk",
         sets: 3, reps: "10 each leg",
-        description: "Step up onto the bottom stair, then step down slowly – taking 3 seconds to lower yourself. This mimics going downstairs, which is important for daily life.",
+        description: "Step up onto the bottom stair, then step down slowly - taking 3 seconds to lower yourself. This mimics going downstairs, which is important for daily life.",
         progression: [
           { week: 9, sets: 3, reps: "8 each" },
           { week: 10, sets: 3, reps: "10 each" },
@@ -258,7 +258,7 @@ const HIP_EXERCISES = {
         name: "Kitchen Worktop Press-Ups",
         video: "57YFsNesJnY",
         sets: 3, reps: "10",
-        description: "Stand arm's length from the kitchen worktop. Place hands on the edge and do a press-up movement. Builds upper body strength for using walking aids. ⚠️ Do not do this exercise if your kitchen floor is slippery or if you are not wearing appropriate footwear – there is a risk of slipping.",
+        description: "Stand arm's length from the kitchen worktop. Place hands on the edge and do a press-up movement. Builds upper body strength for using walking aids. ⚠️ Do not do this exercise if your kitchen floor is slippery or if you are not wearing appropriate footwear - there is a risk of slipping.",
         progression: [
           { week: 9, sets: 2, reps: "8" },
           { week: 10, sets: 3, reps: "8" },
@@ -450,7 +450,7 @@ const KNEE_EXERCISES = {
         name: "Inner Range Quads",
         video: "8rp5BB3qE6o",
         sets: 2, reps: "10 each leg, hold 5 sec",
-        description: "Place a rolled-up towel under your knee. Press the back of your knee down into the towel, tightening your thigh muscle. Hold for 5 seconds, then release. This is the same exercise you'll do in hospital after surgery – learning it now means you'll be ahead of the game.",
+        description: "Place a rolled-up towel under your knee. Press the back of your knee down into the towel, tightening your thigh muscle. Hold for 5 seconds, then release. This is the same exercise you'll do in hospital after surgery - learning it now means you'll be ahead of the game.",
         progression: [
           { week: 1, sets: 2, reps: "8 each, hold 3 sec" },
           { week: 2, sets: 2, reps: "10 each, hold 3 sec" },
@@ -581,7 +581,7 @@ const KNEE_EXERCISES = {
         name: "Kitchen Worktop Press-Ups",
         video: "57YFsNesJnY",
         sets: 3, reps: "10",
-        description: "Arms-length from worktop, do press-ups. Builds arm strength for crutches/walking frame. ⚠️ Do not do this exercise if your kitchen floor is slippery or if you are not wearing appropriate footwear – there is a risk of slipping.",
+        description: "Arms-length from worktop, do press-ups. Builds arm strength for crutches/walking frame. ⚠️ Do not do this exercise if your kitchen floor is slippery or if you are not wearing appropriate footwear - there is a risk of slipping.",
         progression: [
           { week: 9, sets: 2, reps: "8" },
           { week: 10, sets: 3, reps: "8" },
@@ -684,7 +684,7 @@ const RECIPES = {
         "Cover with a lid and cook for 5-6 minutes until the egg whites are set but yolks are still runny.",
         "Warm the pitta breads. Serve the shakshuka straight from the pan with pitta for dipping."
       ],
-      tip: "Add a crumble of feta cheese on top if you have some – it's delicious but not essential."
+      tip: "Add a crumble of feta cheese on top if you have some - it's delicious but not essential."
     },
     {
       id: "b2", emoji: "🧀", name: "Cheese & Mushroom Omelette",
@@ -737,9 +737,9 @@ const RECIPES = {
       ],
       method: [
         "Toast the bread.",
-        "Beat the eggs with a little black pepper (no salt – the salmon is salty).",
+        "Beat the eggs with a little black pepper (no salt - the salmon is salty).",
         "Melt butter in a non-stick pan over low heat. Add eggs and stir gently with a spatula.",
-        "Remove from heat while still slightly wet – they'll continue cooking from the heat of the pan.",
+        "Remove from heat while still slightly wet - they'll continue cooking from the heat of the pan.",
         "Lay smoked salmon on the toast, spoon scrambled eggs on top.",
         "Grind over some black pepper."
       ],
@@ -760,7 +760,7 @@ const RECIPES = {
         "Drizzle with honey.",
         "Eat immediately so the granola stays crunchy."
       ],
-      tip: "High in protein from the Greek yoghurt – great for muscle recovery. Frozen berries are cheaper than fresh and just as nutritious."
+      tip: "High in protein from the Greek yoghurt - great for muscle recovery. Frozen berries are cheaper than fresh and just as nutritious."
     },
     {
       id: "b6", emoji: "🫘", name: "Beans on Toast with Cheese & Worcester Sauce",
@@ -773,7 +773,7 @@ const RECIPES = {
       ],
       method: [
         "Toast the bread. Heat the beans in a saucepan or microwave.",
-        "Add a few shakes of Worcestershire sauce to the beans – trust me, it makes them.",
+        "Add a few shakes of Worcestershire sauce to the beans - trust me, it makes them.",
         "Pour beans over toast. Sprinkle with grated cheese.",
         "The cheese will melt from the heat of the beans."
       ],
@@ -794,7 +794,7 @@ const RECIPES = {
         "Blend until smooth.",
         "Pour into a glass. Drink immediately."
       ],
-      tip: "Freeze overripe bananas for smoothies – they make it thicker and creamier. Great for when you don't feel like cooking."
+      tip: "Freeze overripe bananas for smoothies - they make it thicker and creamier. Great for when you don't feel like cooking."
     },
     {
       id: "b8", emoji: "🍞", name: "Eggy Bread with Berries & Cinnamon",
@@ -851,7 +851,7 @@ const RECIPES = {
         "The night before: mix oats, milk, yoghurt, grated apple and cinnamon in a jar or bowl.",
         "Cover and put in the fridge overnight.",
         "In the morning, stir and drizzle with honey.",
-        "Eat cold straight from the fridge – it's ready to go."
+        "Eat cold straight from the fridge - it's ready to go."
       ],
       tip: "Perfect for mornings when you're in a rush or don't feel like cooking. Prep the night before and it's waiting for you."
     }
@@ -922,7 +922,7 @@ const RECIPES = {
         "Pour into an oven dish. Top with grated cheese.",
         "Bake for 15-20 minutes until cheese is golden and bubbling."
       ],
-      tip: "Everything from the cupboard except the cheese – perfect for when you haven't been shopping."
+      tip: "Everything from the cupboard except the cheese - perfect for when you haven't been shopping."
     },
     {
       id: "ld4", emoji: "🌮", name: "Chicken Fajita Wraps",
@@ -990,7 +990,7 @@ const RECIPES = {
         "Boil green beans for 3-4 minutes. Drain.",
         "Serve salmon with potatoes and beans. Extra lemon wedge on the side."
       ],
-      tip: "Salmon is rich in omega-3 which has anti-inflammatory properties – great for your joints."
+      tip: "Salmon is rich in omega-3 which has anti-inflammatory properties - great for your joints."
     },
     {
       id: "ld7", emoji: "🍛", name: "Chicken Tikka with Rice & Naan",
@@ -1033,7 +1033,7 @@ const RECIPES = {
         "Add tomatoes and drained kidney beans. Simmer 20 mins.",
         "Split potatoes open. Fill with chilli. Top with cheese and sour cream."
       ],
-      tip: "The chilli freezes well – make a big batch. Microwave + oven combo for the potatoes saves time."
+      tip: "The chilli freezes well - make a big batch. Microwave + oven combo for the potatoes saves time."
     },
     {
       id: "ld9", emoji: "🍖", name: "Sausage & Bean Casserole with Crusty Bread",
@@ -1117,7 +1117,7 @@ const RECIPES = {
         "Drain pasta and add to the sauce. Toss together.",
         "Serve with grated cheese and plenty of black pepper."
       ],
-      tip: "Simple, creamy, satisfying. Leeks are underrated – gentle and sweet when cooked."
+      tip: "Simple, creamy, satisfying. Leeks are underrated - gentle and sweet when cooked."
     },
     {
       id: "ld13", emoji: "🥧", name: "Fish Pie",
@@ -1179,7 +1179,7 @@ const RECIPES = {
         "Add tomatoes and drained kidney beans. Season well. Simmer 20 minutes.",
         "Cook rice. Serve chilli over rice."
       ],
-      tip: "Batch cook and freeze – this is one of the best freezer meals going."
+      tip: "Batch cook and freeze - this is one of the best freezer meals going."
     },
     {
       id: "ld16", emoji: "🍗", name: "One-Pot Chicken & Rice",
@@ -1242,7 +1242,7 @@ const RECIPES = {
         "Add drained pasta. Pour into a dish, top with remaining cheese.",
         "Grill until golden and bubbling. Serve with sliced tomatoes."
       ],
-      tip: "The mustard in the cheese sauce is the secret ingredient – adds a kick without tasting of mustard."
+      tip: "The mustard in the cheese sauce is the secret ingredient - adds a kick without tasting of mustard."
     },
     {
       id: "ld19", emoji: "🍋", name: "Greek-Style Chicken with Roast Potatoes",
@@ -1262,7 +1262,7 @@ const RECIPES = {
         "Roast for 35-40 minutes until chicken is golden and cooked through.",
         "Serve straight from the tin."
       ],
-      tip: "One-tin dinner – minimal prep, maximum flavour. The lemon and garlic juices make the potatoes amazing."
+      tip: "One-tin dinner - minimal prep, maximum flavour. The lemon and garlic juices make the potatoes amazing."
     },
     {
       id: "ld20", emoji: "🍅", name: "Tomato & Mozzarella Pasta",
@@ -1279,7 +1279,7 @@ const RECIPES = {
         "Cook pasta. Meanwhile, halve the cherry tomatoes.",
         "Heat oil, add garlic for 30 seconds, add tomatoes. Cook 5 mins until they burst and soften.",
         "Drain pasta, add to the tomatoes. Tear mozzarella over the top.",
-        "Toss gently – the mozzarella will go deliciously stringy.",
+        "Toss gently - the mozzarella will go deliciously stringy.",
         "Add basil if you have it. Season with salt and pepper."
       ],
       tip: "Simple Italian cooking at its best. The hot pasta melts the mozzarella perfectly."
@@ -1298,7 +1298,7 @@ const RECIPES = {
       method: ["Spoon into a bowl. Add a drizzle of honey if you like."], tip: "One of the highest protein snacks going. Great between meals." },
     { id: "s4", emoji: "🥜", name: "Handful of Mixed Nuts", calories: 180, protein: 6, prepTime: 0, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Mixed nuts", qty: "30g (small handful)", aisle: "Cupboard" }],
-      method: ["Grab a small handful. That's it!"], tip: "Measure out 30g so you know what a portion looks like – they're calorie-dense." },
+      method: ["Grab a small handful. That's it!"], tip: "Measure out 30g so you know what a portion looks like - they're calorie-dense." },
     { id: "s5", emoji: "🥚", name: "Boiled Egg", calories: 70, protein: 6, prepTime: 1, cookTime: 10, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Egg", qty: "1", aisle: "Fresh" }],
       method: ["Boil for 8-10 minutes for hard-boiled. Pinch of salt."], tip: "Boil a few at the start of the week and keep in the fridge for quick snacks." },
@@ -1316,7 +1316,7 @@ const RECIPES = {
       method: ["Spoon cottage cheese onto crackers."], tip: "Very high protein, low calorie. A dieter's best friend." },
     { id: "s10", emoji: "🍘", name: "Oatcakes with Cream Cheese", calories: 160, protein: 5, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Oatcakes", qty: "3", aisle: "Cupboard" }, { item: "Cream cheese", qty: "1 tbsp", aisle: "Fridge" }],
-      method: ["Spread cream cheese on oatcakes."], tip: "Oatcakes are slow-release energy – they keep you going." }
+      method: ["Spread cream cheese on oatcakes."], tip: "Oatcakes are slow-release energy - they keep you going." }
   ],
 
   special: [
@@ -1336,14 +1336,14 @@ const RECIPES = {
         { item: "Cardamom pods or pilau rice seasoning", qty: "optional", aisle: "Cupboard" }
       ],
       method: [
-        "Dice onions. Fry in oil until golden (8-10 minutes – don't rush this step, it's worth it).",
+        "Dice onions. Fry in oil until golden (8-10 minutes - don't rush this step, it's worth it).",
         "Add garlic, ginger and curry powder. Cook 1 minute until fragrant.",
         "Add chicken. Cook 3-4 minutes until sealed.",
         "Add tomatoes and coconut milk. Simmer for 20-25 minutes until chicken is tender.",
         "Cook rice (add a pinch of turmeric or pilau seasoning for pilau style).",
         "Serve curry over rice. Naan bread on the side if you want."
       ],
-      tip: "Friday night fakeaway – better and cheaper than a takeaway. Leftovers taste even better the next day."
+      tip: "Friday night fakeaway - better and cheaper than a takeaway. Leftovers taste even better the next day."
     },
     {
       id: "sp2", emoji: "🥩", name: "Pan-Fried Steak with Chips & Peppercorn Sauce",
@@ -1366,7 +1366,7 @@ const RECIPES = {
         "Stir sauce for 2 minutes until bubbling. Add any steak resting juices.",
         "Serve with chips, peas and sauce."
       ],
-      tip: "Treat yourself! Letting the steak rest for 5 minutes before cutting is crucial – it stays juicy."
+      tip: "Treat yourself! Letting the steak rest for 5 minutes before cutting is crucial - it stays juicy."
     },
     {
       id: "sp3", emoji: "🦐", name: "Prawn & Chorizo Risotto",
@@ -1388,7 +1388,7 @@ const RECIPES = {
         "Add defrosted prawns for the last 3 minutes.",
         "Stir in parmesan. Season. Serve immediately."
       ],
-      tip: "Risotto is easier than people think. The secret is patience – add the stock gradually and keep stirring."
+      tip: "Risotto is easier than people think. The secret is patience - add the stock gradually and keep stirring."
     },
     {
       id: "sp4", emoji: "🍕", name: "Homemade Pizza",
@@ -1403,7 +1403,7 @@ const RECIPES = {
       ],
       method: [
         "Mix flour, yeast, oil, pinch of salt and 180ml warm water. Knead for 5 mins until smooth.",
-        "Leave to rise in a warm place for 30 mins (or skip if you're impatient – still good).",
+        "Leave to rise in a warm place for 30 mins (or skip if you're impatient - still good).",
         "Preheat oven to 240°C (as hot as it goes). Put a baking tray in to heat up.",
         "Roll dough into 2 circles on a floured surface.",
         "Spread with passata. Add toppings. Tear over mozzarella.",

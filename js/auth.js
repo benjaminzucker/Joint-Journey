@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Authentication
+   JOINT JOURNEY - Authentication
    Using localStorage for MVP
    (Replace with Firebase when ready to deploy)
    ============================================ */

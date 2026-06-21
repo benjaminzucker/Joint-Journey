@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Mindset Modules
+   JOINT JOURNEY - Mindset Modules
    ============================================ */
 
 const MINDSET_MODULES = [
@@ -11,9 +11,9 @@ const MINDSET_MODULES = [
     content: `
       <div class="mindset-article">
         <h3>Pain Is More Complex Than You Think</h3>
-        <p>Most people think pain is simple: you have damage, so you feel pain. But modern science tells us it's much more complex than that. Pain is produced by your brain as a <strong>protective mechanism</strong> – it's your brain's way of telling you to pay attention to something.</p>
+        <p>Most people think pain is simple: you have damage, so you feel pain. But modern science tells us it's much more complex than that. Pain is produced by your brain as a <strong>protective mechanism</strong> - it's your brain's way of telling you to pay attention to something.</p>
         
-        <p>This doesn't mean your pain isn't real – it absolutely is. But it does mean that your thoughts, feelings, beliefs, and expectations all influence how much pain you experience.</p>
+        <p>This doesn't mean your pain isn't real - it absolutely is. But it does mean that your thoughts, feelings, beliefs, and expectations all influence how much pain you experience.</p>
         
         <h3>Why This Matters for Your Surgery</h3>
         <p>Research consistently shows that patients who understand pain science before surgery:</p>
@@ -31,21 +31,21 @@ const MINDSET_MODULES = [
         
         <h3>Things That Turn Pain Volume UP</h3>
         <ul>
-          <li><strong>Fear and anxiety</strong> – worrying about pain makes it worse</li>
-          <li><strong>Poor sleep</strong> – tiredness amplifies pain signals</li>
-          <li><strong>Catastrophising</strong> – thinking the worst ("this will never get better")</li>
-          <li><strong>Inactivity</strong> – staying still actually increases sensitivity</li>
-          <li><strong>Stress</strong> – your nervous system is already on high alert</li>
+          <li><strong>Fear and anxiety</strong> - worrying about pain makes it worse</li>
+          <li><strong>Poor sleep</strong> - tiredness amplifies pain signals</li>
+          <li><strong>Catastrophising</strong> - thinking the worst ("this will never get better")</li>
+          <li><strong>Inactivity</strong> - staying still actually increases sensitivity</li>
+          <li><strong>Stress</strong> - your nervous system is already on high alert</li>
         </ul>
         
         <h3>Things That Turn Pain Volume DOWN</h3>
         <ul>
-          <li><strong>Understanding</strong> – knowing what to expect reduces fear</li>
-          <li><strong>Movement</strong> – gentle exercise produces natural pain-relieving chemicals</li>
-          <li><strong>Good sleep</strong> – your body heals and recalibrates during sleep</li>
-          <li><strong>Positive beliefs</strong> – believing you'll recover well actually helps you do so</li>
-          <li><strong>Relaxation</strong> – deep breathing, mindfulness, distraction</li>
-          <li><strong>Social support</strong> – being around people you love</li>
+          <li><strong>Understanding</strong> - knowing what to expect reduces fear</li>
+          <li><strong>Movement</strong> - gentle exercise produces natural pain-relieving chemicals</li>
+          <li><strong>Good sleep</strong> - your body heals and recalibrates during sleep</li>
+          <li><strong>Positive beliefs</strong> - believing you'll recover well actually helps you do so</li>
+          <li><strong>Relaxation</strong> - deep breathing, mindfulness, distraction</li>
+          <li><strong>Social support</strong> - being around people you love</li>
         </ul>
         
         <div class="exercise-box">
@@ -79,7 +79,7 @@ const MINDSET_MODULES = [
     id: 'building-confidence',
     emoji: '💪',
     title: 'Building Confidence',
-    subtitle: 'Believe in your recovery – because belief matters',
+    subtitle: 'Believe in your recovery - because belief matters',
     content: `
       <div class="mindset-article">
         <h3>Your Belief Is Your Foundation</h3>
@@ -87,7 +87,7 @@ const MINDSET_MODULES = [
         
         <blockquote>"Patients who believe they will do well after surgery, DO do well after surgery."</blockquote>
         
-        <p>This isn't wishful thinking. It's backed by dozens of research studies. Your <strong>self-efficacy</strong> – your belief in your own ability to cope and recover – is one of the strongest predictors of a good outcome.</p>
+        <p>This isn't wishful thinking. It's backed by dozens of research studies. Your <strong>self-efficacy</strong> - your belief in your own ability to cope and recover - is one of the strongest predictors of a good outcome.</p>
         
         <h3>Why Confidence Matters</h3>
         <p>When you believe you'll recover well:</p>
@@ -104,13 +104,13 @@ const MINDSET_MODULES = [
           <p>You are not a passive patient having something done TO you. You are an <strong>active participant</strong> in your recovery. The exercises you're doing right now are building the confidence and strength that will carry you through.</p>
         </div>
         
-        <h3>Common Fears – Addressed</h3>
+        <h3>Common Fears - Addressed</h3>
         
         <h4>"What if the surgery doesn't work?"</h4>
         <p>Joint replacement is one of the most successful operations in all of medicine. <strong>Over 95% of patients</strong> are satisfied with their outcome. The technology and surgical techniques have never been better.</p>
         
         <h4>"What if I can't cope with the pain?"</h4>
-        <p>Pain management after surgery is excellent. You won't be left in pain. The medical team will work with you to keep it manageable. And it DOES get better – every single day.</p>
+        <p>Pain management after surgery is excellent. You won't be left in pain. The medical team will work with you to keep it manageable. And it DOES get better - every single day.</p>
         
         <h4>"What if I'm too old?"</h4>
         <p>People in their 80s and even 90s have successful joint replacements. Age is just a number. What matters is your preparation, your mindset, and your willingness to do the rehab.</p>
@@ -142,7 +142,7 @@ const MINDSET_MODULES = [
         <h3>The Number One Factor in Recovery</h3>
         <p>Surgeons have a saying: <em>"A great surgeon can do a perfect operation, but a great outcome needs a great patient."</em></p>
         
-        <p>The research is clear: the biggest factor in how well you recover from joint replacement surgery is not the surgeon, not the implant, not the hospital – it's <strong>YOU</strong>.</p>
+        <p>The research is clear: the biggest factor in how well you recover from joint replacement surgery is not the surgeon, not the implant, not the hospital - it's <strong>YOU</strong>.</p>
         
         <blockquote>"Your recovery is 20% surgery and 80% rehabilitation. And rehabilitation is 100% you."</blockquote>
         
@@ -151,9 +151,9 @@ const MINDSET_MODULES = [
         <ul>
           <li><strong>Believing</strong> that your effort makes a difference (it does)</li>
           <li><strong>Committing</strong> to doing your exercises, even on hard days</li>
-          <li><strong>Taking ownership</strong> of your recovery – it's YOUR journey</li>
+          <li><strong>Taking ownership</strong> of your recovery - it's YOUR journey</li>
           <li><strong>Understanding</strong> that discomfort during rehab is normal and necessary</li>
-          <li><strong>Trusting the process</strong> – even when progress feels slow</li>
+          <li><strong>Trusting the process</strong> - even when progress feels slow</li>
         </ul>
         
         <div class="key-point">
@@ -178,7 +178,7 @@ const MINDSET_MODULES = [
           <li>Doing <strong>something</strong> is always better than nothing</li>
           <li>Even 5 minutes of gentle exercises counts</li>
           <li>Every session you complete is <strong>money in the bank</strong> for your recovery</li>
-          <li>You're not just preparing for surgery – you're preparing for the rest of your life</li>
+          <li>You're not just preparing for surgery - you're preparing for the rest of your life</li>
         </ul>
         
         <blockquote>"You don't have to be perfect. You just have to be consistent. Show up, do what you can, and trust that it's adding up."</blockquote>
@@ -236,7 +236,7 @@ const MINDSET_MODULES = [
           <p>Your turn. What are your three?</p>
         </div>
         
-        <blockquote>"The waiting is the hardest part. But you're not just waiting – you're working. And that makes all the difference."</blockquote>
+        <blockquote>"The waiting is the hardest part. But you're not just waiting - you're working. And that makes all the difference."</blockquote>
       </div>
     `
   },
@@ -250,11 +250,11 @@ const MINDSET_MODULES = [
         <h3>Sleep: Your Secret Weapon</h3>
         <p>Sleep is when your body does its most important repair work. Good sleep before surgery:</p>
         <ul>
-          <li><strong>Reduces inflammation</strong> – less swelling after surgery</li>
-          <li><strong>Boosts immune function</strong> – lower infection risk</li>
-          <li><strong>Improves pain tolerance</strong> – you cope better with discomfort</li>
-          <li><strong>Enhances mood</strong> – everything feels better after a good sleep</li>
-          <li><strong>Aids muscle recovery</strong> – your exercises work better</li>
+          <li><strong>Reduces inflammation</strong> - less swelling after surgery</li>
+          <li><strong>Boosts immune function</strong> - lower infection risk</li>
+          <li><strong>Improves pain tolerance</strong> - you cope better with discomfort</li>
+          <li><strong>Enhances mood</strong> - everything feels better after a good sleep</li>
+          <li><strong>Aids muscle recovery</strong> - your exercises work better</li>
         </ul>
         
         <h3>Common Sleep Challenges</h3>
@@ -271,9 +271,9 @@ const MINDSET_MODULES = [
         <h4>🛏️ Your Bedroom</h4>
         <ul>
           <li>Keep it <strong>cool</strong> (16-18°C is ideal)</li>
-          <li>Keep it <strong>dark</strong> – use blackout curtains or an eye mask</li>
-          <li>Keep it <strong>quiet</strong> – earplugs if needed</li>
-          <li>Reserve the bed for sleep (and intimacy) only – no TV or phones</li>
+          <li>Keep it <strong>dark</strong> - use blackout curtains or an eye mask</li>
+          <li>Keep it <strong>quiet</strong> - earplugs if needed</li>
+          <li>Reserve the bed for sleep (and intimacy) only - no TV or phones</li>
         </ul>
         
         <h4>⏰ Your Routine</h4>
@@ -290,7 +290,7 @@ const MINDSET_MODULES = [
           <li>Take pain relief <strong>30 minutes before bed</strong> (as prescribed)</li>
           <li>Use <strong>pillows</strong> to support your affected joint</li>
           <li>For hips: a pillow between your knees can help</li>
-          <li>For knees: avoid putting a pillow under the knee – let it straighten naturally. A pillow under your ankle can support the leg while keeping the knee straight</li>
+          <li>For knees: avoid putting a pillow under the knee - let it straighten naturally. A pillow under your ankle can support the leg while keeping the knee straight</li>
           <li>Try gentle stretches before bed</li>
         </ul>
         
@@ -327,7 +327,7 @@ const MINDSET_MODULES = [
           <li><strong>Follow the fasting instructions</strong> you've been given</li>
           <li><strong>Lay out</strong> comfortable clothes for the morning</li>
           <li><strong>Set your alarm</strong> with plenty of time</li>
-          <li><strong>Practice your breathing</strong> – 4-7-8 technique</li>
+          <li><strong>Practice your breathing</strong> - 4-7-8 technique</li>
           <li>It's normal to feel nervous. That's okay. Nervous means you care.</li>
         </ul>
         
@@ -337,14 +337,14 @@ const MINDSET_MODULES = [
           <li>Wear <strong>loose, comfortable clothes</strong></li>
           <li>Remove <strong>jewellery and nail varnish</strong></li>
           <li>Bring your <strong>medication list</strong></li>
-          <li>Arrive at the time you've been told – not too early, not late</li>
+          <li>Arrive at the time you've been told - not too early, not late</li>
         </ul>
         
         <h3>In the Hospital</h3>
         <p>The team will look after you. They do this every day. You are in safe hands.</p>
         <ul>
           <li>You'll be seen by nurses, the anaesthetist, and your surgeon</li>
-          <li>Ask any last questions – this is your right</li>
+          <li>Ask any last questions - this is your right</li>
           <li>You'll walk (or be wheeled) to the operating theatre</li>
           <li>The anaesthetist will make sure you're comfortable</li>
           <li>The next thing you know, it's done</li>
@@ -376,27 +376,27 @@ const MINDSET_MODULES = [
 const DAILY_MINDSET_EXERCISES = [
   {
     title: "Breathing: 4-7-8 Technique",
-    instruction: "Breathe in through your nose for 4 seconds. Hold for 7 seconds. Breathe out slowly through your mouth for 8 seconds. Do this 4 times. This activates your vagus nerve – it physically lowers your heart rate and reduces pain sensitivity. It's not relaxation nonsense, it's physiology.",
+    instruction: "Breathe in through your nose for 4 seconds. Hold for 7 seconds. Breathe out slowly through your mouth for 8 seconds. Do this 4 times. This activates your vagus nerve - it physically lowers your heart rate and reduces pain sensitivity. It's not relaxation nonsense, it's physiology.",
     duration: "2 minutes"
   },
   {
     title: "Three Good Things",
-    instruction: "Write down or think of 3 things that went well today. They can be tiny – a decent cup of tea, the sun coming out, your exercises going well. Research from the NHS shows this simple habit measurably improves wellbeing within 2 weeks.",
+    instruction: "Write down or think of 3 things that went well today. They can be tiny - a decent cup of tea, the sun coming out, your exercises going well. Research from the NHS shows this simple habit measurably improves wellbeing within 2 weeks.",
     duration: "2 minutes"
   },
   {
     title: "Picture One Specific Thing",
-    instruction: "Think of one specific thing you'll do in the first month after surgery. Not 'feel better' – something concrete. Walking to the shops. Playing with the grandchildren. Getting in the car without wincing. Hold that picture for a minute. That's what you're working towards.",
+    instruction: "Think of one specific thing you'll do in the first month after surgery. Not 'feel better' - something concrete. Walking to the shops. Playing with the grandchildren. Getting in the car without wincing. Hold that picture for a minute. That's what you're working towards.",
     duration: "1 minute"
   },
   {
     title: "Sit Quietly for 2 Minutes",
-    instruction: "No TV, no phone, no radio. Just sit and notice how your body feels right now. Not good or bad – just notice. Where is there tension? Where feels comfortable? This is called a body check-in. Surgeons use it with patients because awareness of your body helps you recover better.",
+    instruction: "No TV, no phone, no radio. Just sit and notice how your body feels right now. Not good or bad - just notice. Where is there tension? Where feels comfortable? This is called a body check-in. Surgeons use it with patients because awareness of your body helps you recover better.",
     duration: "2 minutes"
   },
   {
     title: "Call or Text Someone",
-    instruction: "Get in touch with someone today. Doesn't have to be about your surgery. A friend, family member, old colleague. People who stay socially connected before surgery have measurably better outcomes. That's not a feel-good statement – it's in the research.",
+    instruction: "Get in touch with someone today. Doesn't have to be about your surgery. A friend, family member, old colleague. People who stay socially connected before surgery have measurably better outcomes. That's not a feel-good statement - it's in the research.",
     duration: "5 minutes"
   },
   {
@@ -416,7 +416,7 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Plan Tomorrow's Exercise",
-    instruction: "Look at tomorrow's exercises now. Read through them. Know what you're doing. People who plan when and where they'll exercise are 2-3 times more likely to actually do it. Don't leave it to chance – decide now: what time tomorrow will you do your exercises?",
+    instruction: "Look at tomorrow's exercises now. Read through them. Know what you're doing. People who plan when and where they'll exercise are 2-3 times more likely to actually do it. Don't leave it to chance - decide now: what time tomorrow will you do your exercises?",
     duration: "2 minutes"
   },
   {
@@ -426,17 +426,17 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Belly Breathing",
-    instruction: "Put one hand on your chest and one on your belly. Breathe so that only your belly hand moves – your chest stays still. Breathe in for 4, out for 6. Do this 8 times. This switches your nervous system from 'fight or flight' to 'rest and repair'. Your body literally heals better when you breathe like this.",
+    instruction: "Put one hand on your chest and one on your belly. Breathe so that only your belly hand moves - your chest stays still. Breathe in for 4, out for 6. Do this 8 times. This switches your nervous system from 'fight or flight' to 'rest and repair'. Your body literally heals better when you breathe like this.",
     duration: "2 minutes"
   },
   {
     title: "Read Something You Enjoy",
-    instruction: "Spend 10 minutes reading something you actually enjoy. A book, a magazine, the sports pages. Not the news, not your phone – something that absorbs your attention. Distraction is one of the most effective pain management techniques there is. It's not ignoring pain – it's giving your brain something better to focus on.",
+    instruction: "Spend 10 minutes reading something you actually enjoy. A book, a magazine, the sports pages. Not the news, not your phone - something that absorbs your attention. Distraction is one of the most effective pain management techniques there is. It's not ignoring pain - it's giving your brain something better to focus on.",
     duration: "10 minutes"
   },
   {
     title: "Thank Your Body",
-    instruction: "This might sound daft, but bear with it. Your dodgy joint has carried you for decades. It's worn out because you've used it – because you've lived. Before it gets replaced, take a moment to acknowledge what it's done for you. Every walk, every staircase, every dance. It did its job. Now it's getting an upgrade.",
+    instruction: "This might sound daft, but bear with it. Your dodgy joint has carried you for decades. It's worn out because you've used it - because you've lived. Before it gets replaced, take a moment to acknowledge what it's done for you. Every walk, every staircase, every dance. It did its job. Now it's getting an upgrade.",
     duration: "1 minute"
   },
   {
@@ -451,22 +451,22 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Five Senses Check-In",
-    instruction: "Right now, name: 5 things you can see. 4 things you can hear. 3 things you can feel (the chair, your clothes, the floor). 2 things you can smell. 1 thing you can taste. This is called grounding – it brings you back to the present moment. Useful when anxiety about surgery starts spiralling.",
+    instruction: "Right now, name: 5 things you can see. 4 things you can hear. 3 things you can feel (the chair, your clothes, the floor). 2 things you can smell. 1 thing you can taste. This is called grounding - it brings you back to the present moment. Useful when anxiety about surgery starts spiralling.",
     duration: "2 minutes"
   },
   {
     title: "Walk for 10 Minutes",
-    instruction: "Go for a short walk. Around the house, around the garden, down the street – whatever you can manage. Don't push through sharp pain, but move as much as you comfortably can. Movement produces endorphins (your body's natural painkillers) and keeps your joints from stiffening up. Every step counts.",
+    instruction: "Go for a short walk. Around the house, around the garden, down the street - whatever you can manage. Don't push through sharp pain, but move as much as you comfortably can. Movement produces endorphins (your body's natural painkillers) and keeps your joints from stiffening up. Every step counts.",
     duration: "10 minutes"
   },
   {
     title: "Listen to Music You Love",
-    instruction: "Put on a song or album you really enjoy and actually listen to it. Not as background noise – properly listen. Music has been shown to reduce anxiety, lower blood pressure, and decrease pain perception. Hospitals use it before surgery for exactly this reason. Make yourself a playlist for hospital – you'll be glad you did.",
+    instruction: "Put on a song or album you really enjoy and actually listen to it. Not as background noise - properly listen. Music has been shown to reduce anxiety, lower blood pressure, and decrease pain perception. Hospitals use it before surgery for exactly this reason. Make yourself a playlist for hospital - you'll be glad you did.",
     duration: "5 minutes"
   },
   {
     title: "Write a Hospital Playlist",
-    instruction: "You'll be in hospital for 1-3 days. Make a playlist of music, podcasts, or audiobooks you want to take with you. Having something familiar and comforting to listen to makes a real difference. Download them to your phone so you don't need wifi. Practical preparation reduces anxiety – it's that simple.",
+    instruction: "You'll be in hospital for 1-3 days. Make a playlist of music, podcasts, or audiobooks you want to take with you. Having something familiar and comforting to listen to makes a real difference. Download them to your phone so you don't need wifi. Practical preparation reduces anxiety - it's that simple.",
     duration: "10 minutes"
   },
   {
@@ -476,7 +476,7 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Think About Someone Who's Had It Done",
-    instruction: "Do you know anyone who's had a joint replacement? Think about how they are now. Most people who've had it say the same thing: 'I wish I'd done it sooner.' If you don't know anyone, ask your GP surgery – many practices have patient volunteers who are happy to chat about their experience.",
+    instruction: "Do you know anyone who's had a joint replacement? Think about how they are now. Most people who've had it say the same thing: 'I wish I'd done it sooner.' If you don't know anyone, ask your GP surgery - many practices have patient volunteers who are happy to chat about their experience.",
     duration: "3 minutes"
   },
   {
@@ -496,32 +496,32 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Eat a Meal Slowly",
-    instruction: "At your next meal, eat slowly and pay attention to the food. Taste it properly. Put your fork down between bites. This isn't about mindfulness for its own sake – eating slowly helps you feel full sooner (useful if you're trying to lose weight) and improves digestion. Two birds, one stone.",
+    instruction: "At your next meal, eat slowly and pay attention to the food. Taste it properly. Put your fork down between bites. This isn't about mindfulness for its own sake - eating slowly helps you feel full sooner (useful if you're trying to lose weight) and improves digestion. Two birds, one stone.",
     duration: "15 minutes"
   },
   {
     title: "Cold Water Face Splash",
-    instruction: "Splash cold water on your face 5 times. This triggers your 'dive reflex' – it immediately slows your heart rate and calms your nervous system. It sounds too simple to work, but it's used in A&E departments to manage acute anxiety. Keep this one in your back pocket for surgery day morning.",
+    instruction: "Splash cold water on your face 5 times. This triggers your 'dive reflex' - it immediately slows your heart rate and calms your nervous system. It sounds too simple to work, but it's used in A&E departments to manage acute anxiety. Keep this one in your back pocket for surgery day morning.",
     duration: "1 minute"
   },
   {
     title: "Write a Question for Your Surgeon",
-    instruction: "Think of one question you want to ask your surgeon or anaesthetist. Write it down and add it to your list. People who write questions down before appointments get better information and feel more in control. Don't rely on remembering – write it down now while you're thinking of it.",
+    instruction: "Think of one question you want to ask your surgeon or anaesthetist. Write it down and add it to your list. People who write questions down before appointments get better information and feel more in control. Don't rely on remembering - write it down now while you're thinking of it.",
     duration: "2 minutes"
   },
   {
     title: "Look at Old Photos",
-    instruction: "Find some photos of yourself doing something active – a holiday, a walk, playing with children or grandchildren. That person is still you. The surgery is about getting back to being that person. Keep one of those photos somewhere you'll see it. It's a better motivator than any app.",
+    instruction: "Find some photos of yourself doing something active - a holiday, a walk, playing with children or grandchildren. That person is still you. The surgery is about getting back to being that person. Keep one of those photos somewhere you'll see it. It's a better motivator than any app.",
     duration: "5 minutes"
   },
   {
     title: "Gentle Hand Massage",
-    instruction: "Rub your hands together until they're warm. Then massage each hand – squeeze each finger, rub your palms, press the fleshy part between thumb and forefinger. This releases tension you didn't know you were holding and stimulates nerve endings that promote relaxation. Do it while watching telly if you like.",
+    instruction: "Rub your hands together until they're warm. Then massage each hand - squeeze each finger, rub your palms, press the fleshy part between thumb and forefinger. This releases tension you didn't know you were holding and stimulates nerve endings that promote relaxation. Do it while watching telly if you like.",
     duration: "3 minutes"
   },
   {
     title: "Plan Something for After Surgery",
-    instruction: "Book something or plan something for 3-6 months after your surgery date. A meal out, a visit to someone, a short trip. Nothing too ambitious, but something to look forward to. Having a specific, positive event in the diary gives your recovery a target. It's not wishful thinking – it's planning.",
+    instruction: "Book something or plan something for 3-6 months after your surgery date. A meal out, a visit to someone, a short trip. Nothing too ambitious, but something to look forward to. Having a specific, positive event in the diary gives your recovery a target. It's not wishful thinking - it's planning.",
     duration: "5 minutes"
   }
 ];

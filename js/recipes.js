@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Recipes & Shopping List
+   JOINT JOURNEY - Recipes & Shopping List
    ============================================ */
 
 let currentRecipeCategory = 'breakfast';
@@ -60,7 +60,7 @@ function openRecipe(id, category) {
   // Ingredients
   html += '<div class="recipe-section"><h4>🛒 Ingredients</h4><ul>';
   recipe.ingredients.forEach(ing => {
-    html += '<li><strong>' + ing.item + '</strong> – ' + ing.qty + '</li>';
+    html += '<li><strong>' + ing.item + '</strong> - ' + ing.qty + '</li>';
   });
   html += '</ul></div>';
 
@@ -140,7 +140,7 @@ function addToShoppingList(id, category) {
   closeRecipeModal();
 }
 
-// Smart quantity merging – adds up numbers with matching units
+// Smart quantity merging - adds up numbers with matching units
 function mergeQuantities(qty1, qty2) {
   const parsed1 = parseQty(qty1);
   const parsed2 = parseQty(qty2);
@@ -151,7 +151,7 @@ function mergeQuantities(qty1, qty2) {
     return total + (parsed1.unit ? parsed1.unit : '');
   }
 
-  // Can't merge cleanly – concatenate with +
+  // Can't merge cleanly - concatenate with +
   return qty1 + ' + ' + qty2;
 }
 
@@ -216,7 +216,7 @@ function renderShoppingList() {
     aisles[aisle].forEach(item => {
       html += '<div class="shopping-item ' + (item.checked ? 'checked' : '') + '" onclick="toggleShoppingItem(this, \'' + escapeStr(item.item) + '\')">';
       html += '<input type="checkbox" ' + (item.checked ? 'checked' : '') + ' onclick="event.stopPropagation()">';
-      html += '<span>' + item.item + ' – ' + item.qty + '</span>';
+      html += '<span>' + item.item + ' - ' + item.qty + '</span>';
       html += '</div>';
     });
     html += '</div>';

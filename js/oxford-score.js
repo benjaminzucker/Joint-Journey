@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Oxford Score Questionnaires
+   JOINT JOURNEY - Oxford Score Questionnaires
    Oxford Hip Score (OHS) & Oxford Knee Score (OKS)
    Each has 12 questions, scored 0-4 per question
    Total: 0 (worst) to 48 (best function)
@@ -59,7 +59,7 @@ const OXFORD_HIP_QUESTIONS = [
       { label: '16 to 30 minutes', score: 3 },
       { label: '5 to 15 minutes', score: 2 },
       { label: 'Around the house only', score: 1 },
-      { label: 'Not at all – pain severe on walking', score: 0 }
+      { label: 'Not at all - pain severe on walking', score: 0 }
     ]
   },
   {
@@ -184,7 +184,7 @@ const OXFORD_KNEE_QUESTIONS = [
       { label: '16 to 30 minutes', score: 3 },
       { label: '5 to 15 minutes', score: 2 },
       { label: 'Around the house only', score: 1 },
-      { label: 'Not at all – pain severe on walking', score: 0 }
+      { label: 'Not at all - pain severe on walking', score: 0 }
     ]
   },
   {
@@ -281,7 +281,7 @@ const OXFORD_KNEE_QUESTIONS = [
 function getOxfordScoreInterpretation(score) {
   if (score >= 40) return { level: 'mild', label: 'Satisfactory joint function', description: 'Your joint function is relatively good. Prehab will help maintain and improve this before surgery.', color: '#22c55e' };
   if (score >= 30) return { level: 'mild-moderate', label: 'Mild to moderate arthritis', description: 'You have some limitation in daily activities. Prehab exercises can help strengthen the muscles around your joint.', color: '#84cc16' };
-  if (score >= 20) return { level: 'moderate', label: 'Moderate to severe arthritis', description: 'Your joint is significantly affecting your daily life. This is common for people awaiting surgery — prehab can help you manage better.', color: '#eab308' };
+  if (score >= 20) return { level: 'moderate', label: 'Moderate to severe arthritis', description: 'Your joint is significantly affecting your daily life. This is common for people awaiting surgery - prehab can help you manage better.', color: '#eab308' };
   if (score >= 10) return { level: 'severe', label: 'Severe arthritis', description: 'Your joint is causing major limitations. Gentle prehab exercises can still help strengthen muscles and prepare you for surgery.', color: '#f97316' };
   return { level: 'very-severe', label: 'Very severe arthritis', description: 'Your joint is severely affected. Do only the exercises that feel comfortable, and focus on the nutrition and mindset modules.', color: '#ef4444' };
 }
@@ -313,8 +313,8 @@ function initOxfordScore() {
     html += '<p class="oxford-question-text">' + q.text + '</p>';
     html += '<div class="oxford-options">';
     q.options.forEach((opt, j) => {
-      html += '<label class="oxford-option">';
-      html += '<input type="radio" name="' + q.id + '" value="' + opt.score + '" onchange="checkOxfordProgress()">';
+      html += '<label class="oxford-option" onclick="setTimeout(checkOxfordProgress, 50)">';
+      html += '<input type="radio" name="' + q.id + '" value="' + opt.score + '">';
       html += '<span class="oxford-option-label">' + opt.label + '</span>';
       html += '</label>';
     });
@@ -480,9 +480,9 @@ function submitPostOpCheckIn() {
   if (hadSurgery.value === 'yes') {
     showToast('🎉 Congratulations on your surgery! We hope recovery goes brilliantly.');
   } else if (hadSurgery.value === 'cancelled') {
-    showToast('We\'re sorry to hear that. Keep using Joint Journey — the preparation is still valuable.');
+    showToast('We\'re sorry to hear that. Keep using Joint Journey - the preparation is still valuable.');
   } else {
-    showToast('Thank you for letting us know. Keep preparing — you\'re doing great!');
+    showToast('Thank you for letting us know. Keep preparing - you\'re doing great!');
   }
 }
 
@@ -585,8 +585,8 @@ function renderMountainJourney() {
       <path d="M 95 3 L 99 4.5 L 95 6" fill="#ef4444" opacity="0.8"/>
       
       <!-- Dot (you) -->
-      <circle cx="${dotX}" cy="${dotY}" r="2.5" fill="#475953"/>
-      <circle cx="${dotX}" cy="${dotY}" r="1.5" fill="white"/>
+      <circle cx="${dotX}" cy="${dotY}" r="4" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+      <circle cx="${dotX}" cy="${dotY}" r="1.8" fill="white"/>
       
       <!-- Start label -->
       <text x="5" y="95" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Start</text>
@@ -598,11 +598,11 @@ function renderMountainJourney() {
   
   let daysText = '';
   if (daysLeft > 0) {
-    daysText = '<strong>' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + '</strong> until surgery — ' + Math.round(progress * 100) + '% of your journey complete';
+    daysText = '<strong>' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + '</strong> until surgery - ' + Math.round(progress * 100) + '% of your journey complete';
   } else if (daysLeft === 0) {
     daysText = '<strong>Surgery day!</strong> You\'ve completed your preparation journey 🏔️';
   } else {
-    daysText = 'Your surgery was <strong>' + Math.abs(daysLeft) + ' day' + (Math.abs(daysLeft) !== 1 ? 's' : '') + ' ago</strong> — well done for preparing!';
+    daysText = 'Your surgery was <strong>' + Math.abs(daysLeft) + ' day' + (Math.abs(daysLeft) !== 1 ? 's' : '') + ' ago</strong> - well done for preparing!';
   }
   
   container.innerHTML = `

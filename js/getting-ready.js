@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Getting Ready Content
+   JOINT JOURNEY - Getting Ready Content
    ============================================ */
 
 const GETTING_READY_SECTIONS = {
@@ -12,12 +12,12 @@ const GETTING_READY_SECTIONS = {
         
         <h4>👕 Clothing</h4>
         <ul>
-          <li><strong>Dressing gown</strong> – for walking around the ward</li>
-          <li><strong>Non-slip slippers or shoes</strong> – the physios will want you walking, so proper footwear matters</li>
-          <li><strong>Loose, comfortable clothes to go home in</strong> – tracksuit bottoms or wide-leg trousers (not jeans!)</li>
-          <li><strong>Underwear</strong> – 2-3 pairs</li>
-          <li><strong>Nightwear</strong> – loose PJs or nightie (avoid anything you have to step into)</li>
-          <li><strong>Socks</strong> – grip socks if you have them</li>
+          <li><strong>Dressing gown</strong> - for walking around the ward</li>
+          <li><strong>Non-slip slippers or shoes</strong> - the physios will want you walking, so proper footwear matters</li>
+          <li><strong>Loose, comfortable clothes to go home in</strong> - tracksuit bottoms or wide-leg trousers (not jeans!)</li>
+          <li><strong>Underwear</strong> - 2-3 pairs</li>
+          <li><strong>Nightwear</strong> - loose PJs or nightie (avoid anything you have to step into)</li>
+          <li><strong>Socks</strong> - grip socks if you have them</li>
         </ul>
         
         <h4>🧴 Toiletries</h4>
@@ -32,9 +32,9 @@ const GETTING_READY_SECTIONS = {
         
         <h4>📱 Entertainment & Comfort</h4>
         <ul>
-          <li><strong>Phone + charger</strong> – bring a LONG charging cable (plug sockets are often far from the bed)</li>
-          <li><strong>Headphones or earbuds</strong> – wards can be noisy</li>
-          <li><strong>Earplugs & eye mask</strong> – for sleeping on the ward</li>
+          <li><strong>Phone + charger</strong> - bring a LONG charging cable (plug sockets are often far from the bed)</li>
+          <li><strong>Headphones or earbuds</strong> - wards can be noisy</li>
+          <li><strong>Earplugs & eye mask</strong> - for sleeping on the ward</li>
           <li>Book, magazine, or tablet</li>
           <li>Small amount of cash (for hospital shop)</li>
         </ul>
@@ -57,11 +57,11 @@ const GETTING_READY_SECTIONS = {
         <div class="pro-tip">
           <strong>💡 Pro Tips:</strong>
           <ul>
-            <li>Pack a small bag that you can reach from your bed – not a huge suitcase</li>
+            <li>Pack a small bag that you can reach from your bed - not a huge suitcase</li>
             <li>Label everything with your name</li>
-            <li>Don't bring valuables – leave jewellery at home</li>
-            <li>Bring your own pillow if you want – it can make all the difference</li>
-            <li>Pack a bag for going home separately – your partner/family can bring it on discharge day</li>
+            <li>Don't bring valuables - leave jewellery at home</li>
+            <li>Bring your own pillow if you want - it can make all the difference</li>
+            <li>Pack a bag for going home separately - your partner/family can bring it on discharge day</li>
           </ul>
         </div>
       </div>
@@ -76,34 +76,34 @@ const GETTING_READY_SECTIONS = {
         
         <h4>🛋️ Living Areas</h4>
         <ul>
-          <li><strong>Clear walkways</strong> – remove rugs, cables, and anything you might trip over</li>
-          <li><strong>Raise your chair</strong> – put blocks under your favourite chair legs so it's higher (easier to stand from)</li>
-          <li><strong>Move things to waist height</strong> – cups, plates, kettle, remote control</li>
-          <li><strong>Create a "station"</strong> near your chair – phone, water, medication, TV remote, book</li>
-          <li><strong>Good lighting</strong> – make sure hallways and stairs are well lit, especially for night time</li>
+          <li><strong>Clear walkways</strong> - remove rugs, cables, and anything you might trip over</li>
+          <li><strong>Raise your chair</strong> - put blocks under your favourite chair legs so it's higher (easier to stand from)</li>
+          <li><strong>Move things to waist height</strong> - cups, plates, kettle, remote control</li>
+          <li><strong>Create a "station"</strong> near your chair - phone, water, medication, TV remote, book</li>
+          <li><strong>Good lighting</strong> - make sure hallways and stairs are well lit, especially for night time</li>
         </ul>
         
         <h4>🛏️ Bedroom</h4>
         <ul>
-          <li><strong>Bed height</strong> – ideally your bed should be at knee height. If too low, consider a mattress raiser</li>
-          <li><strong>Sleep downstairs?</strong> – if stairs will be difficult, consider setting up a temporary bed downstairs for the first week or two</li>
-          <li><strong>Night light</strong> – for safe trips to the loo at night</li>
-          <li><strong>Extra pillows</strong> – for positioning in bed</li>
+          <li><strong>Bed height</strong> - ideally your bed should be at knee height. If too low, consider a mattress raiser</li>
+          <li><strong>Sleep downstairs?</strong> - if stairs will be difficult, consider setting up a temporary bed downstairs for the first week or two</li>
+          <li><strong>Night light</strong> - for safe trips to the loo at night</li>
+          <li><strong>Extra pillows</strong> - for positioning in bed</li>
         </ul>
         
         <h4>🚿 Bathroom</h4>
         <ul>
-          <li><strong>Non-slip bath mat</strong> – essential</li>
-          <li><strong>Shower stool</strong> – if you have a shower over the bath</li>
-          <li><strong>Long-handled sponge</strong> – for washing feet and legs</li>
+          <li><strong>Non-slip bath mat</strong> - essential</li>
+          <li><strong>Shower stool</strong> - if you have a shower over the bath</li>
+          <li><strong>Long-handled sponge</strong> - for washing feet and legs</li>
         </ul>
         
         <h4>🍳 Kitchen</h4>
         <ul>
-          <li><strong>Batch cook</strong> – make and freeze meals before your surgery</li>
-          <li><strong>Stock up</strong> – tins, pasta, rice, frozen meals, long-life milk</li>
-          <li><strong>Perching stool</strong> – so you can sit while making a cup of tea</li>
-          <li><strong>Move heavy items</strong> to worktop height – kettle, toaster, microwave</li>
+          <li><strong>Batch cook</strong> - make and freeze meals before your surgery</li>
+          <li><strong>Stock up</strong> - tins, pasta, rice, frozen meals, long-life milk</li>
+          <li><strong>Perching stool</strong> - so you can sit while making a cup of tea</li>
+          <li><strong>Move heavy items</strong> to worktop height - kettle, toaster, microwave</li>
         </ul>
         
         <h4>🚗 Getting Home</h4>
@@ -117,8 +117,8 @@ const GETTING_READY_SECTIONS = {
         <div class="pro-tip">
           <strong>💡 Top Tips from People Who've Been There:</strong>
           <ul>
-            <li>"Freeze portions of your favourite meals – you won't feel like cooking"</li>
-            <li>"Get a grabber/reacher – best £5 I ever spent"</li>
+            <li>"Freeze portions of your favourite meals - you won't feel like cooking"</li>
+            <li>"Get a grabber/reacher - best £5 I ever spent"</li>
             <li>"Put a bag on your banister to carry things up and down stairs"</li>
             <li>"A long shoe horn is essential"</li>
             <li>"Stock up on ice packs for your freezer"</li>
@@ -137,9 +137,9 @@ const GETTING_READY_SECTIONS = {
         <div class="precaution-warning">
           <h4>⚠️ The Three Main Rules</h4>
           <ol>
-            <li><strong>Don't bend your hip past 90 degrees</strong> – don't bring your knee higher than your hip</li>
-            <li><strong>Don't cross your legs</strong> – keep your legs apart</li>
-            <li><strong>Don't twist your operated leg inwards</strong> – keep your toes pointing forward or slightly outward</li>
+            <li><strong>Don't bend your hip past 90 degrees</strong> - don't bring your knee higher than your hip</li>
+            <li><strong>Don't cross your legs</strong> - keep your legs apart</li>
+            <li><strong>Don't twist your operated leg inwards</strong> - keep your toes pointing forward or slightly outward</li>
           </ol>
           <p><strong>Remember:</strong> These are temporary. Once healed, your new hip will be able to do all the things your old hip couldn't.</p>
         </div>
@@ -148,7 +148,7 @@ const GETTING_READY_SECTIONS = {
         
         <h4>🪑 Sitting</h4>
         <ul>
-          <li>Use a <strong>raised chair</strong> – your knees should be lower than your hips</li>
+          <li>Use a <strong>raised chair</strong> - your knees should be lower than your hips</li>
           <li><strong>Don't lean forward</strong> to pick things up from the floor</li>
           <li>Don't sit on <strong>low, soft sofas</strong></li>
         </ul>
@@ -172,7 +172,7 @@ const GETTING_READY_SECTIONS = {
         <ul>
           <li>Use your <strong>walking aids</strong> as instructed</li>
           <li>Take <strong>small steps</strong></li>
-          <li>Don't <strong>pivot</strong> on your operated leg – take small steps to turn</li>
+          <li>Don't <strong>pivot</strong> on your operated leg - take small steps to turn</li>
         </ul>
         
         <div class="pro-tip">
@@ -181,11 +181,11 @@ const GETTING_READY_SECTIONS = {
         
         <h3>Equipment That Helps</h3>
         <ul>
-          <li><strong>Grabber/reacher</strong> – pick things up without bending</li>
+          <li><strong>Grabber/reacher</strong> - pick things up without bending</li>
           <li><strong>Long-handled shoe horn</strong></li>
           <li><strong>Sock aid</strong></li>
-          <li><strong>Perching stool</strong> – for kitchen tasks</li>
-          <li><strong>Cushion raiser</strong> – for car seats and low chairs</li>
+          <li><strong>Perching stool</strong> - for kitchen tasks</li>
+          <li><strong>Cushion raiser</strong> - for car seats and low chairs</li>
         </ul>
       </div>
     `
@@ -199,10 +199,10 @@ const GETTING_READY_SECTIONS = {
         
         <h3>The Key Goals After Surgery</h3>
         <ol>
-          <li><strong>Straighten your knee fully</strong> (extension) – this is the most important goal</li>
-          <li><strong>Bend your knee to 90 degrees</strong> – enough to climb stairs and sit comfortably</li>
-          <li><strong>Strengthen your thigh muscles</strong> – the quadriceps are king</li>
-          <li><strong>Walk confidently</strong> – without a limp</li>
+          <li><strong>Straighten your knee fully</strong> (extension) - this is the most important goal</li>
+          <li><strong>Bend your knee to 90 degrees</strong> - enough to climb stairs and sit comfortably</li>
+          <li><strong>Strengthen your thigh muscles</strong> - the quadriceps are king</li>
+          <li><strong>Walk confidently</strong> - without a limp</li>
         </ol>
         
         <div class="precaution-warning">
@@ -213,10 +213,10 @@ const GETTING_READY_SECTIONS = {
         <h3>Managing Swelling</h3>
         <h4>The RICE Principle</h4>
         <ul>
-          <li><strong>R</strong>est – but not too much! Gentle movement helps</li>
-          <li><strong>I</strong>ce – 20 minutes on, 20 minutes off. Use a bag of frozen peas wrapped in a tea towel</li>
-          <li><strong>C</strong>ompression – surgical stockings (usually provided)</li>
-          <li><strong>E</strong>levation – put your leg up when sitting (foot higher than knee, knee higher than hip)</li>
+          <li><strong>R</strong>est - but not too much! Gentle movement helps</li>
+          <li><strong>I</strong>ce - 20 minutes on, 20 minutes off. Use a bag of frozen peas wrapped in a tea towel</li>
+          <li><strong>C</strong>ompression - surgical stockings (usually provided)</li>
+          <li><strong>E</strong>levation - put your leg up when sitting (foot higher than knee, knee higher than hip)</li>
         </ul>
         
         <h3>Exercises Are CRUCIAL</h3>
@@ -236,7 +236,7 @@ const GETTING_READY_SECTIONS = {
         </ul>
         
         <div class="pro-tip">
-          <strong>💡 The Golden Rule of Knee Replacement:</strong> "Do your exercises, even when it hurts. The exercises ARE the recovery." Pain during exercises is normal. Sharp, sudden pain is not – stop and tell your physio.
+          <strong>💡 The Golden Rule of Knee Replacement:</strong> "Do your exercises, even when it hurts. The exercises ARE the recovery." Pain during exercises is normal. Sharp, sudden pain is not - stop and tell your physio.
         </div>
       </div>
     `
@@ -285,7 +285,7 @@ const GETTING_READY_SECTIONS = {
           <h4>⚠️ Important: Skin Preparation</h4>
           <ul>
             <li><strong>Do NOT shave</strong> the area around where you are having surgery. Shaving can cause tiny cuts and nicks in the skin which increase the risk of infection. If hair removal is needed, the surgical team will do this safely in hospital.</li>
-            <li><strong>If you have any skin breaks, wounds, cuts, sores, or infections</strong> – anywhere on your body, but especially near the surgical site – <strong>please alert your surgical team as soon as possible</strong>. Surgery may need to be postponed until these have healed, as they significantly increase the risk of post-operative infection.</li>
+            <li><strong>If you have any skin breaks, wounds, cuts, sores, or infections</strong> - anywhere on your body, but especially near the surgical site - <strong>please alert your surgical team as soon as possible</strong>. Surgery may need to be postponed until these have healed, as they significantly increase the risk of post-operative infection.</li>
           </ul>
         </div>
         
@@ -300,8 +300,8 @@ const GETTING_READY_SECTIONS = {
         <div class="pro-tip">
           <strong>💡 Tips for Your Appointment:</strong>
           <ul>
-            <li>Write your questions down – you'll forget them otherwise</li>
-            <li>Take someone with you – two pairs of ears are better than one</li>
+            <li>Write your questions down - you'll forget them otherwise</li>
+            <li>Take someone with you - two pairs of ears are better than one</li>
             <li>It's okay to ask them to explain something again</li>
             <li>There are no silly questions</li>
           </ul>
@@ -320,12 +320,12 @@ const GETTING_READY_SECTIONS = {
         <ul>
           <li>Follow your <strong>fasting instructions</strong> (usually no food from midnight, clear fluids until 6am)</li>
           <li>Have a <strong>shower</strong> (no lotions, perfume, or makeup)</li>
-          <li><strong>Do NOT shave</strong> the area around your surgical site – the hospital team will handle this safely if needed</li>
+          <li><strong>Do NOT shave</strong> the area around your surgical site - the hospital team will handle this safely if needed</li>
           <li>Wear <strong>loose, comfortable clothes</strong></li>
           <li>Remove all <strong>jewellery and nail varnish</strong></li>
           <li>Bring your <strong>hospital bag</strong></li>
           <li>Take any medications you've been told to take with a sip of water</li>
-          <li>If you have any <strong>skin breaks, wounds, or infections</strong> anywhere on your body, <strong>alert your surgical team immediately</strong> – this is very important for your safety</li>
+          <li>If you have any <strong>skin breaks, wounds, or infections</strong> anywhere on your body, <strong>alert your surgical team immediately</strong> - this is very important for your safety</li>
         </ul>
         
         <h4>🏥 Arriving at Hospital</h4>
@@ -340,8 +340,8 @@ const GETTING_READY_SECTIONS = {
         
         <h4>👨‍⚕️ Pre-Surgery Visits</h4>
         <ul>
-          <li>The <strong>anaesthetist</strong> will visit – they'll explain the anaesthetic options and answer questions</li>
-          <li>Your <strong>surgeon</strong> may visit – they'll confirm which side is being operated on and may draw an arrow on your leg</li>
+          <li>The <strong>anaesthetist</strong> will visit - they'll explain the anaesthetic options and answer questions</li>
+          <li>Your <strong>surgeon</strong> may visit - they'll confirm which side is being operated on and may draw an arrow on your leg</li>
           <li>You'll sign a <strong>consent form</strong> if you haven't already</li>
         </ul>
         
@@ -365,8 +365,8 @@ const GETTING_READY_SECTIONS = {
         <ul>
           <li>You'll wake up in the <strong>recovery room</strong></li>
           <li>Nurses will monitor you closely</li>
-          <li>You may feel <strong>groggy, thirsty, or slightly sick</strong> – all normal</li>
-          <li>Pain relief will be given – you shouldn't be in severe pain</li>
+          <li>You may feel <strong>groggy, thirsty, or slightly sick</strong> - all normal</li>
+          <li>Pain relief will be given - you shouldn't be in severe pain</li>
           <li>Once stable, you'll be taken back to the <strong>ward</strong></li>
         </ul>
         
@@ -374,7 +374,7 @@ const GETTING_READY_SECTIONS = {
         <ul>
           <li>A <strong>physiotherapist</strong> will visit, often on the same day as surgery</li>
           <li>They'll help you <strong>stand up and take a few steps</strong></li>
-          <li>This is safe and important – early movement reduces complications</li>
+          <li>This is safe and important - early movement reduces complications</li>
           <li>It might feel strange, but your new joint is designed to be walked on immediately</li>
         </ul>
         

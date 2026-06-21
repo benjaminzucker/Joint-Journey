@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Core App Logic
+   JOINT JOURNEY - Core App Logic
    Navigation, onboarding, dashboard, utilities
    ============================================ */
 

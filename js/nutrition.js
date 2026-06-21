@@ -1,5 +1,5 @@
 /* ============================================
-   JOINT JOURNEY – Nutrition (Calculator, Weight)
+   JOINT JOURNEY - Nutrition (Calculator, Weight)
    ============================================ */
 
 function initNutrition() {
@@ -54,16 +54,16 @@ function calculateNutrition() {
   const bmiMsg = document.getElementById('bmi-message');
   if (bmi < 18.5) {
     bmiMsg.className = 'alert alert-warning';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' – Underweight.</strong> You may benefit from speaking with your GP about nutrition before surgery.';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Underweight.</strong> You may benefit from speaking with your GP about nutrition before surgery.';
   } else if (bmi < 25) {
     bmiMsg.className = 'alert alert-success';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' – Healthy weight! 🎉</strong> You\'re in a great position for surgery. Focus on maintaining your weight and eating plenty of protein.';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Healthy weight! 🎉</strong> You\'re in a great position for surgery. Focus on maintaining your weight and eating plenty of protein.';
   } else if (bmi < 30) {
     bmiMsg.className = 'alert alert-info';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' – Slightly overweight.</strong> You\'re not far off. Even a small amount of weight loss can make surgery easier and recovery faster.';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Slightly overweight.</strong> You\'re not far off. Even a small amount of weight loss can make surgery easier and recovery faster.';
   } else {
     bmiMsg.className = 'alert alert-warning';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' – Your BMI is above 30.</strong> Losing some weight before surgery can significantly improve your outcomes. We\'ll help you get there with manageable targets.';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Your BMI is above 30.</strong> Losing some weight before surgery can significantly improve your outcomes. We\'ll help you get there with manageable targets.';
   }
   bmiMsg.style.display = 'block';
 
@@ -102,16 +102,16 @@ function calculateNutrition() {
       let html = '<div style="line-height:1.8;">';
       html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
       html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. This is called your Total Daily Energy Expenditure (TDEE).</p>';
-      html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit. This is the approach recommended by the NHS – it\'s enough to lose weight without losing the muscle you need for surgery and recovery.</p>';
+      html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit. This is the approach recommended by the NHS - it\'s enough to lose weight without losing the muscle you need for surgery and recovery.</p>';
       html += '<h4 style="margin-bottom:var(--space-sm);">⚖️ What to expect</h4>';
-      html += '<p>At this calorie level, you can expect to lose about <strong>0.5kg (1lb) per week</strong>. That might not sound dramatic, but it\'s the rate that preserves your muscle while losing fat. Crash diets do the opposite – they lose muscle first, which is the last thing you need before surgery.</p>';
+      html += '<p>At this calorie level, you can expect to lose about <strong>0.5kg (1lb) per week</strong>. That might not sound dramatic, but it\'s the rate that preserves your muscle while losing fat. Crash diets do the opposite - they lose muscle first, which is the last thing you need before surgery.</p>';
       html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + weightToLose.toFixed(1) + 'kg</strong>, which would take roughly <strong>' + weeksToTarget + ' weeks</strong> at this pace.</p>';
       if (weeksToTarget > 12) {
-        html += '<p>That\'s longer than the 12-week exercise programme – and that\'s absolutely fine. <strong>Every kilo you lose makes a difference.</strong> Research shows that even losing 2-3kg before surgery measurably improves outcomes, reduces complications, and speeds recovery. Do what you can.</p>';
+        html += '<p>That\'s longer than the 12-week exercise programme - and that\'s absolutely fine. <strong>Every kilo you lose makes a difference.</strong> Research shows that even losing 2-3kg before surgery measurably improves outcomes, reduces complications, and speeds recovery. Do what you can.</p>';
       }
       html += '<h4 style="margin-bottom:var(--space-sm);">🥩 Why protein matters</h4>';
-      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises – your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
-      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day – we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
+      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises - your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
+      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day - we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;
@@ -121,8 +121,8 @@ function calculateNutrition() {
 
       let html = '<div style="line-height:1.8;">';
       html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
-      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. We\'ve reduced this by <strong>300 calories</strong> – a gentle deficit that should help you lose weight gradually without feeling hungry or deprived.</p>';
-      html += '<p>At this level, expect to lose about <strong>0.25-0.5kg per week</strong>. No crash diets, no misery – just slow and steady progress. Even a few kilos makes surgery easier and recovery faster.</p>';
+      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. We\'ve reduced this by <strong>300 calories</strong> - a gentle deficit that should help you lose weight gradually without feeling hungry or deprived.</p>';
+      html += '<p>At this level, expect to lose about <strong>0.25-0.5kg per week</strong>. No crash diets, no misery - just slow and steady progress. Even a few kilos makes surgery easier and recovery faster.</p>';
       html += '<h4 style="margin-bottom:var(--space-sm);">🥩 Why protein matters</h4>';
       html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. This supports the muscle-strengthening work you\'re doing with your exercises. Our recipes are designed to be high in protein to help you hit this.</p>';
       html += '</div>';
@@ -132,8 +132,8 @@ function calculateNutrition() {
     } else {
       let html = '<div style="line-height:1.8;">';
       html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
-      html += '<p>You\'re at a healthy weight – well done! Your calorie target of <strong>' + tdee.toLocaleString() + '</strong> is set to maintain your current weight. There\'s no need to lose weight before surgery.</p>';
-      html += '<p>Focus on <strong>eating well</strong> – plenty of protein (target: <strong>' + proteinTarget + 'g per day</strong>), fruit and vegetables, and staying hydrated. Good nutrition helps your body heal faster after surgery.</p>';
+      html += '<p>You\'re at a healthy weight - well done! Your calorie target of <strong>' + tdee.toLocaleString() + '</strong> is set to maintain your current weight. There\'s no need to lose weight before surgery.</p>';
+      html += '<p>Focus on <strong>eating well</strong> - plenty of protein (target: <strong>' + proteinTarget + 'g per day</strong>), fruit and vegetables, and staying hydrated. Good nutrition helps your body heal faster after surgery.</p>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;

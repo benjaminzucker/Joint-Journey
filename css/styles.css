@@ -1,11 +1,11 @@
 /* ============================================
-   JOINT JOURNEY – Design System & Global Styles
+   JOINT JOURNEY - Design System & Global Styles
    Green theme, elderly-friendly, accessible
    ============================================ */
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Primary Palette – Based on Little Greene Three Farm Green 306 */
+  /* Primary Palette - Based on Little Greene Three Farm Green 306 */
   --green-900: #2A3532;
   --green-800: #354140;
   --green-700: #475953;
