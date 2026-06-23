@@ -286,27 +286,62 @@ function getOxfordScoreInterpretation(score) {
   return { level: 'very-severe', label: 'Very severe arthritis', description: 'Your joint is severely affected. Do only the exercises that feel comfortable, and focus on the nutrition and mindset modules.', color: '#ef4444' };
 }
 
+// Track which joint questionnaire is currently being completed (for "both" users)
+let currentOxfordJoint = null;
+
 // ===== RENDER PRE-OP QUESTIONNAIRE =====
 function initOxfordScore() {
   if (!currentUser) return;
   
   const joint = currentUser.profile.joint;
-  const questions = joint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
-  const jointLabel = joint === 'hip' ? 'Hip' : 'Knee';
   
-  // Check if already completed
+  // For "both" users, check what's already completed
+  if (joint === 'both') {
+    const hipDone = currentUser.progress.oxfordScorePreOpHip;
+    const kneeDone = currentUser.progress.oxfordScorePreOpKnee;
+    
+    if (hipDone && kneeDone) {
+      // Both completed - show results
+      renderOxfordScoreResult('preop');
+      return;
+    } else if (!hipDone) {
+      // Hip not done yet - do hip first
+      currentOxfordJoint = 'hip';
+      renderOxfordQuestionnaire('hip', 'You have both hip and knee replacements planned. Let\'s start with your <strong>hip</strong> — we\'ll do the knee next.');
+    } else {
+      // Hip done, knee not done
+      currentOxfordJoint = 'knee';
+      renderOxfordQuestionnaire('knee', 'Great — your hip score is recorded! Now let\'s do your <strong>knee</strong>.');
+    }
+    return;
+  }
+  
+  // Single joint
   if (currentUser.progress.oxfordScorePreOp) {
     renderOxfordScoreResult('preop');
     return;
   }
   
+  currentOxfordJoint = joint;
+  renderOxfordQuestionnaire(joint);
+}
+
+function renderOxfordQuestionnaire(jointType, introMessage) {
+  const questions = jointType === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  const jointLabel = jointType === 'hip' ? 'Hip' : 'Knee';
+  
   const container = document.getElementById('oxford-score-questions');
   if (!container) return;
   
   document.getElementById('oxford-score-title').textContent = 'Oxford ' + jointLabel + ' Score';
-  document.getElementById('oxford-score-subtitle').textContent = 'These 12 questions ask about your ' + joint + ' over the past 4 weeks. This helps us understand your starting point.';
+  document.getElementById('oxford-score-subtitle').textContent = 'These 12 questions ask about your ' + jointType + ' over the past 4 weeks. This helps us understand your starting point.';
   
   let html = '';
+  
+  if (introMessage) {
+    html += '<div class="alert alert-info mb-lg">' + introMessage + '</div>';
+  }
+  
   questions.forEach((q, i) => {
     html += '<div class="oxford-question" id="oq-' + q.id + '">';
     html += '<p class="oxford-question-number">Question ' + (i + 1) + ' of 12</p>';
@@ -330,8 +365,7 @@ function initOxfordScore() {
 }
 
 function checkOxfordProgress() {
-  const joint = currentUser.profile.joint;
-  const questions = joint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  const questions = currentOxfordJoint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
   let answered = 0;
   
   questions.forEach(q => {
@@ -354,8 +388,8 @@ function checkOxfordProgress() {
 }
 
 function submitOxfordScore() {
-  const joint = currentUser.profile.joint;
-  const questions = joint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  const questions = currentOxfordJoint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  const jointLabel = currentOxfordJoint === 'hip' ? 'Hip' : 'Knee';
   
   let totalScore = 0;
   const answers = {};
@@ -369,24 +403,45 @@ function submitOxfordScore() {
     }
   });
   
-  // Save to user profile
-  currentUser.progress.oxfordScorePreOp = {
+  const scoreData = {
     score: totalScore,
     answers: answers,
     date: new Date().toISOString(),
-    joint: joint
+    joint: currentOxfordJoint
   };
   
+  const joint = currentUser.profile.joint;
+  
+  if (joint === 'both') {
+    // Save to joint-specific key
+    if (currentOxfordJoint === 'hip') {
+      currentUser.progress.oxfordScorePreOpHip = scoreData;
+      saveUser();
+      showToast('✅ Your Oxford Hip Score has been recorded! Now let\'s do your knee.');
+      // Immediately show knee questionnaire
+      currentOxfordJoint = 'knee';
+      renderOxfordQuestionnaire('knee', 'Great — your hip score is recorded! Now let\'s do your <strong>knee</strong>.');
+      // Scroll to top of questionnaire
+      document.querySelector('.app-main').scrollTop = 0;
+      return;
+    } else {
+      currentUser.progress.oxfordScorePreOpKnee = scoreData;
+      saveUser();
+      showToast('✅ Your Oxford Knee Score has been recorded!');
+      renderOxfordScoreResult('preop');
+      return;
+    }
+  }
+  
+  // Single joint
+  currentUser.progress.oxfordScorePreOp = scoreData;
   saveUser();
   renderOxfordScoreResult('preop');
-  showToast('✅ Your Oxford ' + (joint === 'hip' ? 'Hip' : 'Knee') + ' Score has been recorded!');
+  showToast('✅ Your Oxford ' + jointLabel + ' Score has been recorded!');
 }
 
 function renderOxfordScoreResult(type) {
-  const data = type === 'preop' ? currentUser.progress.oxfordScorePreOp : currentUser.progress.oxfordScorePostOp;
-  if (!data) return;
-  
-  const interp = getOxfordScoreInterpretation(data.score);
+  const joint = currentUser.profile.joint;
   
   // Hide form, show result
   const form = document.getElementById('oxford-score-form');
@@ -395,34 +450,70 @@ function renderOxfordScoreResult(type) {
   const result = document.getElementById('oxford-score-result');
   if (!result) return;
   
-  let html = '<div class="oxford-result-card">';
+  let html = '';
+  
+  if (joint === 'both') {
+    // Show both hip and knee results
+    const hipData = type === 'preop' ? currentUser.progress.oxfordScorePreOpHip : currentUser.progress.oxfordScorePostOpHip;
+    const kneeData = type === 'preop' ? currentUser.progress.oxfordScorePreOpKnee : currentUser.progress.oxfordScorePostOpKnee;
+    
+    if (hipData) {
+      html += renderSingleScoreCard(hipData, 'Hip', type, 'hip');
+    }
+    if (kneeData) {
+      html += renderSingleScoreCard(kneeData, 'Knee', type, 'knee');
+    }
+  } else {
+    // Single joint result
+    const data = type === 'preop' ? currentUser.progress.oxfordScorePreOp : currentUser.progress.oxfordScorePostOp;
+    if (!data) return;
+    const jointLabel = joint === 'hip' ? 'Hip' : 'Knee';
+    html += renderSingleScoreCard(data, jointLabel, type, joint);
+  }
+  
+  result.innerHTML = html;
+  result.style.display = 'block';
+}
+
+function renderSingleScoreCard(data, jointLabel, type, jointType) {
+  const interp = getOxfordScoreInterpretation(data.score);
+  
+  let html = '<div class="oxford-result-card" style="margin-bottom: var(--space-lg);">';
+  html += '<h3 style="margin-top:0; text-align:center;">Oxford ' + jointLabel + ' Score</h3>';
   html += '<div class="oxford-result-score" style="color:' + interp.color + ';">' + data.score + '<span class="oxford-result-total">/48</span></div>';
   html += '<div class="oxford-result-label">' + interp.label + '</div>';
   html += '<p class="oxford-result-description">' + interp.description + '</p>';
   html += '<p class="oxford-result-date">Completed on ' + new Date(data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) + '</p>';
   
-  // If we have both pre and post op scores, show comparison
-  if (type === 'postop' && currentUser.progress.oxfordScorePreOp) {
-    const preScore = currentUser.progress.oxfordScorePreOp.score;
-    const diff = data.score - preScore;
-    html += '<div class="oxford-comparison">';
-    html += '<h4>Your Progress</h4>';
-    html += '<div class="oxford-compare-row"><span>Pre-op score:</span><strong>' + preScore + '/48</strong></div>';
-    html += '<div class="oxford-compare-row"><span>Post-op score:</span><strong>' + data.score + '/48</strong></div>';
-    if (diff > 0) {
-      html += '<div class="oxford-compare-result positive">↑ Improved by ' + diff + ' points! 🎉</div>';
-    } else if (diff < 0) {
-      html += '<div class="oxford-compare-result negative">↓ Changed by ' + Math.abs(diff) + ' points</div>';
+  // Pre vs post comparison
+  if (type === 'postop') {
+    const joint = currentUser.profile.joint;
+    let preData = null;
+    if (joint === 'both') {
+      preData = jointType === 'hip' ? currentUser.progress.oxfordScorePreOpHip : currentUser.progress.oxfordScorePreOpKnee;
     } else {
-      html += '<div class="oxford-compare-result neutral">No change in score</div>';
+      preData = currentUser.progress.oxfordScorePreOp;
     }
-    html += '</div>';
+    
+    if (preData) {
+      const diff = data.score - preData.score;
+      html += '<div class="oxford-comparison">';
+      html += '<h4>Your Progress</h4>';
+      html += '<div class="oxford-compare-row"><span>Pre-op score:</span><strong>' + preData.score + '/48</strong></div>';
+      html += '<div class="oxford-compare-row"><span>Post-op score:</span><strong>' + data.score + '/48</strong></div>';
+      if (diff > 0) {
+        html += '<div class="oxford-compare-result positive">↑ Improved by ' + diff + ' points! 🎉</div>';
+      } else if (diff < 0) {
+        html += '<div class="oxford-compare-result negative">↓ Changed by ' + Math.abs(diff) + ' points</div>';
+      } else {
+        html += '<div class="oxford-compare-result neutral">No change in score</div>';
+      }
+      html += '</div>';
+    }
   }
   
   html += '</div>';
-  
-  result.innerHTML = html;
-  result.style.display = 'block';
+  return html;
 }
 
 // ===== POST-OP CHECK-IN =====
