@@ -96,25 +96,56 @@ function calculateNutrition() {
     const minCal = sex === 'male' ? 1600 : 1400;
 
     if (bmi > 30) {
-      calorieTarget = Math.max(tdee - 400, minCal);
       const targetWeight = 30 * Math.pow(height / 100, 2);
       const weightToLose = weight - targetWeight;
-      const weeksToTarget = Math.ceil(weightToLose / 0.5);
-      const deficit = tdee - calorieTarget;
+
+      // Time-aware deficit: calculate based on weeks until surgery
+      var weeksToSurgery = null;
+      var idealDeficit = 400; // default if no surgery date
+      if (currentUser && currentUser.profile.surgeryDate) {
+        var surgeryMs = new Date(currentUser.profile.surgeryDate).getTime() - Date.now();
+        weeksToSurgery = Math.max(1, Math.round(surgeryMs / (7 * 86400000)));
+        // kg per week needed, converted to daily cal deficit (1kg fat ≈ 7700 cal)
+        var weeklyLossNeeded = weightToLose / weeksToSurgery;
+        idealDeficit = Math.round((weeklyLossNeeded * 7700) / 7);
+      }
+      // Clamp deficit to 300-500 range
+      var deficit = Math.max(300, Math.min(500, idealDeficit));
+      calorieTarget = Math.max(tdee - deficit, minCal);
+      deficit = tdee - calorieTarget; // recalc in case floor was hit
+
+      var expectedWeeklyLoss = Math.round((deficit * 7 / 7700) * 10) / 10;
+      var weeksAtThisRate = Math.ceil(weightToLose / Math.max(0.1, expectedWeeklyLoss));
+      var canReachTarget = weeksToSurgery ? weeksAtThisRate <= weeksToSurgery : true;
 
       let html = '<div style="line-height:1.8;">';
       html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
-      html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. This is called your Total Daily Energy Expenditure (TDEE).</p>';
-      html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit. This is the approach recommended by the NHS - it\'s enough to lose weight without losing the muscle you need for surgery and recovery.</p>';
+      html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight (your TDEE).</p>';
+      if (weeksToSurgery) {
+        html += '<p>With <strong>' + weeksToSurgery + ' weeks until your surgery</strong>, we\'ve calculated a <strong>' + deficit + '-calorie daily deficit</strong> tailored to your timeline. ';
+        if (deficit === 300) {
+          html += 'You have plenty of time, so we\'ve kept this gentle — no need to rush.</p>';
+        } else if (deficit >= 450) {
+          html += 'This is a moderate deficit to help you make meaningful progress before surgery.</p>';
+        } else {
+          html += 'This balances sustainable weight loss with preserving the muscle you need for surgery and recovery.</p>';
+        }
+      } else {
+        html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit.</p>';
+      }
       html += '<h4 style="margin-bottom:var(--space-sm);">⚖️ What to expect</h4>';
-      html += '<p>At this calorie level, you can expect to lose about <strong>0.5kg (1lb) per week</strong>. That might not sound dramatic, but it\'s the rate that preserves your muscle while losing fat. Crash diets do the opposite - they lose muscle first, which is the last thing you need before surgery.</p>';
-      html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + weightToLose.toFixed(1) + 'kg</strong>, which would take roughly <strong>' + weeksToTarget + ' weeks</strong> at this pace.</p>';
-      if (weeksToTarget > 12) {
-        html += '<p>That\'s longer than the 12-week exercise programme - and that\'s absolutely fine. <strong>Every kilo you lose makes a difference.</strong> Research shows that even losing 2-3kg before surgery measurably improves outcomes, reduces complications, and speeds recovery. Do what you can.</p>';
+      html += '<p>At this calorie level, you can expect to lose about <strong>' + expectedWeeklyLoss + 'kg per week</strong>. That preserves your muscle while losing fat — crash diets do the opposite, which is the last thing you need before surgery.</p>';
+      html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + weightToLose.toFixed(1) + 'kg</strong>';
+      if (weeksToSurgery && canReachTarget) {
+        html += ', which should take roughly <strong>' + weeksAtThisRate + ' weeks</strong> — well within your surgery timeline. You\'ve got this!</p>';
+      } else if (weeksToSurgery && !canReachTarget) {
+        html += '. At this pace that would take about <strong>' + weeksAtThisRate + ' weeks</strong> — longer than your ' + weeksToSurgery + ' weeks to surgery. <strong>That\'s absolutely fine.</strong> Every kilo you lose makes a real difference. Research shows that even losing 2-3kg before surgery measurably improves outcomes and speeds recovery. Do what you can.</p>';
+      } else {
+        html += ', which would take roughly <strong>' + weeksAtThisRate + ' weeks</strong> at this pace.</p>';
       }
       html += '<h4 style="margin-bottom:var(--space-sm);">🥩 Why protein matters</h4>';
-      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises - your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
-      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day - we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
+      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises — your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
+      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day — we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;
