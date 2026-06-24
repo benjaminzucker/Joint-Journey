@@ -10,7 +10,8 @@ function initNutrition() {
   if (p.height) document.getElementById('calc-height').value = p.height;
   if (p.age) document.getElementById('calc-age').value = p.age;
   if (p.sex) document.getElementById('calc-sex').value = p.sex;
-  if (p.activity) document.getElementById('calc-activity').value = p.activity;
+  if (p.activityLevel) document.getElementById('calc-activity').value = p.activityLevel;
+  else if (p.activity) document.getElementById('calc-activity').value = p.activity;
   calculateNutrition();
   renderWeightHistory();
 }
@@ -90,10 +91,12 @@ function calculateNutrition() {
 
     let calorieTarget = tdee;
     const weightLossInfo = document.getElementById('weight-loss-info');
-    const minCal = sex === 'male' ? 1500 : 1200;
+    // Minimum calories: higher than standard dieting minimums because
+    // patients are doing a prehab exercise programme and need to preserve muscle
+    const minCal = sex === 'male' ? 1600 : 1400;
 
     if (bmi > 30) {
-      calorieTarget = Math.max(tdee - 500, minCal);
+      calorieTarget = Math.max(tdee - 400, minCal);
       const targetWeight = 30 * Math.pow(height / 100, 2);
       const weightToLose = weight - targetWeight;
       const weeksToTarget = Math.ceil(weightToLose / 0.5);
