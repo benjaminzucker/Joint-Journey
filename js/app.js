@@ -211,11 +211,154 @@ function initDashboard() {
     document.getElementById('dashboard-goal-card').style.display = 'block';
   }
 
+  // Adaptive messages (mood, encouragement, nudges, week progression)
+  renderAdaptiveMessages();
+
   // Mountain journey graphic
   renderMountainJourney();
 
   // Post-op check-in
   initPostOpCheckIn();
+}
+
+// ===== ADAPTIVE DASHBOARD MESSAGES =====
+function renderAdaptiveMessages() {
+  var container = document.getElementById('dashboard-adaptive-messages');
+  if (!container || !currentUser) return;
+  var html = '';
+  var progress = currentUser.progress;
+  var today = new Date().toISOString().split('T')[0];
+
+  // 1. MOOD-BASED SUPPORT
+  var moodLog = progress.moodLog || [];
+  var recentMoods = moodLog.slice(-5);
+  if (recentMoods.length >= 3) {
+    var avgMood = recentMoods.reduce(function(s, m) { return s + m.mood; }, 0) / recentMoods.length;
+    if (avgMood >= 4) {
+      html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">😊</span><div>';
+      html += '<strong>You\'ve been in great spirits!</strong> That positive energy is brilliant for your recovery. Keep it up.';
+      html += '</div></div></div>';
+    } else if (avgMood <= 2.2) {
+      html += '<div class="card mb-md" style="background:#FFF7ED;border-color:#FED7AA;">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">💛</span><div>';
+      html += '<strong>We\'ve noticed things have been tough recently.</strong> That\'s completely normal — living with joint pain is exhausting and frustrating. Be kind to yourself. ';
+      html += 'Our <a href="#" onclick="navigateTo(\'mindset\');return false;" style="font-weight:600;">Mindset modules</a> have some techniques that might help.';
+      html += '</div></div></div>';
+    }
+  }
+
+  // 2. EXERCISE ENCOURAGEMENT (positive only)
+  var streak = progress.exerciseStreak || 0;
+  var lastEx = progress.lastExerciseDate;
+  if (streak >= 7) {
+    html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
+    html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">🔥</span><div>';
+    html += '<strong>' + streak + ' days in a row!</strong> You\'re building an incredible habit. Your body is getting stronger every day.';
+    html += '</div></div></div>';
+  } else if (streak >= 3) {
+    html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
+    html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">💪</span><div>';
+    html += '<strong>' + streak + ' days in a row!</strong> Great consistency — that\'s what makes the real difference.';
+    html += '</div></div></div>';
+  } else if (lastEx && lastEx !== today) {
+    // Haven't exercised today yet but have before - just a gentle welcome
+    var daysSince = Math.round((Date.now() - new Date(lastEx).getTime()) / 86400000);
+    if (daysSince >= 3) {
+      html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">👋</span><div>';
+      html += '<strong>Welcome back!</strong> Great to see you. Ready to pick up where you left off?';
+      html += '</div></div></div>';
+    }
+  }
+
+  // 3. WEEK PROGRESSION PROMPT
+  var currentWeek = progress.currentWeek || 1;
+  var totalWeeks = getTotalProgrammeWeeks();
+  // Count sessions completed in current week (Mon-Sun)
+  var now = new Date();
+  var dayOfWeek = now.getDay() || 7; // 1=Mon...7=Sun
+  var mondayMs = now.getTime() - (dayOfWeek - 1) * 86400000;
+  var sessionsThisWeek = 0;
+  for (var d = 0; d < 7; d++) {
+    var dateStr = new Date(mondayMs + d * 86400000).toISOString().split('T')[0];
+    if (progress.exercisesCompleted[dateStr] && progress.exercisesCompleted[dateStr].length > 0) {
+      sessionsThisWeek++;
+    }
+  }
+  if (sessionsThisWeek >= 3 && currentWeek < totalWeeks && dayOfWeek >= 5) {
+    html += '<div class="card mb-md" style="background:#EFF6FF;border-color:#BFDBFE;">';
+    html += '<div class="flex items-center justify-between gap-md flex-wrap">';
+    html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">⬆️</span><div>';
+    html += '<strong>' + sessionsThisWeek + ' sessions this week!</strong> Ready to move to Week ' + (currentWeek + 1) + '?';
+    html += '</div></div>';
+    html += '<button class="btn btn-sm btn-primary" onclick="advanceWeek()">Move to Week ' + (currentWeek + 1) + '</button>';
+    html += '</div></div>';
+  }
+
+  // 4. SURGERY PREPARATION NUDGES
+  if (currentUser.profile.surgeryDate) {
+    var surgeryMs = new Date(currentUser.profile.surgeryDate).getTime();
+    var daysToSurgery = Math.round((surgeryMs - Date.now()) / 86400000);
+    var viewed = progress.gettingReadyViewed || [];
+
+    if (daysToSurgery > 0 && daysToSurgery <= 56 && daysToSurgery > 28 && viewed.indexOf('home-prep') === -1) {
+      // 4-8 weeks: home prep
+      html += '<div class="card mb-md" style="background:#F0FDF4;border-color:#BBF7D0;">';
+      html += '<div class="flex items-center justify-between gap-md flex-wrap">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">🏠</span><div>';
+      html += '<strong>' + Math.ceil(daysToSurgery / 7) + ' weeks to go.</strong> Good time to start thinking about preparing your home for recovery.';
+      html += '</div></div>';
+      html += '<button class="btn btn-sm" onclick="navigateTo(\'getting-ready\');setTimeout(function(){showGettingReadySection(\'home-prep\')},100);">Read Guide →</button>';
+      html += '</div></div>';
+    } else if (daysToSurgery > 0 && daysToSurgery <= 28 && daysToSurgery > 14 && viewed.indexOf('surgery-day') === -1) {
+      // 2-4 weeks: surgery day guide
+      html += '<div class="card mb-md" style="background:#F0FDF4;border-color:#BBF7D0;">';
+      html += '<div class="flex items-center justify-between gap-md flex-wrap">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">📋</span><div>';
+      html += '<strong>' + Math.ceil(daysToSurgery / 7) + ' weeks to surgery.</strong> Have a read through "What Happens on Surgery Day" so you know what to expect.';
+      html += '</div></div>';
+      html += '<button class="btn btn-sm" onclick="navigateTo(\'getting-ready\');setTimeout(function(){showGettingReadySection(\'surgery-day\')},100);">Read Guide →</button>';
+      html += '</div></div>';
+    } else if (daysToSurgery > 0 && daysToSurgery <= 14 && daysToSurgery > 7 && viewed.indexOf('surgeon-questions') === -1) {
+      // 1-2 weeks: surgeon questions
+      html += '<div class="card mb-md" style="background:#F0FDF4;border-color:#BBF7D0;">';
+      html += '<div class="flex items-center justify-between gap-md flex-wrap">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">❓</span><div>';
+      html += '<strong>' + daysToSurgery + ' days to go.</strong> Have a look at the questions you might want to ask at your pre-op appointment.';
+      html += '</div></div>';
+      html += '<button class="btn btn-sm" onclick="navigateTo(\'getting-ready\');setTimeout(function(){showGettingReadySection(\'surgeon-questions\')},100);">See Questions →</button>';
+      html += '</div></div>';
+    } else if (daysToSurgery > 0 && daysToSurgery <= 7 && viewed.indexOf('hospital-bag') === -1) {
+      // <1 week: hospital bag
+      html += '<div class="card mb-md" style="background:#FFF7ED;border-color:#FED7AA;">';
+      html += '<div class="flex items-center justify-between gap-md flex-wrap">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">🧳</span><div>';
+      html += '<strong>' + daysToSurgery + ' days to go!</strong> Time to pack your hospital bag — here\'s the checklist.';
+      html += '</div></div>';
+      html += '<button class="btn btn-sm" onclick="navigateTo(\'getting-ready\');setTimeout(function(){showGettingReadySection(\'hospital-bag\')},100);">Pack My Bag →</button>';
+      html += '</div></div>';
+    } else if (daysToSurgery > 0 && daysToSurgery <= 3) {
+      // Final days
+      html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
+      html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">⭐</span><div>';
+      html += '<strong>Your surgery is nearly here.</strong> You\'ve done the work. You\'ve prepared. Trust yourself — you\'re going into this in the best shape you can be.';
+      html += '</div></div></div>';
+    }
+  }
+
+  container.innerHTML = html;
+}
+
+function advanceWeek() {
+  var currentWeek = currentUser.progress.currentWeek || 1;
+  var totalWeeks = getTotalProgrammeWeeks();
+  if (currentWeek < totalWeeks) {
+    currentUser.progress.currentWeek = currentWeek + 1;
+    saveUser();
+    showToast('⬆️ Moved to Week ' + (currentWeek + 1) + '!');
+    initDashboard();
+  }
 }
 
 function renderDashboardExercises() {
