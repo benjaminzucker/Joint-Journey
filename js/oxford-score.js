@@ -427,6 +427,7 @@ function submitOxfordScore() {
     } else {
       currentUser.progress.oxfordScorePreOpKnee = scoreData;
       saveUser();
+      assignProgrammeLevel();
       showToast('✅ Your Oxford Knee Score has been recorded!');
       renderOxfordScoreResult('preop');
       return;
@@ -436,6 +437,7 @@ function submitOxfordScore() {
   // Single joint
   currentUser.progress.oxfordScorePreOp = scoreData;
   saveUser();
+  assignProgrammeLevel();
   renderOxfordScoreResult('preop');
   showToast('✅ Your Oxford ' + jointLabel + ' Score has been recorded!');
 }

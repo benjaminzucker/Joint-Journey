@@ -350,13 +350,7 @@ function saveAccount() {
 // ===== UTILITY: Get exercises for current week =====
 function getExercisesForWeek(week) {
   const joint = currentUser.profile.joint;
-  let exercises;
-
-  if (joint === 'hip' || joint === 'both') {
-    exercises = HIP_EXERCISES;
-  } else {
-    exercises = KNEE_EXERCISES;
-  }
+  const exercises = getExerciseDataForLevel(joint);
 
   if (week <= 4) return exercises.phase1.exercises;
   if (week <= 8) return exercises.phase2.exercises;
@@ -365,7 +359,7 @@ function getExercisesForWeek(week) {
 
 function getPhaseForWeek(week) {
   const joint = currentUser.profile.joint;
-  let exercises = (joint === 'hip' || joint === 'both') ? HIP_EXERCISES : KNEE_EXERCISES;
+  const exercises = getExerciseDataForLevel(joint);
 
   if (week <= 4) return exercises.phase1;
   if (week <= 8) return exercises.phase2;
