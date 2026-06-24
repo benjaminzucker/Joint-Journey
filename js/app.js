@@ -228,7 +228,8 @@ function renderDashboardExercises() {
   const previewExercises = exercises.slice(0, 4);
   previewExercises.forEach(ex => {
     const week = currentUser.progress.currentWeek || 1;
-    const prog = ex.progression.find(p => p.week === week) || ex.progression[0];
+    const mappedWeek = getProgressionWeek(week);
+    const prog = ex.progression.find(p => p.week === mappedWeek) || ex.progression[0];
     const done = completedToday.includes(ex.id);
     html += '<div class="exercise-item ' + (done ? 'completed' : '') + '" style="cursor:default;">';
     html += '<div class="exercise-check">' + (done ? '✓' : '') + '</div>';
@@ -323,9 +324,10 @@ function initAccount() {
 
   // Progress
   const week = currentUser.progress.currentWeek || 1;
-  const weekPercent = Math.round((week / 12) * 100);
+  const totalWeeks = getTotalProgrammeWeeks();
+  const weekPercent = Math.round((week / totalWeeks) * 100);
   document.getElementById('account-exercise-progress').style.width = weekPercent + '%';
-  document.getElementById('account-exercise-text').textContent = 'Week ' + week + ' of 12';
+  document.getElementById('account-exercise-text').textContent = 'Week ' + week + ' of ' + totalWeeks;
 
   const mindsetDone = (currentUser.progress.mindsetCompleted || []).length;
   document.getElementById('account-mindset-progress').style.width = Math.round((mindsetDone / 6) * 100) + '%';
@@ -347,22 +349,77 @@ function saveAccount() {
   showToast('Changes saved! ✅');
 }
 
+// ===== DYNAMIC PROGRAMME LENGTH =====
+// Calculates total programme weeks based on surgery date
+function getTotalProgrammeWeeks() {
+  if (!currentUser || !currentUser.profile.surgeryDate) return 12; // default
+  var surgery = new Date(currentUser.profile.surgeryDate);
+  var created = new Date(currentUser.createdAt);
+  var now = new Date();
+  var start = created < now ? created : now;
+  var diffMs = surgery.getTime() - start.getTime();
+  var totalWeeks = Math.round(diffMs / (7 * 86400000));
+  // Clamp between 4 and 24 weeks
+  if (totalWeeks < 4) totalWeeks = 4;
+  if (totalWeeks > 24) totalWeeks = 24;
+  return totalWeeks;
+}
+
+// Splits total weeks into 3 phases proportionally
+// Returns { phase1: { start, end, weeks }, phase2: ..., phase3: ... }
+function getPhaseWeekRanges() {
+  var total = getTotalProgrammeWeeks();
+  // Split roughly into thirds, with phase3 getting any remainder
+  var p1 = Math.max(1, Math.floor(total / 3));
+  var p2 = Math.max(1, Math.floor(total / 3));
+  var p3 = Math.max(1, total - p1 - p2);
+  return {
+    total: total,
+    phase1: { start: 1, end: p1, weeks: p1 },
+    phase2: { start: p1 + 1, end: p1 + p2, weeks: p2 },
+    phase3: { start: p1 + p2 + 1, end: total, weeks: p3 }
+  };
+}
+
+// Maps user's current week within a phase to the closest original progression week (1-4, 5-8, or 9-12)
+function getProgressionWeek(userWeek) {
+  var ranges = getPhaseWeekRanges();
+  var phaseKey, phaseRange, origStart;
+  
+  if (userWeek <= ranges.phase1.end) {
+    phaseKey = 'phase1'; phaseRange = ranges.phase1; origStart = 1;
+  } else if (userWeek <= ranges.phase2.end) {
+    phaseKey = 'phase2'; phaseRange = ranges.phase2; origStart = 5;
+  } else {
+    phaseKey = 'phase3'; phaseRange = ranges.phase3; origStart = 9;
+  }
+  
+  // Position within this phase (0 to 1)
+  var posInPhase = (userWeek - phaseRange.start) / Math.max(1, phaseRange.weeks - 1);
+  if (phaseRange.weeks === 1) posInPhase = 0;
+  // Map to original 4-week span (e.g. 1-4, 5-8, 9-12)
+  var origWeek = Math.round(origStart + posInPhase * 3);
+  return Math.min(origWeek, origStart + 3);
+}
+
 // ===== UTILITY: Get exercises for current week =====
 function getExercisesForWeek(week) {
-  const joint = currentUser.profile.joint;
-  const exercises = getExerciseDataForLevel(joint);
+  var joint = currentUser.profile.joint;
+  var exercises = getExerciseDataForLevel(joint);
+  var ranges = getPhaseWeekRanges();
 
-  if (week <= 4) return exercises.phase1.exercises;
-  if (week <= 8) return exercises.phase2.exercises;
+  if (week <= ranges.phase1.end) return exercises.phase1.exercises;
+  if (week <= ranges.phase2.end) return exercises.phase2.exercises;
   return exercises.phase3.exercises;
 }
 
 function getPhaseForWeek(week) {
-  const joint = currentUser.profile.joint;
-  const exercises = getExerciseDataForLevel(joint);
+  var joint = currentUser.profile.joint;
+  var exercises = getExerciseDataForLevel(joint);
+  var ranges = getPhaseWeekRanges();
 
-  if (week <= 4) return exercises.phase1;
-  if (week <= 8) return exercises.phase2;
+  if (week <= ranges.phase1.end) return exercises.phase1;
+  if (week <= ranges.phase2.end) return exercises.phase2;
   return exercises.phase3;
 }
 

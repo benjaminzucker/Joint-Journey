@@ -15,7 +15,8 @@ function initExercises() {
   const level = currentUser.profile.programmeLevel || 'standard';
   const levelInfo = PROGRAMME_LEVELS[level];
 
-  document.getElementById('exercise-programme-type').textContent = jointLabel + ' Replacement - 12-Week Progressive Programme';
+  var totalWeeks = getTotalProgrammeWeeks();
+  document.getElementById('exercise-programme-type').textContent = jointLabel + ' Replacement - ' + totalWeeks + '-Week Progressive Programme';
 
   // Render programme level indicator
   renderProgrammeLevelIndicator(level, levelInfo);
@@ -66,11 +67,16 @@ function showLevelSwitcher() {
 function renderWeekTabs() {
   const container = document.getElementById('week-tabs');
   const currentWeek = currentUser.progress.currentWeek || 1;
+  const totalWeeks = getTotalProgrammeWeeks();
+  const ranges = getPhaseWeekRanges();
   let html = '';
 
-  for (let w = 1; w <= 12; w++) {
+  for (let w = 1; w <= totalWeeks; w++) {
     const isActive = w === currentWeek;
-    const phase = w <= 4 ? '1' : w <= 8 ? '2' : '3';
+    // Add phase separator labels
+    if (w === ranges.phase1.start) html += '<span style="font-size:0.7rem;color:var(--text-muted);padding:0 4px;white-space:nowrap;">Phase 1</span>';
+    if (w === ranges.phase2.start) html += '<span style="font-size:0.7rem;color:var(--text-muted);padding:0 4px;white-space:nowrap;">Phase 2</span>';
+    if (w === ranges.phase3.start) html += '<span style="font-size:0.7rem;color:var(--text-muted);padding:0 4px;white-space:nowrap;">Phase 3</span>';
     html += '<button class="tab ' + (isActive ? 'active' : '') + '" onclick="switchWeek(' + w + ')">Wk ' + w + '</button>';
   }
 
@@ -80,12 +86,7 @@ function renderWeekTabs() {
 function switchWeek(week) {
   currentUser.progress.currentWeek = week;
   saveUser();
-
-  // Update tab active state
-  document.querySelectorAll('#week-tabs .tab').forEach((t, i) => {
-    t.classList.toggle('active', i + 1 === week);
-  });
-
+  renderWeekTabs();
   renderExerciseSession();
 }
 
@@ -109,7 +110,8 @@ function renderExerciseSession() {
   let html = '';
 
   exercises.forEach(ex => {
-    const prog = ex.progression.find(p => p.week === week) || ex.progression[ex.progression.length - 1];
+    const mappedWeek = getProgressionWeek(week);
+    const prog = ex.progression.find(p => p.week === mappedWeek) || ex.progression[ex.progression.length - 1];
     const done = completedToday.includes(ex.id);
 
     html += '<div class="exercise-item ' + (done ? 'completed' : '') + '" onclick="toggleExercise(\'' + ex.id + '\')">';

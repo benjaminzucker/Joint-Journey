@@ -20,7 +20,7 @@ const PROGRAMME_LEVELS = {
     label: 'Standard Programme',
     icon: '💪',
     color: '#3b82f6',
-    description: 'A progressive strengthening programme that builds from seated exercises to standing and functional movements over 12 weeks.',
+    description: 'A progressive strengthening programme that builds from seated exercises to standing and functional movements.',
     scoreRange: '20–34',
     sessionsNote: '3–4 sessions per week'
   },

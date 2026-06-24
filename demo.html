@@ -50,8 +50,8 @@
     (function() {
       // Build a realistic demo user
       var now = new Date();
-      var surgeryDate = new Date(now.getTime() + 56 * 86400000); // 8 weeks from now
       var createdDate = new Date(now.getTime() - 21 * 86400000); // "joined" 3 weeks ago
+      var surgeryDate = new Date(createdDate.getTime() + 24 * 7 * 86400000); // 24 weeks from creation
 
       // Generate some exercise completion history
       var exercisesCompleted = {};
