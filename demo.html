@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Joint Journey Demo - See what patients experience">
+  <meta name="robots" content="noindex">
+  <title>Joint Journey - Surgeon Preview</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .demo-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .demo-banner a {
+      color: white;
+      background: rgba(255,255,255,0.2);
+      padding: 6px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .demo-banner a:hover { background: rgba(255,255,255,0.35); }
+    /* Push everything down to make room for fixed banner */
+    body { padding-top: 48px; }
+    @media (max-width: 600px) { body { padding-top: 80px; } }
+  </style>
+  <script>
+    // ========================================
+    // DEMO MODE: Inject a sample patient account
+    // ========================================
+    (function() {
+      // Build a realistic demo user
+      var now = new Date();
+      var surgeryDate = new Date(now.getTime() + 56 * 86400000); // 8 weeks from now
+      var createdDate = new Date(now.getTime() - 21 * 86400000); // "joined" 3 weeks ago
+
+      // Generate some exercise completion history
+      var exercisesCompleted = {};
+      var moodLog = [];
+      var weightLog = [];
+      var startWeight = 82.5;
+
+      for (var d = 0; d < 18; d++) {
+        var date = new Date(createdDate.getTime() + d * 86400000);
+        var dateStr = date.toISOString().split('T')[0];
+
+        // Exercise: completed on ~70% of days
+        if (d % 7 !== 0 && d % 7 !== 4) { // skip some days
+          exercisesCompleted[dateStr] = ['k1','k2','k3','k4','k5','k6','k7','k8a'];
+        }
+
+        // Mood: daily check-in
+        var moods = [3,4,4,3,5,4,3,4,4,5,3,4,4,3,5,4,3,4];
+        moodLog.push({ date: dateStr, mood: moods[d] || 4 });
+
+        // Weight: every 2-3 days, gradual loss
+        if (d % 3 === 0) {
+          var wt = Math.round((startWeight - d * 0.08) * 10) / 10;
+          weightLog.push({ date: dateStr, weight: wt });
+        }
+      }
+
+      var demoUser = {
+        name: "Margaret",
+        email: "demo@jointjourney.org",
+        password: "demo123",
+        createdAt: createdDate.toISOString(),
+        onboarded: true,
+        profile: {
+          joint: "knee",
+          side: "right",
+          surgeryDate: surgeryDate.toISOString().split('T')[0],
+          age: 68,
+          sex: "female",
+          height: 163,
+          weight: 81.2,
+          activityLevel: "light",
+          goal: "I want to be able to walk my dog in the park without pain, and get back to gardening. My grandchildren are growing up so fast and I want to be able to play with them properly.",
+          feedbackConsent: false,
+          programmeLevel: "standard",
+          programmeLevelManual: false
+        },
+        progress: {
+          exercisesCompleted: exercisesCompleted,
+          exerciseStreak: 5,
+          lastExerciseDate: new Date(now.getTime() - 86400000).toISOString().split('T')[0],
+          currentWeek: 3,
+          recipesTried: ["b1", "b3", "b5", "ld1", "ld6", "ld11", "s1", "s3"],
+          weightLog: weightLog,
+          moodLog: moodLog,
+          mindsetCompleted: ["understanding-pain", "managing-anxiety"],
+          gettingReadyViewed: ["hospital-bag"],
+          shoppingList: [
+            { item: "Porridge oats", qty: "50g", aisle: "Cupboard", recipeId: "b3", recipeName: "Porridge", checked: false },
+            { item: "Banana", qty: "1", aisle: "Fresh", recipeId: "b3", recipeName: "Porridge", checked: true },
+            { item: "Red lentils", qty: "200g", aisle: "Cupboard", recipeId: "ld11", recipeName: "Lentil Soup", checked: false }
+          ],
+          oxfordScorePreOp: {
+            score: 22,
+            date: createdDate.toISOString(),
+            joint: "knee",
+            answers: { ok1: 1, ok2: 2, ok3: 2, ok4: 2, ok5: 1, ok6: 2, ok7: 1, ok8: 2, ok9: 3, ok10: 2, ok11: 2, ok12: 2 }
+          }
+        }
+      };
+
+      // Save as current user (overwrite any existing demo session)
+      localStorage.setItem('jj_user', JSON.stringify(demoUser));
+
+      // Also save to users store
+      var users = JSON.parse(localStorage.getItem('jj_users') || '{}');
+      users['demo@jointjourney.org'] = demoUser;
+      localStorage.setItem('jj_users', JSON.stringify(users));
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    <span>🔍 <strong>Surgeon Preview</strong> — This is a sample patient account (Margaret, 68, right knee replacement, Oxford Score 22)</span>
+    <a href="app.html#signup">Create a Real Account →</a>
+  </div>
+
+  <!-- ===== TOAST CONTAINER ===== -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ===== AUTH SCREENS (hidden in demo) ===== -->
+  <div id="auth-screens" style="display:none;">
+    <div id="screen-login" class="auth-screen" style="display:none;"></div>
+    <div id="screen-signup" class="auth-screen" style="display:none;"></div>
+    <div id="screen-reset" class="auth-screen" style="display:none;"></div>
+  </div>
+
+  <!-- ===== ONBOARDING (hidden in demo) ===== -->
+  <div id="onboarding" style="display:none;"></div>
+
+  <!-- ===== MAIN APP ===== -->
+  <div id="main-app" style="display:none;">
+
+    <!-- Mobile Header -->
+    <header class="app-header">
+      <div class="flex items-center justify-between">
+        <a href="#" class="logo" onclick="navigateTo('dashboard'); return false;">
+          <span class="logo-icon"><svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.12"/><path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="2.5" stroke-linejoin="round" fill="none"/><circle cx="30" cy="8" r="3.5" fill="#475953"/><line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2" stroke-linecap="round"/><path d="M30 2 L38 5 L30 7" fill="#475953" opacity="0.6"/></svg></span>
+          <span class="logo-text">Joint<span class="logo-text-bold">Journey</span></span>
+        </a>
+        <button class="mobile-menu-btn hide-desktop" onclick="toggleMobileMenu()" aria-label="Menu">
+          <span class="hamburger-icon">☰</span>
+        </button>
+        <div class="app-header-user hide-mobile">
+          <span id="header-greeting" class="header-greeting"></span>
+          <a href="app.html" class="btn btn-ghost btn-sm">Exit Preview</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-layout">
+
+      <!-- Sidebar Navigation -->
+      <nav id="app-sidebar" class="app-sidebar" aria-label="App navigation">
+        <div class="sidebar-nav">
+          <button class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Dashboard</span>
+          </button>
+          <button class="nav-item" data-page="how-to-use" onclick="navigateTo('how-to-use')">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">How to Use</span>
+          </button>
+          <button class="nav-item" data-page="oxford-score" onclick="navigateTo('oxford-score')">
+            <span class="nav-icon">📋</span>
+            <span class="nav-label">My Joint Score</span>
+          </button>
+          <button class="nav-item" data-page="exercises" onclick="navigateTo('exercises')">
+            <span class="nav-icon">💪</span>
+            <span class="nav-label">Exercises</span>
+          </button>
+          <button class="nav-item" data-page="nutrition" onclick="navigateTo('nutrition')">
+            <span class="nav-icon">🍳</span>
+            <span class="nav-label">Nutrition</span>
+          </button>
+          <button class="nav-item" data-page="mindset" onclick="navigateTo('mindset')">
+            <span class="nav-icon">💚</span>
+            <span class="nav-label">Your Mindset</span>
+          </button>
+          <button class="nav-item" data-page="getting-ready" onclick="navigateTo('getting-ready')">
+            <span class="nav-icon">🏥</span>
+            <span class="nav-label">Getting Ready</span>
+          </button>
+          <button class="nav-item" data-page="about" onclick="navigateTo('about')">
+            <span class="nav-icon">ℹ️</span>
+            <span class="nav-label">About</span>
+          </button>
+          <button class="nav-item" data-page="account" onclick="navigateTo('account')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">My Account</span>
+          </button>
+        </div>
+        <div class="sidebar-footer hide-mobile">
+          <a href="app.html" class="nav-item" style="text-decoration:none;">
+            <span class="nav-icon">🚪</span>
+            <span class="nav-label">Exit Preview</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="app-main">
+
+        <!-- ===== DASHBOARD PAGE ===== -->
+        <div id="page-dashboard" class="app-page">
+          <div class="page-header">
+            <div>
+              <h1 id="dashboard-greeting" class="page-title"></h1>
+              <p id="dashboard-subtitle" class="page-subtitle"></p>
+            </div>
+          </div>
+
+          <!-- Mountain Journey Graphic -->
+          <div id="mountain-journey" class="mb-lg" style="display:none;"></div>
+
+          <!-- Post-Op Check-In -->
+          <div id="post-op-checkin-prompt" class="card mb-lg" style="display:none; border: 2px solid var(--primary); background: var(--green-50);">
+            <div class="text-center mb-lg">
+              <span class="icon-emoji-lg">🏥</span>
+              <h3 class="mt-md">Post-Surgery Check-In</h3>
+              <p>Your surgery date has passed - we'd love to know how it went.</p>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Have you had your surgery?</label>
+              <div class="option-cards">
+                <label class="option-card" onclick="toggleHospitalDetails()"><input type="radio" name="had-surgery" value="yes" onchange="toggleHospitalDetails()"><div class="option-card-content"><div class="option-card-title">Yes ✅</div></div></label>
+                <label class="option-card" onclick="toggleHospitalDetails()"><input type="radio" name="had-surgery" value="no" onchange="toggleHospitalDetails()"><div class="option-card-content"><div class="option-card-title">Not yet</div></div></label>
+                <label class="option-card" onclick="toggleHospitalDetails()"><input type="radio" name="had-surgery" value="cancelled" onchange="toggleHospitalDetails()"><div class="option-card-content"><div class="option-card-title">Cancelled / Postponed</div></div></label>
+              </div>
+            </div>
+            <div id="hospital-details" style="display:none;">
+              <div class="form-group">
+                <label class="form-label" for="hospital-nights">How many nights did you stay in hospital?</label>
+                <input type="number" id="hospital-nights" class="form-input" placeholder="e.g. 2" min="0" max="60">
+              </div>
+              <div class="form-group">
+                <label class="form-label">How would you rate your overall hospital experience?</label>
+                <div class="rating-selector">
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="1"><span>1<br><small>Poor</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="2"><span>2<br><small>Fair</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="3"><span>3<br><small>OK</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="4"><span>4<br><small>Good</small></span></label>
+                  <label class="rating-option"><input type="radio" name="hospital-rating" value="5"><span>5<br><small>Excellent</small></span></label>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block mt-md" onclick="submitPostOpCheckIn()">Submit Check-In</button>
+          </div>
+
+          <!-- Daily Motivation -->
+          <div class="card mb-lg" style="background: linear-gradient(135deg, var(--green-50), var(--amber-100)); border-color: var(--green-200);">
+            <div class="flex items-center gap-lg">
+              <span class="icon-emoji-lg">🌟</span>
+              <div>
+                <p id="daily-motivation" class="mb-0" style="font-size: var(--font-size-lg); font-weight: 500; color: var(--text-primary);"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="grid grid-4 mb-xl" id="dashboard-stats">
+            <div class="card stat-card"><div class="stat-value" id="stat-streak">0</div><div class="stat-label">Day Streak 🔥</div></div>
+            <div class="card stat-card"><div class="stat-value" id="stat-exercises">0</div><div class="stat-label">Exercises Done</div></div>
+            <div class="card stat-card"><div class="stat-value" id="stat-week">1</div><div class="stat-label">Current Week</div></div>
+            <div class="card stat-card"><div class="stat-value" id="stat-recipes">0</div><div class="stat-label">Recipes Tried</div></div>
+          </div>
+
+          <!-- Today's Actions -->
+          <div class="grid grid-2 mb-xl">
+            <div class="card">
+              <div class="flex items-center gap-md mb-lg">
+                <span class="icon-emoji">💪</span>
+                <h3 class="mb-0">Today's Exercises</h3>
+              </div>
+              <div id="dashboard-exercises-preview"></div>
+              <button class="btn btn-primary btn-block mt-lg" onclick="navigateTo('exercises')">Go to Exercises →</button>
+            </div>
+            <div class="card">
+              <div class="flex items-center gap-md mb-lg">
+                <span class="icon-emoji">💚</span>
+                <h3 class="mb-0">Daily Check-In</h3>
+              </div>
+              <p>How are you feeling today?</p>
+              <div class="mood-selector" id="dashboard-mood">
+                <button class="mood-btn" onclick="setMood(5)" title="Great">😄</button>
+                <button class="mood-btn" onclick="setMood(4)" title="Good">😊</button>
+                <button class="mood-btn" onclick="setMood(3)" title="Okay">😐</button>
+                <button class="mood-btn" onclick="setMood(2)" title="Not great">😔</button>
+                <button class="mood-btn" onclick="setMood(1)" title="Struggling">😢</button>
+              </div>
+              <div id="mood-response" class="mt-md" style="display:none;"></div>
+            </div>
+          </div>
+
+          <!-- Your Goal -->
+          <div class="card card-success mb-lg" id="dashboard-goal-card" style="display:none;">
+            <div class="flex items-center gap-md">
+              <span class="icon-emoji">🎯</span>
+              <div>
+                <h4 class="mb-0">Your Why</h4>
+                <p id="dashboard-goal" class="mb-0 mt-sm"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== EXERCISES PAGE ===== -->
+        <div id="page-exercises" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">💪 Your Exercise Programme</h1>
+            <p class="page-subtitle" id="exercise-programme-type"></p>
+          </div>
+          <div id="programme-level-indicator"></div>
+          <div class="tabs mb-xl" id="week-tabs"></div>
+          <div class="card mb-xl" id="exercise-session">
+            <div class="flex items-center justify-between mb-lg">
+              <div>
+                <h3 id="exercise-session-title" class="mb-0"></h3>
+                <p id="exercise-session-subtitle" class="mb-0 mt-sm"></p>
+              </div>
+              <span class="badge badge-green" id="exercise-session-badge"></span>
+            </div>
+            <div id="exercise-list"></div>
+            <div class="mt-xl" id="exercise-complete-section" style="display:none;">
+              <div class="celebration">
+                <div class="celebration-emoji">🎉</div>
+                <div class="celebration-text">Session Complete! Well done!</div>
+                <p class="mt-md">Every session makes you stronger. You're doing brilliantly.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card card-highlight">
+            <h4>💡 Exercise Tips</h4>
+            <ul>
+              <li><strong>Warm up first</strong> - Walk around the room for 2-3 minutes</li>
+              <li><strong>Hold on to something sturdy</strong> - Kitchen worktop or heavy chair</li>
+              <li><strong>Pain is normal, sharp pain is not</strong> - Stop if something hurts sharply</li>
+              <li><strong>Breathe normally</strong> - Don't hold your breath</li>
+              <li><strong>Rest days are important</strong> - Muscles need recovery time</li>
+              <li><strong>Consistency beats intensity</strong> - A little every day beats a lot once a week</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ===== NUTRITION PAGE ===== -->
+        <div id="page-nutrition" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">🍳 Nutrition</h1>
+            <p class="page-subtitle">Eat well, feel well, prepare well</p>
+          </div>
+          <div class="tabs mb-xl">
+            <button class="tab active" onclick="showNutritionTab('calculator')">My Targets</button>
+            <button class="tab" onclick="showNutritionTab('recipes')">Recipes</button>
+            <button class="tab" onclick="showNutritionTab('shopping')">Shopping List</button>
+            <button class="tab" onclick="showNutritionTab('weight')">Weight Tracker</button>
+          </div>
+          <div id="nutrition-calculator" class="nutrition-tab">
+            <div class="grid grid-2 mb-xl">
+              <div class="card">
+                <h3>📊 Your Numbers</h3>
+                <div id="bmi-display" class="mb-lg">
+                  <div class="flex items-center gap-lg">
+                    <div class="stat-card"><div class="stat-value" id="current-bmi">--</div><div class="stat-label">Current BMI</div></div>
+                    <div class="stat-card"><div class="stat-value" id="current-weight-display">--</div><div class="stat-label">Current Weight (kg)</div></div>
+                  </div>
+                </div>
+                <div id="bmi-message" class="alert" style="display:none;"></div>
+                <div id="calorie-targets" style="display:none;">
+                  <h4 class="mt-lg">Your Daily Targets</h4>
+                  <div class="grid grid-2 mt-md">
+                    <div class="card card-success stat-card"><div class="stat-value" id="calorie-target">--</div><div class="stat-label">Daily Calories</div></div>
+                    <div class="card stat-card"><div class="stat-value" id="protein-target">--</div><div class="stat-label">Protein (g)</div></div>
+                  </div>
+                  <div id="weight-loss-info" class="alert alert-info mt-lg" style="display:none;"></div>
+                </div>
+              </div>
+              <div class="card">
+                <h3>⚙️ Update Your Details</h3>
+                <p>Change any of these to recalculate your targets.</p>
+                <div class="form-group"><label class="form-label" for="calc-weight">Current Weight (kg)</label><input type="number" id="calc-weight" class="form-input" step="0.1" min="30" max="300"></div>
+                <div class="form-group"><label class="form-label" for="calc-height">Height (cm)</label><input type="number" id="calc-height" class="form-input" min="100" max="250"></div>
+                <div class="grid grid-2">
+                  <div class="form-group"><label class="form-label" for="calc-age">Age</label><input type="number" id="calc-age" class="form-input" min="18" max="110"></div>
+                  <div class="form-group"><label class="form-label" for="calc-sex">Sex</label><select id="calc-sex" class="form-select"><option value="">Select</option><option value="female">Female</option><option value="male">Male</option></select></div>
+                </div>
+                <div class="form-group"><label class="form-label" for="calc-activity">Activity Level</label><select id="calc-activity" class="form-select"><option value="sedentary">Sedentary</option><option value="light">Lightly active</option><option value="moderate">Moderately active</option><option value="active">Active</option></select></div>
+                <button class="btn btn-primary btn-block" onclick="calculateNutrition()">Recalculate</button>
+              </div>
+            </div>
+          </div>
+          <div id="nutrition-recipes" class="nutrition-tab" style="display:none;">
+            <div class="alert alert-info mb-lg" style="font-size: var(--font-size-sm);">
+              <strong>📊 A note on calories:</strong> Calorie and protein counts are estimates based on standard portion sizes and common UK brands. Actual values may vary.
+            </div>
+            <div class="tabs mb-lg">
+              <button class="tab active" onclick="showRecipeCategory('breakfast')">🌅 Breakfast</button>
+              <button class="tab" onclick="showRecipeCategory('lunch-dinner')">🍽️ Lunch & Dinner</button>
+              <button class="tab" onclick="showRecipeCategory('snacks')">🍎 Snacks</button>
+              <button class="tab" onclick="showRecipeCategory('special')">🌟 Something Special</button>
+            </div>
+            <div id="recipe-grid" class="grid grid-3"></div>
+          </div>
+          <div id="nutrition-shopping" class="nutrition-tab" style="display:none;">
+            <div class="card">
+              <div class="flex items-center justify-between mb-lg">
+                <h3 class="mb-0">🛒 My Shopping List</h3>
+                <div class="flex gap-sm">
+                  <button class="btn btn-sm btn-secondary" onclick="printShoppingList()">🖨️ Print</button>
+                  <button class="btn btn-sm btn-ghost" onclick="clearShoppingList()">Clear All</button>
+                </div>
+              </div>
+              <div id="shopping-list-content"></div>
+            </div>
+          </div>
+          <div id="nutrition-weight" class="nutrition-tab" style="display:none;">
+            <div class="grid grid-2">
+              <div class="card">
+                <h3>⚖️ Log Your Weight</h3>
+                <p>Weigh yourself at the same time each day for accurate tracking.</p>
+                <div class="form-group"><label class="form-label" for="weight-entry">Weight (kg)</label><input type="number" id="weight-entry" class="form-input" step="0.1" min="30" max="300" placeholder="e.g. 78.5"></div>
+                <button class="btn btn-primary btn-block" onclick="logWeight()">Log Weight</button>
+              </div>
+              <div class="card">
+                <h3>📈 Your Weight Trend</h3>
+                <div id="weight-chart-container"><canvas id="weight-chart" width="400" height="250"></canvas></div>
+                <div id="weight-history" class="mt-lg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== MINDSET PAGE ===== -->
+        <div id="page-mindset" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">💚 Your Mindset</h1>
+            <p class="page-subtitle">A positive outlook is your greatest asset</p>
+          </div>
+          <div class="card card-highlight mb-xl" id="daily-mindset-exercise"></div>
+          <h3 class="mb-md">📚 Mindset Modules</h3>
+          <p class="mb-lg" style="color:var(--text-secondary);">Read through these at your own pace.</p>
+          <div class="grid grid-2 mb-xl" id="mindset-modules"></div>
+          <div id="mindset-content" style="display:none;">
+            <button class="btn btn-ghost mb-lg" onclick="showMindsetModules()">← Back to modules</button>
+            <div class="card"><div id="mindset-content-inner"></div></div>
+          </div>
+        </div>
+
+        <!-- ===== GETTING READY PAGE ===== -->
+        <div id="page-getting-ready" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">🏥 Getting Ready</h1>
+            <p class="page-subtitle">Practical preparation for your surgery</p>
+          </div>
+          <div class="grid grid-2 mb-xl">
+            <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('hospital-bag')"><span class="icon-emoji-lg">🧳</span><h3 class="mt-md">Hospital Bag Checklist</h3><p>Everything you need to pack</p></div>
+            <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('home-prep')"><span class="icon-emoji-lg">🏠</span><h3 class="mt-md">Preparing Your Home</h3><p>Make your home recovery-ready</p></div>
+            <div class="card" style="cursor:pointer;" id="hip-precautions-card" onclick="showGettingReadySection('hip-precautions')"><span class="icon-emoji-lg">⚠️</span><h3 class="mt-md">Hip Precautions</h3><p>Important movements to avoid</p></div>
+            <div class="card" style="cursor:pointer;" id="knee-guide-card" onclick="showGettingReadySection('knee-guide')"><span class="icon-emoji-lg">🦵</span><h3 class="mt-md">Knee Replacement Guide</h3><p>What to expect after knee surgery</p></div>
+            <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('surgeon-questions')"><span class="icon-emoji-lg">❓</span><h3 class="mt-md">Questions for Your Surgeon</h3><p>Important questions to ask</p></div>
+            <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('surgery-day')"><span class="icon-emoji-lg">📋</span><h3 class="mt-md">What Happens on Surgery Day</h3><p>Step-by-step guide</p></div>
+          </div>
+          <div id="getting-ready-content" style="display:none;">
+            <button class="btn btn-ghost mb-lg" onclick="showGettingReadyModules()">← Back</button>
+            <div class="card"><div id="getting-ready-content-inner"></div></div>
+          </div>
+        </div>
+
+        <!-- ===== HOW TO USE PAGE ===== -->
+        <div id="page-how-to-use" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">📖 How to Use Joint Journey</h1>
+            <p class="page-subtitle">Everything you need to know.</p>
+          </div>
+          <div class="card mb-xl" style="line-height:1.9;padding:var(--space-2xl);">
+            <p>This page contains the full how-to-use guide. <a href="app.html#signup">Create your own account</a> to see the complete version.</p>
+          </div>
+        </div>
+
+        <!-- ===== ABOUT PAGE ===== -->
+        <div id="page-about" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">ℹ️ About Joint Journey</h1>
+            <p class="page-subtitle">Built by a surgeon who got tired of seeing patients wait without preparing.</p>
+          </div>
+          <div class="card mb-xl" style="line-height:1.9;">
+            <p>Joint Journey was created by <strong>Mr Benjamin Zucker</strong>, an orthopaedic surgeon training in the Bristol rotation, undertaking a doctorate in risk management and implant selection in total hip replacement.</p>
+            <p>Email: <a href="mailto:hello@jointjourney.org">hello@jointjourney.org</a></p>
+          </div>
+        </div>
+
+        <!-- ===== OXFORD SCORE PAGE ===== -->
+        <div id="page-oxford-score" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">📋 My Joint Score</h1>
+            <p class="page-subtitle">Oxford Score - measuring how your joint affects daily life</p>
+          </div>
+          <div class="card mb-xl">
+            <div class="alert alert-info mb-lg">
+              <strong>What is the Oxford Score?</strong> 12 questions used by surgeons to measure joint function. Score 0-48, higher = better.
+            </div>
+            <h3 id="oxford-score-title">Oxford Score</h3>
+            <p id="oxford-score-subtitle"></p>
+            <p id="oxford-progress" class="form-hint mb-lg"></p>
+            <div id="oxford-score-form"><div id="oxford-score-questions"></div>
+              <button id="oxford-submit-btn" class="btn btn-primary btn-lg btn-block mt-xl" onclick="submitOxfordScore()" style="display:none;">Submit My Score</button>
+            </div>
+            <div id="oxford-score-result" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- ===== ACCOUNT PAGE ===== -->
+        <div id="page-account" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title">👤 My Account</h1>
+            <p class="page-subtitle">Manage your profile and settings</p>
+          </div>
+          <div class="grid grid-2">
+            <div class="card">
+              <h3>Profile</h3>
+              <div class="form-group"><label class="form-label" for="account-name">Name</label><input type="text" id="account-name" class="form-input"></div>
+              <div class="form-group"><label class="form-label" for="account-email">Email</label><input type="email" id="account-email" class="form-input" disabled><span class="form-hint">Email cannot be changed</span></div>
+              <div class="form-group"><label class="form-label" for="account-joint">Joint Replacement</label><select id="account-joint" class="form-select"><option value="hip">Hip</option><option value="knee">Knee</option><option value="both">Both</option></select></div>
+              <div class="form-group"><label class="form-label" for="account-surgery-date">Surgery Date</label><input type="date" id="account-surgery-date" class="form-input"></div>
+              <div class="form-group"><label class="form-label" for="account-goal">My Goal</label><textarea id="account-goal" class="form-textarea"></textarea></div>
+              <button class="btn btn-primary btn-block" onclick="saveAccount()">Save Changes</button>
+            </div>
+            <div class="card">
+              <h3>My Progress</h3>
+              <div class="mb-lg"><h5>Exercise Programme</h5><div class="progress-bar mb-sm"><div class="progress-bar-fill" id="account-exercise-progress" style="width:0%"></div></div><p class="form-hint" id="account-exercise-text">Week 1 of 12</p></div>
+              <div class="mb-lg"><h5>Mindset Modules</h5><div class="progress-bar mb-sm"><div class="progress-bar-fill" id="account-mindset-progress" style="width:0%"></div></div><p class="form-hint" id="account-mindset-text">0 of 6 completed</p></div>
+              <div class="mb-lg"><h5>Getting Ready</h5><div class="progress-bar mb-sm"><div class="progress-bar-fill" id="account-ready-progress" style="width:0%"></div></div><p class="form-hint" id="account-ready-text">0 of 6 sections viewed</p></div>
+              <hr style="border:none;border-top:1px solid var(--border-light);margin:var(--space-xl) 0;">
+              <h5>Member Since</h5>
+              <p id="account-member-since"></p>
+              <a href="app.html" class="btn btn-ghost btn-block mt-xl" style="color:var(--error);text-decoration:none;">Exit Preview</a>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ===== RECIPE MODAL ===== -->
+  <div id="recipe-modal" class="modal-overlay" onclick="closeRecipeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="recipe-modal-title"></h3>
+        <button class="modal-close" onclick="closeRecipeModal()">&times;</button>
+      </div>
+      <div id="recipe-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/data.js"></script>
+  <script src="js/programme-levels.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/nutrition.js"></script>
+  <script src="js/recipes.js"></script>
+  <script src="js/mindset.js"></script>
+  <script src="js/getting-ready.js"></script>
+  <script src="js/oxford-score.js"></script>
+
+</body>
+</html>
