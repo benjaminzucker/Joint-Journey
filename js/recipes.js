@@ -28,6 +28,16 @@ function showRecipeCategory(category) {
     html += '<div class="recipe-card" onclick="openRecipe(\'' + r.id + '\', \'' + category + '\')">';
     html += '<div class="recipe-card-emoji">' + r.emoji + '</div>';
     html += '<div class="recipe-card-title">' + r.name + (tried ? ' ✅' : '') + '</div>';
+    // Dietary tags
+    if (r.tags && r.tags.length) {
+      html += '<div class="recipe-card-tags">';
+      r.tags.forEach(function(tag) {
+        if (tag === 'vegan') html += '<span class="diet-badge diet-vegan">🌿 Vegan</span>';
+        else if (tag === 'vegetarian') html += '<span class="diet-badge diet-veg">🌱 Vegetarian</span>';
+        else if (tag === 'pescatarian') html += '<span class="diet-badge diet-pesc">🐟 Pescatarian</span>';
+      });
+      html += '</div>';
+    }
     html += '<div class="recipe-card-meta">';
     html += '<span><strong>' + r.calories + '</strong> cal</span>';
     html += '<span><strong>' + r.protein + 'g</strong> protein</span>';

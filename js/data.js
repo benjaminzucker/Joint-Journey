@@ -664,6 +664,7 @@ const RECIPES = {
   breakfast: [
     {
       id: "b1", emoji: "🍳", name: "Shakshuka with Pitta Bread",
+      tags: ["vegetarian"],
       calories: 380, protein: 18, prepTime: 10, cookTime: 15, serves: 2, difficulty: "Easy",
       ingredients: [
         { item: "Eggs", qty: "4", aisle: "Fresh" },
@@ -688,6 +689,7 @@ const RECIPES = {
     },
     {
       id: "b2", emoji: "🧀", name: "Cheese & Mushroom Omelette",
+      tags: ["vegetarian"],
       calories: 370, protein: 28, prepTime: 5, cookTime: 8, serves: 1, difficulty: "Easy",
       ingredients: [
         { item: "Eggs", qty: "3", aisle: "Fresh" },
@@ -709,6 +711,7 @@ const RECIPES = {
     },
     {
       id: "b3", emoji: "🥣", name: "Porridge with Banana, Honey & Cinnamon",
+      tags: ["vegetarian"],
       calories: 360, protein: 14, prepTime: 2, cookTime: 5, serves: 1, difficulty: "Very Easy",
       ingredients: [
         { item: "Porridge oats", qty: "50g", aisle: "Cupboard" },
@@ -727,6 +730,7 @@ const RECIPES = {
     },
     {
       id: "b4", emoji: "🐟", name: "Smoked Salmon & Scrambled Eggs on Toast",
+      tags: ["pescatarian"],
       calories: 400, protein: 28, prepTime: 3, cookTime: 5, serves: 1, difficulty: "Easy",
       ingredients: [
         { item: "Eggs", qty: "2", aisle: "Fresh" },
@@ -747,6 +751,7 @@ const RECIPES = {
     },
     {
       id: "b5", emoji: "🫐", name: "Greek Yoghurt with Berries, Granola & Honey",
+      tags: ["vegetarian"],
       calories: 320, protein: 18, prepTime: 3, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [
         { item: "Greek yoghurt", qty: "150g", aisle: "Fridge" },
@@ -764,6 +769,7 @@ const RECIPES = {
     },
     {
       id: "b6", emoji: "🫘", name: "Beans on Toast with Cheese & Worcester Sauce",
+      tags: ["vegetarian"],
       calories: 420, protein: 22, prepTime: 2, cookTime: 5, serves: 1, difficulty: "Very Easy",
       ingredients: [
         { item: "Baked beans", qty: "half tin (200g)", aisle: "Cupboard" },
@@ -781,6 +787,7 @@ const RECIPES = {
     },
     {
       id: "b7", emoji: "🍌", name: "Banana & Peanut Butter Smoothie",
+      tags: ["vegetarian"],
       calories: 300, protein: 18, prepTime: 3, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [
         { item: "Banana", qty: "1 (frozen is even better)", aisle: "Fresh" },
@@ -798,6 +805,7 @@ const RECIPES = {
     },
     {
       id: "b8", emoji: "🍞", name: "Eggy Bread with Berries & Cinnamon",
+      tags: ["vegetarian"],
       calories: 350, protein: 16, prepTime: 3, cookTime: 5, serves: 1, difficulty: "Easy",
       ingredients: [
         { item: "Bread", qty: "2 thick slices", aisle: "Bakery" },
@@ -818,6 +826,7 @@ const RECIPES = {
     },
     {
       id: "b9", emoji: "🥑", name: "Avocado on Toast with Poached Egg",
+      tags: ["vegetarian"],
       calories: 380, protein: 16, prepTime: 5, cookTime: 5, serves: 1, difficulty: "Easy",
       ingredients: [
         { item: "Avocado", qty: "½", aisle: "Fresh" },
@@ -838,6 +847,7 @@ const RECIPES = {
     },
     {
       id: "b10", emoji: "🍎", name: "Overnight Oats with Apple & Cinnamon",
+      tags: ["vegetarian"],
       calories: 340, protein: 14, prepTime: 5, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [
         { item: "Porridge oats", qty: "50g", aisle: "Cupboard" },
@@ -906,6 +916,7 @@ const RECIPES = {
     },
     {
       id: "ld3", emoji: "🐟", name: "Tuna Pasta Bake",
+      tags: ["pescatarian"],
       calories: 450, protein: 30, prepTime: 10, cookTime: 20, serves: 4, difficulty: "Easy",
       ingredients: [
         { item: "Pasta (penne or similar)", qty: "300g", aisle: "Cupboard" },
@@ -974,6 +985,7 @@ const RECIPES = {
     },
     {
       id: "ld6", emoji: "🐠", name: "Salmon with Lemon, New Potatoes & Green Beans",
+      tags: ["pescatarian"],
       calories: 450, protein: 34, prepTime: 5, cookTime: 20, serves: 2, difficulty: "Easy",
       ingredients: [
         { item: "Salmon fillets", qty: "2", aisle: "Fresh" },
@@ -1057,6 +1069,7 @@ const RECIPES = {
     },
     {
       id: "ld10", emoji: "🦐", name: "Prawn Stir Fry with Noodles",
+      tags: ["pescatarian"],
       calories: 400, protein: 26, prepTime: 5, cookTime: 10, serves: 2, difficulty: "Easy",
       ingredients: [
         { item: "Frozen prawns", qty: "200g", aisle: "Freezer" },
@@ -1077,6 +1090,7 @@ const RECIPES = {
     },
     {
       id: "ld11", emoji: "🥣", name: "Lentil & Tomato Soup with Cheesy Toast",
+      tags: ["vegetarian"],
       calories: 400, protein: 20, prepTime: 5, cookTime: 25, serves: 4, difficulty: "Easy",
       ingredients: [
         { item: "Red lentils", qty: "200g", aisle: "Cupboard" },
@@ -1121,6 +1135,7 @@ const RECIPES = {
     },
     {
       id: "ld13", emoji: "🥧", name: "Fish Pie",
+      tags: ["pescatarian"],
       calories: 470, protein: 32, prepTime: 15, cookTime: 25, serves: 4, difficulty: "Medium",
       ingredients: [
         { item: "Fish pie mix (cod, salmon, smoked haddock)", qty: "400g", aisle: "Fresh" },
@@ -1205,6 +1220,7 @@ const RECIPES = {
     },
     {
       id: "ld17", emoji: "🍳", name: "Egg Fried Rice",
+      tags: ["vegetarian"],
       calories: 400, protein: 16, prepTime: 5, cookTime: 10, serves: 2, difficulty: "Easy",
       ingredients: [
         { item: "Cooked rice (leftover or microwave)", qty: "300g", aisle: "Cupboard" },
@@ -1225,6 +1241,7 @@ const RECIPES = {
     },
     {
       id: "ld18", emoji: "🧀", name: "Macaroni Cheese with Tomato Salad",
+      tags: ["vegetarian"],
       calories: 500, protein: 22, prepTime: 5, cookTime: 20, serves: 3, difficulty: "Easy",
       ingredients: [
         { item: "Macaroni pasta", qty: "250g", aisle: "Cupboard" },
@@ -1266,6 +1283,7 @@ const RECIPES = {
     },
     {
       id: "ld20", emoji: "🍅", name: "Tomato & Mozzarella Pasta",
+      tags: ["vegetarian"],
       calories: 440, protein: 20, prepTime: 5, cookTime: 15, serves: 2, difficulty: "Very Easy",
       ingredients: [
         { item: "Pasta", qty: "200g", aisle: "Cupboard" },
@@ -1287,34 +1305,34 @@ const RECIPES = {
   ],
 
   snacks: [
-    { id: "s1", emoji: "🍎", name: "Apple with Peanut Butter", calories: 180, protein: 6, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s1", emoji: "🍎", name: "Apple with Peanut Butter", tags: ["vegan"], calories: 180, protein: 6, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Apple", qty: "1", aisle: "Fresh" }, { item: "Peanut butter", qty: "1 tbsp", aisle: "Cupboard" }],
       method: ["Slice apple. Dip in peanut butter. Simple and satisfying."], tip: "The protein in peanut butter keeps you full longer than fruit alone." },
-    { id: "s2", emoji: "🧀", name: "Cheese & Crackers", calories: 200, protein: 10, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s2", emoji: "🧀", name: "Cheese & Crackers", tags: ["vegetarian"], calories: 200, protein: 10, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Cheddar cheese", qty: "30g", aisle: "Fridge" }, { item: "Crackers", qty: "3-4", aisle: "Cupboard" }],
       method: ["Slice cheese. Place on crackers. Done!"], tip: "A portion of cheese is about the size of a small matchbox." },
-    { id: "s3", emoji: "🫐", name: "Greek Yoghurt Pot", calories: 130, protein: 12, prepTime: 1, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s3", emoji: "🫐", name: "Greek Yoghurt Pot", tags: ["vegetarian"], calories: 130, protein: 12, prepTime: 1, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Greek yoghurt", qty: "150g", aisle: "Fridge" }],
       method: ["Spoon into a bowl. Add a drizzle of honey if you like."], tip: "One of the highest protein snacks going. Great between meals." },
-    { id: "s4", emoji: "🥜", name: "Handful of Mixed Nuts", calories: 180, protein: 6, prepTime: 0, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s4", emoji: "🥜", name: "Handful of Mixed Nuts", tags: ["vegan"], calories: 180, protein: 6, prepTime: 0, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Mixed nuts", qty: "30g (small handful)", aisle: "Cupboard" }],
       method: ["Grab a small handful. That's it!"], tip: "Measure out 30g so you know what a portion looks like - they're calorie-dense." },
-    { id: "s5", emoji: "🥚", name: "Boiled Egg", calories: 70, protein: 6, prepTime: 1, cookTime: 10, serves: 1, difficulty: "Very Easy",
+    { id: "s5", emoji: "🥚", name: "Boiled Egg", tags: ["vegetarian"], calories: 70, protein: 6, prepTime: 1, cookTime: 10, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Egg", qty: "1", aisle: "Fresh" }],
       method: ["Boil for 8-10 minutes for hard-boiled. Pinch of salt."], tip: "Boil a few at the start of the week and keep in the fridge for quick snacks." },
-    { id: "s6", emoji: "🍌", name: "Banana", calories: 100, protein: 1, prepTime: 0, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s6", emoji: "🍌", name: "Banana", tags: ["vegan"], calories: 100, protein: 1, prepTime: 0, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Banana", qty: "1", aisle: "Fresh" }],
       method: ["Peel and eat!"], tip: "Nature's perfect snack. Good source of potassium." },
-    { id: "s7", emoji: "🍞", name: "Toast with Marmite", calories: 120, protein: 5, prepTime: 2, cookTime: 2, serves: 1, difficulty: "Very Easy",
+    { id: "s7", emoji: "🍞", name: "Toast with Marmite", tags: ["vegetarian"], calories: 120, protein: 5, prepTime: 2, cookTime: 2, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Bread", qty: "1 slice", aisle: "Bakery" }, { item: "Marmite", qty: "thin scrape", aisle: "Cupboard" }, { item: "Butter", qty: "thin scrape", aisle: "Fridge" }],
       method: ["Toast bread. Butter. Marmite. You either love it or you don't."], tip: "Rich in B vitamins. The thin-scrape approach is key." },
-    { id: "s8", emoji: "🥕", name: "Hummus & Carrot Sticks", calories: 150, protein: 5, prepTime: 3, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s8", emoji: "🥕", name: "Hummus & Carrot Sticks", tags: ["vegan"], calories: 150, protein: 5, prepTime: 3, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Hummus", qty: "2 tbsp", aisle: "Fridge" }, { item: "Carrots", qty: "2, cut into sticks", aisle: "Fresh" }],
       method: ["Cut carrots into sticks. Dip in hummus."], tip: "Cucumber and pepper sticks work too. Keep hummus in the fridge for quick snacking." },
-    { id: "s9", emoji: "🧀", name: "Cottage Cheese & Crackers", calories: 150, protein: 12, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s9", emoji: "🧀", name: "Cottage Cheese & Crackers", tags: ["vegetarian"], calories: 150, protein: 12, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Cottage cheese", qty: "80g", aisle: "Fridge" }, { item: "Crackers", qty: "3", aisle: "Cupboard" }],
       method: ["Spoon cottage cheese onto crackers."], tip: "Very high protein, low calorie. A dieter's best friend." },
-    { id: "s10", emoji: "🍘", name: "Oatcakes with Cream Cheese", calories: 160, protein: 5, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
+    { id: "s10", emoji: "🍘", name: "Oatcakes with Cream Cheese", tags: ["vegetarian"], calories: 160, protein: 5, prepTime: 2, cookTime: 0, serves: 1, difficulty: "Very Easy",
       ingredients: [{ item: "Oatcakes", qty: "3", aisle: "Cupboard" }, { item: "Cream cheese", qty: "1 tbsp", aisle: "Fridge" }],
       method: ["Spread cream cheese on oatcakes."], tip: "Oatcakes are slow-release energy - they keep you going." }
   ],
