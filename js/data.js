@@ -1410,6 +1410,7 @@ const RECIPES = {
     },
     {
       id: "sp4", emoji: "🍕", name: "Homemade Pizza",
+      tags: ["vegetarian"],
       calories: 550, protein: 26, prepTime: 20, cookTime: 12, serves: 2, difficulty: "Medium",
       ingredients: [
         { item: "Strong white flour", qty: "300g", aisle: "Cupboard" },
