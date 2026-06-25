@@ -81,8 +81,14 @@
             </div>
             <div class="form-group" style="margin-top: var(--space-md);">
               <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer; font-size: var(--font-size-sm); line-height: 1.5;">
+                <input type="checkbox" id="signup-data-consent" style="margin-top: 3px; flex-shrink: 0;" required>
+                <span><strong>I consent to Joint Journey storing my health-related data</strong> (exercise progress, weight, mood, joint score) securely in the cloud, as described in the <a href="privacy.html" target="_blank">Privacy Policy</a>. <em>Required.</em></span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top: var(--space-sm);">
+              <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer; font-size: var(--font-size-sm); line-height: 1.5;">
                 <input type="checkbox" id="signup-feedback-consent" style="margin-top: 3px; flex-shrink: 0;">
-                <span><strong>I'm happy for Joint Journey to contact me for feedback.</strong> We're a small team trying to make this as useful as possible. We may email you once or twice to ask how it's going. We won't spam you or share your email.</span>
+                <span><strong>I'm happy for Joint Journey to contact me for feedback.</strong> We're a small team trying to make this as useful as possible. We may email you once or twice to ask how it's going. We won't spam you or share your email. <em>Optional.</em></span>
               </label>
             </div>
             <div id="signup-error" class="form-error" style="display:none;"></div>
@@ -994,6 +1000,12 @@
   </div>
 
   <!-- ===== SCRIPTS ===== -->
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+
   <script src="js/data.js"></script>
   <script src="js/programme-levels.js"></script>
   <script src="js/auth.js"></script>

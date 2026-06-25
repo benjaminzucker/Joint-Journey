@@ -86,14 +86,16 @@
         </ul>
 
         <h2>Data Storage & Security</h2>
-        <p>Your data is currently stored in your browser's local storage on your own device. This means your data stays on your computer or phone — it is not sent to or stored on our servers. We use the following measures to protect your data:</p>
+        <p>Your data is stored securely in Google Firebase (Cloud Firestore), hosted on Google Cloud infrastructure in Europe. A local copy is also cached in your browser for faster loading and offline access. We use the following measures to protect your data:</p>
         <ul>
-          <li>Encrypted connections (HTTPS) for all data in transit</li>
-          <li>Data stored locally on your device, not on remote servers</li>
-          <li>No passwords are transmitted or stored in plain text</li>
+          <li>Encrypted connections (HTTPS/TLS) for all data in transit</li>
+          <li>Data encrypted at rest using AES-256 encryption on Google Cloud servers</li>
+          <li>Firebase Authentication for secure password handling (passwords are hashed, never stored in plain text)</li>
+          <li>Firestore Security Rules ensuring each user can only access their own data</li>
+          <li>Google Cloud infrastructure is SOC 2, ISO 27001, and GDPR compliant</li>
         </ul>
-        <p><strong>Important:</strong> Because your data is stored in your browser, clearing your browser data or using a different device will mean starting fresh. We may introduce cloud-based storage in future to allow syncing across devices — if we do, we will update this policy and notify you.</p>
-        <p>You are responsible for keeping your device and password secure.</p>
+        <p>Your data syncs across devices — you can log in from your phone, tablet, or computer and pick up where you left off.</p>
+        <p>You are responsible for keeping your password secure.</p>
 
         <h2>Data Retention</h2>
         <p>We retain your data for as long as you have an active account. If you delete your account:</p>
@@ -126,6 +128,7 @@
         <h2>Third-Party Services</h2>
         <p>We use the following third-party services:</p>
         <ul>
+          <li><strong>Google Firebase</strong> - for user authentication and secure data storage (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy Policy</a>)</li>
           <li><strong>Google Analytics</strong> - for anonymous usage analytics (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>)</li>
           <li><strong>Netlify</strong> - for website hosting (<a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify's Privacy Policy</a>)</li>
         </ul>

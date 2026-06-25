@@ -85,7 +85,7 @@ function completeOnboarding() {
   }
 
   currentUser.onboarded = true;
-  saveUser();
+  saveUserNow(); // Immediate save for important action
 
   showToast('Welcome to Joint Journey, ' + currentUser.name + '!');
   showMainApp();
