@@ -9,7 +9,15 @@ service cloud.firestore {
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
-    
+
+    // Feedback: any signed-in user can submit (create) feedback.
+    // No one can read/update/delete from the client - you review it in the
+    // Firebase console. This keeps other users' feedback private.
+    match /feedback/{docId} {
+      allow create: if request.auth != null;
+      allow read, update, delete: if false;
+    }
+
     // Block all other access
     match /{document=**} {
       allow read, write: if false;

@@ -430,6 +430,11 @@
             <!-- Rendered by JS -->
           </div>
 
+          <!-- Contextual Feedback Prompt -->
+          <div id="dashboard-feedback-prompt" style="display:none;">
+            <!-- Rendered by JS -->
+          </div>
+
           <!-- Post-Op Check-In (shown after surgery date passes) -->
           <div id="post-op-checkin-prompt" class="card mb-lg" style="display:none; border: 2px solid var(--primary); background: var(--green-50);">
             <div class="text-center mb-lg">
@@ -1007,6 +1012,40 @@
 
       </main>
     </div>
+
+    <!-- ===== FLOATING FEEDBACK BUTTON ===== -->
+    <button id="feedback-fab" class="feedback-fab" onclick="openFeedbackModal('button')" aria-label="Give feedback">
+      <span class="feedback-fab-icon">💬</span>
+      <span class="feedback-fab-label">Feedback</span>
+    </button>
+  </div>
+
+  <!-- ===== FEEDBACK MODAL ===== -->
+  <div id="feedback-modal" class="modal-overlay" onclick="closeFeedbackModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>💬 Share Your Feedback</h3>
+        <button class="modal-close" onclick="closeFeedbackModal()">&times;</button>
+      </div>
+      <div>
+        <p>We're a small team and your feedback genuinely shapes Joint Journey. Thank you for taking a moment.</p>
+        <div class="form-group">
+          <label class="form-label">How would you rate your experience? (optional)</label>
+          <div id="feedback-stars" class="feedback-stars"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="feedback-message">What's working well, or what could we improve?</label>
+          <textarea id="feedback-message" class="form-textarea" rows="4" placeholder="Tell us anything - the good, the bad, ideas, problems..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label" style="display:flex; align-items:flex-start; gap:var(--space-sm); cursor:pointer; font-size:var(--font-size-sm); line-height:1.5;">
+            <input type="checkbox" id="feedback-contact-consent" style="margin-top:3px; flex-shrink:0;">
+            <span>I'm happy for Joint Journey to contact me about this feedback.</span>
+          </label>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="submitFeedbackModal()">Send Feedback</button>
+      </div>
+    </div>
   </div>
 
   <!-- ===== RECIPE MODAL ===== -->
@@ -1039,6 +1078,7 @@
   <script src="js/recipes.js"></script>
   <script src="js/mindset.js"></script>
   <script src="js/getting-ready.js"></script>
+  <script src="js/feedback.js"></script>
 
 </body>
 </html>

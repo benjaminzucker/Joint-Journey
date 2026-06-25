@@ -24,7 +24,8 @@ the whole product is free, then the whole product is paid.
 ---
 
 ## 🔴 NOW (current sprint — getting launch-ready)
-- [ ] Feedback mechanism (in-app + uses the email-consent we built)
+- [x] Feedback mechanism (floating button + smart contextual prompts;
+      saves to Firestore 'feedback' collection) — DEPLOY RULES to go live
 - [ ] Clinical one-pager (the surgeon-referral sales tool)
 - [ ] Transfer domain jointjourney.org → Netlify
 - [ ] Verify domain w/ Firebase Auth → branded emails (fix spam issue)

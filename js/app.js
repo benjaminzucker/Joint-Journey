@@ -240,6 +240,11 @@ function initDashboard() {
 
   // Post-op check-in
   initPostOpCheckIn();
+
+  // Contextual feedback prompt
+  if (typeof renderFeedbackPrompts === 'function') {
+    renderFeedbackPrompts();
+  }
 }
 
 // ===== ADAPTIVE DASHBOARD MESSAGES =====
