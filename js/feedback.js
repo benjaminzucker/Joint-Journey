@@ -155,7 +155,7 @@ function renderFeedbackPrompts() {
   }
 
   var html = '';
-  html += '<div class="card mb-lg" style="border:2px solid var(--primary); background: var(--green-50);">';
+  html += '<div class="card mb-lg" style="border:2px solid var(--green-600); background: var(--green-50);">';
   html += '<div class="flex items-center gap-md mb-md"><span style="font-size:1.5rem;">' + prompt.emoji + '</span>';
   html += '<strong>' + prompt.question + '</strong></div>';
 

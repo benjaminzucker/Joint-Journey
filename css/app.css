@@ -867,8 +867,8 @@
   align-items: center;
   gap: 8px;
   padding: 12px 18px;
-  background: var(--primary);
-  color: #fff;
+  background: var(--green-800);
+  color: var(--text-on-green);
   border: none;
   border-radius: 999px;
   font-size: var(--font-size-sm);
@@ -879,8 +879,10 @@
 }
 .feedback-fab:hover {
   transform: translateY(-2px);
+  background: var(--green-700);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24);
 }
+.feedback-fab-label { color: var(--text-on-green); }
 .feedback-fab-icon { font-size: 1.15rem; line-height: 1; }
 
 .feedback-stars {
