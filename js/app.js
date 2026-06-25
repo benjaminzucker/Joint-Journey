@@ -263,7 +263,7 @@ function renderAdaptiveMessages() {
     } else if (avgMood <= 2.2) {
       html += '<div class="card mb-md" style="background:#FFF7ED;border-color:#FED7AA;">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">💛</span><div>';
-      html += '<strong>We\'ve noticed things have been tough recently.</strong> That\'s completely normal — living with joint pain is exhausting and frustrating. Be kind to yourself. ';
+      html += '<strong>We\'ve noticed things have been tough recently.</strong> That\'s completely normal, living with joint pain is exhausting and frustrating. Be kind to yourself. ';
       html += 'Our <a href="#" onclick="navigateTo(\'mindset\');return false;" style="font-weight:600;">Mindset modules</a> have some techniques that might help.';
       html += '</div></div></div>';
     }
@@ -280,7 +280,7 @@ function renderAdaptiveMessages() {
   } else if (streak >= 3) {
     html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
     html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">💪</span><div>';
-    html += '<strong>' + streak + ' days in a row!</strong> Great consistency — that\'s what makes the real difference.';
+    html += '<strong>' + streak + ' days in a row!</strong> Great consistency, that\'s what makes the real difference.';
     html += '</div></div></div>';
   } else if (lastEx && lastEx !== today) {
     // Haven't exercised today yet but have before - just a gentle welcome
@@ -355,7 +355,7 @@ function renderAdaptiveMessages() {
       html += '<div class="card mb-md" style="background:#FFF7ED;border-color:#FED7AA;">';
       html += '<div class="flex items-center justify-between gap-md flex-wrap">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">🧳</span><div>';
-      html += '<strong>' + daysToSurgery + ' days to go!</strong> Time to pack your hospital bag — here\'s the checklist.';
+      html += '<strong>' + daysToSurgery + ' days to go!</strong> Time to pack your hospital bag, here\'s the checklist.';
       html += '</div></div>';
       html += '<button class="btn btn-sm" onclick="navigateTo(\'getting-ready\');setTimeout(function(){showGettingReadySection(\'hospital-bag\')},100);">Pack My Bag →</button>';
       html += '</div></div>';
@@ -363,7 +363,7 @@ function renderAdaptiveMessages() {
       // Final days
       html += '<div class="card mb-md" style="background:var(--green-50);border-color:var(--green-200);">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">⭐</span><div>';
-      html += '<strong>Your surgery is nearly here.</strong> You\'ve done the work. You\'ve prepared. Trust yourself — you\'re going into this in the best shape you can be.';
+      html += '<strong>Your surgery is nearly here.</strong> You\'ve done the work. You\'ve prepared. Trust yourself, you\'re going into this in the best shape you can be.';
       html += '</div></div></div>';
     }
   }
@@ -627,17 +627,17 @@ function renderOnboardingOxfordQuestions(jointType) {
   var html = '';
   
   if (joint === 'both') {
-    html += '<div class="alert alert-info mb-lg"><strong>Oxford ' + jointLabel + ' Score</strong> — ' +
+    html += '<div class="alert alert-info mb-lg"><strong>Oxford ' + jointLabel + ' Score.</strong> ' +
       (onboardingOxfordPhase === 'first' ? 'We\'ll do your hip first, then your knee.' : 'Now let\'s do your knee.') + '</div>';
   }
 
   questions.forEach(function(q, i) {
     html += '<div class="oxford-question mb-lg" style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--radius-lg);">';
-    html += '<p style="font-weight: 600; margin-bottom: var(--space-md);">' + (i + 1) + '. ' + q.question + '</p>';
-    q.options.forEach(function(opt, j) {
+    html += '<p style="font-weight: 600; margin-bottom: var(--space-md);">' + (i + 1) + '. ' + q.text + '</p>';
+    q.options.forEach(function(opt) {
       html += '<label style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer; padding: var(--space-xs) 0;">';
-      html += '<input type="radio" name="onboard-ox-' + q.id + '" value="' + (4 - j) + '" onchange="updateOnboardingOxfordProgress()" style="margin-top: 3px;">';
-      html += '<span style="font-size: var(--font-size-sm);">' + opt + '</span>';
+      html += '<input type="radio" name="onboard-ox-' + q.id + '" value="' + opt.score + '" onchange="updateOnboardingOxfordProgress()" style="margin-top: 3px;">';
+      html += '<span style="font-size: var(--font-size-sm);">' + opt.label + '</span>';
       html += '</label>';
     });
     html += '</div>';

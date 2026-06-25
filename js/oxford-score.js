@@ -307,11 +307,11 @@ function initOxfordScore() {
     } else if (!hipDone) {
       // Hip not done yet - do hip first
       currentOxfordJoint = 'hip';
-      renderOxfordQuestionnaire('hip', 'You have both hip and knee replacements planned. Let\'s start with your <strong>hip</strong> — we\'ll do the knee next.');
+      renderOxfordQuestionnaire('hip', 'You have both hip and knee replacements planned. Let\'s start with your <strong>hip</strong>, we\'ll do the knee next.');
     } else {
       // Hip done, knee not done
       currentOxfordJoint = 'knee';
-      renderOxfordQuestionnaire('knee', 'Great — your hip score is recorded! Now let\'s do your <strong>knee</strong>.');
+      renderOxfordQuestionnaire('knee', 'Great, your hip score is recorded! Now let\'s do your <strong>knee</strong>.');
     }
     return;
   }
@@ -420,7 +420,7 @@ function submitOxfordScore() {
       showToast('✅ Your Oxford Hip Score has been recorded! Now let\'s do your knee.');
       // Immediately show knee questionnaire
       currentOxfordJoint = 'knee';
-      renderOxfordQuestionnaire('knee', 'Great — your hip score is recorded! Now let\'s do your <strong>knee</strong>.');
+      renderOxfordQuestionnaire('knee', 'Great, your hip score is recorded! Now let\'s do your <strong>knee</strong>.');
       // Scroll to top of questionnaire
       document.querySelector('.app-main').scrollTop = 0;
       return;

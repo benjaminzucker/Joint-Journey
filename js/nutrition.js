@@ -124,7 +124,7 @@ function calculateNutrition() {
       if (weeksToSurgery) {
         html += '<p>With <strong>' + weeksToSurgery + ' weeks until your surgery</strong>, we\'ve calculated a <strong>' + deficit + '-calorie daily deficit</strong> tailored to your timeline. ';
         if (deficit === 300) {
-          html += 'You have plenty of time, so we\'ve kept this gentle — no need to rush.</p>';
+          html += 'You have plenty of time, so we\'ve kept this gentle, no need to rush.</p>';
         } else if (deficit >= 450) {
           html += 'This is a moderate deficit to help you make meaningful progress before surgery.</p>';
         } else {
@@ -134,18 +134,18 @@ function calculateNutrition() {
         html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit.</p>';
       }
       html += '<h4 style="margin-bottom:var(--space-sm);">⚖️ What to expect</h4>';
-      html += '<p>At this calorie level, you can expect to lose about <strong>' + expectedWeeklyLoss + 'kg per week</strong>. That preserves your muscle while losing fat — crash diets do the opposite, which is the last thing you need before surgery.</p>';
+      html += '<p>At this calorie level, you can expect to lose about <strong>' + expectedWeeklyLoss + 'kg per week</strong>. That preserves your muscle while losing fat, crash diets do the opposite, which is the last thing you need before surgery.</p>';
       html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + weightToLose.toFixed(1) + 'kg</strong>';
       if (weeksToSurgery && canReachTarget) {
-        html += ', which should take roughly <strong>' + weeksAtThisRate + ' weeks</strong> — well within your surgery timeline. You\'ve got this!</p>';
+        html += ', which should take roughly <strong>' + weeksAtThisRate + ' weeks</strong>, well within your surgery timeline. You\'ve got this!</p>';
       } else if (weeksToSurgery && !canReachTarget) {
-        html += '. At this pace that would take about <strong>' + weeksAtThisRate + ' weeks</strong> — longer than your ' + weeksToSurgery + ' weeks to surgery. <strong>That\'s absolutely fine.</strong> Every kilo you lose makes a real difference. Research shows that even losing 2-3kg before surgery measurably improves outcomes and speeds recovery. Do what you can.</p>';
+        html += '. At this pace that would take about <strong>' + weeksAtThisRate + ' weeks</strong>, longer than your ' + weeksToSurgery + ' weeks to surgery. <strong>That\'s absolutely fine.</strong> Every kilo you lose makes a real difference. Research shows that even losing 2-3kg before surgery measurably improves outcomes and speeds recovery. Do what you can.</p>';
       } else {
         html += ', which would take roughly <strong>' + weeksAtThisRate + ' weeks</strong> at this pace.</p>';
       }
       html += '<h4 style="margin-bottom:var(--space-sm);">🥩 Why protein matters</h4>';
-      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises — your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
-      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day — we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
+      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises, your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
+      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day, we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;

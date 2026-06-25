@@ -12,7 +12,7 @@ function initAuth() {
   // Listen for Firebase auth state changes
   auth.onAuthStateChanged(function(user) {
     if (user) {
-      // User is signed in — load their data from Firestore
+      // User is signed in, load their data from Firestore
       firebaseUid = user.uid;
       loadUserFromFirestore(user.uid);
     } else {

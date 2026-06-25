@@ -105,7 +105,7 @@ const HIP_EXERCISES_GENTLE = {
         name: "Seated Ankle Pumps",
         video: "KxfFzSOAT7g",
         sets: 2, reps: "10 each foot",
-        description: "Sitting comfortably in a chair, pump your feet up and down slowly. This improves circulation — especially important if you spend a lot of time sitting.",
+        description: "Sitting comfortably in a chair, pump your feet up and down slowly. This improves circulation, especially important if you spend a lot of time sitting.",
         progression: [
           { week: 1, sets: 1, reps: "8 each foot" },
           { week: 2, sets: 2, reps: "8 each foot" },
@@ -118,7 +118,7 @@ const HIP_EXERCISES_GENTLE = {
         name: "Seated Knee Extension (Gentle)",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "6 each leg",
-        description: "Sitting in a sturdy chair, slowly straighten one leg. You don't need to get it fully straight — go as far as is comfortable. Hold briefly, then lower slowly.",
+        description: "Sitting in a sturdy chair, slowly straighten one leg. You don't need to get it fully straight, go as far as is comfortable. Hold briefly, then lower slowly.",
         progression: [
           { week: 1, sets: 1, reps: "4 each leg" },
           { week: 2, sets: 2, reps: "4 each leg" },
@@ -131,7 +131,7 @@ const HIP_EXERCISES_GENTLE = {
         name: "Seated Marching (Gentle)",
         video: "1hAQp7gIK8o",
         sets: 1, reps: "15 seconds",
-        description: "Sitting tall, gently lift your knees alternately as if marching. Go at your own pace — there's no rush. Even small lifts count.",
+        description: "Sitting tall, gently lift your knees alternately as if marching. Go at your own pace, there's no rush. Even small lifts count.",
         progression: [
           { week: 1, sets: 1, reps: "10 seconds" },
           { week: 2, sets: 1, reps: "15 seconds" },
@@ -157,7 +157,7 @@ const HIP_EXERCISES_GENTLE = {
         name: "Chair Sit-to-Stand (Supported)",
         video: "5yxfzyzEzBY",
         sets: 1, reps: "3",
-        description: "Using a sturdy chair with armrests, push up to standing using both arms. Stand for a moment, then slowly sit back down. It's fine to use your arms fully — we'll reduce this over time.",
+        description: "Using a sturdy chair with armrests, push up to standing using both arms. Stand for a moment, then slowly sit back down. It's fine to use your arms fully, we'll reduce this over time.",
         progression: [
           { week: 1, sets: 1, reps: "2 (full arm support)" },
           { week: 2, sets: 1, reps: "3 (full arm support)" },
@@ -314,7 +314,7 @@ const HIP_EXERCISES_GENTLE = {
         name: "Chair Sit-to-Stand (Best Effort)",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "6",
-        description: "By now you should be using less arm support. Do your best — even a small improvement from week 1 is a win.",
+        description: "By now you should be using less arm support. Do your best, even a small improvement from week 1 is a win.",
         progression: [
           { week: 9, sets: 2, reps: "5 (minimal arms)" },
           { week: 10, sets: 2, reps: "6 (minimal arms)" },
@@ -338,7 +338,7 @@ const KNEE_EXERCISES_GENTLE = {
         name: "Seated Ankle Pumps",
         video: "KxfFzSOAT7g",
         sets: 2, reps: "10 each foot",
-        description: "Sitting comfortably, pump your feet up and down slowly. Improves circulation — especially important before knee surgery.",
+        description: "Sitting comfortably, pump your feet up and down slowly. Improves circulation, especially important before knee surgery.",
         progression: [
           { week: 1, sets: 1, reps: "8 each foot" },
           { week: 2, sets: 2, reps: "8 each foot" },
@@ -351,7 +351,7 @@ const KNEE_EXERCISES_GENTLE = {
         name: "Seated Knee Extension (Gentle)",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "6 each leg",
-        description: "Sitting in a sturdy chair, slowly straighten one leg. Don't worry about getting it fully straight — go as far as comfortable. Hold briefly, lower slowly. This is THE key exercise for knee replacement prep.",
+        description: "Sitting in a sturdy chair, slowly straighten one leg. Don't worry about getting it fully straight, go as far as comfortable. Hold briefly, lower slowly. This is THE key exercise for knee replacement prep.",
         progression: [
           { week: 1, sets: 1, reps: "4 each leg" },
           { week: 2, sets: 2, reps: "4 each leg" },
@@ -410,7 +410,7 @@ const KNEE_EXERCISES_GENTLE = {
         name: "Supported Standing Knee Bend",
         video: "k4TDxANOD4M",
         sets: 2, reps: "6 each leg",
-        description: "Holding the worktop firmly with both hands, slowly bend one knee, bringing heel towards buttock. Go only as far as comfortable — even a small bend counts.",
+        description: "Holding the worktop firmly with both hands, slowly bend one knee, bringing heel towards buttock. Go only as far as comfortable, even a small bend counts.",
         progression: [
           { week: 5, sets: 2, reps: "5 each leg" },
           { week: 6, sets: 2, reps: "6 each leg" },
@@ -571,7 +571,7 @@ const HIP_EXERCISES_ACTIVE = {
         name: "Chair Sit-to-Stand (Arms Crossed)",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "10",
-        description: "From a standard-height chair with arms crossed on your chest, stand up and sit down with control. Take 3 seconds to lower. You should find this achievable — we'll make it harder.",
+        description: "From a standard-height chair with arms crossed on your chest, stand up and sit down with control. Take 3 seconds to lower. You should find this achievable, we'll make it harder.",
         progression: [
           { week: 1, sets: 3, reps: "8" },
           { week: 2, sets: 3, reps: "10" },
@@ -610,7 +610,7 @@ const HIP_EXERCISES_ACTIVE = {
         name: "Step Ups (Bottom Stair)",
         video: "wfhXnLILqdk",
         sets: 3, reps: "10 each leg",
-        description: "Step up onto the bottom stair, step down with control. Use banister lightly for balance only — let your legs do the work.",
+        description: "Step up onto the bottom stair, step down with control. Use banister lightly for balance only, let your legs do the work.",
         progression: [
           { week: 1, sets: 2, reps: "8 each" },
           { week: 2, sets: 3, reps: "8 each" },
