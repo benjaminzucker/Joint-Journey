@@ -51,6 +51,11 @@ function nextOnboardingStep() {
   document.querySelectorAll('.onboarding-step').forEach(s => s.style.display = 'none');
   const next = document.querySelector('[data-step="' + currentOnboardingStep + '"]');
   if (next) next.style.display = 'block';
+
+  // If entering step 5 (Oxford Score), render the questions
+  if (currentOnboardingStep === 5) {
+    renderOnboardingOxford();
+  }
 }
 
 function prevOnboardingStep() {
@@ -82,6 +87,22 @@ function completeOnboarding() {
       date: new Date().toISOString().split('T')[0],
       weight: currentUser.profile.weight
     });
+  }
+
+  // Save Oxford Score from onboarding
+  if (onboardingData.oxfordScorePreOp) {
+    currentUser.progress.oxfordScorePreOp = onboardingData.oxfordScorePreOp;
+  }
+  if (onboardingData.oxfordScorePreOpHip) {
+    currentUser.progress.oxfordScorePreOpHip = onboardingData.oxfordScorePreOpHip;
+  }
+  if (onboardingData.oxfordScorePreOpKnee) {
+    currentUser.progress.oxfordScorePreOpKnee = onboardingData.oxfordScorePreOpKnee;
+  }
+
+  // Assign programme level based on Oxford Score
+  if (typeof assignProgrammeLevel === 'function') {
+    assignProgrammeLevel();
   }
 
   currentUser.onboarded = true;
@@ -575,4 +596,130 @@ function formatDate(dateStr) {
 function formatDateShort(dateStr) {
   const d = new Date(dateStr);
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+
+// ===== ONBOARDING OXFORD SCORE =====
+var onboardingOxfordJoint = null; // tracks which joint we're currently asking about
+var onboardingOxfordPhase = 'first'; // 'first' or 'second' (for 'both' joints)
+
+function renderOnboardingOxford() {
+  var joint = onboardingData.joint;
+  var container = document.getElementById('onboarding-oxford-questions');
+  
+  // Determine which joint to ask about first
+  if (joint === 'both') {
+    onboardingOxfordJoint = 'hip';
+    onboardingOxfordPhase = 'first';
+  } else {
+    onboardingOxfordJoint = joint; // 'hip' or 'knee'
+    onboardingOxfordPhase = 'first';
+  }
+
+  renderOnboardingOxfordQuestions(onboardingOxfordJoint);
+}
+
+function renderOnboardingOxfordQuestions(jointType) {
+  var container = document.getElementById('onboarding-oxford-questions');
+  var questions = jointType === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  var jointLabel = jointType === 'hip' ? 'Hip' : 'Knee';
+  var joint = onboardingData.joint;
+  
+  var html = '';
+  
+  if (joint === 'both') {
+    html += '<div class="alert alert-info mb-lg"><strong>Oxford ' + jointLabel + ' Score</strong> — ' +
+      (onboardingOxfordPhase === 'first' ? 'We\'ll do your hip first, then your knee.' : 'Now let\'s do your knee.') + '</div>';
+  }
+
+  questions.forEach(function(q, i) {
+    html += '<div class="oxford-question mb-lg" style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--radius-lg);">';
+    html += '<p style="font-weight: 600; margin-bottom: var(--space-md);">' + (i + 1) + '. ' + q.question + '</p>';
+    q.options.forEach(function(opt, j) {
+      html += '<label style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer; padding: var(--space-xs) 0;">';
+      html += '<input type="radio" name="onboard-ox-' + q.id + '" value="' + (4 - j) + '" onchange="updateOnboardingOxfordProgress()" style="margin-top: 3px;">';
+      html += '<span style="font-size: var(--font-size-sm);">' + opt + '</span>';
+      html += '</label>';
+    });
+    html += '</div>';
+  });
+
+  container.innerHTML = html;
+  
+  // Reset continue button
+  document.getElementById('onboarding-oxford-continue').style.display = 'none';
+  updateOnboardingOxfordProgress();
+}
+
+function updateOnboardingOxfordProgress() {
+  var questions = onboardingOxfordJoint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  var answered = 0;
+  
+  questions.forEach(function(q) {
+    var selected = document.querySelector('input[name="onboard-ox-' + q.id + '"]:checked');
+    if (selected) answered++;
+  });
+
+  var progressEl = document.getElementById('onboarding-oxford-progress');
+  if (progressEl) {
+    progressEl.textContent = answered + ' of 12 answered';
+    progressEl.style.color = answered === 12 ? 'var(--primary)' : 'var(--text-muted)';
+  }
+
+  var continueBtn = document.getElementById('onboarding-oxford-continue');
+  if (continueBtn) {
+    continueBtn.style.display = answered === 12 ? 'inline-flex' : 'none';
+  }
+}
+
+function submitOnboardingOxford() {
+  var questions = onboardingOxfordJoint === 'hip' ? OXFORD_HIP_QUESTIONS : OXFORD_KNEE_QUESTIONS;
+  var totalScore = 0;
+  var answers = {};
+
+  questions.forEach(function(q) {
+    var selected = document.querySelector('input[name="onboard-ox-' + q.id + '"]:checked');
+    if (selected) {
+      var score = parseInt(selected.value);
+      totalScore += score;
+      answers[q.id] = score;
+    }
+  });
+
+  var scoreData = {
+    score: totalScore,
+    answers: answers,
+    date: new Date().toISOString(),
+    joint: onboardingOxfordJoint
+  };
+
+  // Store in onboarding data
+  var joint = onboardingData.joint;
+
+  if (joint === 'both') {
+    if (onboardingOxfordPhase === 'first') {
+      // Save hip score, show knee questionnaire
+      onboardingData.oxfordScorePreOpHip = scoreData;
+      onboardingOxfordJoint = 'knee';
+      onboardingOxfordPhase = 'second';
+      showToast('✅ Hip score recorded! Now let\'s do your knee.');
+      renderOnboardingOxfordQuestions('knee');
+      // Scroll to top of the step
+      document.querySelector('.onboarding-wrapper').scrollTop = 0;
+      return;
+    } else {
+      // Save knee score, move to next step
+      onboardingData.oxfordScorePreOpKnee = scoreData;
+    }
+  } else {
+    // Single joint
+    onboardingData.oxfordScorePreOp = scoreData;
+  }
+
+  showToast('✅ Your Oxford Score has been recorded!');
+  
+  // Move to step 6 (Goal)
+  currentOnboardingStep = 6;
+  document.querySelectorAll('.onboarding-step').forEach(function(s) { s.style.display = 'none'; });
+  var next = document.querySelector('[data-step="6"]');
+  if (next) next.style.display = 'block';
 }
