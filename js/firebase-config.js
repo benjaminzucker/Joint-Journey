@@ -12,13 +12,13 @@
    ============================================ */
 
 const firebaseConfig = {
-  // PASTE YOUR FIREBASE CONFIG HERE
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyDDOGYJ09k7bAdO3bVbs7BqyYmdoVZiM4Y",
+  authDomain: "jointjourney-4cf64.firebaseapp.com",
+  projectId: "jointjourney-4cf64",
+  storageBucket: "jointjourney-4cf64.firebasestorage.app",
+  messagingSenderId: "722156871283",
+  appId: "1:722156871283:web:3bcb318d7143cd997b5406",
+  measurementId: "G-922WX390KR"
 };
 
 // Initialize Firebase
