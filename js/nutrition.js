@@ -77,12 +77,14 @@ function computeGoalWeight(weight, height, bmi, tdee, minCal) {
 
   goalWeight = Math.round(goalWeight * 2) / 2; // round to nearest 0.5 kg
   var lossNeeded = Math.max(0, Math.round((weight - goalWeight) * 10) / 10);
+  var goalBMI = goalWeight / (heightM * heightM); // BMI the goal weight actually represents
 
   return {
     needsLoss: lossNeeded > 0,
     idealBMI: idealBMI,
     idealWeight: idealWeight,
     goalWeight: goalWeight,
+    goalBMI: goalBMI,
     lossNeeded: lossNeeded,
     achievable: achievable,
     weeksToSurgery: weeksToSurgery,
@@ -95,9 +97,15 @@ function renderGoalWeightBanner(goal, dailyDeficit) {
   if (!el) return;
   if (!goal || !goal.needsLoss) { el.style.display = 'none'; return; }
 
+  // When the ideal BMI is reachable, show the clean band (e.g. "BMI 30").
+  // When the goal is only the best achievable by the surgery date, show the
+  // BMI that weight actually represents (e.g. "BMI 32.4") so it stays honest.
+  var reachesIdeal = goal.achievable !== false; // true or null (no date) -> ideal target
+  var bmiLabel = reachesIdeal ? goal.idealBMI : goal.goalBMI.toFixed(1);
+
   var weeklyLoss = Math.max(0, (dailyDeficit || 0) * 7 / 7700);
   var html = '<span class="jj-icon" data-jjicon="target" data-jjcolor="green" style="font-size:1.3em;vertical-align:-0.2em;"></span> ';
-  html += 'Your goal weight is <strong>' + goal.goalWeight.toFixed(1) + ' kg</strong> (BMI ' + goal.idealBMI + ') - about <strong>' + goal.lossNeeded.toFixed(1) + ' kg</strong> to lose.';
+  html += 'Your goal weight is <strong>' + goal.goalWeight.toFixed(1) + ' kg</strong> (BMI ' + bmiLabel + ') - about <strong>' + goal.lossNeeded.toFixed(1) + ' kg</strong> to lose.';
 
   if (goal.weeksToSurgery && weeklyLoss > 0.05) {
     var reachWeeks = Math.ceil(goal.lossNeeded / weeklyLoss);
@@ -106,7 +114,7 @@ function renderGoalWeightBanner(goal, dailyDeficit) {
     if (goal.achievable) {
       html += ' At your current plan you should reach it around <strong>' + dateStr + '</strong> - well within your surgery timeline. You\'ve got this!';
     } else {
-      html += ' That\'s the most you can realistically lose by your surgery date, and every kilo makes a real difference.';
+      html += ' That\'s the most you can realistically lose by your surgery date, and every kilo makes a real difference. You can keep working towards a BMI of ' + goal.idealBMI + ' in the weeks after surgery too.';
     }
   } else if (!goal.weeksToSurgery) {
     html += ' <span style="color:var(--text-muted);">Add your surgery date in My Account for a personalised timeline.</span>';
