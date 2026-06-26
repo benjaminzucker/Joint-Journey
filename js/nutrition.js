@@ -345,7 +345,13 @@ function renderWeightHistory() {
     var latestW = log[log.length - 1].weight;
     if (latestW <= goalW) {
       html += '<div class="alert alert-success" style="margin-top:var(--space-md);">🎉 <strong>You\'ve reached your goal weight of ' + goalW.toFixed(1) + ' kg!</strong> Fantastic work, this puts you in a great position for surgery.</div>';
+      // Celebrate once per session when the goal is reached
+      if (window.JJEffects && !window._jjGoalCelebrated) {
+        window._jjGoalCelebrated = true;
+        setTimeout(function () { JJEffects.confetti({ count: 120 }); }, 150);
+      }
     } else {
+      window._jjGoalCelebrated = false; // allow re-celebration if they dip back under later
       var toGo = Math.round((latestW - goalW) * 10) / 10;
       html += '<div class="alert alert-info" style="margin-top:var(--space-md);">🎯 <strong>' + toGo.toFixed(1) + ' kg to go</strong> to reach your goal weight of ' + goalW.toFixed(1) + ' kg. Keep going, you\'re making real progress!</div>';
     }

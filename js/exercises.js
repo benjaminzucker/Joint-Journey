@@ -130,11 +130,13 @@ function renderExerciseSession() {
 
   // Show celebration if all complete
   const completeSection = document.getElementById('exercise-complete-section');
-  if (completedCount === exercises.length && exercises.length > 0) {
-    completeSection.style.display = 'block';
-  } else {
-    completeSection.style.display = 'none';
+  const allDone = completedCount === exercises.length && exercises.length > 0;
+  completeSection.style.display = allDone ? 'block' : 'none';
+  // Fire confetti only on the transition into "all complete" (not on every render)
+  if (allDone && !window._jjSessionWasComplete && window.JJEffects) {
+    JJEffects.confettiFromElement(completeSection, { count: 110 });
   }
+  window._jjSessionWasComplete = allDone;
 }
 
 function toggleExercise(exerciseId) {

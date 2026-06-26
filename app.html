@@ -490,19 +490,19 @@
 
           <!-- Quick Stats -->
           <div class="grid grid-4 mb-xl" id="dashboard-stats">
-            <div class="card stat-card">
+            <div class="card stat-card stat-card--accent stat-card--amber">
               <div class="stat-value" id="stat-streak">0</div>
               <div class="stat-label">Day Streak 🔥</div>
             </div>
-            <div class="card stat-card">
+            <div class="card stat-card stat-card--accent stat-card--green">
               <div class="stat-value" id="stat-exercises">0</div>
               <div class="stat-label">Exercises Done</div>
             </div>
-            <div class="card stat-card">
+            <div class="card stat-card stat-card--accent stat-card--blue">
               <div class="stat-value" id="stat-week">1</div>
               <div class="stat-label">Current Week</div>
             </div>
-            <div class="card stat-card">
+            <div class="card stat-card stat-card--accent stat-card--terracotta">
               <div class="stat-value" id="stat-recipes">0</div>
               <div class="stat-label">Recipes Tried</div>
             </div>
@@ -516,7 +516,7 @@
                 <h3 class="mb-0">Today's Exercises</h3>
               </div>
               <div id="dashboard-exercises-preview"></div>
-              <button class="btn btn-primary btn-block mt-lg" onclick="navigateTo('exercises')">Go to Exercises →</button>
+              <button class="btn btn-cta btn-block mt-lg" onclick="navigateTo('exercises')">Go to Exercises →</button>
             </div>
             <div class="card">
               <div class="flex items-center gap-md mb-lg">
@@ -1069,6 +1069,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/icons.js"></script>
+  <script src="js/effects.js"></script>
 
   <script src="js/data.js"></script>
   <script src="js/programme-levels.js"></script>

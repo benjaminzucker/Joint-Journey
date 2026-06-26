@@ -204,16 +204,23 @@ function initDashboard() {
   const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   document.getElementById('daily-motivation').textContent = MOTIVATIONS[dayOfYear % MOTIVATIONS.length];
 
-  // Stats
+  // Stats (animated count-up where available, plain text otherwise)
   const progress = currentUser.progress;
-  document.getElementById('stat-streak').textContent = progress.exerciseStreak || 0;
-  
+  const setStat = (id, val) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (window.JJEffects) JJEffects.countUp(el, val);
+    else el.textContent = (val || 0).toLocaleString();
+  };
+
   const totalExercises = Object.values(progress.exercisesCompleted || {}).reduce((sum, day) => {
     return sum + (Array.isArray(day) ? day.length : 0);
   }, 0);
-  document.getElementById('stat-exercises').textContent = totalExercises;
-  document.getElementById('stat-week').textContent = progress.currentWeek || 1;
-  document.getElementById('stat-recipes').textContent = (progress.recipesTried || []).length;
+
+  setStat('stat-streak', progress.exerciseStreak || 0);
+  setStat('stat-exercises', totalExercises);
+  setStat('stat-week', progress.currentWeek || 1);
+  setStat('stat-recipes', (progress.recipesTried || []).length);
 
   // Today's exercises preview
   renderDashboardExercises();
@@ -426,7 +433,12 @@ function setMood(value) {
   // Update UI
   document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('selected'));
   showMoodResponse(value);
-  
+
+  // A little celebration for a good day
+  if (value >= 4 && window.JJEffects) {
+    JJEffects.confettiFromElement(document.getElementById('dashboard-mood'), { count: 50 });
+  }
+
   saveUser();
 }
 

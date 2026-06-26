@@ -296,6 +296,24 @@ li {
   color: var(--text-on-green);
 }
 
+/* Warm "call to action" button - draws the eye to the main next action */
+.btn-cta {
+  background-image: linear-gradient(135deg, var(--amber-500), var(--amber-600));
+  background-color: var(--amber-600);
+  color: #3A2600;
+  border-color: var(--amber-600);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 143, 0, 0.28);
+}
+
+.btn-cta:hover {
+  background-image: linear-gradient(135deg, var(--amber-600), #E67E00);
+  background-color: #E67E00;
+  border-color: #E67E00;
+  color: #3A2600;
+  box-shadow: 0 6px 18px rgba(255, 143, 0, 0.36);
+}
+
 .btn-secondary {
   background-color: transparent;
   color: var(--green-800);
@@ -768,6 +786,37 @@ li {
   color: var(--text-muted);
   margin-top: var(--space-sm);
   font-weight: 500;
+}
+
+/* --- Accent stat cards (colour-coded, subtle lift on hover) --- */
+.stat-card--accent {
+  border-top: 4px solid var(--green-400);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.stat-card--accent:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.stat-card--amber { background: var(--amber-100); border-top-color: var(--amber-500); }
+.stat-card--amber .stat-value { color: var(--amber-text); }
+.stat-card--green { background: var(--green-50); border-top-color: var(--green-500); }
+.stat-card--green .stat-value { color: var(--green-700); }
+.stat-card--blue { background: var(--info-bg); border-top-color: var(--info); }
+.stat-card--blue .stat-value { color: var(--info-text); }
+.stat-card--terracotta { background: #FBEFEA; border-top-color: #C4623F; }
+.stat-card--terracotta .stat-value { color: #9C4A2C; }
+
+/* --- Confetti (celebration micro-moments) --- */
+.jj-confetti-piece {
+  position: fixed;
+  z-index: 9999;
+  border-radius: 2px;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat-card--accent { transition: none; }
+  .stat-card--accent:hover { transform: none; }
 }
 
 /* --- Streak / Celebration --- */
