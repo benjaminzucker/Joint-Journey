@@ -266,7 +266,7 @@ function renderAdaptiveMessages() {
       html += '<strong>You\'ve been in great spirits!</strong> That positive energy is brilliant for your recovery. Keep it up.';
       html += '</div></div></div>';
     } else if (avgMood <= 2.2) {
-      html += '<div class="card mb-md" style="background:#FFF7ED;border-color:#FED7AA;">';
+      html += '<div class="card mb-md" style="background:var(--warn-bg);border-color:var(--warn-border);">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">💛</span><div>';
       html += '<strong>We\'ve noticed things have been tough recently.</strong> That\'s completely normal, living with joint pain is exhausting and frustrating. Be kind to yourself. ';
       html += 'Our <a href="#" onclick="navigateTo(\'mindset\');return false;" style="font-weight:600;">Mindset modules</a> have some techniques that might help.';
@@ -313,7 +313,7 @@ function renderAdaptiveMessages() {
     }
   }
   if (sessionsThisWeek >= 3 && currentWeek < totalWeeks && dayOfWeek >= 5) {
-    html += '<div class="card mb-md" style="background:#EFF6FF;border-color:#BFDBFE;">';
+    html += '<div class="card mb-md" style="background:var(--info-bg);border-color:var(--info-border);">';
     html += '<div class="flex items-center justify-between gap-md flex-wrap">';
     html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">⬆️</span><div>';
     html += '<strong>' + sessionsThisWeek + ' sessions this week!</strong> Ready to move to Week ' + (currentWeek + 1) + '?';
@@ -330,7 +330,7 @@ function renderAdaptiveMessages() {
 
     if (daysToSurgery > 0 && daysToSurgery <= 56 && daysToSurgery > 28 && viewed.indexOf('home-prep') === -1) {
       // 4-8 weeks: home prep
-      html += '<div class="card mb-md" style="background:#F0FDF4;border-color:#BBF7D0;">';
+      html += '<div class="card mb-md" style="background:var(--success-bg);border-color:var(--success-border);">';
       html += '<div class="flex items-center justify-between gap-md flex-wrap">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">🏠</span><div>';
       html += '<strong>' + Math.ceil(daysToSurgery / 7) + ' weeks to go.</strong> Good time to start thinking about preparing your home for recovery.';
@@ -339,7 +339,7 @@ function renderAdaptiveMessages() {
       html += '</div></div>';
     } else if (daysToSurgery > 0 && daysToSurgery <= 28 && daysToSurgery > 14 && viewed.indexOf('surgery-day') === -1) {
       // 2-4 weeks: surgery day guide
-      html += '<div class="card mb-md" style="background:#F0FDF4;border-color:#BBF7D0;">';
+      html += '<div class="card mb-md" style="background:var(--success-bg);border-color:var(--success-border);">';
       html += '<div class="flex items-center justify-between gap-md flex-wrap">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">📋</span><div>';
       html += '<strong>' + Math.ceil(daysToSurgery / 7) + ' weeks to surgery.</strong> Have a read through "What Happens on Surgery Day" so you know what to expect.';
@@ -348,7 +348,7 @@ function renderAdaptiveMessages() {
       html += '</div></div>';
     } else if (daysToSurgery > 0 && daysToSurgery <= 14 && daysToSurgery > 7 && viewed.indexOf('surgeon-questions') === -1) {
       // 1-2 weeks: surgeon questions
-      html += '<div class="card mb-md" style="background:#F0FDF4;border-color:#BBF7D0;">';
+      html += '<div class="card mb-md" style="background:var(--success-bg);border-color:var(--success-border);">';
       html += '<div class="flex items-center justify-between gap-md flex-wrap">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">❓</span><div>';
       html += '<strong>' + daysToSurgery + ' days to go.</strong> Have a look at the questions you might want to ask at your pre-op appointment.';
@@ -357,7 +357,7 @@ function renderAdaptiveMessages() {
       html += '</div></div>';
     } else if (daysToSurgery > 0 && daysToSurgery <= 7 && viewed.indexOf('hospital-bag') === -1) {
       // <1 week: hospital bag
-      html += '<div class="card mb-md" style="background:#FFF7ED;border-color:#FED7AA;">';
+      html += '<div class="card mb-md" style="background:var(--warn-bg);border-color:var(--warn-border);">';
       html += '<div class="flex items-center justify-between gap-md flex-wrap">';
       html += '<div class="flex items-center gap-md"><span style="font-size:1.5rem;">🧳</span><div>';
       html += '<strong>' + daysToSurgery + ' days to go!</strong> Time to pack your hospital bag, here\'s the checklist.';

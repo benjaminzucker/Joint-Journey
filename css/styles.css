@@ -3,6 +3,9 @@
    Green theme, elderly-friendly, accessible
    ============================================ */
 
+/* --- Web fonts: Fraunces (headings) + Inter (body) --- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+
 /* --- CSS Custom Properties --- */
 :root {
   /* Primary Palette - Based on Little Greene Three Farm Green 306 */
@@ -44,15 +47,33 @@
   --error: #D32F2F;
   --info: #1976D2;
 
+  /* Semantic surfaces (tinted info/warn/success panels) */
+  --info-bg: #EAF1FB;
+  --info-border: #B9D2F2;
+  --info-text: #0D47A1;
+  --warn-bg: #FFF4E6;
+  --warn-border: #FFD9A8;
+  --warn-text: #B45309;
+  --success-bg: var(--green-50);
+  --success-border: var(--green-300);
+  --success-text: var(--green-900);
+
+  /* Aliases & accessible accents (also fixes vars referenced in app.css) */
+  --primary: var(--green-800);
+  --primary-dark: var(--green-900);
+  --amber-text: #B45309; /* WCAG-safe amber for text on white */
+
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
 
   /* Typography */
-  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-heading: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-size-base: 18px;
   --font-size-sm: 16px;
+  --font-size-xs: 14px;
   --font-size-lg: 20px;
   --font-size-xl: 24px;
   --font-size-2xl: 30px;
@@ -137,9 +158,11 @@ body {
 
 /* --- Typography --- */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
   line-height: var(--line-height-tight);
   color: var(--text-primary);
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 h1 { font-size: var(--font-size-4xl); margin-bottom: var(--space-lg); }
@@ -260,12 +283,14 @@ li {
 }
 
 .btn-primary {
+  background-image: linear-gradient(135deg, var(--green-700), var(--green-800));
   background-color: var(--green-800);
   color: var(--text-on-green);
   border-color: var(--green-800);
 }
 
 .btn-primary:hover {
+  background-image: linear-gradient(135deg, var(--green-800), var(--green-900));
   background-color: var(--green-900);
   border-color: var(--green-900);
   color: var(--text-on-green);
@@ -336,11 +361,18 @@ li {
   padding: var(--space-xl);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-light);
-  transition: box-shadow var(--transition-normal);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal), border-color var(--transition-normal);
 }
 
 .card:hover {
   box-shadow: var(--shadow-md);
+}
+
+/* Clickable cards get a gentle lift to signal interactivity */
+.card[onclick]:hover,
+.card[role="button"]:hover {
+  transform: translateY(-3px);
+  border-color: var(--green-300);
 }
 
 .card-highlight {
@@ -489,7 +521,7 @@ li {
 
 .badge-amber {
   background: var(--amber-100);
-  color: #E65100;
+  color: var(--amber-text);
 }
 
 /* --- Progress Bar --- */
@@ -524,15 +556,15 @@ li {
 }
 
 .alert-info {
-  background: #E3F2FD;
-  border-color: #90CAF9;
-  color: #0D47A1;
+  background: var(--info-bg);
+  border-color: var(--info-border);
+  color: var(--info-text);
 }
 
 .alert-warning {
-  background: var(--amber-100);
-  border-color: var(--amber-400);
-  color: #E65100;
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  color: var(--warn-text);
 }
 
 /* --- Checklist --- */
