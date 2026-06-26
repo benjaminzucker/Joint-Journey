@@ -688,6 +688,11 @@ const DAILY_MINDSET_EXERCISES = [
   }
 ];
 
+// Map each module emoji to a line-icon (all tinted blue, the Mindset pillar colour)
+var JJ_MIND_ICONS = { '🧠':'pulse', '💪':'shield', '🎯':'target', '☀️':'sun', '😴':'moon', '🌅':'sunrise', '🎬':'film', '🌄':'mountain' };
+function jjMindIcon(e){ return JJ_MIND_ICONS[e] || 'mindset'; }
+function jjHydrateEl(el){ if (window.JJIcons && el) { JJIcons.hydrate(el); } }
+
 function getTodaysMindsetExercise() {
   // Use the day of the year to cycle through exercises
   const now = new Date();
@@ -721,7 +726,7 @@ function renderDailyMindsetExercise() {
   const done = isMindsetExerciseDoneToday();
   
   let html = '<div class="flex items-center gap-md mb-md">';
-  html += '<span class="icon-emoji-lg">🧠</span>';
+  html += '<span class="jj-icon icon-emoji-lg" data-jjicon="mindset" data-jjcolor="blue"></span>';
   html += '<div><h3 class="mb-0">Today\'s Exercise: ' + exercise.title + '</h3>';
   html += '<span class="form-hint">' + exercise.duration + ' · Changes daily</span></div>';
   html += '</div>';
@@ -733,7 +738,7 @@ function renderDailyMindsetExercise() {
     html += '<button class="btn btn-primary mt-md" onclick="completeMindsetExercise()">✅ Done It</button>';
   }
   
-  container.innerHTML = html;
+  container.innerHTML = html; jjHydrateEl(container);
 }
 
 function initMindset() {
@@ -753,13 +758,13 @@ function showMindsetModules() {
     const done = completed.includes(mod.id);
     html += '<div class="mindset-module-card ' + (done ? 'completed' : '') + '" onclick="openMindsetModule(\'' + mod.id + '\')">';
     html += '<span class="module-status">' + (done ? '✅' : '📖') + '</span>';
-    html += '<span class="icon-emoji-lg">' + mod.emoji + '</span>';
+    html += '<span class="jj-icon icon-emoji-lg" data-jjicon="' + jjMindIcon(mod.emoji) + '" data-jjcolor="blue"></span>';
     html += '<h3>' + mod.title + '</h3>';
     html += '<p>' + mod.subtitle + '</p>';
     html += '</div>';
   });
   
-  container.innerHTML = html;
+  container.innerHTML = html; jjHydrateEl(container);
 }
 
 function openMindsetModule(id) {
@@ -769,7 +774,7 @@ function openMindsetModule(id) {
   document.getElementById('mindset-modules').style.display = 'none';
   document.getElementById('mindset-content').style.display = 'block';
   
-  let html = '<h2>' + mod.emoji + ' ' + mod.title + '</h2>';
+  let html = '<h2><span class="jj-icon" data-jjicon="' + jjMindIcon(mod.emoji) + '" data-jjcolor="blue"></span> ' + mod.title + '</h2>';
   html += mod.content;
   html += '<div style="margin-top:var(--space-2xl); text-align:center;">';
   
@@ -781,7 +786,7 @@ function openMindsetModule(id) {
   }
   html += '</div>';
   
-  document.getElementById('mindset-content-inner').innerHTML = html;
+  document.getElementById('mindset-content-inner').innerHTML = html; jjHydrateEl(document.getElementById('mindset-content-inner'));
   
   // Mark as viewed
   if (!currentUser.progress.mindsetCompleted) currentUser.progress.mindsetCompleted = [];

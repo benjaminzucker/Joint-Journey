@@ -27,7 +27,7 @@
     'home':          '<path d="M3 9l9 -7 9 7v11a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2z"/><polyline points="9 22 9 12 15 12 15 22"/>', // house
     'warning':       '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h16.9a2 2 0 0 0 1.7 -3L13.7 3.9a2 2 0 0 0 -3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>', // warning triangle
     'knee':          '<path d="M17.6 9.3a2.6 2.6 0 1 1 1.9 -4.5 2.6 2.6 0 1 1 -3.7 3.4l-7 7a2.6 2.6 0 1 1 -5 1.4 2.6 2.6 0 1 1 1.4 -5z"/>', // bone (knee/joint)
-    'question':      '<circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a3 3 0 0 1 4.6 2.5c0 1.4 -1.4 1.9 -2 2.5"/><line x1="11.8" y1="17" x2="11.81" y2="17"/>', // question in circle
+    'question':      '<circle cx="12" cy="12" r="9"/><path d="M9.3 9.1a2.8 2.8 0 0 1 5.4 1c0 1.9 -2.7 2.3 -2.7 3.9"/><line x1="12" y1="17" x2="12.01" y2="17"/>', // question in circle
     'clipboard':     '<rect x="9" y="3" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v13a2 2 0 0 1 -2 2H6a2 2 0 0 1 -2 -2V6a2 2 0 0 1 2 -2h2"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/>', // clipboard list
 
     // Onboarding + decorative
@@ -39,7 +39,17 @@
     'weight':        '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 8a3 3 0 0 1 6 0"/><line x1="12" y1="8" x2="13.4" y2="10"/>', // scales / weight tracker
     'book':          '<path d="M5 4a2 2 0 0 1 2 -2h11a1 1 0 0 1 1 1v17a1 1 0 0 1 -1 1H7a2 2 0 0 1 -2 -2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/>', // book / modules
     'lightbulb':     '<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0 -3.5 10.9c.6 .5 1 1.2 1 2h5c0 -.8 .4 -1.5 1 -2A6 6 0 0 0 12 3z"/>', // tips
-    'chat':          '<path d="M21 11.5a8.4 8.4 0 0 1 -9 8.4 9 9 0 0 1 -3.9 -.8L3 21l1.9 -4.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>' // feedback bubble
+    'chat':          '<path d="M21 11.5a8.4 8.4 0 0 1 -9 8.4 9 9 0 0 1 -3.9 -.8L3 21l1.9 -4.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>', // feedback bubble
+
+    // Mindset module icons
+    'pulse':         '<path d="M3 12h4l2 -6 4 14 2 -8h6"/>', // heartbeat (understanding pain)
+    'shield':        '<path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4 -1.5 7 -4.5 7 -9V6z"/><path d="M9.3 12l1.9 1.9 3.5 -3.7"/>', // confidence
+    'target':        '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.9"/>', // buy-in / goal
+    'sun':           '<circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/>', // staying positive
+    'moon':          '<path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5z"/>', // sleep
+    'sunrise':       '<path d="M12 3v5"/><path d="M8.5 6.5 12 3l3.5 3.5"/><line x1="2" y1="18" x2="22" y2="18"/><line x1="4.5" y1="14.5" x2="6" y2="15.3"/><line x1="19.5" y1="14.5" x2="18" y2="15.3"/><path d="M7 18a5 5 0 0 1 10 0"/>', // surgery day
+    'film':          '<rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7.5" y1="4" x2="7.5" y2="20"/><line x1="16.5" y1="4" x2="16.5" y2="20"/><line x1="3" y1="9" x2="7.5" y2="9"/><line x1="3" y1="15" x2="7.5" y2="15"/><line x1="16.5" y1="9" x2="21" y2="9"/><line x1="16.5" y1="15" x2="21" y2="15"/>', // mental rehearsal
+    'mountain':      '<path d="M3 20 10 7l3.5 6 2 -3L21 20z"/>' // rehearsing recovery
   };
 
   function svg(inner) {
