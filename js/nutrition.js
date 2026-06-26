@@ -30,6 +30,93 @@ function showNutritionTab(tab) {
   if (tab === 'weight') renderWeightHistory();
 }
 
+// ===== GOAL WEIGHT =====
+// Goal-weight rule:
+//   BMI <= 33  -> aim for BMI 25
+//   BMI  > 33  -> aim for BMI 30
+// The goal is the ideal-BMI weight IF it can be reached by the surgery date
+// without exceeding the maximum safe daily deficit; otherwise it is the best
+// weight realistically achievable by that date.
+function computeGoalWeight(weight, height, bmi, tdee, minCal) {
+  var heightM = height / 100;
+  var idealBMI = bmi > 33 ? 30 : 25;
+
+  // Already at or below the ideal band - no weight-loss goal needed
+  if (bmi <= idealBMI) {
+    return { needsLoss: false, idealBMI: idealBMI };
+  }
+
+  var idealWeight = idealBMI * heightM * heightM;
+
+  // Maximum safe daily deficit: capped at 500, but never below the calorie floor
+  var maxDeficit = Math.min(500, Math.max(0, tdee - minCal));
+  var maxWeeklyLoss = maxDeficit * 7 / 7700; // kg per week (1kg fat ~ 7700 kcal)
+
+  // Weeks until surgery (if a date is set)
+  var weeksToSurgery = null;
+  if (currentUser && currentUser.profile.surgeryDate) {
+    var ms = new Date(currentUser.profile.surgeryDate).getTime() - Date.now();
+    weeksToSurgery = Math.max(1, Math.round(ms / (7 * 86400000)));
+  }
+
+  var goalWeight, achievable;
+  if (weeksToSurgery) {
+    var maxLossByDate = maxWeeklyLoss * weeksToSurgery;
+    var idealLoss = weight - idealWeight;
+    if (maxLossByDate >= idealLoss) {
+      goalWeight = idealWeight;       // can reach the ideal BMI in time
+      achievable = true;
+    } else {
+      goalWeight = weight - maxLossByDate; // best achievable by surgery date
+      achievable = false;
+    }
+  } else {
+    goalWeight = idealWeight;          // no date - show the ideal target
+    achievable = null;
+  }
+
+  goalWeight = Math.round(goalWeight * 2) / 2; // round to nearest 0.5 kg
+  var lossNeeded = Math.max(0, Math.round((weight - goalWeight) * 10) / 10);
+
+  return {
+    needsLoss: lossNeeded > 0,
+    idealBMI: idealBMI,
+    idealWeight: idealWeight,
+    goalWeight: goalWeight,
+    lossNeeded: lossNeeded,
+    achievable: achievable,
+    weeksToSurgery: weeksToSurgery,
+    maxWeeklyLoss: maxWeeklyLoss
+  };
+}
+
+function renderGoalWeightBanner(goal, dailyDeficit) {
+  var el = document.getElementById('goal-weight-banner');
+  if (!el) return;
+  if (!goal || !goal.needsLoss) { el.style.display = 'none'; return; }
+
+  var weeklyLoss = Math.max(0, (dailyDeficit || 0) * 7 / 7700);
+  var html = '<span class="jj-icon" data-jjicon="target" data-jjcolor="green" style="font-size:1.3em;vertical-align:-0.2em;"></span> ';
+  html += 'Your goal weight is <strong>' + goal.goalWeight.toFixed(1) + ' kg</strong> (BMI ' + goal.idealBMI + ') - about <strong>' + goal.lossNeeded.toFixed(1) + ' kg</strong> to lose.';
+
+  if (goal.weeksToSurgery && weeklyLoss > 0.05) {
+    var reachWeeks = Math.ceil(goal.lossNeeded / weeklyLoss);
+    var reachDate = new Date(Date.now() + reachWeeks * 7 * 86400000);
+    var dateStr = reachDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+    if (goal.achievable) {
+      html += ' At your current plan you should reach it around <strong>' + dateStr + '</strong> - well within your surgery timeline. You\'ve got this!';
+    } else {
+      html += ' That\'s the most you can realistically lose by your surgery date, and every kilo makes a real difference.';
+    }
+  } else if (!goal.weeksToSurgery) {
+    html += ' <span style="color:var(--text-muted);">Add your surgery date in My Account for a personalised timeline.</span>';
+  }
+
+  el.innerHTML = html;
+  el.style.display = 'block';
+  if (window.JJIcons) JJIcons.hydrate(el);
+}
+
 // ===== CALORIE CALCULATOR =====
 function calculateNutrition() {
   const weight = parseFloat(document.getElementById('calc-weight').value);
@@ -178,6 +265,12 @@ function calculateNutrition() {
     document.getElementById('protein-target').textContent = proteinTarget + 'g';
     document.getElementById('calorie-targets').style.display = 'block';
 
+    // Goal weight (drives the banner here and the Weight Tracker feedback)
+    var goal = computeGoalWeight(weight, height, bmi, tdee, minCal);
+    renderGoalWeightBanner(goal, tdee - calorieTarget);
+    currentUser.profile.goalWeight = goal.needsLoss ? goal.goalWeight : null;
+    currentUser.profile.goalBMI = goal.idealBMI;
+
     // Save updated profile
     currentUser.profile.weight = weight;
     currentUser.profile.height = height;
@@ -204,10 +297,10 @@ function logWeight() {
   saveUser();
   weightInput.value = '';
   showToast('Weight logged! ⚖️');
-  renderWeightHistory();
-  // Update calculator
+  // Update calculator first so the goal weight is current, then redraw history
   document.getElementById('calc-weight').value = weight;
   calculateNutrition();
+  renderWeightHistory();
 }
 
 function renderWeightHistory() {
@@ -236,6 +329,18 @@ function renderWeightHistory() {
     html += '<div class="alert ' + (diff <= 0 ? 'alert-success' : 'alert-info') + '" style="margin-top:var(--space-md);">';
     html += emoji + ' Total change: <strong>' + (diff > 0 ? '+' : '') + diff.toFixed(1) + 'kg</strong> since ' + formatDateShort(log[0].date);
     html += '</div>';
+  }
+
+  // Goal weight feedback
+  var goalW = currentUser.profile.goalWeight;
+  if (goalW) {
+    var latestW = log[log.length - 1].weight;
+    if (latestW <= goalW) {
+      html += '<div class="alert alert-success" style="margin-top:var(--space-md);">🎉 <strong>You\'ve reached your goal weight of ' + goalW.toFixed(1) + ' kg!</strong> Fantastic work, this puts you in a great position for surgery.</div>';
+    } else {
+      var toGo = Math.round((latestW - goalW) * 10) / 10;
+      html += '<div class="alert alert-info" style="margin-top:var(--space-md);">🎯 <strong>' + toGo.toFixed(1) + ' kg to go</strong> to reach your goal weight of ' + goalW.toFixed(1) + ' kg. Keep going, you\'re making real progress!</div>';
+    }
   }
 
   container.innerHTML = html;
