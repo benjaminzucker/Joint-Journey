@@ -499,8 +499,9 @@ function initAccount() {
   document.getElementById('account-exercise-text').textContent = 'Week ' + week + ' of ' + totalWeeks;
 
   const mindsetDone = (currentUser.progress.mindsetCompleted || []).length;
-  document.getElementById('account-mindset-progress').style.width = Math.round((mindsetDone / 6) * 100) + '%';
-  document.getElementById('account-mindset-text').textContent = mindsetDone + ' of 6 completed';
+  const mindsetTotal = (typeof MINDSET_MODULES !== 'undefined') ? MINDSET_MODULES.length : 6;
+  document.getElementById('account-mindset-progress').style.width = Math.round((mindsetDone / mindsetTotal) * 100) + '%';
+  document.getElementById('account-mindset-text').textContent = mindsetDone + ' of ' + mindsetTotal + ' completed';
 
   const readyDone = (currentUser.progress.gettingReadyViewed || []).length;
   document.getElementById('account-ready-progress').style.width = Math.round((readyDone / 6) * 100) + '%';

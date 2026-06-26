@@ -368,6 +368,148 @@ const MINDSET_MODULES = [
         <blockquote>"You didn't just survive the wait. You used it. You prepared. And now you're ready. Go and get your life back."</blockquote>
       </div>
     `
+  },
+  {
+    id: 'mental-rehearsal',
+    emoji: '🎬',
+    title: 'Mental Rehearsal: Training Your Brain',
+    subtitle: 'The technique elite athletes and surgeons use - and how it helps you',
+    content: `
+      <div class="mindset-article">
+        <h3>Your Brain Can Practise Without Moving a Muscle</h3>
+        <p>Here is one of the most powerful - and most underused - tools you have available to you before surgery. It's called <strong>mental rehearsal</strong>, and it's exactly what it sounds like: practising something in your mind, in vivid detail, before you do it for real.</p>
+
+        <p>This isn't positive thinking or wishful daydreaming. It's a trained skill backed by neuroscience.</p>
+
+        <h3>The Science: Imagining Movement Is Practising Movement</h3>
+        <p>When you vividly imagine performing a movement, your brain activates many of the <strong>same neural pathways</strong> that fire when you actually perform it. Your brain, in large part, doesn't distinguish between a movement performed and a movement vividly rehearsed.</p>
+
+        <p>This means that by rehearsing a movement in your mind, you are genuinely <strong>strengthening the brain's blueprint</strong> for that movement - priming the exact pathways you'll use when you do it for real.</p>
+
+        <div class="key-point">
+          <h4>🔑 Key Point</h4>
+          <p>Mental rehearsal physically primes your brain and body for the movements ahead. By the time you do them for real, they'll already feel familiar - because, in a very real sense, you've already done them.</p>
+        </div>
+
+        <h3>Who Uses This? The Best in the World</h3>
+        <ul>
+          <li><strong>Elite athletes</strong> rehearse races, routines and winning moments in vivid detail before they perform. Olympic teams employ specialists purely for this.</li>
+          <li><strong>Surgeons</strong> mentally rehearse complex operations step-by-step before they pick up an instrument. Your own surgeon may well do exactly this before your operation.</li>
+          <li><strong>Pilots, musicians and performers</strong> all use mental rehearsal to perform under pressure.</li>
+        </ul>
+        <p>If it's good enough to prepare Olympians and surgeons for the biggest moments of their careers, it's good enough to prepare you for your surgery and recovery.</p>
+
+        <h3>Why It Works So Well for Joint Replacement</h3>
+        <p>Mental rehearsal is perfectly suited to your situation because:</p>
+        <ul>
+          <li>It <strong>primes the movements</strong> you'll need after surgery, so they feel familiar and achievable on day one</li>
+          <li>It <strong>builds calm and confidence</strong> - rehearsing a calm, capable version of surgery day means that's the version your brain expects</li>
+          <li>It <strong>costs nothing and has no side effects</strong> - you can do it anywhere, any time, as often as you like</li>
+          <li>It keeps you <strong>mentally engaged</strong> in your recovery during the wait</li>
+        </ul>
+
+        <h3>The Two Viewpoints</h3>
+        <p>There are two ways to mentally rehearse, and both are useful:</p>
+        <h4>1. First-person ("through your own eyes")</h4>
+        <p>You imagine the scene as if you are living it - seeing what you'd see, feeling what you'd feel. This is powerful for rehearsing <strong>movements and physical sensations</strong>, like standing up or taking your first steps.</p>
+        <h4>2. Third-person ("watching yourself")</h4>
+        <p>You picture yourself from the outside, like watching yourself on film - calm, capable, moving well. This is great for rehearsing <strong>confidence and composure</strong>, like walking into the hospital feeling prepared.</p>
+
+        <div class="exercise-box">
+          <h4>🎬 Try This: Your First 60-Second Rehearsal</h4>
+          <p>Let's try it now, with something simple and familiar:</p>
+          <ol>
+            <li>Close your eyes and take three slow breaths.</li>
+            <li>Picture yourself <strong>making a cup of tea</strong> - somewhere familiar, your own kitchen.</li>
+            <li>See it in detail: the kettle, the steam, the sound of it boiling, the warmth of the mug in your hand, the first sip.</li>
+            <li>Make it <strong>vivid</strong> - the more senses you involve, the better it works.</li>
+          </ol>
+          <p>That's mental rehearsal. It's a skill - and like any skill, it gets stronger and more vivid the more you practise. In the next module, we'll put it to work rehearsing your recovery.</p>
+        </div>
+
+        <h3>How to Get the Most From It</h3>
+        <ul>
+          <li><strong>Make it vivid:</strong> involve all your senses - sights, sounds, textures, even smells</li>
+          <li><strong>Keep it realistic:</strong> rehearse calm, steady, achievable movements - not superhuman ones</li>
+          <li><strong>Practise little and often:</strong> a few minutes daily beats one long session</li>
+          <li><strong>Rehearse success:</strong> always picture it going <em>well</em> - that's the blueprint you're building</li>
+        </ul>
+
+        <blockquote>"The best athletes in the world have already won the race in their minds before the starting gun. You can walk into your surgery having already recovered well in yours."</blockquote>
+      </div>
+    `
+  },
+  {
+    id: 'rehearsing-recovery',
+    emoji: '🌄',
+    title: 'Rehearsing Your Recovery',
+    subtitle: 'Four guided rehearsals to prepare your mind and body',
+    content: `
+      <div class="mindset-article">
+        <h3>Putting Mental Rehearsal to Work</h3>
+        <p>Now that you understand <em>why</em> mental rehearsal works, let's use it. Below are four guided rehearsals designed specifically for your journey. You don't need to do all four at once - pick one, find a quiet few minutes, and practise it.</p>
+
+        <p>For each one: sit or lie comfortably, take three slow breaths to settle, then read through the scene and play it out in your mind as vividly as you can. Always picture it going <strong>well</strong>.</p>
+
+        <div class="exercise-box">
+          <h4>🏋️ Rehearsal 1: Your Exercises</h4>
+          <p>Pick one of your prehab exercises. Before you do it for real, rehearse it in your mind first:</p>
+          <ul>
+            <li>See yourself getting into position, calm and steady</li>
+            <li>Feel the muscle working - smooth, controlled, strong</li>
+            <li>Picture completing every repetition with good form</li>
+            <li>Notice the quiet satisfaction of finishing the set</li>
+          </ul>
+          <p>Rehearsing your exercises first makes the real movements feel familiar and primes the exact muscles you're about to use.</p>
+        </div>
+
+        <div class="exercise-box">
+          <h4>🚶 Rehearsal 2: Your First Steps After Surgery</h4>
+          <p>Soon after your operation, a physiotherapist will help you stand and take your first steps. Rehearse this now so it feels familiar when it happens:</p>
+          <ul>
+            <li>Picture yourself sitting on the edge of the bed, feeling ready</li>
+            <li>See yourself standing slowly and steadily, with support to hand</li>
+            <li>Feel yourself taking that first step, then another - careful, controlled, supported</li>
+            <li>Picture the calm encouragement of the team around you</li>
+            <li>Feel the quiet pride of those first steps on your new joint</li>
+          </ul>
+          <p>Patients who have rehearsed this often find the real thing feels less daunting - because their brain has already been there.</p>
+        </div>
+
+        <div class="exercise-box">
+          <h4>🌅 Rehearsal 3: Surgery-Day Morning</h4>
+          <p>Rehearse the morning of your surgery as a calm, prepared, in-control version of yourself:</p>
+          <ul>
+            <li>See yourself waking, having prepared everything the night before</li>
+            <li>Picture arriving at the hospital feeling ready - this is the day things get better</li>
+            <li>See yourself meeting the team, asking your questions, feeling looked after</li>
+            <li>Use the third-person view: watch yourself looking calm, capable and prepared</li>
+            <li>Picture taking a few slow breaths and feeling steady</li>
+          </ul>
+          <p>By rehearsing a calm surgery-day morning, you make calm the version your brain expects - and steps towards.</p>
+        </div>
+
+        <div class="exercise-box">
+          <h4>🎯 Rehearsal 4: Your Goal Moment</h4>
+          <p>This is the most powerful one. Choose <strong>one specific thing</strong> you're looking forward to doing after you've recovered - something concrete and personal:</p>
+          <ul>
+            <li>Walking the dog without pain</li>
+            <li>Playing on the floor with your grandchildren</li>
+            <li>Getting back out in the garden</li>
+            <li>Walking up the stairs with ease</li>
+            <li>A trip or a dance or a long-promised walk</li>
+          </ul>
+          <p>Now rehearse it in full, vivid detail - first-person, through your own eyes. See it, hear it, feel it. This is your destination. This is what all the work is for.</p>
+        </div>
+
+        <div class="key-point">
+          <h4>🔑 Make It a Daily Habit</h4>
+          <p>Mental rehearsal works best in <strong>short, regular doses</strong>. Just a few minutes a day is plenty. Many people find it helpful first thing in the morning, or in bed before sleep. Pick a time that suits you and make it part of your routine - the same way you do your exercises.</p>
+        </div>
+
+        <blockquote>"Rehearse the recovery you want. Picture it clearly, picture it often, and picture it going well. You're not just hoping for a good outcome - you're preparing your mind and body to create one."</blockquote>
+      </div>
+    `
   }
 ];
 
@@ -523,6 +665,26 @@ const DAILY_MINDSET_EXERCISES = [
     title: "Plan Something for After Surgery",
     instruction: "Book something or plan something for 3-6 months after your surgery date. A meal out, a visit to someone, a short trip. Nothing too ambitious, but something to look forward to. Having a specific, positive event in the diary gives your recovery a target. It's not wishful thinking - it's planning.",
     duration: "5 minutes"
+  },
+  {
+    title: "Mental Rehearsal: Standing Up Well",
+    instruction: "Close your eyes and rehearse standing up from a chair - calm, steady, controlled. See yourself shuffling to the edge, leaning forward, pushing up smoothly, standing tall and balanced. Picture it going perfectly. When you vividly imagine a movement, your brain fires the same pathways as actually doing it - so you're genuinely priming your body for it. Athletes and surgeons do exactly this before they perform.",
+    duration: "2 minutes"
+  },
+  {
+    title: "Mental Rehearsal: Your First Steps",
+    instruction: "Picture the first steps you'll take after surgery. See yourself standing with support, taking one careful step, then another - steady, supported, calm, with the team encouraging you. Picture it going well. Rehearsing this now means that when the moment comes, your brain has already been there and it feels familiar rather than daunting.",
+    duration: "2 minutes"
+  },
+  {
+    title: "Mental Rehearsal: Your Goal Moment",
+    instruction: "Choose one specific thing you can't wait to do once you've recovered - walking the dog, the stairs, the garden, playing with grandchildren. Now picture it in vivid, first-person detail: what you see, hear and feel. Hold it for a full minute. This is your destination, and rehearsing it keeps your brain locked onto what all the work is for.",
+    duration: "2 minutes"
+  },
+  {
+    title: "Mental Rehearsal: A Calm Surgery Day",
+    instruction: "Rehearse the morning of your surgery as a calm, prepared, capable version of yourself. Watch yourself - as if on film - arriving ready, meeting the team, asking your questions, breathing slowly and feeling steady. By rehearsing calm, you make calm the version your brain expects. This is the same technique elite performers use before the biggest moments.",
+    duration: "2 minutes"
   }
 ];
 
