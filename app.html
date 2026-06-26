@@ -381,19 +381,19 @@
             <span class="nav-label">My Joint Score</span>
           </button>
           <button class="nav-item" data-page="exercises" onclick="navigateTo('exercises')">
-            <span class="nav-icon jj-icon" data-jjicon="exercise"></span>
+            <span class="nav-icon jj-icon" data-jjicon="exercise" data-jjcolor="amber"></span>
             <span class="nav-label">Exercises</span>
           </button>
           <button class="nav-item" data-page="nutrition" onclick="navigateTo('nutrition')">
-            <span class="nav-icon jj-icon" data-jjicon="nutrition"></span>
+            <span class="nav-icon jj-icon" data-jjicon="nutrition" data-jjcolor="green"></span>
             <span class="nav-label">Nutrition</span>
           </button>
           <button class="nav-item" data-page="mindset" onclick="navigateTo('mindset')">
-            <span class="nav-icon jj-icon" data-jjicon="mindset"></span>
+            <span class="nav-icon jj-icon" data-jjicon="mindset" data-jjcolor="blue"></span>
             <span class="nav-label">Your Mindset</span>
           </button>
           <button class="nav-item" data-page="getting-ready" onclick="navigateTo('getting-ready')">
-            <span class="nav-icon jj-icon" data-jjicon="getting-ready"></span>
+            <span class="nav-icon jj-icon" data-jjicon="getting-ready" data-jjcolor="terracotta"></span>
             <span class="nav-label">Getting Ready</span>
           </button>
           <button class="nav-item" data-page="about" onclick="navigateTo('about')">
@@ -512,7 +512,7 @@
           <div class="grid grid-2 mb-xl">
             <div class="card">
               <div class="flex items-center gap-md mb-lg">
-                <span class="icon-emoji jj-icon" data-jjicon="exercise"></span>
+                <span class="icon-emoji jj-icon" data-jjicon="exercise" data-jjcolor="amber"></span>
                 <h3 class="mb-0">Today's Exercises</h3>
               </div>
               <div id="dashboard-exercises-preview"></div>
@@ -520,7 +520,7 @@
             </div>
             <div class="card">
               <div class="flex items-center gap-md mb-lg">
-                <span class="icon-emoji jj-icon" data-jjicon="mindset"></span>
+                <span class="icon-emoji jj-icon" data-jjicon="mindset" data-jjcolor="blue"></span>
                 <h3 class="mb-0">Daily Check-In</h3>
               </div>
               <p>How are you feeling today?</p>
@@ -553,7 +553,7 @@
         <!-- ===== EXERCISES PAGE ===== -->
         <div id="page-exercises" class="app-page" style="display:none;">
           <div class="page-header">
-            <h1 class="page-title"><span class="jj-icon" data-jjicon="exercise"></span>Your Exercise Programme</h1>
+            <h1 class="page-title"><span class="jj-icon" data-jjicon="exercise" data-jjcolor="amber"></span>Your Exercise Programme</h1>
             <p class="page-subtitle" id="exercise-programme-type"></p>
           </div>
 
@@ -605,7 +605,7 @@
         <!-- ===== NUTRITION PAGE ===== -->
         <div id="page-nutrition" class="app-page" style="display:none;">
           <div class="page-header">
-            <h1 class="page-title"><span class="jj-icon" data-jjicon="nutrition"></span>Nutrition</h1>
+            <h1 class="page-title"><span class="jj-icon" data-jjicon="nutrition" data-jjcolor="green"></span>Nutrition</h1>
             <p class="page-subtitle">Eat well, feel well, prepare well</p>
           </div>
 
@@ -752,7 +752,7 @@
         <!-- ===== MINDSET PAGE ===== -->
         <div id="page-mindset" class="app-page" style="display:none;">
           <div class="page-header">
-            <h1 class="page-title"><span class="jj-icon" data-jjicon="mindset"></span>Your Mindset</h1>
+            <h1 class="page-title"><span class="jj-icon" data-jjicon="mindset" data-jjcolor="blue"></span>Your Mindset</h1>
             <p class="page-subtitle">A positive outlook is your greatest asset</p>
           </div>
 
@@ -782,38 +782,38 @@
         <!-- ===== GETTING READY PAGE ===== -->
         <div id="page-getting-ready" class="app-page" style="display:none;">
           <div class="page-header">
-            <h1 class="page-title"><span class="jj-icon" data-jjicon="getting-ready"></span>Getting Ready</h1>
+            <h1 class="page-title"><span class="jj-icon" data-jjicon="getting-ready" data-jjcolor="terracotta"></span>Getting Ready</h1>
             <p class="page-subtitle">Practical preparation for your surgery</p>
           </div>
 
           <div class="grid grid-2 mb-xl">
             <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('hospital-bag')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="bag"></span>
+              <span class="icon-emoji-lg jj-icon" data-jjicon="bag" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Hospital Bag Checklist</h3>
               <p>Everything you need to pack - with tick-off list</p>
             </div>
             <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('home-prep')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="home"></span>
+              <span class="icon-emoji-lg jj-icon" data-jjicon="home" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Preparing Your Home</h3>
               <p>Make your home recovery-ready before you go in</p>
             </div>
             <div class="card" style="cursor:pointer;" id="hip-precautions-card" onclick="showGettingReadySection('hip-precautions')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="warning"></span>
+              <span class="icon-emoji-lg jj-icon" data-jjicon="warning" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Hip Precautions</h3>
               <p>Important movements to avoid after hip replacement</p>
             </div>
             <div class="card" style="cursor:pointer;" id="knee-guide-card" onclick="showGettingReadySection('knee-guide')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="knee"></span>
+              <span class="icon-emoji-lg jj-icon" data-jjicon="knee" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Knee Replacement Guide</h3>
               <p>What to expect and how to manage after knee surgery</p>
             </div>
             <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('surgeon-questions')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="question"></span>
+              <span class="icon-emoji-lg jj-icon" data-jjicon="question" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Questions for Your Surgeon</h3>
               <p>Important questions you might want to ask</p>
             </div>
             <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('surgery-day')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="clipboard"></span>
+              <span class="icon-emoji-lg jj-icon" data-jjicon="clipboard" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">What Happens on Surgery Day</h3>
               <p>A step-by-step guide to the day itself</p>
             </div>

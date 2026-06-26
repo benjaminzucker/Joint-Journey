@@ -28,7 +28,18 @@
     'warning':       '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h16.9a2 2 0 0 0 1.7 -3L13.7 3.9a2 2 0 0 0 -3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>', // warning triangle
     'knee':          '<path d="M17.6 9.3a2.6 2.6 0 1 1 1.9 -4.5 2.6 2.6 0 1 1 -3.7 3.4l-7 7a2.6 2.6 0 1 1 -5 1.4 2.6 2.6 0 1 1 1.4 -5z"/>', // bone (knee/joint)
     'question':      '<circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a3 3 0 0 1 4.6 2.5c0 1.4 -1.4 1.9 -2 2.5"/><line x1="11.8" y1="17" x2="11.81" y2="17"/>', // question in circle
-    'clipboard':     '<rect x="9" y="3" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v13a2 2 0 0 1 -2 2H6a2 2 0 0 1 -2 -2V6a2 2 0 0 1 2 -2h2"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/>' // clipboard list
+    'clipboard':     '<rect x="9" y="3" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v13a2 2 0 0 1 -2 2H6a2 2 0 0 1 -2 -2V6a2 2 0 0 1 2 -2h2"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/>', // clipboard list
+
+    // Onboarding + decorative
+    'joint':         '<path d="M17.6 9.3a2.6 2.6 0 1 1 1.9 -4.5 2.6 2.6 0 1 1 -3.7 3.4l-7 7a2.6 2.6 0 1 1 -5 1.4 2.6 2.6 0 1 1 1.4 -5z"/>', // bone (alias of knee)
+    'arrows':        '<polyline points="7 8 3 12 7 16"/><polyline points="17 8 21 12 17 16"/><line x1="3" y1="12" x2="21" y2="12"/>', // left-right (side)
+    'calendar':      '<rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/>', // calendar
+    'ruler':         '<rect x="7" y="2" width="10" height="20" rx="2"/><line x1="7" y1="6.5" x2="11" y2="6.5"/><line x1="7" y1="10.5" x2="11" y2="10.5"/><line x1="7" y1="14.5" x2="11" y2="14.5"/><line x1="7" y1="18.5" x2="11" y2="18.5"/>', // ruler / measurements
+    'star':          '<polygon points="12 2.5 15 8.6 21.7 9.6 16.8 14.3 18 21 12 17.8 6 21 7.2 14.3 2.3 9.6 9 8.6"/>', // star / goal
+    'weight':        '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 8a3 3 0 0 1 6 0"/><line x1="12" y1="8" x2="13.4" y2="10"/>', // scales / weight tracker
+    'book':          '<path d="M5 4a2 2 0 0 1 2 -2h11a1 1 0 0 1 1 1v17a1 1 0 0 1 -1 1H7a2 2 0 0 1 -2 -2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/>', // book / modules
+    'lightbulb':     '<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0 -3.5 10.9c.6 .5 1 1.2 1 2h5c0 -.8 .4 -1.5 1 -2A6 6 0 0 0 12 3z"/>', // tips
+    'chat':          '<path d="M21 11.5a8.4 8.4 0 0 1 -9 8.4 9 9 0 0 1 -3.9 -.8L3 21l1.9 -4.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>' // feedback bubble
   };
 
   function svg(inner) {
@@ -52,15 +63,24 @@
   function injectStyles() {
     if (document.getElementById('jj-icon-styles')) return;
     var css =
+      // Pillar / accent palette (override-able via CSS variables)
+      ':root{--jj-green:#2f9e6f;--jj-amber:#e08a1e;--jj-blue:#2f7fb5;--jj-terracotta:#c4654a;--jj-neutral:#6b7280}' +
       '.jj-icon{display:inline-flex;align-items:center;justify-content:center;line-height:0;vertical-align:-0.12em;color:var(--green-700)}' +
       '.jj-icon svg{width:1em;height:1em;display:block}' +
-      '.nav-icon.jj-icon{color:var(--green-600);font-size:22px}' +
-      '.nav-item:hover .nav-icon.jj-icon,.nav-item.active .nav-icon.jj-icon{color:currentColor}' +
+      '.nav-icon.jj-icon{color:var(--jj-neutral);font-size:22px}' +
       '.page-title .jj-icon{margin-right:.35em;font-size:.95em}' +
       '.badge .jj-icon{margin-right:.4em;font-size:1.05em}' +
       '.hero-card-icon.jj-icon{font-size:40px;margin-bottom:var(--space-sm)}' +
       '.icon-emoji.jj-icon{font-size:28px}' +
-      '.icon-emoji-lg.jj-icon{font-size:44px}';
+      '.icon-emoji-lg.jj-icon{font-size:44px}' +
+      // Colour tints (placed last so they win over the defaults above)
+      '.jj-icon[data-jjcolor="green"]{color:var(--jj-green)}' +
+      '.jj-icon[data-jjcolor="amber"]{color:var(--jj-amber)}' +
+      '.jj-icon[data-jjcolor="blue"]{color:var(--jj-blue)}' +
+      '.jj-icon[data-jjcolor="terracotta"]{color:var(--jj-terracotta)}' +
+      '.jj-icon[data-jjcolor="neutral"]{color:var(--jj-neutral)}' +
+      // Keep the icon colour on hover/active too (don't wash it out)
+      '.nav-item.active .nav-icon.jj-icon[data-jjcolor],.nav-item:hover .nav-icon.jj-icon[data-jjcolor]{filter:saturate(1.15)}';
     var style = document.createElement('style');
     style.id = 'jj-icon-styles';
     style.textContent = css;
