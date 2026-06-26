@@ -137,8 +137,24 @@
 .nav-icon {
   font-size: 22px;
   width: 28px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   flex-shrink: 0;
+  color: var(--green-600);
+}
+
+.nav-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.nav-item:hover .nav-icon,
+.nav-item.active .nav-icon {
+  color: currentColor;
 }
 
 .nav-label {

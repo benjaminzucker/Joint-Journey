@@ -10,6 +10,49 @@
   <title>Joint Journey - Prepare for Your Joint Replacement</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/landing.css">
+  <style>
+    /* Hero polish: trust strip, pillar icons, mountain watermark, badge icons */
+    .hero { position: relative; overflow: hidden; }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-watermark {
+      position: absolute;
+      right: -60px;
+      bottom: -40px;
+      width: 520px;
+      max-width: 55%;
+      color: var(--green-900);
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-trust {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-lg) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+    }
+    .hero-trust li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--green-800);
+    }
+    .hero-trust svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--green-600); }
+    .hero-card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-700);
+      margin-bottom: var(--space-sm);
+    }
+    .hero-card-icon svg { width: 40px; height: 40px; }
+    .badge .badge-icon { width: 16px; height: 16px; margin-right: 6px; flex-shrink: 0; }
+    .badge { display: inline-flex; align-items: center; }
+  </style>
 </head>
 <body>
 
@@ -34,6 +77,7 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
+    <svg class="hero-watermark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="currentColor"/></svg>
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">
@@ -56,22 +100,26 @@
           </a>
           <a href="#how-it-works" class="btn btn-secondary btn-lg">Learn More</a>
         </div>
-        <p class="hero-reassurance">No payment required. No commitment. Just preparation.</p>
+        <ul class="hero-trust" aria-label="Why Joint Journey">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Built on clinical evidence</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>For hip &amp; knee replacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Exercise · Nutrition · Mindset</li>
+        </ul>
       </div>
       <div class="hero-visual">
         <div class="hero-card hero-card-1">
-          <span class="icon-emoji-lg">🚶‍♂️</span>
-          <h4>Exercise Programme</h4>
+          <span class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+          <h4>Move &amp; Strengthen</h4>
           <p>12-week functional exercises designed for your specific joint</p>
         </div>
         <div class="hero-card hero-card-2">
-          <span class="icon-emoji-lg">🍳</span>
-          <h4>Nutrition & Recipes</h4>
+          <span class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 22c2-2 4-5 7-7"/></svg></span>
+          <h4>Eat Well</h4>
           <p>Calorie calculator, high-protein recipes, and shopping lists</p>
         </div>
         <div class="hero-card hero-card-3">
-          <span class="icon-emoji-lg">💚</span>
-          <h4>Mindset Support</h4>
+          <span class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1.1-1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+          <h4>Prepare Your Mind</h4>
           <p>Build confidence, manage pain expectations, stay positive</p>
         </div>
       </div>
@@ -127,7 +175,7 @@
       <!-- Feature 1: Exercise -->
       <div class="feature-row">
         <div class="feature-text">
-          <span class="badge badge-green mb-md">💪 Exercise Programme</span>
+          <span class="badge badge-green mb-md"><svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Exercise Programme</span>
           <h3>Functional Exercises - No Equipment Needed</h3>
           <p>Our 12-week progressive programme focuses on the movements that matter most: getting up from a chair, climbing stairs, walking confidently, and building the strength your new joint needs.</p>
           <ul class="feature-list">
@@ -170,7 +218,7 @@
       <!-- Feature 2: Nutrition -->
       <div class="feature-row feature-row-reverse">
         <div class="feature-text">
-          <span class="badge badge-green mb-md">🍳 Nutrition</span>
+          <span class="badge badge-green mb-md"><svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 22c2-2 4-5 7-7"/></svg>Nutrition</span>
           <h3>Eat Well, Lose Weight If You Need To</h3>
           <p>Being a healthy weight makes surgery safer and recovery easier. We'll calculate exactly what you need, give you tasty recipes, and even build your shopping list.</p>
           <ul class="feature-list">
@@ -211,7 +259,7 @@
       <!-- Feature 3: Mindset -->
       <div class="feature-row">
         <div class="feature-text">
-          <span class="badge badge-green mb-md">💚 Your Mindset</span>
+          <span class="badge badge-green mb-md"><svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1.1-1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>Your Mindset</span>
           <h3>A Positive Outlook Is Your Greatest Asset</h3>
           <p>Research consistently shows that patients who go into surgery feeling positive, prepared, and in control have the best outcomes. We'll help you build that confidence.</p>
           <ul class="feature-list">
@@ -250,7 +298,7 @@
       <!-- Feature 4: Getting Ready -->
       <div class="feature-row feature-row-reverse">
         <div class="feature-text">
-          <span class="badge badge-green mb-md">🏥 Getting Ready</span>
+          <span class="badge badge-green mb-md"><svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="9.5" y1="13.5" x2="14.5" y2="13.5"/></svg>Getting Ready</span>
           <h3>Practical Preparation for Surgery Day</h3>
           <p>Know exactly what to expect, what to pack, how to prepare your home, and what questions to ask your surgeon.</p>
           <ul class="feature-list">
