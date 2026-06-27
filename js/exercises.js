@@ -128,15 +128,12 @@ function renderExerciseSession() {
 
   container.innerHTML = html;
 
-  // Show celebration if all complete
+  // Show celebration if all complete. NB: confetti is fired from toggleExercise()
+  // at the moment the final exercise is ticked - never from this passive render
+  // (which runs on every page open / week switch).
   const completeSection = document.getElementById('exercise-complete-section');
   const allDone = completedCount === exercises.length && exercises.length > 0;
   completeSection.style.display = allDone ? 'block' : 'none';
-  // Fire confetti only on the transition into "all complete" (not on every render)
-  if (allDone && !window._jjSessionWasComplete && window.JJEffects) {
-    JJEffects.confettiFromElement(completeSection, { count: 110 });
-  }
-  window._jjSessionWasComplete = allDone;
 }
 
 function toggleExercise(exerciseId) {
@@ -148,6 +145,11 @@ function toggleExercise(exerciseId) {
 
   const list = currentUser.progress.exercisesCompleted[today];
   const index = list.indexOf(exerciseId);
+
+  // Was the session already complete before this tap? (used to fire confetti
+  // only on the transition into "all complete", not when toggling an already-done set)
+  const exercisesForWeek = getExercisesForWeek(currentUser.progress.currentWeek || 1);
+  const wasComplete = exercisesForWeek.length > 0 && exercisesForWeek.every(ex => list.includes(ex.id));
 
   if (index > -1) {
     list.splice(index, 1);
@@ -169,10 +171,15 @@ function toggleExercise(exerciseId) {
   saveUser();
   renderExerciseSession();
 
-  // Check if all exercises completed
+  // Check if all exercises completed - celebrate only on the transition into
+  // "all complete" (i.e. this tap finished the session), never on a passive render.
   const exercises = getExercisesForWeek(currentUser.progress.currentWeek || 1);
   const allDone = exercises.every(ex => list.includes(ex.id));
-  if (allDone) {
+  if (allDone && !wasComplete) {
     showToast('🎉 Session complete! You\'re doing brilliantly!');
+    const completeSection = document.getElementById('exercise-complete-section');
+    if (window.JJEffects && completeSection) {
+      JJEffects.confettiFromElement(completeSection, { count: 110 });
+    }
   }
 }

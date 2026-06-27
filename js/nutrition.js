@@ -298,6 +298,10 @@ function logWeight() {
     return;
   }
   const today = new Date().toISOString().split('T')[0];
+  // Capture the most recent previous weight (before this entry) to detect crossings
+  var prevLog = (currentUser.progress.weightLog || []).filter(e => e.date !== today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+  var prevWeight = prevLog.length ? prevLog[prevLog.length - 1].weight : null;
   // Remove existing entry for today
   currentUser.progress.weightLog = currentUser.progress.weightLog.filter(e => e.date !== today);
   currentUser.progress.weightLog.push({ date: today, weight: weight });
@@ -309,6 +313,15 @@ function logWeight() {
   document.getElementById('calc-weight').value = weight;
   calculateNutrition();
   renderWeightHistory();
+
+  // Celebrate ONLY the moment the goal is reached: this newly logged weight is
+  // at/below goal, and the previous weight was above it (or there was none).
+  var goalW = currentUser.profile.goalWeight;
+  if (goalW && weight <= goalW && (prevWeight == null || prevWeight > goalW)) {
+    if (window.JJEffects) {
+      setTimeout(function () { JJEffects.confetti({ count: 120 }); }, 150);
+    }
+  }
 }
 
 function renderWeightHistory() {
@@ -345,13 +358,9 @@ function renderWeightHistory() {
     var latestW = log[log.length - 1].weight;
     if (latestW <= goalW) {
       html += '<div class="alert alert-success" style="margin-top:var(--space-md);">🎉 <strong>You\'ve reached your goal weight of ' + goalW.toFixed(1) + ' kg!</strong> Fantastic work, this puts you in a great position for surgery.</div>';
-      // Celebrate once per session when the goal is reached
-      if (window.JJEffects && !window._jjGoalCelebrated) {
-        window._jjGoalCelebrated = true;
-        setTimeout(function () { JJEffects.confetti({ count: 120 }); }, 150);
-      }
+      // NB: confetti is fired from logWeight() at the moment of crossing the goal,
+      // never from this passive render (which runs on every page open).
     } else {
-      window._jjGoalCelebrated = false; // allow re-celebration if they dip back under later
       var toGo = Math.round((latestW - goalW) * 10) / 10;
       html += '<div class="alert alert-info" style="margin-top:var(--space-md);">🎯 <strong>' + toGo.toFixed(1) + ' kg to go</strong> to reach your goal weight of ' + goalW.toFixed(1) + ' kg. Keep going, you\'re making real progress!</div>';
     }

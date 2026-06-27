@@ -629,48 +629,22 @@ function renderMountainJourney() {
     return d;
   }
 
-  // If no surgery date, show prompt to set one (marker rests at base camp)
-  if (!currentUser.profile.surgeryDate) {
-    const fullRidge = ridgeString(RIDGE.length - 1);
-    const staticSvg = `
-      <svg viewBox="0 0 100 100" class="mountain-svg" aria-label="Mountain journey - set your surgery date to track progress">
-        <defs>
-          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#e0f2fe"/>
-            <stop offset="100%" stop-color="#f0fdf4"/>
-          </linearGradient>
-        </defs>
-        ${logoMountain()}
-        <path d="${fullRidge}" stroke="#475953" stroke-width="0.7" stroke-dasharray="2,1.5" fill="none" opacity="0.35"/>
-        <circle cx="8" cy="84" r="3.4" fill="#475953" stroke="white" stroke-width="1.4"/>
-        <circle cx="8" cy="84" r="1.4" fill="white"/>
-        <text x="4" y="93" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Start</text>
-        <text x="64" y="24" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Surgery</text>
-      </svg>
-    `;
-    container.innerHTML = `
-      <div class="mountain-journey-card">
-        <h4 class="mountain-title">Your Journey</h4>
-        ${staticSvg}
-        <p class="mountain-days" style="margin-top: var(--space-md);">
-          <strong>Set your surgery date</strong> to see your journey progress.
-        </p>
-        <p style="font-size: var(--font-size-sm); color: var(--text-muted); text-align: center; margin-top: var(--space-xs);">
-          If you don't know the exact date, just put a date in keeping with the current waiting list. This will help you reach your goals in time.
-        </p>
-        <button class="btn btn-primary btn-sm btn-block" style="margin-top: var(--space-md);" onclick="navigateTo('account')">Set Surgery Date</button>
-      </div>
-    `;
-    return;
-  }
-  
+  // ----- Distance & progress -----
+  // Frame of reference is the day the user joined (createdAt). The mountain
+  // "distance" is the span from joining to surgery; if no surgery date is set
+  // yet, it defaults to 24 weeks (168 days). Moving the surgery date therefore
+  // rescales the climb against this fixed start point.
+  const DEFAULT_DAYS = 168; // 24 weeks
   const createdAt = new Date(currentUser.createdAt);
-  const surgeryDate = new Date(currentUser.profile.surgeryDate);
   const today = new Date();
-  
-  const totalDays = Math.max(1, Math.ceil((surgeryDate - createdAt) / 86400000));
-  const elapsedDays = Math.ceil((today - createdAt) / 86400000);
-  const daysLeft = Math.max(0, Math.ceil((surgeryDate - today) / 86400000));
+  const hasDate = !!currentUser.profile.surgeryDate;
+  const surgeryDate = hasDate ? new Date(currentUser.profile.surgeryDate) : null;
+
+  const elapsedDays = Math.max(0, Math.ceil((today - createdAt) / 86400000));
+  const totalDays = hasDate
+    ? Math.max(1, Math.ceil((surgeryDate - createdAt) / 86400000))
+    : DEFAULT_DAYS;
+  const daysLeft = hasDate ? Math.max(0, Math.ceil((surgeryDate - today) / 86400000)) : null;
   let progress = Math.min(1, Math.max(0, elapsedDays / totalDays));
 
   // Find marker position along the logo's ridge
@@ -684,14 +658,14 @@ function renderMountainJourney() {
   const fullRidge = ridgeString(RIDGE.length - 1);
   const walkedRidge = ridgeString(pathIndex, dotX, dotY);
 
-  // Celebrate reaching the summit (surgery day) once per session
-  if (progress >= 1) {
-    if (window.JJEffects && !window._jjSummitCelebrated) {
-      window._jjSummitCelebrated = true;
+  // Celebrate reaching the summit (surgery day) once ever - persisted to the
+  // profile so a reload after surgery day never re-triggers it.
+  if (hasDate && daysLeft === 0 && !currentUser.progress.summitCelebrated) {
+    currentUser.progress.summitCelebrated = true;
+    saveUser();
+    if (window.JJEffects) {
       setTimeout(function () { JJEffects.confetti({ count: 130 }); }, 250);
     }
-  } else {
-    window._jjSummitCelebrated = false;
   }
 
   const svg = `
@@ -714,10 +688,28 @@ function renderMountainJourney() {
       <circle cx="${dotX}" cy="${dotY}" r="1.4" fill="white"/>
 
       <text x="4" y="93" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Start</text>
-      <text x="64" y="24" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Surgery</text>
+      <text x="64" y="24" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">${hasDate ? 'Surgery' : 'Goal'}</text>
     </svg>
   `;
-  
+
+  // ----- Caption -----
+  if (!hasDate) {
+    container.innerHTML = `
+      <div class="mountain-journey-card">
+        <h4 class="mountain-title">Your Journey</h4>
+        ${svg}
+        <p class="mountain-days" style="margin-top: var(--space-md);">
+          <strong>Set your surgery date</strong> to see your journey progress.
+        </p>
+        <p style="font-size: var(--font-size-sm); color: var(--text-muted); text-align: center; margin-top: var(--space-xs);">
+          If you don't know the exact date, just put a date in keeping with the current waiting list. This will help you reach your goals in time.
+        </p>
+        <button class="btn btn-primary btn-sm btn-block" style="margin-top: var(--space-md);" onclick="navigateTo('account')">Set Surgery Date</button>
+      </div>
+    `;
+    return;
+  }
+
   let daysText = '';
   if (daysLeft > 0) {
     daysText = '<strong>' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + '</strong> until surgery - ' + Math.round(progress * 100) + '% of your journey complete';
@@ -726,7 +718,7 @@ function renderMountainJourney() {
   } else {
     daysText = 'Your surgery was <strong>' + Math.abs(daysLeft) + ' day' + (Math.abs(daysLeft) !== 1 ? 's' : '') + ' ago</strong> - well done for preparing!';
   }
-  
+
   container.innerHTML = `
     <div class="mountain-journey-card">
       <h4 class="mountain-title">Your Journey</h4>
