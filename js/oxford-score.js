@@ -593,8 +593,45 @@ function renderMountainJourney() {
   if (!container || !currentUser) return;
   container.style.display = 'block';
   
-  // If no surgery date, show prompt to set one
+  // The journey graphic mirrors the Joint Journey logo: a two-peaked mountain
+  // with a flag planted on the summit. The marker climbs the logo's own ridge.
+  // Logo path (48-space): M4 42 L20 10 L24 18 L30 8 L46 42 -> scaled into 100-space below.
+  // Climbing ridge waypoints, base camp -> lower peak -> saddle -> summit (flag).
+  const RIDGE = [
+    { x: 8,  y: 84 },  // base camp (start)
+    { x: 16, y: 68 },
+    { x: 24, y: 52 },
+    { x: 32, y: 36 },
+    { x: 40, y: 20 },  // lower peak
+    { x: 48, y: 36 },  // saddle
+    { x: 54, y: 26 },
+    { x: 60, y: 16 }   // summit (flag)
+  ];
+  const MOUNTAIN_FILL = 'M 8 84 L 40 20 L 48 36 L 60 16 L 92 84 Z';
+  const MOUNTAIN_OUTLINE = 'M 8 84 L 40 20 L 48 36 L 60 16 L 92 84';
+
+  // Shared logo backdrop: silhouette + outline (echoing the logo's stroked style) + amber summit flag.
+  function logoMountain() {
+    return `
+      <rect width="100" height="100" fill="url(#skyGrad)" rx="4"/>
+      <path d="${MOUNTAIN_FILL}" fill="#475953" opacity="0.12"/>
+      <path d="${MOUNTAIN_OUTLINE}" fill="none" stroke="#475953" stroke-width="1.2" stroke-linejoin="round" opacity="0.5"/>
+      <!-- Amber summit flag (the goal) -->
+      <line x1="60" y1="16" x2="60" y2="4" stroke="#475953" stroke-width="0.9" stroke-linecap="round"/>
+      <path d="M 60 4 L 76 9 L 60 13 Z" fill="#FF8F00"/>
+    `;
+  }
+
+  function ridgeString(upToIndex, endX, endY) {
+    let d = 'M ' + RIDGE[0].x + ' ' + RIDGE[0].y;
+    for (let i = 1; i <= upToIndex; i++) d += ' L ' + RIDGE[i].x + ' ' + RIDGE[i].y;
+    if (endX != null) d += ' L ' + endX + ' ' + endY;
+    return d;
+  }
+
+  // If no surgery date, show prompt to set one (marker rests at base camp)
   if (!currentUser.profile.surgeryDate) {
+    const fullRidge = ridgeString(RIDGE.length - 1);
     const staticSvg = `
       <svg viewBox="0 0 100 100" class="mountain-svg" aria-label="Mountain journey - set your surgery date to track progress">
         <defs>
@@ -603,17 +640,12 @@ function renderMountainJourney() {
             <stop offset="100%" stop-color="#f0fdf4"/>
           </linearGradient>
         </defs>
-        <rect width="100" height="100" fill="url(#skyGrad)" rx="4"/>
-        <path d="M 0 100 L 0 90 L 15 75 L 35 55 L 50 35 L 65 20 L 80 12 L 92 8 L 95 8 L 100 12 L 100 100 Z" fill="#475953" opacity="0.12"/>
-        <path d="M 0 100 L 0 92 L 10 82 L 25 68 L 40 52 L 55 38 L 70 22 L 85 13 L 95 10 L 100 14 L 100 100 Z" fill="#475953" opacity="0.08"/>
-        <path d="M 88 10 L 92 8 L 95 8 L 98 10 L 95 11 L 92 10 Z" fill="white" opacity="0.7"/>
-        <line x1="95" y1="8" x2="95" y2="3" stroke="#475953" stroke-width="0.5"/>
-        <path d="M 95 3 L 99 4.5 L 95 6" fill="#ef4444" opacity="0.8"/>
-        <path d="M 5 85 L 12 78 L 20 70 L 28 60 L 36 52 L 44 42 L 52 34 L 60 26 L 68 20 L 76 15 L 84 11 L 92 8 L 95 8" stroke="#475953" stroke-width="0.5" stroke-dasharray="2,1.5" fill="none" opacity="0.3"/>
-        <circle cx="5" cy="85" r="4" fill="#ef4444" stroke="white" stroke-width="1.5"/>
-        <circle cx="5" cy="85" r="1.8" fill="white"/>
-        <text x="5" y="95" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Start</text>
-        <text x="82" y="5" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Surgery</text>
+        ${logoMountain()}
+        <path d="${fullRidge}" stroke="#475953" stroke-width="0.7" stroke-dasharray="2,1.5" fill="none" opacity="0.35"/>
+        <circle cx="8" cy="84" r="3.4" fill="#475953" stroke="white" stroke-width="1.4"/>
+        <circle cx="8" cy="84" r="1.4" fill="white"/>
+        <text x="4" y="93" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Start</text>
+        <text x="64" y="24" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Surgery</text>
       </svg>
     `;
     container.innerHTML = `
@@ -640,85 +672,49 @@ function renderMountainJourney() {
   const elapsedDays = Math.ceil((today - createdAt) / 86400000);
   const daysLeft = Math.max(0, Math.ceil((surgeryDate - today) / 86400000));
   let progress = Math.min(1, Math.max(0, elapsedDays / totalDays));
-  
-  // Mountain path coordinates (left to right, rising to summit)
-  // The path goes: start(low) → gentle rise → steep climb → summit
-  const pathPoints = [
-    { x: 5, y: 85 },
-    { x: 12, y: 78 },
-    { x: 20, y: 70 },
-    { x: 28, y: 60 },
-    { x: 36, y: 52 },
-    { x: 44, y: 42 },
-    { x: 52, y: 34 },
-    { x: 60, y: 26 },
-    { x: 68, y: 20 },
-    { x: 76, y: 15 },
-    { x: 84, y: 11 },
-    { x: 92, y: 8 },
-    { x: 95, y: 8 }
-  ];
-  
-  // Find dot position along the path
-  const pathIndex = Math.min(pathPoints.length - 1, Math.floor(progress * (pathPoints.length - 1)));
-  const pathFraction = (progress * (pathPoints.length - 1)) - pathIndex;
-  const nextIndex = Math.min(pathPoints.length - 1, pathIndex + 1);
-  
-  const dotX = pathPoints[pathIndex].x + (pathPoints[nextIndex].x - pathPoints[pathIndex].x) * pathFraction;
-  const dotY = pathPoints[pathIndex].y + (pathPoints[nextIndex].y - pathPoints[pathIndex].y) * pathFraction;
-  
-  // Build path string
-  let pathD = 'M ' + pathPoints[0].x + ' ' + pathPoints[0].y;
-  for (let i = 1; i < pathPoints.length; i++) {
-    pathD += ' L ' + pathPoints[i].x + ' ' + pathPoints[i].y;
+
+  // Find marker position along the logo's ridge
+  const pathIndex = Math.min(RIDGE.length - 1, Math.floor(progress * (RIDGE.length - 1)));
+  const pathFraction = (progress * (RIDGE.length - 1)) - pathIndex;
+  const nextIndex = Math.min(RIDGE.length - 1, pathIndex + 1);
+
+  const dotX = RIDGE[pathIndex].x + (RIDGE[nextIndex].x - RIDGE[pathIndex].x) * pathFraction;
+  const dotY = RIDGE[pathIndex].y + (RIDGE[nextIndex].y - RIDGE[pathIndex].y) * pathFraction;
+
+  const fullRidge = ridgeString(RIDGE.length - 1);
+  const walkedRidge = ridgeString(pathIndex, dotX, dotY);
+
+  // Celebrate reaching the summit (surgery day) once per session
+  if (progress >= 1) {
+    if (window.JJEffects && !window._jjSummitCelebrated) {
+      window._jjSummitCelebrated = true;
+      setTimeout(function () { JJEffects.confetti({ count: 130 }); }, 250);
+    }
+  } else {
+    window._jjSummitCelebrated = false;
   }
-  
-  // Walked path (up to current position)
-  let walkedD = 'M ' + pathPoints[0].x + ' ' + pathPoints[0].y;
-  for (let i = 1; i <= pathIndex; i++) {
-    walkedD += ' L ' + pathPoints[i].x + ' ' + pathPoints[i].y;
-  }
-  walkedD += ' L ' + dotX + ' ' + dotY;
-  
+
   const svg = `
     <svg viewBox="0 0 100 100" class="mountain-svg" aria-label="Your journey progress towards surgery">
-      <!-- Sky gradient -->
       <defs>
         <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#e0f2fe"/>
           <stop offset="100%" stop-color="#f0fdf4"/>
         </linearGradient>
       </defs>
-      <rect width="100" height="100" fill="url(#skyGrad)" rx="4"/>
-      
-      <!-- Mountain shape -->
-      <path d="M 0 100 L 0 90 L 15 75 L 35 55 L 50 35 L 65 20 L 80 12 L 92 8 L 95 8 L 100 12 L 100 100 Z" 
-            fill="#475953" opacity="0.12"/>
-      <path d="M 0 100 L 0 92 L 10 82 L 25 68 L 40 52 L 55 38 L 70 22 L 85 13 L 95 10 L 100 14 L 100 100 Z" 
-            fill="#475953" opacity="0.08"/>
-      
-      <!-- Snow cap -->
-      <path d="M 88 10 L 92 8 L 95 8 L 98 10 L 95 11 L 92 10 Z" fill="white" opacity="0.7"/>
-      
-      <!-- Path (remaining - dashed) -->
-      <path d="${pathD}" stroke="#475953" stroke-width="0.5" stroke-dasharray="2,1.5" fill="none" opacity="0.3"/>
-      
-      <!-- Path (walked - solid) -->
-      <path d="${walkedD}" stroke="#475953" stroke-width="0.8" fill="none" opacity="0.6"/>
-      
-      <!-- Flag at summit -->
-      <line x1="95" y1="8" x2="95" y2="3" stroke="#475953" stroke-width="0.5"/>
-      <path d="M 95 3 L 99 4.5 L 95 6" fill="#ef4444" opacity="0.8"/>
-      
-      <!-- Dot (you) -->
-      <circle cx="${dotX}" cy="${dotY}" r="4" fill="#ef4444" stroke="white" stroke-width="1.5"/>
-      <circle cx="${dotX}" cy="${dotY}" r="1.8" fill="white"/>
-      
-      <!-- Start label -->
-      <text x="5" y="95" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Start</text>
-      
-      <!-- Summit label -->
-      <text x="82" y="5" font-size="3.5" fill="#475953" opacity="0.5" font-family="sans-serif">Surgery</text>
+      ${logoMountain()}
+
+      <!-- Ridge still to climb (dashed) -->
+      <path d="${fullRidge}" stroke="#475953" stroke-width="0.7" stroke-dasharray="2,1.5" fill="none" opacity="0.35"/>
+      <!-- Ridge already climbed (brighter green) -->
+      <path d="${walkedRidge}" stroke="#5C8A74" stroke-width="1.5" fill="none" opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Marker (you) in brand green -->
+      <circle cx="${dotX}" cy="${dotY}" r="3.4" fill="#475953" stroke="white" stroke-width="1.4"/>
+      <circle cx="${dotX}" cy="${dotY}" r="1.4" fill="white"/>
+
+      <text x="4" y="93" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Start</text>
+      <text x="64" y="24" font-size="3.4" fill="#475953" opacity="0.55" font-family="sans-serif">Surgery</text>
     </svg>
   `;
   
