@@ -1,0 +1,74 @@
+# Joint Journey — Roadmap
+
+A single, phased plan from "MVP built" to "scaled across NHS trusts."
+Markers: ✅ done · 👉 current focus.
+
+> How to use this: work top to bottom. Don't start a later phase's heavy work
+> (clinical safety, DTAC) until the phase before it genuinely requires it.
+
+---
+
+## PHASE 0 — Validate & protect  👉 YOU ARE HERE
+*Low cost, do these in parallel. No heavy regulatory work yet.*
+
+- [x] **MVP built** — exercise, nutrition, mindset, getting-ready, Oxford Score, "Why It Works"
+- [ ] **Patient usability testing** — 5–10 *deliberately diverse* patients (age, tech-confidence, hip/knee). Watch them use it; iterate.
+- [ ] **Intended Purpose + claims policy** — one-page guardrail so we don't make clinical claims before we have data (keeps us a non-device for now). *(See `intended-purpose-and-claims-policy.md`.)*
+- [ ] **Apply to NHS Clinical Entrepreneur Programme (CEP)** — free, no equity, opens doors for every later phase.
+- [ ] **Recruit a small clinical advisory board** — physiotherapist, dietitian, psychologist. Small vesting equity (~0.25–0.5% each, FAST-style) ± honoraria for defined deliverables. Keep "advisors" separate from any trust that will "buy" (conflict of interest).
+- [ ] *(MHRA enquiry drafted and parked until Phase 3 — see `regulatory/mhra-enquiry-draft.md`.)*
+
+**Next 2–3 actions:** patient testing · write the intended-purpose/claims guardrail · apply to CEP.
+
+---
+
+## PHASE 1 — Get pilot-ready *(the real regulatory gate — once a trust is interested)*
+*Goal: become something an NHS trust is allowed to deploy.*
+
+- [ ] **Pilot designed as a service evaluation + data plan** — define outcomes now: engagement, satisfaction, length of stay, Oxford Scores (pre-op + ~6 months). Clean, consented capture.
+- [ ] **Clinical safety (DCB0129)** — appoint a **Clinical Safety Officer** (Ben, after a short course); produce a **Hazard Log** + **Clinical Safety Case Report**.
+- [ ] **Data protection** — DPIA, lawful basis, data-sharing agreement, hosting review.
+- [ ] **Security** — Cyber Essentials; basic penetration test.
+- [ ] **DTAC pack** — bundles clinical safety + data protection + security + interoperability + usability/accessibility (WCAG 2.1).
+- [ ] **Housekeeping** — company formation; insurance (professional indemnity + product liability); basic IP/trademark.
+
+---
+
+## PHASE 2 — Run the free trust pilot *(~12 months)*
+- [ ] Deploy free at one trust.
+- [ ] Collect outcome data; provide light engagement support.
+- [ ] Aim to **publish the service evaluation** (a paper is the best sales asset).
+
+---
+
+## PHASE 3 — Prove it, then decide on claims
+- [ ] Analyse data. If outcomes (esp. length of stay) are good:
+  - [ ] **Send the MHRA enquiry**; register as a medical device if required.
+  - [ ] Lock **claims** (engagement/satisfaction likely fine; length-of-stay is the device trigger).
+  - [ ] Build a **health-economic case** (cost per patient vs bed-days/readmissions saved).
+
+---
+
+## PHASE 4 — Fund & build the team
+- [ ] **Funding** — SBRI Healthcare, NIHR i4i, Innovate UK (non-dilutive) or angels/VC; or self-fund + bring in a health-tech-experienced co-founder/advisor.
+- [ ] Invest in **marketing**, **technical support**, and **patient-engagement coaches** (people who call patients — the differentiator).
+
+---
+
+## PHASE 5 — Scale B2B across trusts
+- [ ] Sell via **NHS procurement frameworks** (e.g. G-Cloud).
+- [ ] **Volume-based pricing** — per-patient fee that decreases at higher volumes, ideally + an annual platform licence so revenue isn't purely volume-dependent.
+- [ ] Expand trust by trust, using published evidence + the health-economic case.
+
+---
+
+### Mapping to the original 7-step plan
+1. Show patients, get feedback, iterate → **Phase 0**
+2. Apply for NHS Clinical Entrepreneur Programme → **Phase 0**
+3. Complete regulatory components → **Phase 1**
+4. Free to a trust for a year, collect outcomes → **Phase 2**
+5. Apply for funding / bring in experienced team → **Phase 4**
+6. Invest in marketing, tech support, engagement coaches → **Phase 4**
+7. B2B across trusts, volume-based pricing → **Phase 5**
+
+*This document is a living plan — update the checkboxes as you go.*
