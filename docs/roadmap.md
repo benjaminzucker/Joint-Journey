@@ -22,15 +22,17 @@ Markers: ✅ done · 👉 current focus.
 
 ---
 
-## PHASE 1 — Get pilot-ready *(the real regulatory gate — once a trust is interested)*
-*Goal: become something an NHS trust is allowed to deploy.*
+## PHASE 1 — Get pilot-ready *(much of this can be done NOW, before a trust)*
+*Goal: become something an NHS trust is allowed to deploy. Most is documentation/design and needs no trust — a good use of waiting time.*
 
-- [ ] **Pilot designed as a service evaluation + data plan** — define outcomes now: engagement, satisfaction, length of stay, Oxford Scores (pre-op + ~6 months). Clean, consented capture.
-- [ ] **Clinical safety (DCB0129)** — appoint a **Clinical Safety Officer** (Ben, after a short course); produce a **Hazard Log** + **Clinical Safety Case Report**.
-- [ ] **Data protection** — DPIA, lawful basis, data-sharing agreement, hosting review.
-- [ ] **Security** — Cyber Essentials; basic penetration test.
-- [ ] **DTAC pack** — bundles clinical safety + data protection + security + interoperability + usability/accessibility (WCAG 2.1).
+- [~] **Pilot designed as a service evaluation + data plan** — drafted → `pilot-service-evaluation-plan.md`. Finalise outcomes + data export.
+- [~] **Clinical safety (DCB0129)** — drafts done → `clinical-safety/hazard-log.md`, `clinical-safety/clinical-safety-case-report.md`. Still: appoint/​train CSO (Ben), close open safety actions, sign off.
+- [ ] **Data protection** — DPIA (do now), lawful basis, data-sharing agreement, hosting/data-residency review.
+- [ ] **Security** — Cyber Essentials (do now); basic penetration test.
+- [~] **DTAC pack** — readiness tracked → `dtac-readiness-checklist.md` (bundles all 5 areas: clinical safety, data protection, security, interoperability, usability/accessibility WCAG 2.1).
 - [ ] **Housekeeping** — company formation; insurance (professional indemnity + product liability); basic IP/trademark.
+
+> **Can do now without a trust:** DPIA · Cyber Essentials · WCAG 2.1 AA accessibility pass · finish clinical-safety docs + book CSO training · lock the evaluation outcome set + data export.
 
 ---
 
