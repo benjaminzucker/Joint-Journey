@@ -86,7 +86,9 @@ The hardened rules above must be **deployed**:
   → **Publish**; or
 - **CLI:** `firebase deploy --only firestore:rules`
 
-After deploying, record the date here: **Rules deployed on [date]**.
+After deploying, record the date here: **Rules deployed on 29 June 2026** (via
+Firebase Console → Rules → Publish; confirmed by visual check that the live
+`feedback` rule now includes the uid-match and message size-cap conditions).
 
 ## 6. Suggested regression tests (future)
 Using the Firebase Emulator Suite, assert:

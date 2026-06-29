@@ -1,12 +1,28 @@
 # Joint Journey — Roadmap
 
 A single, phased plan from "MVP built" to "scaled across NHS trusts."
-Markers: ✅ done · 👉 current focus.
+Markers: ✅ done · [~] in progress · 👉 current focus.
 
 > How to use this: work top to bottom. Don't start a later phase's heavy work
 > (clinical safety, DTAC) until the phase before it genuinely requires it.
 
 ---
+
+## 📍 Progress log (most recent first)
+- **29 Jun 2026** — Phase 1 pilot-readiness work:
+  - DPIA drafted; **data residency confirmed** — Firestore **and** Storage in
+    `europe-west2` (London, UK). Residency risk closed.
+  - **Firestore security rules audited** (PASS — per-user isolation verified
+    against the code) and **hardened** (feedback collection: anti-uid-spoofing +
+    message size cap). Hardened rules **deployed to the live database** and
+    verified. → `docs/security/firestore-rules-audit.md`.
+  - **WCAG 2.1 AA accessibility pass** on the app (skip link, visible focus,
+    landmarks, accessible labels, reduced-motion, 44px targets) → `css/a11y.css`.
+  - **One-time in-app safety acknowledgement** added at onboarding (red-flag +
+    999/111/Samaritans signposting), without nagging users before every exercise.
+
+---
+
 
 ## PHASE 0 — Validate & protect  👉 YOU ARE HERE
 *Low cost, do these in parallel. No heavy regulatory work yet.*
@@ -27,12 +43,12 @@ Markers: ✅ done · 👉 current focus.
 
 - [~] **Pilot designed as a service evaluation + data plan** — drafted → `pilot-service-evaluation-plan.md`. Finalise outcomes + data export.
 - [~] **Clinical safety (DCB0129)** — drafts done → `clinical-safety/hazard-log.md`, `clinical-safety/clinical-safety-case-report.md`. Still: appoint/​train CSO (Ben), close open safety actions, sign off.
-- [ ] **Data protection** — DPIA (do now), lawful basis, data-sharing agreement, hosting/data-residency review.
-- [ ] **Security** — Cyber Essentials (do now); basic penetration test.
-- [~] **DTAC pack** — readiness tracked → `dtac-readiness-checklist.md` (bundles all 5 areas: clinical safety, data protection, security, interoperability, usability/accessibility WCAG 2.1).
+- [~] **Data protection** — DPIA drafted → `dpia.md`; **data residency confirmed (London, `europe-west2`)** ✅. Still: finalise retention periods, legal entity & processor list, lawful basis, data-sharing/joint-controller agreement (with trust), and DPO/sign-off. Plus build in-app export/delete-my-data flow.
+- [~] **Security** — Firestore rules **audited + hardened + deployed** ✅ (`security/firestore-rules-audit.md`). Still: Cyber Essentials (do now); NHS DSPT; enable App Check; basic penetration test; breach-response runbook + ROPA.
+- [~] **DTAC pack** — readiness tracked → `dtac-readiness-checklist.md`. **Accessibility: WCAG 2.1 AA pass done** ✅ (`css/a11y.css`). Still bundle the other areas (clinical safety, data protection, security, interoperability, usability). *Note: review/remove Google Analytics before a trust pilot.*
 - [ ] **Housekeeping** — company formation; insurance (professional indemnity + product liability); basic IP/trademark.
 
-> **Can do now without a trust:** DPIA · Cyber Essentials · WCAG 2.1 AA accessibility pass · finish clinical-safety docs + book CSO training · lock the evaluation outcome set + data export.
+> **Can do now without a trust:** ✅ DPIA (residency done) · ✅ WCAG 2.1 AA accessibility pass · ✅ Firestore rules hardened/deployed · Cyber Essentials · finish clinical-safety docs + book CSO training · lock the evaluation outcome set + data export · breach-response runbook.
 
 ---
 
