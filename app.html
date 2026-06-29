@@ -10,11 +10,15 @@
   <title>Joint Journey</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/a11y.css">
 </head>
 <body>
 
+  <!-- Accessibility: skip to main content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- ===== TOAST CONTAINER ===== -->
-  <div id="toast-container" class="toast-container"></div>
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
 
   <!-- ===== AUTH SCREENS (shown when logged out) ===== -->
   <div id="auth-screens">
@@ -331,6 +335,23 @@
           <div class="form-group">
             <textarea id="onboard-goal" class="form-textarea" placeholder="e.g. Walking the dog without pain, playing with my grandchildren, getting back to the garden..."></textarea>
           </div>
+
+          <!-- One-time safety information & acknowledgement -->
+          <div class="card mt-xl" style="border:2px solid var(--amber-200); background: var(--amber-100);">
+            <h3 class="mt-0">⚠️ Before you start — staying safe</h3>
+            <p>Joint Journey gives general exercise, nutrition and wellbeing support. It is <strong>not a substitute</strong> for advice from your surgeon, physiotherapist or GP.</p>
+            <ul>
+              <li><strong>Exercise within comfort.</strong> Some mild muscle effort is normal — but <strong>stop if you feel sharp pain, dizziness, chest pain or breathlessness</strong>.</li>
+              <li><strong>Use support.</strong> Hold a sturdy surface for standing exercises, wear suitable footwear, and clear a safe space.</li>
+              <li><strong>Check first if unsure.</strong> If you have a heart or lung condition, balance problems, or have been told to limit activity, please check with your GP or physiotherapist before starting.</li>
+            </ul>
+            <p class="mb-0"><strong>When to seek help:</strong> for a sudden or severe problem (e.g. a fall, chest pain, severe breathlessness, a hot swollen calf) call <strong>999</strong>. For urgent non-emergency advice call <strong>111</strong>. If you are struggling emotionally, you can call the <strong>Samaritans on 116 123</strong> at any time.</p>
+          </div>
+          <label style="display:flex; align-items:flex-start; gap:var(--space-sm); cursor:pointer; margin-top:var(--space-lg);">
+            <input type="checkbox" id="onboard-safety-ack" style="margin-top:4px;">
+            <span>I have read the safety information above and understand that Joint Journey does not replace advice from my own healthcare team.</span>
+          </label>
+
           <div class="onboarding-nav mt-xl">
             <button class="btn btn-ghost" onclick="prevOnboardingStep()">← Back</button>
             <button class="btn btn-primary btn-lg" onclick="completeOnboarding()">
@@ -418,7 +439,7 @@
       </nav>
 
       <!-- Main Content Area -->
-      <main class="app-main">
+      <main class="app-main" id="main-content" tabindex="-1">
 
         <!-- ===== DASHBOARD PAGE ===== -->
         <div id="page-dashboard" class="app-page">
@@ -528,12 +549,12 @@
                 <h3 class="mb-0">Daily Check-In</h3>
               </div>
               <p>How are you feeling today?</p>
-              <div class="mood-selector" id="dashboard-mood">
-                <button class="mood-btn" onclick="setMood(5)" title="Great">😄</button>
-                <button class="mood-btn" onclick="setMood(4)" title="Good">😊</button>
-                <button class="mood-btn" onclick="setMood(3)" title="Okay">😐</button>
-                <button class="mood-btn" onclick="setMood(2)" title="Not great">😔</button>
-                <button class="mood-btn" onclick="setMood(1)" title="Struggling">😢</button>
+              <div class="mood-selector" id="dashboard-mood" role="group" aria-label="How are you feeling today?">
+                <button class="mood-btn" onclick="setMood(5)" title="Great" aria-label="Great">😄</button>
+                <button class="mood-btn" onclick="setMood(4)" title="Good" aria-label="Good">😊</button>
+                <button class="mood-btn" onclick="setMood(3)" title="Okay" aria-label="Okay">😐</button>
+                <button class="mood-btn" onclick="setMood(2)" title="Not great" aria-label="Not great">😔</button>
+                <button class="mood-btn" onclick="setMood(1)" title="Struggling" aria-label="Struggling">😢</button>
               </div>
               <div id="mood-response" class="mt-md" style="display:none;"></div>
             </div>

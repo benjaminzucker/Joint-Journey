@@ -66,6 +66,14 @@ function prevOnboardingStep() {
 }
 
 function completeOnboarding() {
+  // Require one-time safety acknowledgement before starting
+  var safetyAck = document.getElementById('onboard-safety-ack');
+  if (!safetyAck || !safetyAck.checked) {
+    showToast('Please read and tick the safety information before starting.', 'warning');
+    if (safetyAck) safetyAck.focus();
+    return;
+  }
+
   onboardingData.goal = document.getElementById('onboard-goal').value || '';
 
   // Save to user profile
@@ -78,7 +86,9 @@ function completeOnboarding() {
     height: onboardingData.height ? parseFloat(onboardingData.height) : null,
     weight: onboardingData.weight ? parseFloat(onboardingData.weight) : null,
     activity: onboardingData.activity,
-    goal: onboardingData.goal
+    goal: onboardingData.goal,
+    safetyAcknowledged: true,
+    safetyAcknowledgedDate: new Date().toISOString()
   };
 
   // Log initial weight
