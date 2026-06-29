@@ -13,8 +13,13 @@ service cloud.firestore {
     // Feedback: any signed-in user can submit (create) feedback.
     // No one can read/update/delete from the client - you review it in the
     // Firebase console. This keeps other users' feedback private.
+    // Hardened: the submitter cannot spoof another user's uid, and the
+    // message is length-capped to limit abuse / oversized writes.
     match /feedback/{docId} {
-      allow create: if request.auth != null;
+      allow create: if request.auth != null
+                    && request.resource.data.uid == request.auth.uid
+                    && request.resource.data.message is string
+                    && request.resource.data.message.size() < 5000;
       allow read, update, delete: if false;
     }
 

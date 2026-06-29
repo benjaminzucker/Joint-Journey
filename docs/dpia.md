@@ -67,16 +67,22 @@ Collected after surgery, via in-app prompt and/or follow-up email:
 - Inactive accounts deleted/anonymised after [24 months] of inactivity (confirm policy).
 
 ## 7. Security measures (cross-ref DTAC + Hazard Log H07)
+- **Data residency:** Cloud Firestore (database) and Cloud Storage are both
+  provisioned in **`europe-west2` (London, UK)**. Firebase Authentication is
+  operated on Google global infrastructure under Google Cloud's Data Processing
+  Terms (incorporating SCCs/UK addendum where applicable). No application data
+  store is located outside the UK/EU.
 - Encryption in transit (HTTPS) and at rest (Firebase default).
-- Authenticated access; Firestore security rules (`firestore.rules`) restrict each user to their own data.
+- Authenticated access; Firestore security rules (`firestore.rules`) restrict each user to their own data. **Independently reviewed — see `docs/security/firestore-rules-audit.md` (result: PASS, per-user isolation enforced; feedback collection hardened against uid-spoofing and oversized writes).**
 - Least-privilege admin access; MFA on admin/founder accounts.
 - Cyber Essentials (planned); backups; documented incident/breach response (notify ICO within 72h if required).
+- App Check and Firestore rules regression tests recommended before wider rollout.
 
 ## 8. Risks & mitigations
 | Risk | Likelihood | Impact | Mitigation | Residual |
 |---|---|---|---|---|
 | Unauthorised access to health data | Low | High | Auth + Firestore rules + MFA + least privilege | Low |
-| Data stored outside UK/EU without safeguards | Medium | Medium | Confirm Firebase region; use UK/EU region or SCCs | Low |
+| Data stored outside UK/EU without safeguards | ~~Medium~~ Low | Medium | **Resolved:** Firestore + Storage confirmed in `europe-west2` (London); Auth under Google DPA/SCCs | Low |
 | Excessive data collection | Medium | Medium | Data-minimisation review; collect only listed fields | Low |
 | User unclear what they consent to | Medium | Medium | Granular, plain-English consent at signup | Low |
 | Re-identification from "anonymous" evaluation data | Low | Medium | Pseudonymise; aggregate before sharing | Low |
