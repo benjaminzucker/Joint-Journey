@@ -940,3 +940,121 @@
   .feedback-fab { padding: 12px; }
   .feedback-fab-label { display: none; }
 }
+
+/* ============================================
+   PER-EXERCISE DIFFICULTY CONTROLS
+   ============================================ */
+.exercise-difficulty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-left: auto;
+  padding-left: var(--space-sm);
+  flex-shrink: 0;
+}
+.diff-btn {
+  width: 30px;
+  height: 26px;
+  border: 1px solid var(--border, #d7ddd5);
+  background: var(--surface, #fff);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--primary, #475953);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease, transform 0.08s ease;
+}
+.diff-btn:hover:not(:disabled) { background: var(--green-50, #eef3ec); }
+.diff-btn:active:not(:disabled) { transform: scale(0.92); }
+.diff-btn:disabled { opacity: 0.35; cursor: default; }
+.diff-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted, #7a7a8a);
+  text-align: center;
+  min-width: 48px;
+  white-space: nowrap;
+}
+.intensity-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--green-50, #eef3ec);
+  color: var(--primary, #475953);
+  vertical-align: middle;
+}
+
+/* ============================================
+   VIDEO MODAL (in-app overlay)
+   ============================================ */
+.jj-video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md, 16px);
+  animation: jjFadeIn 0.15s ease;
+}
+@keyframes jjFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.jj-video-dialog {
+  width: 100%;
+  max-width: 880px;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.jj-video-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm, 8px);
+  padding: 10px 14px;
+  background: var(--primary, #475953);
+  color: #fff;
+}
+.jj-video-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jj-video-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.12s ease;
+}
+.jj-video-close:hover { background: rgba(255, 255, 255, 0.3); }
+.jj-video-frame {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #000;
+}
+.jj-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

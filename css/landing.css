@@ -498,3 +498,31 @@
     font-size: var(--font-size-xl);
   }
 }
+
+/* ============================================
+   SMOOTH SCROLL + CLICKABLE HERO CARDS
+   ============================================ */
+html { scroll-behavior: smooth; }
+
+/* Offset anchored sections/rows so the sticky header doesn't cover them */
+section[id],
+.feature-row[id] { scroll-margin-top: 90px; }
+
+/* Hero cards are now links to their matching feature sections */
+a.hero-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+a.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.12));
+}
+a.hero-card:focus-visible {
+  outline: 3px solid var(--green-600, #4f7a5b);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

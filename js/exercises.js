@@ -113,17 +113,26 @@ function renderExerciseSession() {
     const mappedWeek = getProgressionWeek(week);
     const prog = ex.progression.find(p => p.week === mappedWeek) || ex.progression[ex.progression.length - 1];
     const done = completedToday.includes(ex.id);
+    const intensity = getExerciseIntensity(ex.id);
+    const adj = applyIntensity(prog, intensity);
 
     html += '<div class="exercise-item ' + (done ? 'completed' : '') + '" onclick="toggleExercise(\'' + ex.id + '\')">';
     html += '<div class="exercise-check">' + (done ? '✓' : '') + '</div>';
     html += '<div class="exercise-info">';
     html += '<div class="exercise-name">' + ex.name + '</div>';
-    html += '<div class="exercise-detail">' + prog.sets + ' sets × ' + prog.reps + '</div>';
+    html += '<div class="exercise-detail">' + adj.sets + ' sets × ' + adj.reps + (intensity !== 0 ? ' <span class="intensity-tag">' + adj.label + '</span>' : '') + '</div>';
     html += '<div class="exercise-detail" style="margin-top:4px; color:var(--text-secondary);">' + ex.description + '</div>';
     if (ex.video) {
-      html += '<a href="https://www.youtube.com/watch?v=' + ex.video + '" target="_blank" rel="noopener" class="video-link" style="display:inline-block; margin-top:8px; padding:6px 14px; background:var(--primary); color:white; border-radius:8px; text-decoration:none; font-size:0.85rem; font-weight:600;">📺 Watch Video</a>';
+      html += '<button type="button" class="video-link" onclick="openVideoModal(\'' + ex.video + '\', \'' + encodeURIComponent(ex.name) + '\', event)" style="display:inline-block; margin-top:8px; padding:6px 14px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-size:0.85rem; font-weight:600;">📺 Watch Video</button>';
     }
-    html += '</div></div>';
+    html += '</div>';
+    // Per-exercise difficulty controls (intensity nudge) - stopPropagation so taps here don't tick the exercise
+    html += '<div class="exercise-difficulty" onclick="event.stopPropagation()" title="Find this too easy or too hard? Adjust just this exercise.">';
+    html += '<button type="button" class="diff-btn" aria-label="Make this exercise harder" ' + (intensity >= 2 ? 'disabled' : '') + ' onclick="adjustExerciseIntensity(\'' + ex.id + '\', 1, event)">▲</button>';
+    html += '<span class="diff-label">' + adj.label + '</span>';
+    html += '<button type="button" class="diff-btn" aria-label="Make this exercise easier" ' + (intensity <= -2 ? 'disabled' : '') + ' onclick="adjustExerciseIntensity(\'' + ex.id + '\', -1, event)">▼</button>';
+    html += '</div>';
+    html += '</div>';
   });
 
   container.innerHTML = html;
@@ -181,5 +190,90 @@ function toggleExercise(exerciseId) {
     if (window.JJEffects && completeSection) {
       JJEffects.confettiFromElement(completeSection, { count: 110 });
     }
+  }
+}
+
+/* ============================================
+   PER-EXERCISE DIFFICULTY (intensity nudge)
+   Lets a user make an individual exercise easier
+   or harder (±2 steps) without changing their whole
+   programme level. Stored per-exercise on the user's
+   progress and synced via saveUser().
+   ============================================ */
+
+var INTENSITY_LABELS = { '-2': 'Easier+', '-1': 'Easier', '0': 'As set', '1': 'Harder', '2': 'Harder+' };
+
+function getExerciseIntensity(exId) {
+  if (!currentUser || !currentUser.progress.exerciseIntensity) return 0;
+  return currentUser.progress.exerciseIntensity[exId] || 0;
+}
+
+function adjustExerciseIntensity(exId, delta, event) {
+  if (event) event.stopPropagation();
+  if (!currentUser) return;
+  if (!currentUser.progress.exerciseIntensity) currentUser.progress.exerciseIntensity = {};
+  var current = currentUser.progress.exerciseIntensity[exId] || 0;
+  var next = Math.max(-2, Math.min(2, current + delta));
+  if (next === 0) {
+    delete currentUser.progress.exerciseIntensity[exId];
+  } else {
+    currentUser.progress.exerciseIntensity[exId] = next;
+  }
+  saveUser();
+  renderExerciseSession();
+}
+
+// Scale the first number found in a reps string by ~15% per intensity step
+// (e.g. "8 each leg" -> "9 each leg" at +1). Non-numeric text is preserved.
+function scaleReps(reps, intensity) {
+  if (!intensity) return reps;
+  var factor = 1 + 0.15 * intensity;
+  return String(reps).replace(/\d+/, function (m) {
+    return String(Math.max(1, Math.round(parseInt(m, 10) * factor)));
+  });
+}
+
+function applyIntensity(prog, intensity) {
+  var sets = Math.max(1, prog.sets + intensity);
+  var reps = scaleReps(prog.reps, intensity);
+  return { sets: sets, reps: reps, label: INTENSITY_LABELS[String(intensity)] || 'As set' };
+}
+
+/* ============================================
+   VIDEO MODAL - plays exercise videos in an
+   in-app overlay so users are never taken off site.
+   ============================================ */
+
+function openVideoModal(videoId, encodedName, event) {
+  if (event) event.stopPropagation();
+  var name = encodedName ? decodeURIComponent(encodedName) : '';
+  closeVideoModal();
+  var overlay = document.createElement('div');
+  overlay.id = 'jj-video-modal';
+  overlay.className = 'jj-video-overlay';
+  overlay.innerHTML =
+    '<div class="jj-video-dialog" role="dialog" aria-modal="true" aria-label="' + (name || 'Exercise video') + '">' +
+      '<div class="jj-video-header">' +
+        '<span class="jj-video-title">' + (name || 'Exercise demonstration') + '</span>' +
+        '<button type="button" class="jj-video-close" aria-label="Close video" onclick="closeVideoModal()">✕</button>' +
+      '</div>' +
+      '<div class="jj-video-frame">' +
+        '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + (name || 'Exercise video') + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+      '</div>' +
+    '</div>';
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeVideoModal(); });
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  document._jjVideoEsc = function (e) { if (e.key === 'Escape') closeVideoModal(); };
+  document.addEventListener('keydown', document._jjVideoEsc);
+}
+
+function closeVideoModal() {
+  var m = document.getElementById('jj-video-modal');
+  if (m && m.parentNode) m.parentNode.removeChild(m);
+  document.body.style.overflow = '';
+  if (document._jjVideoEsc) {
+    document.removeEventListener('keydown', document._jjVideoEsc);
+    document._jjVideoEsc = null;
   }
 }

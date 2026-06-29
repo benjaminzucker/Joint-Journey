@@ -114,7 +114,7 @@ function renderGoalWeightBanner(goal, dailyDeficit) {
     if (goal.achievable) {
       html += ' At your current plan you should reach it around <strong>' + dateStr + '</strong> - well within your surgery timeline. You\'ve got this!';
     } else {
-      html += ' That\'s the most you can realistically lose by your surgery date, and every kilo makes a real difference. You can keep working towards a BMI of ' + goal.idealBMI + ' in the weeks after surgery too.';
+      html += ' We think this is an achievable target by your surgery date, and every kilo makes a real difference. You can keep working towards a BMI of ' + goal.idealBMI + ' in the weeks after surgery too.';
     }
   } else if (!goal.weeksToSurgery) {
     html += ' <span style="color:var(--text-muted);">Add your surgery date in My Account for a personalised timeline.</span>';
