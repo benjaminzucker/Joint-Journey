@@ -1044,6 +1044,21 @@
   flex-shrink: 0;
   transition: background 0.12s ease;
 }
+.jj-video-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.jj-video-yt {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: underline;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+.jj-video-yt:hover { opacity: 1; }
 .jj-video-close:hover { background: rgba(255, 255, 255, 0.3); }
 .jj-video-frame {
   position: relative;

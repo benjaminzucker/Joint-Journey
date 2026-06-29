@@ -255,10 +255,13 @@ function openVideoModal(videoId, encodedName, event) {
     '<div class="jj-video-dialog" role="dialog" aria-modal="true" aria-label="' + (name || 'Exercise video') + '">' +
       '<div class="jj-video-header">' +
         '<span class="jj-video-title">' + (name || 'Exercise demonstration') + '</span>' +
-        '<button type="button" class="jj-video-close" aria-label="Close video" onclick="closeVideoModal()">✕</button>' +
+        '<div class="jj-video-actions">' +
+          '<a class="jj-video-yt" href="https://www.youtube.com/watch?v=' + videoId + '" target="_blank" rel="noopener">Watch on YouTube ↗</a>' +
+          '<button type="button" class="jj-video-close" aria-label="Close video" onclick="closeVideoModal()">✕</button>' +
+        '</div>' +
       '</div>' +
       '<div class="jj-video-frame">' +
-        '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + (name || 'Exercise video') + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+        '<iframe src="https://www.youtube.com/embed/' + videoId + '?rel=0&playsinline=1" title="' + (name || 'Exercise video') + '" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' +
       '</div>' +
     '</div>';
   overlay.addEventListener('click', function (e) { if (e.target === overlay) closeVideoModal(); });
