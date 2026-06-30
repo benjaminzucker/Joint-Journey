@@ -12,7 +12,20 @@
 - **Severity:** 1 Minor · 2 Significant · 3 Serious · 4 Major · 5 Catastrophic
 - **Risk = Likelihood × Severity.** Target: reduce all to "acceptable" (≤ 6) after mitigation, or document why residual risk is justified.
 
+## Clinical review & attribution
+Domain hazards are reviewed by the relevant **Clinical Advisory Board** member and
+recorded as evidence (not just names) — see `../advisory-board/`:
+- **Exercise / ROM (H01, H03):** Physiotherapy advisor — [name], [date]
+- **Nutrition (H04):** Dietetics advisor — [name], [date]
+- **Mental health (H05):** Psychology advisor — [name], [date]
+- **Other (H02, H06–H08):** Founder/CSO + multidisciplinary — [name], [date]
+
+Each review is captured in `../advisory-board/content-review-and-signoff-log.docx`
+and `reviewer-signoff-statement.docx`. Add a **"Reviewed by: [name], [date]"** line
+to each hazard below as advisors sign off.
+
 ---
+
 
 ## Hazards
 

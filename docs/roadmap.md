@@ -9,6 +9,20 @@ Markers: ✅ done · [~] in progress · 👉 current focus.
 ---
 
 ## 📍 Progress log (most recent first)
+- **30 Jun 2026** — Phase 0 advisory board + CSO:
+  - **Clinical Advisory Board pack built** → `docs/advisory-board/` (Terms of
+    Reference, advisor agreement, conflict-of-interest policy + register, minutes
+    template, outreach messages, and **Word** content-review/sign-off log +
+    reviewer sign-off statement to send to reviewers). Reviewer attribution wired
+    into the hazard log.
+  - **Members:** psychology pillar likely filled (founder's contact); recruiting
+    an MSK physiotherapist (priority) and a registered dietitian; patient
+    representative (PPIE) seat to add.
+  - **CSO decision:** founder to be the **named Clinical Safety Officer** (best
+    long-term value/control vs paying an external CSO per change). Pursuing an
+    **earlier CSO Training Academy course** (DCB0129/0160, CPD-certified) instead
+    of waiting until January; enquiry email drafted →
+    `clinical-safety/cso-course-enquiry-email.md`.
 - **29 Jun 2026** — Phase 1 pilot-readiness work:
   - DPIA drafted; **data residency confirmed** — Firestore **and** Storage in
     `europe-west2` (London, UK). Residency risk closed.
@@ -31,7 +45,7 @@ Markers: ✅ done · [~] in progress · 👉 current focus.
 - [ ] **Patient usability testing** — 5–10 *deliberately diverse* patients (age, tech-confidence, hip/knee). Watch them use it; iterate.
 - [ ] **Intended Purpose + claims policy** — one-page guardrail so we don't make clinical claims before we have data (keeps us a non-device for now). *(See `intended-purpose-and-claims-policy.md`.)*
 - [ ] **Apply to NHS Clinical Entrepreneur Programme (CEP)** — free, no equity, opens doors for every later phase.
-- [ ] **Recruit a small clinical advisory board** — physiotherapist, dietitian, psychologist. Small vesting equity (~0.25–0.5% each, FAST-style) ± honoraria for defined deliverables. Keep "advisors" separate from any trust that will "buy" (conflict of interest).
+- [~] **Recruit a small clinical advisory board** — governance + recruitment pack built → `docs/advisory-board/` (ToR, advisor agreement, CoI policy/register, review/sign-off log, outreach). Psychology pillar likely filled; **physiotherapist (priority)** + dietitian + patient rep to recruit. Small vesting equity (~0.25–0.5% each, FAST-style) ± honoraria. Keep "advisors" separate from any trust that will "buy" (conflict of interest).
 - [ ] *(MHRA enquiry drafted and parked until Phase 3 — see `regulatory/mhra-enquiry-draft.md`.)*
 
 **Next 2–3 actions:** patient testing · write the intended-purpose/claims guardrail · apply to CEP.
