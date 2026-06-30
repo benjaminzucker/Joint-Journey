@@ -637,6 +637,7 @@ li {
 }
 
 .tab {
+  flex: 0 0 auto; /* don't shrink: size to content so a long week strip scrolls instead of overlapping on mobile */
   padding: var(--space-md) var(--space-lg);
   font-size: var(--font-size-base);
   font-weight: 600;
@@ -650,6 +651,13 @@ li {
   transition: all var(--transition-fast);
   margin-bottom: -2px;
 }
+
+/* Phase separator labels inside the week strip (#week-tabs) must not shrink either */
+#week-tabs > span {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
 
 .tab:hover {
   color: var(--green-700);

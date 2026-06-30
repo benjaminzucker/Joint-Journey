@@ -77,11 +77,19 @@ function renderWeekTabs() {
     if (w === ranges.phase1.start) html += '<span style="font-size:0.7rem;color:var(--text-muted);padding:0 4px;white-space:nowrap;">Phase 1</span>';
     if (w === ranges.phase2.start) html += '<span style="font-size:0.7rem;color:var(--text-muted);padding:0 4px;white-space:nowrap;">Phase 2</span>';
     if (w === ranges.phase3.start) html += '<span style="font-size:0.7rem;color:var(--text-muted);padding:0 4px;white-space:nowrap;">Phase 3</span>';
-    html += '<button class="tab ' + (isActive ? 'active' : '') + '" onclick="switchWeek(' + w + ')">Wk ' + w + '</button>';
+    html += '<button class="tab ' + (isActive ? 'active' : '') + '"' + (isActive ? ' data-active-week="1"' : '') + ' onclick="switchWeek(' + w + ')">Wk ' + w + '</button>';
   }
 
   container.innerHTML = html;
+
+  // Bring the active week into view so users don't always start scrolled at Week 1
+  // (especially important on phones, where the strip scrolls horizontally).
+  const activeTab = container.querySelector('[data-active-week]');
+  if (activeTab && typeof activeTab.scrollIntoView === 'function') {
+    activeTab.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }
 }
+
 
 function switchWeek(week) {
   currentUser.progress.currentWeek = week;
