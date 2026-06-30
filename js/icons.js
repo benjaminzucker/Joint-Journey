@@ -49,7 +49,10 @@
     'moon':          '<path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5z"/>', // sleep
     'sunrise':       '<path d="M12 3v5"/><path d="M8.5 6.5 12 3l3.5 3.5"/><line x1="2" y1="18" x2="22" y2="18"/><line x1="4.5" y1="14.5" x2="6" y2="15.3"/><line x1="19.5" y1="14.5" x2="18" y2="15.3"/><path d="M7 18a5 5 0 0 1 10 0"/>', // surgery day
     'film':          '<rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7.5" y1="4" x2="7.5" y2="20"/><line x1="16.5" y1="4" x2="16.5" y2="20"/><line x1="3" y1="9" x2="7.5" y2="9"/><line x1="3" y1="15" x2="7.5" y2="15"/><line x1="16.5" y1="9" x2="21" y2="9"/><line x1="16.5" y1="15" x2="21" y2="15"/>', // mental rehearsal
-    'mountain':      '<path d="M3 20 10 7l3.5 6 2 -3L21 20z"/>' // rehearsing recovery
+    'mountain':      '<path d="M3 20 10 7l3.5 6 2 -3L21 20z"/>', // rehearsing recovery
+
+    // Healthy Habits
+    'leaf':          '<path d="M5 21c0 -9 5 -16 15 -16 0 8 -5 14 -13 14a6 6 0 0 1 -2 -.3z"/><path d="M5 21c1.5 -6 5 -9.5 9.5 -11.5"/>' // leaf with vein (healthy habits)
   };
 
   function svg(inner) {
@@ -74,7 +77,7 @@
     if (document.getElementById('jj-icon-styles')) return;
     var css =
       // Pillar / accent palette (override-able via CSS variables)
-      ':root{--jj-green:#2f9e6f;--jj-amber:#e08a1e;--jj-blue:#2f7fb5;--jj-terracotta:#c4654a;--jj-neutral:#6b7280}' +
+      ':root{--jj-green:#2f9e6f;--jj-amber:#e08a1e;--jj-blue:#2f7fb5;--jj-terracotta:#c4654a;--jj-plum:#8e4585;--jj-neutral:#6b7280}' +
       '.jj-icon{display:inline-flex;align-items:center;justify-content:center;line-height:0;vertical-align:-0.12em;color:var(--green-700)}' +
       '.jj-icon svg{width:1em;height:1em;display:block}' +
       '.nav-icon.jj-icon{color:var(--jj-neutral);font-size:22px}' +
@@ -88,6 +91,7 @@
       '.jj-icon[data-jjcolor="amber"]{color:var(--jj-amber)}' +
       '.jj-icon[data-jjcolor="blue"]{color:var(--jj-blue)}' +
       '.jj-icon[data-jjcolor="terracotta"]{color:var(--jj-terracotta)}' +
+      '.jj-icon[data-jjcolor="plum"]{color:var(--jj-plum)}' +
       '.jj-icon[data-jjcolor="neutral"]{color:var(--jj-neutral)}' +
       // Keep the icon colour on hover/active too (don't wash it out)
       '.nav-item.active .nav-icon.jj-icon[data-jjcolor],.nav-item:hover .nav-icon.jj-icon[data-jjcolor]{filter:saturate(1.15)}';
