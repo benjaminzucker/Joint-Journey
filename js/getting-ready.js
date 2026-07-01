@@ -77,7 +77,7 @@ const GETTING_READY_SECTIONS = {
         <h4>🛋️ Living Areas</h4>
         <ul>
           <li><strong>Clear walkways</strong> - remove rugs, cables, and anything you might trip over</li>
-          <li><strong>Raise your chair</strong> - put blocks under your favourite chair legs so it's higher (easier to stand from)</li>
+          <li><strong>Raise your chair</strong> - a <strong>firm cushion on the seat</strong> raises the height so it's easier to stand up (usually easier and safer than putting blocks under the chair legs)</li>
           <li><strong>Move things to waist height</strong> - cups, plates, kettle, remote control</li>
           <li><strong>Create a "station"</strong> near your chair - phone, water, medication, TV remote, book</li>
           <li><strong>Good lighting</strong> - make sure hallways and stairs are well lit, especially for night time</li>
@@ -123,6 +123,90 @@ const GETTING_READY_SECTIONS = {
             <li>"A long shoe horn is essential"</li>
             <li>"Stock up on ice packs for your freezer"</li>
           </ul>
+        </div>
+      </div>
+    `
+  },
+  'equipment': {
+    title: '🛒 Equipment & Aids',
+    content: `
+      <div class="getting-ready-article">
+        <h3>Handy Kit for an Easier Recovery</h3>
+        <p>None of this needs to be fitted or installed - it's all <strong>free-standing or portable</strong>, so there's nothing to screw to the wall or floor. Most items are inexpensive online, and your hospital's occupational therapist may be able to lend some to you. Have them ready <strong>before</strong> your operation.</p>
+
+        <h4>🦵 Getting around your body without bending</h4>
+        <ul>
+          <li><strong>Leg lifter strap ("helping hand")</strong> - a simple strap that loops around your foot so you can lift your operated leg onto the bed or into the car without straining</li>
+          <li><strong>Grabber / reacher</strong> - pick things up off the floor without bending down</li>
+          <li><strong>Long-handled shoe horn</strong> - put shoes on without reaching your feet</li>
+          <li><strong>Long-handled sponge</strong> - wash your lower legs and feet comfortably</li>
+          <li><strong>Sock aid</strong> - helps you get socks on without bending your hip too far</li>
+        </ul>
+
+        <h4>🚽 Bathroom (free-standing - nothing to install)</h4>
+        <ul>
+          <li><strong>Toilet frame</strong> - a free-standing frame that sits around the toilet to push up from (no wall rails needed, and it lifts away easily)</li>
+          <li><strong>Raised toilet seat</strong> - clips onto your existing toilet to raise the height, so it's easier to sit and stand</li>
+          <li><strong>Shower stool or bath board</strong> - sit safely while you wash</li>
+          <li><strong>Non-slip bath mat</strong> - a cheap, essential safety item</li>
+        </ul>
+
+        <h4>🪑 Sitting & standing</h4>
+        <ul>
+          <li><strong>Firm cushion to raise your chair</strong> - placed on the seat, it makes standing up much easier (no need to put blocks under the chair legs)</li>
+          <li><strong>Perching stool</strong> - lets you "half-sit" while making a cup of tea or at the sink</li>
+        </ul>
+
+        <h4>❄️ For swelling & comfort</h4>
+        <ul>
+          <li><strong>Plenty of ice packs</strong> - keep several in the freezer so you always have a cold one ready (a bag of frozen peas wrapped in a tea towel works too)</li>
+          <li><strong>Bathroom weighing scales</strong> - handy for keeping an eye on your weight before and after surgery (you can log it in the Nutrition section)</li>
+        </ul>
+
+        <div class="pro-tip">
+          <strong>💡 Good to know:</strong> You don't need everything on this list - pick what fits your home and your surgery. If money is tight, ask whether your hospital's occupational therapy team can lend equipment, and check local charities and second-hand marketplaces.
+        </div>
+      </div>
+    `
+  },
+  'first-weeks': {
+    title: '🗓️ Your First Few Weeks at Home',
+    content: `
+      <div class="getting-ready-article">
+        <h3>Settling In After Surgery</h3>
+        <p>The first few weeks are the most important part of your recovery. A little planning makes them far easier and safer.</p>
+
+        <h4>🤝 Have someone with you</h4>
+        <ul>
+          <li>Arrange for a <strong>friend or family member to stay with you</strong> for at least the first few days - ideally the first week or two.</li>
+          <li>They can help with cooking, shopping, washing, and simply being there if you need a hand getting up.</li>
+          <li>If you live alone and can't arrange this, tell your surgical team early - they can plan extra support for your discharge.</li>
+        </ul>
+
+        <h4>💊 Stay on top of your pain relief</h4>
+        <ul>
+          <li>Take your <strong>pain medication regularly, as prescribed</strong> - don't wait until the pain is bad before taking it.</li>
+          <li>Staying comfortable means you can do your exercises and move around, which speeds up recovery.</li>
+          <li>Keep a simple written schedule of what to take and when, so you don't lose track.</li>
+          <li>If your pain isn't controlled, or you have side effects, contact your GP or surgical team.</li>
+        </ul>
+
+        <h4>❄️ Manage swelling with ice</h4>
+        <ul>
+          <li>Use <strong>ice packs regularly</strong> - a common routine is 20 minutes on, 20 minutes off (always wrap them in a tea towel, never straight on the skin).</li>
+          <li>Elevate your leg when resting - foot higher than knee, knee higher than hip.</li>
+          <li>Some swelling is completely normal and can last several months, especially after knee replacement.</li>
+        </ul>
+
+        <h4>🚗 Driving</h4>
+        <ul>
+          <li>Most people <strong>can't drive for around 6 weeks</strong>, but this varies.</li>
+          <li>You should only drive again when you can <strong>safely perform an emergency stop</strong> and are no longer taking strong pain medication that could affect you.</li>
+          <li><strong>Always check with your surgeon first</strong>, and let your car insurer know - driving too soon could invalidate your insurance.</li>
+        </ul>
+
+        <div class="pro-tip">
+          <strong>💡 Remember:</strong> Recovery isn't a race. Some days will be better than others, and that's completely normal. Keep doing your exercises, take your medication, rest when you need to, and celebrate the small wins.
         </div>
       </div>
     `

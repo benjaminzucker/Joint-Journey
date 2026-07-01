@@ -44,6 +44,8 @@ function nextOnboardingStep() {
     onboardingData.height = document.getElementById('onboard-height').value || null;
     onboardingData.weight = document.getElementById('onboard-weight').value || null;
     onboardingData.activity = document.getElementById('onboard-activity').value || null;
+    var unitsSel = document.getElementById('onboard-units');
+    onboardingData.units = (unitsSel && unitsSel.value) || 'metric';
   }
 
   // Move to next step
@@ -87,6 +89,7 @@ function completeOnboarding() {
     weight: onboardingData.weight ? parseFloat(onboardingData.weight) : null,
     activity: onboardingData.activity,
     goal: onboardingData.goal,
+    units: onboardingData.units || 'metric',
     safetyAcknowledged: true,
     safetyAcknowledgedDate: new Date().toISOString()
   };
@@ -526,8 +529,9 @@ function initAccount() {
   document.getElementById('account-mindset-text').textContent = mindsetDone + ' of ' + mindsetTotal + ' completed';
 
   const readyDone = (currentUser.progress.gettingReadyViewed || []).length;
-  document.getElementById('account-ready-progress').style.width = Math.round((readyDone / 6) * 100) + '%';
-  document.getElementById('account-ready-text').textContent = readyDone + ' of 6 sections viewed';
+  const readyTotal = (typeof GETTING_READY_SECTIONS !== 'undefined') ? Object.keys(GETTING_READY_SECTIONS).length : 8;
+  document.getElementById('account-ready-progress').style.width = Math.round((readyDone / readyTotal) * 100) + '%';
+  document.getElementById('account-ready-text').textContent = readyDone + ' of ' + readyTotal + ' sections viewed';
 }
 
 function saveAccount() {

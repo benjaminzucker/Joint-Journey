@@ -12,6 +12,8 @@ function initNutrition() {
   if (p.sex) document.getElementById('calc-sex').value = p.sex;
   if (p.activityLevel) document.getElementById('calc-activity').value = p.activityLevel;
   else if (p.activity) document.getElementById('calc-activity').value = p.activity;
+  // Apply the saved unit preference (metric/imperial) to all inputs
+  if (window.JJUnits) JJUnits.applyPreferenceToUI(JJUnits.getUnits());
   calculateNutrition();
   renderWeightHistory();
 }
@@ -105,7 +107,7 @@ function renderGoalWeightBanner(goal, dailyDeficit) {
 
   var weeklyLoss = Math.max(0, (dailyDeficit || 0) * 7 / 7700);
   var html = '<span class="jj-icon" data-jjicon="target" data-jjcolor="green" style="font-size:1.3em;vertical-align:-0.2em;"></span> ';
-  html += 'Your goal weight is <strong>' + goal.goalWeight.toFixed(1) + ' kg</strong> (BMI ' + bmiLabel + ') - about <strong>' + goal.lossNeeded.toFixed(1) + ' kg</strong> to lose.';
+  html += 'Your goal weight is <strong>' + JJUnits.fmtWeight(goal.goalWeight) + '</strong> (BMI ' + bmiLabel + ') - about <strong>' + JJUnits.fmtWeightAmount(goal.lossNeeded) + '</strong> to lose.';
 
   if (goal.weeksToSurgery && weeklyLoss > 0.05) {
     var reachWeeks = Math.ceil(goal.lossNeeded / weeklyLoss);
@@ -144,7 +146,7 @@ function calculateNutrition() {
   // BMI
   const bmi = weight / Math.pow(height / 100, 2);
   document.getElementById('current-bmi').textContent = bmi.toFixed(1);
-  document.getElementById('current-weight-display').textContent = weight.toFixed(1);
+  document.getElementById('current-weight-display').textContent = JJUnits.fmtWeight(weight);
 
   // BMI message
   const bmiMsg = document.getElementById('bmi-message');
@@ -170,6 +172,10 @@ function calculateNutrition() {
     let bmr;
     if (sex === 'male') {
       bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+    } else if (sex === 'na') {
+      // "Prefer not to say": use the midpoint of the male (+5) and female (-161)
+      // Mifflin-St Jeor constants (-78), so the estimate sits exactly between the two.
+      bmr = (10 * weight) + (6.25 * height) - (5 * age) - 78;
     } else {
       bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
     }
@@ -188,7 +194,7 @@ function calculateNutrition() {
     const weightLossInfo = document.getElementById('weight-loss-info');
     // Minimum calories: higher than standard dieting minimums because
     // patients are doing a prehab exercise programme and need to preserve muscle
-    const minCal = sex === 'male' ? 1600 : 1400;
+    const minCal = sex === 'male' ? 1600 : sex === 'na' ? 1500 : 1400;
 
     if (bmi > 30) {
       const targetWeight = 30 * Math.pow(height / 100, 2);
@@ -229,8 +235,8 @@ function calculateNutrition() {
         html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit.</p>';
       }
       html += '<h4 style="margin-bottom:var(--space-sm);">⚖️ What to expect</h4>';
-      html += '<p>At this calorie level, you can expect to lose about <strong>' + expectedWeeklyLoss + 'kg per week</strong>. That preserves your muscle while losing fat, crash diets do the opposite, which is the last thing you need before surgery.</p>';
-      html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + weightToLose.toFixed(1) + 'kg</strong>';
+      html += '<p>At this calorie level, you can expect to lose about <strong>' + JJUnits.fmtWeightAmount(expectedWeeklyLoss) + ' per week</strong>. That preserves your muscle while losing fat, crash diets do the opposite, which is the last thing you need before surgery.</p>';
+      html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + JJUnits.fmtWeightAmount(weightToLose) + '</strong>';
       if (weeksToSurgery && canReachTarget) {
         html += ', which should take roughly <strong>' + weeksAtThisRate + ' weeks</strong>, well within your surgery timeline. You\'ve got this!</p>';
       } else if (weeksToSurgery && !canReachTarget) {
@@ -273,6 +279,10 @@ function calculateNutrition() {
     document.getElementById('protein-target').textContent = proteinTarget + 'g';
     document.getElementById('calorie-targets').style.display = 'block';
 
+    if (sex === 'na' && weightLossInfo.style.display !== 'none') {
+      weightLossInfo.innerHTML += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">You chose not to specify sex, so this calorie figure is a best-estimate midpoint - treat it as a rough guide (it may be off by a little either way, which is perfectly fine for planning).</p>';
+    }
+
     // Goal weight (drives the banner here and the Weight Tracker feedback)
     var goal = computeGoalWeight(weight, height, bmi, tdee, minCal);
     renderGoalWeightBanner(goal, tdee - calorieTarget);
@@ -291,8 +301,7 @@ function calculateNutrition() {
 
 // ===== WEIGHT TRACKER =====
 function logWeight() {
-  const weightInput = document.getElementById('weight-entry');
-  const weight = parseFloat(weightInput.value);
+  const weight = window.JJUnits ? JJUnits.getWeightEntryKg() : parseFloat(document.getElementById('weight-entry').value);
   if (!weight || weight < 30 || weight > 300) {
     showToast('Please enter a valid weight.', 'warning');
     return;
@@ -307,7 +316,7 @@ function logWeight() {
   currentUser.progress.weightLog.push({ date: today, weight: weight });
   currentUser.profile.weight = weight;
   saveUser();
-  weightInput.value = '';
+  if (window.JJUnits) JJUnits.clearWeightEntry(); else document.getElementById('weight-entry').value = '';
   showToast('Weight logged! ⚖️');
   // Update calculator first so the goal weight is current, then redraw history
   document.getElementById('calc-weight').value = weight;
@@ -338,7 +347,7 @@ function renderWeightHistory() {
   recent.forEach(entry => {
     html += '<div class="weight-entry">';
     html += '<span class="weight-entry-date">' + formatDate(entry.date) + '</span>';
-    html += '<span class="weight-entry-value">' + entry.weight.toFixed(1) + ' kg</span>';
+    html += '<span class="weight-entry-value">' + JJUnits.fmtWeight(entry.weight) + '</span>';
     html += '</div>';
   });
 
@@ -348,7 +357,7 @@ function renderWeightHistory() {
     const diff = last - first;
     const emoji = diff < 0 ? '📉' : diff > 0 ? '📈' : '➡️';
     html += '<div class="alert ' + (diff <= 0 ? 'alert-success' : 'alert-info') + '" style="margin-top:var(--space-md);">';
-    html += emoji + ' Total change: <strong>' + (diff > 0 ? '+' : '') + diff.toFixed(1) + 'kg</strong> since ' + formatDateShort(log[0].date);
+    html += emoji + ' Total change: <strong>' + JJUnits.fmtWeightDelta(diff) + '</strong> since ' + formatDateShort(log[0].date);
     html += '</div>';
   }
 
@@ -357,12 +366,12 @@ function renderWeightHistory() {
   if (goalW) {
     var latestW = log[log.length - 1].weight;
     if (latestW <= goalW) {
-      html += '<div class="alert alert-success" style="margin-top:var(--space-md);">🎉 <strong>You\'ve reached your goal weight of ' + goalW.toFixed(1) + ' kg!</strong> Fantastic work, this puts you in a great position for surgery.</div>';
+      html += '<div class="alert alert-success" style="margin-top:var(--space-md);">🎉 <strong>You\'ve reached your goal weight of ' + JJUnits.fmtWeight(goalW) + '!</strong> Fantastic work, this puts you in a great position for surgery.</div>';
       // NB: confetti is fired from logWeight() at the moment of crossing the goal,
       // never from this passive render (which runs on every page open).
     } else {
       var toGo = Math.round((latestW - goalW) * 10) / 10;
-      html += '<div class="alert alert-info" style="margin-top:var(--space-md);">🎯 <strong>' + toGo.toFixed(1) + ' kg to go</strong> to reach your goal weight of ' + goalW.toFixed(1) + ' kg. Keep going, you\'re making real progress!</div>';
+      html += '<div class="alert alert-info" style="margin-top:var(--space-md);">🎯 <strong>' + JJUnits.fmtWeightAmount(toGo) + ' to go</strong> to reach your goal weight of ' + JJUnits.fmtWeight(goalW) + '. Keep going, you\'re making real progress!</div>';
     }
   }
 
@@ -409,7 +418,7 @@ function renderWeightChart(data) {
     ctx.fillStyle = '#7A7A8A';
     ctx.font = '12px system-ui';
     ctx.textAlign = 'right';
-    ctx.fillText(val.toFixed(1), padding.left - 8, y + 4);
+    ctx.fillText(window.JJUnits ? JJUnits.axisLabel(val) : val.toFixed(1), padding.left - 8, y + 4);
   }
 
   // Line
