@@ -10,14 +10,22 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Always revalidate JS/CSS so deployed updates reach users immediately.
-# Netlify serves ETags, so unchanged files still return a fast 304 Not Modified.
+# CSS/JS are cache-busted via a ?v= query string in the HTML (e.g. styles.css?v=2).
+# Because the URL changes whenever we bump the version, we can safely cache these
+# files "forever" for fast repeat visits. IMPORTANT: bump the ?v= number in the HTML
+# whenever you change a CSS/JS file so users receive the update.
 [[headers]]
   for = "/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML must always revalidate so pages reflect the latest markup and ?v= references.
+[[headers]]
+  for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
