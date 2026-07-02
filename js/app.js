@@ -153,8 +153,12 @@ function navigateTo(page) {
     case 'account': initAccount(); break;
   }
 
-  // Scroll to top
-  document.querySelector('.app-main').scrollTop = 0;
+  // Scroll to top - reset both the inner scroll container (desktop) and the
+  // window itself (mobile, where the whole page scrolls) so a new page always
+  // starts at the top regardless of where you were on the previous page.
+  var mainEl = document.querySelector('.app-main');
+  if (mainEl) mainEl.scrollTop = 0;
+  window.scrollTo(0, 0);
 }
 
 // ===== MOBILE MENU =====
