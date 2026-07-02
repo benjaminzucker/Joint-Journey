@@ -49,6 +49,20 @@
     }
     .hero-trust svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--green-600); }
     .badge { display: inline-flex; align-items: center; }
+    /* Slim above-the-fold message strip */
+    .prepare-strip {
+      background: var(--green-700);
+      color: #fff;
+      padding: 14px 0;
+    }
+    .prepare-strip p {
+      margin: 0;
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .prepare-strip em { font-style: italic; text-decoration: underline; text-underline-offset: 3px; }
+
   </style>
 </head>
 <body>
@@ -72,6 +86,13 @@
       </div>
     </div>
   </header>
+
+  <!-- ===== PREPARE MESSAGE STRIP ===== -->
+  <section class="prepare-strip">
+    <div class="container text-center">
+      <p>"You are not just waiting for surgery. You are <em>preparing</em> for a better life."</p>
+    </div>
+  </section>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
@@ -153,7 +174,7 @@
         <div class="step card text-center">
           <div class="step-number">3</div>
           <h3>Go Into Surgery Ready</h3>
-          <p>Arrive at hospital stronger, lighter, more confident, and prepared. You'll know what to expect and you'll have done the work.</p>
+          <p>Arrive at hospital stronger, healthier, more confident, and prepared. You'll know what to expect and you'll have done the work.</p>
         </div>
       </div>
     </div>
@@ -325,15 +346,6 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ===== QUOTE ===== -->
-  <section class="section quote-section">
-    <div class="container-narrow text-center">
-      <blockquote class="quote">
-        <p>"You are not just waiting for surgery. You are <em>preparing</em> for a better life."</p>
-      </blockquote>
     </div>
   </section>
 

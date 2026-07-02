@@ -59,7 +59,7 @@
   function fmtWeightAmount(kg) {
     if (kg == null || isNaN(kg)) return '--';
     if (getUnits() === 'imperial') {
-      return (Math.round(kgToLb(kg) * 10) / 10).toFixed(1) + ' lb';
+      return Math.round(kgToLb(kg)) + ' lb';
     }
     return (Math.round(kg * 10) / 10).toFixed(1) + ' kg';
   }
@@ -67,7 +67,7 @@
   function fmtWeightDelta(kg) {
     var sign = kg > 0 ? '+' : '';
     if (getUnits() === 'imperial') {
-      return sign + (Math.round(kgToLb(kg) * 10) / 10).toFixed(1) + ' lb';
+      return sign + Math.round(kgToLb(kg)) + ' lb';
     }
     return sign + (Math.round(kg * 10) / 10).toFixed(1) + ' kg';
   }
@@ -85,17 +85,29 @@
   function getNum(id) { var el = $(id); return el ? parseFloat(el.value) : NaN; }
 
   // Populate the imperial fields of a group from the metric source input
+  // Round st/lb to whole pounds, carrying over to a full stone if lb hits 14
+  function fillStLb(stId, lbId, kg) {
+    var o = kgToStLb(kg); var st = o.st, lb = Math.round(o.lb);
+    if (lb >= 14) { st += 1; lb -= 14; }
+    setVal(stId, st); setVal(lbId, lb);
+  }
+  // Round ft/in to whole inches, carrying over to a full foot if in hits 12
+  function fillFtIn(ftId, inId, cm) {
+    var h = cmToFtIn(cm); var ft = h.ft, inch = Math.round(h.inch);
+    if (inch >= 12) { ft += 1; inch -= 12; }
+    setVal(ftId, ft); setVal(inId, inch);
+  }
   function populateCalcImperialFromMetric() {
     var kg = getNum('calc-weight');
-    if (!isNaN(kg)) { var o = kgToStLb(kg); setVal('calc-weight-st', o.st); setVal('calc-weight-lb', Math.round(o.lb * 10) / 10); }
+    if (!isNaN(kg)) fillStLb('calc-weight-st', 'calc-weight-lb', kg);
     var cm = getNum('calc-height');
-    if (!isNaN(cm)) { var h = cmToFtIn(cm); setVal('calc-height-ft', h.ft); setVal('calc-height-in', Math.round(h.inch * 10) / 10); }
+    if (!isNaN(cm)) fillFtIn('calc-height-ft', 'calc-height-in', cm);
   }
   function populateOnboardImperialFromMetric() {
     var kg = getNum('onboard-weight');
-    if (!isNaN(kg)) { var o = kgToStLb(kg); setVal('onboard-weight-st', o.st); setVal('onboard-weight-lb', Math.round(o.lb * 10) / 10); }
+    if (!isNaN(kg)) fillStLb('onboard-weight-st', 'onboard-weight-lb', kg);
     var cm = getNum('onboard-height');
-    if (!isNaN(cm)) { var h = cmToFtIn(cm); setVal('onboard-height-ft', h.ft); setVal('onboard-height-in', Math.round(h.inch * 10) / 10); }
+    if (!isNaN(cm)) fillFtIn('onboard-height-ft', 'onboard-height-in', cm);
   }
 
   // Reflect the chosen units in both dropdowns + toggle all input groups

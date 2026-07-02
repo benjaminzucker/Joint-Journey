@@ -160,7 +160,7 @@
               <input type="radio" name="joint" value="hip">
               <div class="option-card-content">
                 <div class="option-card-title">🦴 Hip Replacement</div>
-                <div class="option-card-desc">Total or partial hip replacement</div>
+                <div class="option-card-desc">Total hip replacement</div>
               </div>
             </label>
             <label class="option-card" onclick="selectOption(this, 'joint', 'knee')">
@@ -289,7 +289,7 @@
               <label class="form-label">Height (ft / in)</label>
               <div class="grid grid-2">
                 <input type="number" id="onboard-height-ft" class="form-input" min="3" max="8" placeholder="ft" oninput="onOnboardImperialInput()">
-                <input type="number" id="onboard-height-in" class="form-input" min="0" max="11" step="0.1" placeholder="in" oninput="onOnboardImperialInput()">
+                <input type="number" id="onboard-height-in" class="form-input" min="0" max="11" step="1" placeholder="in" oninput="onOnboardImperialInput()">
               </div>
             </div>
             <div class="form-group" id="onboard-weight-metric-group">
@@ -301,7 +301,7 @@
               <label class="form-label">Weight (st / lb)</label>
               <div class="grid grid-2">
                 <input type="number" id="onboard-weight-st" class="form-input" min="4" max="47" placeholder="st" oninput="onOnboardImperialInput()">
-                <input type="number" id="onboard-weight-lb" class="form-input" min="0" max="13" step="0.1" placeholder="lb" oninput="onOnboardImperialInput()">
+                <input type="number" id="onboard-weight-lb" class="form-input" min="0" max="13" step="1" placeholder="lb" oninput="onOnboardImperialInput()">
               </div>
             </div>
           </div>
@@ -723,7 +723,7 @@
                   <label class="form-label">Current Weight (st / lb)</label>
                   <div class="grid grid-2">
                     <input type="number" id="calc-weight-st" class="form-input" min="4" max="47" placeholder="st" oninput="onCalcImperialInput()">
-                    <input type="number" id="calc-weight-lb" class="form-input" min="0" max="13" step="0.1" placeholder="lb" oninput="onCalcImperialInput()">
+                    <input type="number" id="calc-weight-lb" class="form-input" min="0" max="13" step="1" placeholder="lb" oninput="onCalcImperialInput()">
                   </div>
                 </div>
                 <div class="form-group" id="calc-height-metric-group">
@@ -734,7 +734,7 @@
                   <label class="form-label">Height (ft / in)</label>
                   <div class="grid grid-2">
                     <input type="number" id="calc-height-ft" class="form-input" min="3" max="8" placeholder="ft" oninput="onCalcImperialInput()">
-                    <input type="number" id="calc-height-in" class="form-input" min="0" max="11" step="0.1" placeholder="in" oninput="onCalcImperialInput()">
+                    <input type="number" id="calc-height-in" class="form-input" min="0" max="11" step="1" placeholder="in" oninput="onCalcImperialInput()">
                   </div>
                 </div>
                 <div class="grid grid-2">
@@ -822,7 +822,7 @@
                   <label class="form-label">Weight (st / lb)</label>
                   <div class="grid grid-2">
                     <input type="number" id="weight-entry-st" class="form-input" min="4" max="47" placeholder="st">
-                    <input type="number" id="weight-entry-lb" class="form-input" min="0" max="13" step="0.1" placeholder="lb">
+                    <input type="number" id="weight-entry-lb" class="form-input" min="0" max="13" step="1" placeholder="lb">
                   </div>
                 </div>
                 <button class="btn btn-primary btn-block" onclick="logWeight()">Log Weight</button>
@@ -977,7 +977,7 @@
           <div class="card mb-xl">
             <div class="flex items-center gap-md mb-lg">
               <span class="icon-emoji-lg">🍷</span>
-              <h2 class="mb-0">Alcohol</h2>
+              <h2 class="mb-0">Alcohol consumption</h2>
             </div>
 
             <h3>Why it matters for your operation</h3>
@@ -1292,7 +1292,7 @@
   <script defer src="js/firebase-config.js?v=2"></script>
   <script defer src="js/icons.js?v=2"></script>
   <script defer src="js/effects.js?v=2"></script>
-  <script defer src="js/units.js?v=3"></script>
+  <script defer src="js/units.js?v=4"></script>
 
   <script defer src="js/data.js?v=2"></script>
   <script defer src="js/programme-levels.js?v=2"></script>
