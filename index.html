@@ -11,7 +11,7 @@
   <meta name="description" content="Joint Journey - Prehabilitation programme for hip and knee replacement surgery. Exercises, nutrition, and mindset support to prepare you for a successful recovery.">
   <title>Joint Journey - Prepare for Your Joint Replacement</title>
   <link rel="stylesheet" href="css/styles.css?v=2">
-  <link rel="stylesheet" href="css/landing.css?v=2">
+  <link rel="stylesheet" href="css/landing.css?v=3">
   <style>
     /* Hero polish: trust strip + mountain watermark (icons handled by icons.js) */
     .hero { position: relative; overflow: hidden; }
@@ -30,11 +30,17 @@
     .hero-trust {
       list-style: none;
       padding: 0;
-      margin: var(--space-lg) 0 0;
+      margin: var(--space-md) 0 0;
+      grid-column: 1 / -1;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      justify-content: center;
       gap: var(--space-sm) var(--space-md);
     }
+    @media (max-width: 768px) {
+      .hero-trust { flex-wrap: wrap; justify-content: flex-start; }
+    }
+
     .hero-trust li {
       display: flex;
       align-items: center;
@@ -116,11 +122,6 @@
           </a>
           <a href="#how-it-works" class="btn btn-secondary btn-lg">Learn More</a>
         </div>
-        <ul class="hero-trust" aria-label="Why Joint Journey">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Built on clinical evidence</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>For hip &amp; knee replacement</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Exercise · Nutrition · Mindset</li>
-        </ul>
       </div>
       <div class="hero-visual">
         <a href="#feature-exercise" class="hero-card hero-card-1">
@@ -139,6 +140,11 @@
           <p>Build confidence, manage pain expectations, stay positive</p>
         </a>
       </div>
+      <ul class="hero-trust" aria-label="Why Joint Journey">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Built on clinical evidence</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>For hip &amp; knee replacement</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Exercise · Nutrition · Mindset</li>
+      </ul>
     </div>
   </section>
 
