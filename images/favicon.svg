@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Joint Journey">
+  <!-- Rounded brand-green tile so the icon reads on both light and dark browser tabs -->
+  <rect width="48" height="48" rx="11" fill="#475953"/>
+  <!-- Mountain (filled, cream) - bold enough to be legible at 16x16 -->
+  <path d="M7 39 L20 15 L24 22 L30 12 L41 39 Z" fill="#F5F3EC"/>
+  <!-- Snow cap accent on the main peak -->
+  <path d="M20 15 L16 22 L20.5 20 L23 24 L24 22 Z" fill="#DDE4E0"/>
+  <!-- Summit flag pole -->
+  <line x1="30" y1="12" x2="30" y2="6" stroke="#F5F3EC" stroke-width="2" stroke-linecap="round"/>
+  <!-- Flag pennant -->
+  <path d="M30 6 L37 8.5 L30 11 Z" fill="#E8A15E"/>
+</svg>

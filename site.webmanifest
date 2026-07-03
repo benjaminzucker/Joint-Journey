@@ -1,0 +1,12 @@
+{
+  "name": "Joint Journey",
+  "short_name": "Joint Journey",
+  "description": "Prehabilitation for hip and knee replacement - exercises, nutrition and mindset support while you wait for surgery.",
+  "icons": [
+    { "src": "images/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any maskable" }
+  ],
+  "theme_color": "#475953",
+  "background_color": "#F5F3EC",
+  "display": "standalone",
+  "start_url": "app.html"
+}

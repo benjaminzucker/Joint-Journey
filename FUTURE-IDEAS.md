@@ -17,8 +17,28 @@ A living document capturing ideas, features, and improvements to implement when 
 
 ---
 
+## 🟢 Pilot-Conditional - Trust Access Control (build ONLY if the pilot goes ahead)
+*Restricting sign-up so only patients recruited by the Trust can register. Do not build until a pilot is confirmed.*
+
+### Invite-code gate for sign-up
+- [ ] **`inviteCodes` collection** in Firestore. Each doc: `{ code, issuedTo (pseudonymous e.g. "PT-014"), used: false, usedByUid, usedAt, expiresAt }`.
+- [ ] **"Access code" field** added to the sign-up form; registration only proceeds if the code exists, is unused, and unexpired — then the code is marked `used`.
+- [ ] **`generate-codes.js`** admin script (same Firebase Admin SDK setup as `analytics/`) to mint printable batches of long random codes (e.g. `JJ-7QK4-9WPX`) for the clinic to hand out.
+- [ ] **Updated `firestore.rules`** so codes aren't listable/guessable and can't be reused (a user may only burn a code for their own new account).
+- [ ] Clinic keeps its own record of which pseudonymous code went to which patient (identifiable data stays Trust-side, not in the app) — supports the DPIA/consent trail.
+
+**Enforcement approach (decided in planning):**
+- **Start with Option A — rules-based (client-side check + Firestore rules safety net).** No new infrastructure, works on the free Spark plan, quick to build. Good enough to stop the public and casual sharing at pilot scale.
+- **Known limitation:** the check runs in the visitor's browser, so a technically-minded person using browser dev tools could potentially read a code or bypass the form — but the server-side rules still prevent reusing a burned code or tampering with others' accounts. Worst realistic case = a snooper finds a code, not "anyone can walk in".
+- **Upgrade path — Option B: Cloud Function (`validateInvite`).** Moves the check-and-burn server-side (tamper-proof, atomic, codes never exposed to the browser). Requires the Blaze pay-as-you-go plan (effectively free at pilot volume). Do this if we scale beyond the pilot or Trust information-governance asks for a hard, server-enforced guarantee. The patient-facing sign-up experience stays identical.
+
+**Note:** an invite code proves "someone had a valid code", not identity. If the Trust needs identity assurance, pair codes with the clinic's own recruitment record (pseudonymous code ↔ patient).
+
+---
+
 ## 🟡 Priority 2 - Post-Launch Features
 *Things to build in the first few months after launch*
+
 
 ### Payments & Subscriptions
 - [ ] Stripe Checkout integration (£4.99/month)
@@ -147,4 +167,5 @@ A living document capturing ideas, features, and improvements to implement when 
 
 ---
 
-*Last updated: 22 June 2026*
+*Last updated: 3 July 2026*
+
