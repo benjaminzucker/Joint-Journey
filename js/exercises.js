@@ -53,6 +53,17 @@ function isometricProgressionWeek(week) {
   return ((week - 1) % 4) + 1;
 }
 
+// Baseline difficulty nudge for the holds, driven by the user's programme level:
+// Gentle = slightly easier, Standard = as written, Active = slightly harder.
+// This is combined with any manual per-exercise ▲▼ tweak.
+function getIsometricLevelOffset() {
+  var level = (currentUser && currentUser.profile.programmeLevel) || 'standard';
+  if (level === 'gentle') return -1;
+  if (level === 'active') return 1;
+  return 0;
+}
+
+
 function renderIsometricSession() {
   var container = document.getElementById('isometric-list');
   if (!container || !currentUser) return;
@@ -71,8 +82,12 @@ function renderIsometricSession() {
   exercises.forEach(function (ex) {
     var prog = ex.progression.find(function (p) { return p.week === mapped; }) || ex.progression[ex.progression.length - 1];
     var done = completedToday.includes(ex.id);
-    var intensity = getExerciseIntensity(ex.id);
+    // Combine the programme-level baseline (Gentle/Standard/Active) with any
+    // manual ▲▼ tweak the user has applied to this specific hold.
+    var manualIntensity = getExerciseIntensity(ex.id);
+    var intensity = Math.max(-3, Math.min(3, getIsometricLevelOffset() + manualIntensity));
     var adj = applyIntensity(prog, intensity);
+
 
     html += '<div class="exercise-item ' + (done ? 'completed' : '') + '" onclick="toggleExercise(\'' + ex.id + '\')">';
     html += '<div class="exercise-check">' + (done ? '✓' : '') + '</div>';
@@ -301,6 +316,8 @@ function adjustExerciseIntensity(exId, delta, event) {
   }
   saveUser();
   renderExerciseSession();
+  // Also refresh the isometric block, since the same ▲▼ controls appear there.
+  if (typeof renderIsometricSession === 'function') renderIsometricSession();
 }
 
 // Scale the first number found in a reps string by ~15% per intensity step
