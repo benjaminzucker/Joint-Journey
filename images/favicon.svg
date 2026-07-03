@@ -8,5 +8,5 @@
   <!-- Summit flag pole -->
   <line x1="30" y1="12" x2="30" y2="6" stroke="#F5F3EC" stroke-width="2" stroke-linecap="round"/>
   <!-- Flag pennant -->
-  <path d="M30 6 L37 8.5 L30 11 Z" fill="#E8A15E"/>
+  <path d="M30 6 L37 8.5 L30 11 Z" fill="#FF8F00"/>
 </svg>
