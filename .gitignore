@@ -15,3 +15,9 @@ dist/
 .env
 .env.local
 .Rhistory
+
+# Analytics (sensitive - never commit)
+analytics/serviceAccountKey.json
+analytics/retention-report.csv
+analytics/package-lock.json
+
