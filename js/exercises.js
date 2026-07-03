@@ -23,6 +23,76 @@ function initExercises() {
 
   renderWeekTabs();
   renderExerciseSession();
+  renderIsometricSession();
+}
+
+/* ============================================
+   DAILY ISOMETRIC HOLDS
+   A separate block that appears every week (isometrics
+   are safe to do daily). Reuses the generic tick/intensity
+   controls; isometrics have their own ids (iso-*) so they
+   are tracked separately and don't affect the phased
+   session's "all complete" celebration.
+   ============================================ */
+
+function getIsometricsForJoint() {
+  if (!currentUser) return [];
+  var joint = currentUser.profile.joint;
+  if (joint === 'hip') return HIP_ISOMETRICS;
+  if (joint === 'knee') return KNEE_ISOMETRICS;
+  // "both": merge, de-duplicating by exercise name
+  var merged = KNEE_ISOMETRICS.slice();
+  var seen = {};
+  merged.forEach(function (e) { seen[e.name] = true; });
+  HIP_ISOMETRICS.forEach(function (e) { if (!seen[e.name]) merged.push(e); });
+  return merged;
+}
+
+// Isometrics run on a rolling 4-week progression cycle, independent of phase.
+function isometricProgressionWeek(week) {
+  return ((week - 1) % 4) + 1;
+}
+
+function renderIsometricSession() {
+  var container = document.getElementById('isometric-list');
+  if (!container || !currentUser) return;
+
+  var week = currentUser.progress.currentWeek || 1;
+  var mapped = isometricProgressionWeek(week);
+  var exercises = getIsometricsForJoint();
+  var today = new Date().toISOString().split('T')[0];
+  var completedToday = currentUser.progress.exercisesCompleted[today] || [];
+
+  var completedCount = exercises.filter(function (ex) { return completedToday.includes(ex.id); }).length;
+  var badge = document.getElementById('isometric-session-badge');
+  if (badge) badge.textContent = completedCount + '/' + exercises.length + ' done';
+
+  var html = '';
+  exercises.forEach(function (ex) {
+    var prog = ex.progression.find(function (p) { return p.week === mapped; }) || ex.progression[ex.progression.length - 1];
+    var done = completedToday.includes(ex.id);
+    var intensity = getExerciseIntensity(ex.id);
+    var adj = applyIntensity(prog, intensity);
+
+    html += '<div class="exercise-item ' + (done ? 'completed' : '') + '" onclick="toggleExercise(\'' + ex.id + '\')">';
+    html += '<div class="exercise-check">' + (done ? '✓' : '') + '</div>';
+    html += '<div class="exercise-info">';
+    html += '<div class="exercise-name">' + ex.name + '</div>';
+    html += '<div class="exercise-detail">' + adj.sets + ' sets × ' + adj.reps + (intensity !== 0 ? ' <span class="intensity-tag">' + adj.label + '</span>' : '') + '</div>';
+    html += '<div class="exercise-detail" style="margin-top:4px; color:var(--text-secondary);">' + ex.description + '</div>';
+    if (ex.video) {
+      html += '<button type="button" class="video-link" onclick="openVideoModal(\'' + ex.video + '\', \'' + encodeURIComponent(ex.name) + '\', event)" style="display:inline-block; margin-top:8px; padding:6px 14px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-size:0.85rem; font-weight:600;">📺 Watch Video</button>';
+    }
+    html += '</div>';
+    html += '<div class="exercise-difficulty" onclick="event.stopPropagation()" title="Find this too easy or too hard? Adjust just this exercise.">';
+    html += '<button type="button" class="diff-btn" aria-label="Make this exercise harder" ' + (intensity >= 2 ? 'disabled' : '') + ' onclick="adjustExerciseIntensity(\'' + ex.id + '\', 1, event)">▲</button>';
+    html += '<span class="diff-label">' + adj.label + '</span>';
+    html += '<button type="button" class="diff-btn" aria-label="Make this exercise easier" ' + (intensity <= -2 ? 'disabled' : '') + ' onclick="adjustExerciseIntensity(\'' + ex.id + '\', -1, event)">▼</button>';
+    html += '</div>';
+    html += '</div>';
+  });
+
+  container.innerHTML = html;
 }
 
 function renderProgrammeLevelIndicator(currentLevel, levelInfo) {
@@ -96,6 +166,7 @@ function switchWeek(week) {
   saveUser();
   renderWeekTabs();
   renderExerciseSession();
+  renderIsometricSession();
 }
 
 function renderExerciseSession() {
@@ -187,6 +258,7 @@ function toggleExercise(exerciseId) {
 
   saveUser();
   renderExerciseSession();
+  renderIsometricSession();
 
   // Check if all exercises completed - celebrate only on the transition into
   // "all complete" (i.e. this tap finished the session), never on a passive render.

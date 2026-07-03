@@ -38,6 +38,115 @@ const MOOD_RESPONSES = {
 
 // ===== EXERCISE PROGRAMMES =====
 
+// ===== ISOMETRIC HOLDS =====
+// Static "hold" exercises (muscle contracts without the joint moving).
+// Ideal for prehab: they build strength while being gentle on a painful,
+// arthritic joint, and are safe to do every day. Shown as a separate daily
+// block that appears every week, independent of the phased programme.
+// Progression grows the hold time and sets over a rolling 4-week cycle.
+
+const KNEE_ISOMETRICS = [
+  {
+    id: "iso-k1",
+    name: "Static Quad Sets",
+    sets: 2, reps: "5 each leg, hold 5 sec",
+    description: "Sitting or lying with your leg straight out, tighten your thigh muscle and gently push the back of your knee down. Hold, then relax. Builds the quadriceps strength that's vital for knee recovery - without moving the joint.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 each leg, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 each leg, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 each leg, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 each leg, hold 10 sec" }
+    ]
+  },
+  {
+    id: "iso-k2",
+    name: "Inner-Range Quad Hold",
+    sets: 2, reps: "5 each leg, hold 5 sec",
+    description: "Place a rolled-up towel under your knee. Tighten your thigh to lift your heel and straighten the knee, keeping the back of the knee resting on the towel. Hold, then lower slowly. Strengthens the inner part of the thigh muscle.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 each leg, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 each leg, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 each leg, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 each leg, hold 10 sec" }
+    ]
+  },
+  {
+    id: "iso-k3",
+    name: "Isometric Hamstring (Heel Dig)",
+    sets: 2, reps: "5 each leg, hold 5 sec",
+    description: "Sitting on a chair with your heel on the floor and knee slightly bent, dig your heel down and back into the floor as if trying to bend your knee - but don't let anything move. Hold, then relax. Gently works the hamstrings.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 each leg, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 each leg, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 each leg, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 each leg, hold 10 sec" }
+    ]
+  },
+  {
+    id: "iso-k4",
+    name: "Glute Sets",
+    sets: 2, reps: "5 holds, hold 5 sec",
+    description: "Sitting or lying, squeeze your buttocks together as firmly as is comfortable. Hold, then relax. Strong glutes support and take load off the knee.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 holds, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 holds, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 holds, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 holds, hold 10 sec" }
+    ]
+  }
+];
+
+const HIP_ISOMETRICS = [
+  {
+    id: "iso-h1",
+    name: "Glute Sets",
+    sets: 2, reps: "5 holds, hold 5 sec",
+    description: "Sitting or lying, squeeze your buttocks together as firmly as is comfortable. Hold, then relax. Strengthens the muscles that stabilise your hip - without moving the joint.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 holds, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 holds, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 holds, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 holds, hold 10 sec" }
+    ]
+  },
+  {
+    id: "iso-h2",
+    name: "Isometric Hip Abduction",
+    sets: 2, reps: "5 holds, hold 5 sec",
+    description: "Sitting tall, place a hand on the outside of each knee. Push your knees outwards against your hands, resisting so that nothing actually moves. Hold, then relax. Strengthens the important muscles on the outside of the hip.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 holds, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 holds, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 holds, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 holds, hold 10 sec" }
+    ]
+  },
+  {
+    id: "iso-h3",
+    name: "Isometric Hip Adduction",
+    sets: 2, reps: "5 holds, hold 5 sec",
+    description: "Place a cushion or rolled-up towel between your knees. Squeeze your knees together into the cushion. Hold, then relax. Strengthens the inner-thigh muscles that support the hip.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 holds, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 holds, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 holds, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 holds, hold 10 sec" }
+    ]
+  },
+  {
+    id: "iso-h4",
+    name: "Static Quad Sets",
+    sets: 2, reps: "5 each leg, hold 5 sec",
+    description: "Sitting or lying with your leg straight, tighten your thigh and gently push the back of your knee down. Hold, then relax. Keeps the thigh strong to support both hip and knee.",
+    progression: [
+      { week: 1, sets: 2, reps: "5 each leg, hold 5 sec" },
+      { week: 2, sets: 2, reps: "6 each leg, hold 6 sec" },
+      { week: 3, sets: 3, reps: "6 each leg, hold 8 sec" },
+      { week: 4, sets: 3, reps: "8 each leg, hold 10 sec" }
+    ]
+  }
+];
+
 const HIP_EXERCISES = {
   phase1: { // Weeks 1-4: Foundation
     name: "Foundation Phase",
