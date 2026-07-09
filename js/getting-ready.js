@@ -474,6 +474,41 @@ function initGettingReady() {
   showGettingReadyModules();
 }
 
+// ===== AFTER YOUR SURGERY =====
+// Reuses content from GETTING_READY_SECTIONS (first-weeks, hip-precautions, knee-guide)
+// but renders into the separate After Surgery page.
+
+function initAfterSurgery() {
+  showAfterSurgeryModules();
+  // Hide hip/knee cards based on the user's joint
+  if (currentUser) {
+    var joint = currentUser.profile.joint;
+    var hipCard = document.getElementById('after-hip-precautions-card');
+    var kneeCard = document.getElementById('after-knee-guide-card');
+    if (hipCard) hipCard.style.display = (joint === 'knee') ? 'none' : '';
+    if (kneeCard) kneeCard.style.display = (joint === 'hip') ? 'none' : '';
+  }
+}
+
+function showAfterSurgeryModules() {
+  document.getElementById('after-surgery-content').style.display = 'none';
+  document.querySelectorAll('#page-after-surgery > .grid').forEach(function(g) { g.style.display = 'grid'; });
+}
+
+function showAfterSurgerySection(sectionId) {
+  var section = GETTING_READY_SECTIONS[sectionId];
+  if (!section) return;
+
+  // Hide module cards, show content
+  document.querySelectorAll('#page-after-surgery > .grid').forEach(function(g) { g.style.display = 'none'; });
+  document.getElementById('after-surgery-content').style.display = 'block';
+
+  var html = '<h2>' + section.title + '</h2>';
+  html += section.content;
+
+  document.getElementById('after-surgery-content-inner').innerHTML = html;
+}
+
 function showGettingReadyModules() {
   document.getElementById('getting-ready-content').style.display = 'none';
   document.querySelectorAll('#page-getting-ready > .grid').forEach(g => g.style.display = 'grid');

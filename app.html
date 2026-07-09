@@ -429,10 +429,6 @@
             <span class="nav-icon jj-icon" data-jjicon="lightbulb"></span>
             <span class="nav-label">Why It Works</span>
           </button>
-          <button class="nav-item" data-page="oxford-score" onclick="navigateTo('oxford-score')">
-            <span class="nav-icon jj-icon" data-jjicon="joint-score"></span>
-            <span class="nav-label">My Joint Score</span>
-          </button>
           <button class="nav-item" data-page="exercises" onclick="navigateTo('exercises')">
             <span class="nav-icon jj-icon" data-jjicon="exercise" data-jjcolor="amber"></span>
             <span class="nav-label">Exercises</span>
@@ -452,6 +448,14 @@
           <button class="nav-item" data-page="getting-ready" onclick="navigateTo('getting-ready')">
             <span class="nav-icon jj-icon" data-jjicon="getting-ready" data-jjcolor="terracotta"></span>
             <span class="nav-label">Getting Ready</span>
+          </button>
+          <button class="nav-item" data-page="after-surgery" onclick="navigateTo('after-surgery')">
+            <span class="nav-icon jj-icon" data-jjicon="sunrise" data-jjcolor="terracotta"></span>
+            <span class="nav-label">After Your Surgery</span>
+          </button>
+          <button class="nav-item" data-page="oxford-score" onclick="navigateTo('oxford-score')">
+            <span class="nav-icon jj-icon" data-jjicon="joint-score"></span>
+            <span class="nav-label">My Joint Score</span>
           </button>
           <button class="nav-item" data-page="about" onclick="navigateTo('about')">
             <span class="nav-icon jj-icon" data-jjicon="about"></span>
@@ -910,21 +914,6 @@
               <h3 class="mt-md">Equipment & Aids</h3>
               <p>Handy, no-install kit that makes recovery easier</p>
             </div>
-            <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('first-weeks')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="calendar" data-jjcolor="terracotta"></span>
-              <h3 class="mt-md">Your First Few Weeks at Home</h3>
-              <p>Support, pain relief, swelling and when you can drive</p>
-            </div>
-            <div class="card" style="cursor:pointer;" id="hip-precautions-card" onclick="showGettingReadySection('hip-precautions')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="warning" data-jjcolor="terracotta"></span>
-              <h3 class="mt-md">Hip Precautions</h3>
-              <p>Important movements to avoid after hip replacement</p>
-            </div>
-            <div class="card" style="cursor:pointer;" id="knee-guide-card" onclick="showGettingReadySection('knee-guide')">
-              <span class="icon-emoji-lg jj-icon" data-jjicon="knee" data-jjcolor="terracotta"></span>
-              <h3 class="mt-md">Knee Replacement Guide</h3>
-              <p>What to expect and how to manage after knee surgery</p>
-            </div>
             <div class="card" style="cursor:pointer;" onclick="showGettingReadySection('surgeon-questions')">
               <span class="icon-emoji-lg jj-icon" data-jjicon="question" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Questions for Your Surgeon</h3>
@@ -1143,6 +1132,46 @@
             <p>Content developed with reference to guidelines from <strong>NICE</strong>, the <strong>NHS</strong>, the <strong>Chartered Society of Physiotherapy</strong>, the <strong>British Dietetic Association</strong>, and published clinical research.</p>
             <h3>Get In Touch</h3>
             <p>Email: <a href="mailto:hello@jointjourney.org" style="color:var(--green-700);">hello@jointjourney.org</a></p>
+          </div>
+        </div>
+
+        <!-- ===== AFTER YOUR SURGERY PAGE ===== -->
+        <div id="page-after-surgery" class="app-page" style="display:none;">
+          <div class="page-header">
+            <h1 class="page-title"><span class="jj-icon" data-jjicon="sunrise" data-jjcolor="terracotta"></span>After Your Surgery</h1>
+            <p class="page-subtitle">Information for when your operation is done — read it now so you know what to expect</p>
+          </div>
+
+          <div class="alert alert-info mb-xl">
+            <strong>You don't need to worry about this yet.</strong> This section is here so you can read it in advance and feel prepared. It will be most useful in the days and weeks after your surgery.
+          </div>
+
+          <div class="grid grid-2 mb-xl">
+            <div class="card" style="cursor:pointer;" onclick="showAfterSurgerySection('first-weeks')">
+              <span class="icon-emoji-lg jj-icon" data-jjicon="calendar" data-jjcolor="terracotta"></span>
+              <h3 class="mt-md">Your First Few Weeks at Home</h3>
+              <p>Support, pain relief, swelling and when you can drive</p>
+            </div>
+            <div class="card" style="cursor:pointer;" id="after-hip-precautions-card" onclick="showAfterSurgerySection('hip-precautions')">
+              <span class="icon-emoji-lg jj-icon" data-jjicon="warning" data-jjcolor="terracotta"></span>
+              <h3 class="mt-md">Hip Precautions</h3>
+              <p>Important movements to avoid after hip replacement</p>
+            </div>
+            <div class="card" style="cursor:pointer;" id="after-knee-guide-card" onclick="showAfterSurgerySection('knee-guide')">
+              <span class="icon-emoji-lg jj-icon" data-jjicon="knee" data-jjcolor="terracotta"></span>
+              <h3 class="mt-md">Knee Replacement Guide</h3>
+              <p>What to expect and how to manage after knee surgery</p>
+            </div>
+          </div>
+
+          <!-- After Surgery content area -->
+          <div id="after-surgery-content" style="display:none;">
+            <button class="btn btn-ghost mb-lg" onclick="showAfterSurgeryModules()">← Back</button>
+            <div class="card">
+              <div id="after-surgery-content-inner">
+                <!-- Generated by JS -->
+              </div>
+            </div>
           </div>
         </div>
 

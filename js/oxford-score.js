@@ -479,14 +479,28 @@ function renderOxfordScoreResult(type) {
 
 function renderSingleScoreCard(data, jointLabel, type, jointType) {
   const interp = getOxfordScoreInterpretation(data.score);
-  
+  var uid = 'oxford-detail-' + jointType + '-' + type; // unique id for toggle
+
   let html = '<div class="oxford-result-card" style="margin-bottom: var(--space-lg);">';
-  html += '<h3 style="margin-top:0; text-align:center;">Oxford ' + jointLabel + ' Score</h3>';
-  html += '<div class="oxford-result-score" style="color:' + interp.color + ';">' + data.score + '<span class="oxford-result-total">/48</span></div>';
-  html += '<div class="oxford-result-label">' + interp.label + '</div>';
-  html += '<p class="oxford-result-description">' + interp.description + '</p>';
-  html += '<p class="oxford-result-date">Completed on ' + new Date(data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) + '</p>';
-  
+  html += '<h3 style="margin-top:0; text-align:center;">Your ' + jointLabel + ' — Where You\'re Starting From</h3>';
+
+  // Plain-English headline (the main display)
+  html += '<div style="text-align:center; padding: var(--space-lg) 0;">';
+  html += '<div style="display:inline-block; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); background:' + interp.color + '18; border: 2px solid ' + interp.color + ';">';
+  html += '<span style="font-size: var(--font-size-xl); font-weight: 700; color:' + interp.color + ';">' + interp.label + '</span>';
+  html += '</div></div>';
+  html += '<p style="text-align:center; max-width:500px; margin:var(--space-md) auto var(--space-sm);">' + interp.description + '</p>';
+  html += '<p class="oxford-result-date" style="text-align:center;">Completed on ' + new Date(data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) + '</p>';
+
+  // Collapsible detailed score (hidden by default)
+  html += '<div style="text-align:center; margin-top: var(--space-sm);">';
+  html += '<button class="btn btn-ghost btn-sm" onclick="var el=document.getElementById(\'' + uid + '\');el.style.display=el.style.display===\'none\'?\'block\':\'none\';">See detailed score ▾</button>';
+  html += '</div>';
+  html += '<div id="' + uid + '" style="display:none; text-align:center; padding: var(--space-md) 0;">';
+  html += '<div class="oxford-result-score" style="color:' + interp.color + ';">' + data.score + '<span class="oxford-result-total"> / 48</span></div>';
+  html += '<p style="font-size:var(--font-size-sm); color:var(--text-muted);">0 = most difficulty, 48 = no difficulty at all</p>';
+  html += '</div>';
+
   // Pre vs post comparison
   if (type === 'postop') {
     const joint = currentUser.profile.joint;
@@ -496,13 +510,14 @@ function renderSingleScoreCard(data, jointLabel, type, jointType) {
     } else {
       preData = currentUser.progress.oxfordScorePreOp;
     }
-    
+
     if (preData) {
       const diff = data.score - preData.score;
+      const preInterp = getOxfordScoreInterpretation(preData.score);
       html += '<div class="oxford-comparison">';
       html += '<h4>Your Progress</h4>';
-      html += '<div class="oxford-compare-row"><span>Pre-op score:</span><strong>' + preData.score + '/48</strong></div>';
-      html += '<div class="oxford-compare-row"><span>Post-op score:</span><strong>' + data.score + '/48</strong></div>';
+      html += '<div class="oxford-compare-row"><span>Before surgery:</span><strong>' + preInterp.label + '</strong></div>';
+      html += '<div class="oxford-compare-row"><span>After surgery:</span><strong>' + interp.label + '</strong></div>';
       if (diff > 0) {
         html += '<div class="oxford-compare-result positive">↑ Improved by ' + diff + ' points! 🎉</div>';
       } else if (diff < 0) {
@@ -513,7 +528,7 @@ function renderSingleScoreCard(data, jointLabel, type, jointType) {
       html += '</div>';
     }
   }
-  
+
   html += '</div>';
   return html;
 }

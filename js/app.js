@@ -149,6 +149,7 @@ function navigateTo(page) {
     case 'nutrition': initNutrition(); break;
     case 'mindset': initMindset(); break;
     case 'getting-ready': initGettingReady(); break;
+    case 'after-surgery': initAfterSurgery(); break;
     case 'oxford-score': initOxfordScore(); break;
     case 'account': initAccount(); break;
   }

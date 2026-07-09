@@ -220,7 +220,16 @@ function calculateNutrition() {
       var canReachTarget = weeksToSurgery ? weeksAtThisRate <= weeksToSurgery : true;
 
       let html = '<div style="line-height:1.8;">';
-      html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
+      html += '<p><strong>⚖️ What to expect:</strong> about <strong>' + JJUnits.fmtWeightAmount(expectedWeeklyLoss) + ' per week</strong> of gradual, healthy weight loss.</p>';
+      html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + JJUnits.fmtWeightAmount(weightToLose) + '</strong>';
+      if (weeksToSurgery && canReachTarget) {
+        html += ', which should take roughly <strong>' + weeksAtThisRate + ' weeks</strong>, well within your surgery timeline. You\'ve got this!</p>';
+      } else if (weeksToSurgery && !canReachTarget) {
+        html += '. At this pace that would take about <strong>' + weeksAtThisRate + ' weeks</strong>, longer than your ' + weeksToSurgery + ' weeks to surgery. <strong>That\'s absolutely fine.</strong> Every kilo you lose makes a real difference.</p>';
+      } else {
+        html += ', which would take roughly <strong>' + weeksAtThisRate + ' weeks</strong> at this pace.</p>';
+      }
+      html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
       html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight (your TDEE).</p>';
       if (weeksToSurgery) {
         html += '<p>With <strong>' + weeksToSurgery + ' weeks until your surgery</strong>, we\'ve calculated a <strong>' + deficit + '-calorie daily deficit</strong> tailored to your timeline. ';
@@ -234,19 +243,11 @@ function calculateNutrition() {
       } else {
         html += '<p>We\'ve reduced this by <strong>' + deficit + ' calories</strong> to create a safe, sustainable calorie deficit.</p>';
       }
-      html += '<h4 style="margin-bottom:var(--space-sm);">⚖️ What to expect</h4>';
-      html += '<p>At this calorie level, you can expect to lose about <strong>' + JJUnits.fmtWeightAmount(expectedWeeklyLoss) + ' per week</strong>. That preserves your muscle while losing fat, crash diets do the opposite, which is the last thing you need before surgery.</p>';
-      html += '<p>To reach a BMI of 30, you\'d need to lose <strong>' + JJUnits.fmtWeightAmount(weightToLose) + '</strong>';
-      if (weeksToSurgery && canReachTarget) {
-        html += ', which should take roughly <strong>' + weeksAtThisRate + ' weeks</strong>, well within your surgery timeline. You\'ve got this!</p>';
-      } else if (weeksToSurgery && !canReachTarget) {
-        html += '. At this pace that would take about <strong>' + weeksAtThisRate + ' weeks</strong>, longer than your ' + weeksToSurgery + ' weeks to surgery. <strong>That\'s absolutely fine.</strong> Every kilo you lose makes a real difference. Research shows that even losing 2-3kg before surgery measurably improves outcomes and speeds recovery. Do what you can.</p>';
-      } else {
-        html += ', which would take roughly <strong>' + weeksAtThisRate + ' weeks</strong> at this pace.</p>';
-      }
-      html += '<h4 style="margin-bottom:var(--space-sm);">🥩 Why protein matters</h4>';
+      html += '</div></details>';
+      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein matters</summary><div style="margin-top:var(--space-sm);">';
       html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises, your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
-      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day, we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
+      html += '</div></details>';
+      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm); margin-top:var(--space-md);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day, we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;
@@ -255,11 +256,13 @@ function calculateNutrition() {
       calorieTarget = Math.max(tdee - 300, minCal);
 
       let html = '<div style="line-height:1.8;">';
-      html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
-      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. We\'ve reduced this by <strong>300 calories</strong> - a gentle deficit that should help you lose weight gradually without feeling hungry or deprived.</p>';
-      html += '<p>At this level, expect to lose about <strong>0.25-0.5kg per week</strong>. No crash diets, no misery - just slow and steady progress. Even a few kilos makes surgery easier and recovery faster.</p>';
-      html += '<h4 style="margin-bottom:var(--space-sm);">🥩 Why protein matters</h4>';
+      html += '<p><strong>⚖️ What to expect:</strong> about <strong>0.25-0.5kg per week</strong> of gradual weight loss. No crash diets, no misery - just slow and steady progress. Even a few kilos makes surgery easier and recovery faster.</p>';
+      html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. We\'ve reduced this by <strong>300 calories</strong> - a gentle deficit.</p>';
+      html += '</div></details>';
+      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein matters</summary><div style="margin-top:var(--space-sm);">';
       html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. This supports the muscle-strengthening work you\'re doing with your exercises. Our recipes are designed to be high in protein to help you hit this.</p>';
+      html += '</div></details>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;

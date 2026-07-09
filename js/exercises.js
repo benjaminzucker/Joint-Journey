@@ -178,7 +178,7 @@ function renderWeekTabs() {
 
 function switchWeek(week) {
   currentUser.progress.currentWeek = week;
-  saveUser();
+  saveUserNow(); // Immediate save so the week isn't lost if user logs out quickly
   renderWeekTabs();
   renderExerciseSession();
   renderIsometricSession();
