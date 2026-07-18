@@ -116,7 +116,8 @@
 
 .hero-reassurance {
   font-size: var(--font-size-sm);
-  color: var(--text-muted);
+  color: var(--text-secondary);
+
   margin-bottom: 0;
 }
 
@@ -187,7 +188,8 @@
 
 .section-subtitle {
   font-size: var(--font-size-lg);
-  color: var(--text-muted);
+  color: var(--text-secondary);
+
   max-width: 600px;
   margin: 0 auto;
 }
@@ -292,8 +294,9 @@
 }
 
 .checklist-preview-item.checked {
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
+
 
 /* Calorie Preview */
 .calorie-preview {
@@ -339,9 +342,10 @@
 }
 
 .gratitude-preview em {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: var(--font-size-sm);
 }
+
 
 .gratitude-answer {
   margin-top: var(--space-md);
@@ -396,8 +400,13 @@
   color: var(--green-300);
 }
 
+.footer-brand .logo-text-bold {
+  color: #ffffff;
+}
+
 .footer-brand p {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.75);
+
   font-size: var(--font-size-sm);
 }
 
@@ -413,7 +422,8 @@
 }
 
 .footer-links a {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.75);
+
   text-decoration: none;
   font-size: var(--font-size-sm);
   transition: color var(--transition-fast);
@@ -429,7 +439,8 @@
 }
 
 .footer-bottom p {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.7);
+
   font-size: var(--font-size-sm);
   text-align: center;
   margin: 0;
@@ -530,6 +541,27 @@ a.hero-card:focus-visible {
   outline-offset: 3px;
 }
 
+/* Visually style h2 hero-card headings like h4 */
+.hero-card-heading {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xs);
+}
+
+/* Visually style h4 preview headings like h5 */
+.preview-heading {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-xs);
+}
+
+/* Footer heading (replacing h5 for a11y) */
+.footer-heading {
+  display: block;
+  color: var(--text-on-dark);
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-base);
+}
+
 @media (prefers-reduced-motion: reduce) {
+
   html { scroll-behavior: auto; }
 }
