@@ -21,10 +21,18 @@ function initExercises() {
   // Render programme level indicator
   renderProgrammeLevelIndicator(level, levelInfo);
 
+  // Show screening caution banner if user flagged any conditions
+  var banner = document.getElementById('exercise-screening-banner');
+  if (banner) {
+    var s = currentUser.profile.screening;
+    banner.style.display = (s && s.anyFlagged) ? 'block' : 'none';
+  }
+
   renderWeekTabs();
   renderExerciseSession();
   renderIsometricSession();
 }
+
 
 /* ============================================
    DAILY ISOMETRIC HOLDS

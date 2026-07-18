@@ -150,8 +150,9 @@
       <div class="onboarding-step" data-step="1">
         <div class="onboarding-card">
           <div class="onboarding-progress">
-            <div class="progress-bar"><div class="progress-bar-fill" style="width:17%"></div></div>
-            <span class="form-hint">Step 1 of 6</span>
+             <div class="progress-bar"><div class="progress-bar-fill" style="width:14%"></div></div>
+             <span class="form-hint">Step 1 of 7</span>
+
           </div>
           <div class="text-center mb-xl">
             <span class="icon-emoji-lg">🦴</span>
@@ -192,8 +193,9 @@
       <div class="onboarding-step" data-step="2" style="display:none;">
         <div class="onboarding-card">
           <div class="onboarding-progress">
-            <div class="progress-bar"><div class="progress-bar-fill" style="width:33%"></div></div>
-            <span class="form-hint">Step 2 of 6</span>
+             <div class="progress-bar"><div class="progress-bar-fill" style="width:29%"></div></div>
+             <span class="form-hint">Step 2 of 7</span>
+
           </div>
           <div class="text-center mb-xl">
             <span class="icon-emoji-lg">↔️</span>
@@ -230,8 +232,9 @@
       <div class="onboarding-step" data-step="3" style="display:none;">
         <div class="onboarding-card">
           <div class="onboarding-progress">
-            <div class="progress-bar"><div class="progress-bar-fill" style="width:50%"></div></div>
-            <span class="form-hint">Step 3 of 6</span>
+             <div class="progress-bar"><div class="progress-bar-fill" style="width:43%"></div></div>
+             <span class="form-hint">Step 3 of 7</span>
+
           </div>
           <div class="text-center mb-xl">
             <span class="icon-emoji-lg">📅</span>
@@ -254,8 +257,9 @@
       <div class="onboarding-step" data-step="4" style="display:none;">
         <div class="onboarding-card">
           <div class="onboarding-progress">
-            <div class="progress-bar"><div class="progress-bar-fill" style="width:67%"></div></div>
-            <span class="form-hint">Step 4 of 6</span>
+             <div class="progress-bar"><div class="progress-bar-fill" style="width:57%"></div></div>
+             <span class="form-hint">Step 4 of 7</span>
+
           </div>
           <div class="text-center mb-xl">
             <span class="icon-emoji-lg">📏</span>
@@ -325,13 +329,51 @@
         </div>
       </div>
 
-      <!-- Step 5: Oxford Score -->
+      <!-- Step 5: Safety Screening (one-time, PAR-Q style) -->
       <div class="onboarding-step" data-step="5" style="display:none;">
+        <div class="onboarding-card">
+          <div class="onboarding-progress">
+            <div class="progress-bar"><div class="progress-bar-fill" style="width:71%"></div></div>
+            <span class="form-hint">Step 5 of 7</span>
+          </div>
+          <div class="text-center mb-xl">
+            <span class="icon-emoji-lg">🩺</span>
+            <h2 class="mt-md">A quick safety check</h2>
+            <p>These help us make sure the exercise programme is safe for you. Answer honestly — there are no wrong answers, and answering "yes" won't stop you from using Joint Journey.</p>
+          </div>
+          <div class="screening-questions">
+            <label class="screening-question" style="display:flex; align-items:flex-start; gap:var(--space-sm); padding:var(--space-md); border:1px solid var(--border-light); border-radius:var(--radius-md); margin-bottom:var(--space-md); cursor:pointer;">
+              <input type="checkbox" id="screen-heart-lung" style="margin-top:4px; flex-shrink:0;">
+              <span>I have a <strong>heart condition, lung condition, or uncontrolled blood pressure</strong></span>
+            </label>
+            <label class="screening-question" style="display:flex; align-items:flex-start; gap:var(--space-sm); padding:var(--space-md); border:1px solid var(--border-light); border-radius:var(--radius-md); margin-bottom:var(--space-md); cursor:pointer;">
+              <input type="checkbox" id="screen-balance-falls" style="margin-top:4px; flex-shrink:0;">
+              <span>I have <strong>problems with balance</strong> or have <strong>had a fall in the last 6 months</strong></span>
+            </label>
+            <label class="screening-question" style="display:flex; align-items:flex-start; gap:var(--space-sm); padding:var(--space-md); border:1px solid var(--border-light); border-radius:var(--radius-md); margin-bottom:var(--space-md); cursor:pointer;">
+              <input type="checkbox" id="screen-exercise-limit" style="margin-top:4px; flex-shrink:0;">
+              <span>My <strong>GP or surgeon has told me to avoid</strong> or limit certain types of exercise</span>
+            </label>
+          </div>
+          <div id="screening-caution" class="alert alert-warning mt-lg" style="display:none;">
+            <strong>👍 That's fine — you can still use Joint Journey.</strong> We'd recommend checking with your GP or physiotherapist before starting the exercise programme, just to make sure you're safe. Start on the <strong>Gentle</strong> level and take it at your own pace.
+          </div>
+          <p class="form-hint mt-md">These answers are stored privately and are never shared. You can update them in My Account at any time.</p>
+          <div class="onboarding-nav mt-xl">
+            <button class="btn btn-ghost" onclick="prevOnboardingStep()">← Back</button>
+            <button class="btn btn-primary" onclick="nextOnboardingStep()">Continue →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: Oxford Score -->
+      <div class="onboarding-step" data-step="6" style="display:none;">
         <div class="onboarding-card" style="max-width: 720px;">
           <div class="onboarding-progress">
-            <div class="progress-bar"><div class="progress-bar-fill" style="width:83%"></div></div>
-            <span class="form-hint">Step 5 of 6</span>
+            <div class="progress-bar"><div class="progress-bar-fill" style="width:86%"></div></div>
+            <span class="form-hint">Step 6 of 7</span>
           </div>
+
           <div class="text-center mb-xl">
             <span class="icon-emoji-lg">📋</span>
             <h2 class="mt-md">Let's see where you're starting from</h2>
@@ -348,12 +390,13 @@
         </div>
       </div>
 
-      <!-- Step 6: Your Goal -->
-      <div class="onboarding-step" data-step="6" style="display:none;">
+      <!-- Step 7: Your Goal -->
+      <div class="onboarding-step" data-step="7" style="display:none;">
         <div class="onboarding-card">
           <div class="onboarding-progress">
             <div class="progress-bar"><div class="progress-bar-fill" style="width:100%"></div></div>
-            <span class="form-hint">Step 6 of 6</span>
+            <span class="form-hint">Step 7 of 7</span>
+
           </div>
           <div class="text-center mb-xl">
             <span class="icon-emoji-lg">🌟</span>
@@ -627,8 +670,16 @@
             <p class="page-subtitle" id="exercise-programme-type"></p>
           </div>
 
+          <!-- Screening caution banner (shown if user flagged conditions during onboarding) -->
+          <div id="exercise-screening-banner" class="alert alert-warning mb-lg" style="display:none;">
+            <strong>🩺 Reminder:</strong> During setup you told us you have a health condition that may affect exercise.
+            Please check with your <strong>GP or physiotherapist</strong> before starting, and always exercise within your comfort zone.
+            Start gently and build up gradually.
+          </div>
+
           <!-- Pre-exercise safety check (collapsed by default, safe but not intrusive) -->
           <details class="safety-check">
+
             <summary class="safety-check-summary">
               <span class="safety-check-icon" aria-hidden="true">⚠️</span>
               <span class="safety-check-title">Before you exercise - quick safety check</span>

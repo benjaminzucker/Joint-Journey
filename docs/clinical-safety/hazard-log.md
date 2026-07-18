@@ -10,10 +10,16 @@
 > ⚠️ Draft for completion. The CSO must review, adjust ratings, and sign off
 > before any deployment. Risk ratings here are first-pass estimates.
 
+> **Change log (v0.4, 18/07/2026):** Safety screening questionnaire added to
+> onboarding (PAR-Q-style: heart/lung, balance/falls, exercise restriction).
+> Flagged users see a persistent caution banner on the exercise page advising
+> GP/physio consultation. H01 controls updated; residual risk reduced to 2×2=4.
+
 > **Change log (v0.3, 18/07/2026):** CSO now registered (action closed).
 > Manufacturer updated to Elan Health Ltd (company number 17347255). DPIA
 > cross-reference added to H07 (action closed). Two additional hazards added
 > (H09 — outdated content; H10 — third-party service failure) for completeness.
+
 
 > **Change log (v0.2, 13/07/2026):** In-app safety controls implemented and
 > moved from "further mitigations" to "controls now in place" — a persistent
@@ -51,9 +57,10 @@ to each hazard below as advisors sign off.
 - **Cause:** Generic programme not suited to a specific comorbidity; user pushes too hard.
 - **Effect:** Musculoskeletal injury, fall, pain flare.
 - **Initial L×S:** 3 × 3 = 9
-- **Existing controls:** "Stop if sharp pain" guidance; "hold onto something sturdy"; "talk to your GP before starting if you have heart/respiratory/balance issues"; gentle/standard/active levelling; warm-up instructions. **(v0.2 — implemented) Pre-exercise safety check** collapsible at the top of the exercise programme: warm up, use support/footwear, stop for sharp pain/dizziness/chest pain/breathlessness, use gentle isometric holds on sore days, and check with GP/physio first if relevant.
-- **Further mitigations:** Formal pre-start safety screening questionnaire; video demonstrations of correct form.
-- **Residual L×S:** 2 × 3 = 6 (acceptable) — pre-exercise safety check now live; residual to fall further once a formal screening questionnaire and form videos are added.
+- **Existing controls:** "Stop if sharp pain" guidance; "hold onto something sturdy"; "talk to your GP before starting if you have heart/respiratory/balance issues"; gentle/standard/active levelling; warm-up instructions. **(v0.2 — implemented) Pre-exercise safety check** collapsible at the top of the exercise programme: warm up, use support/footwear, stop for sharp pain/dizziness/chest pain/breathlessness, use gentle isometric holds on sore days, and check with GP/physio first if relevant. **(v0.4 — implemented) Safety screening questionnaire** during onboarding (PAR-Q-style: heart/lung condition, balance/falls, GP-restricted exercise). Flagged users see a persistent caution banner on the exercise page advising GP/physio consultation before starting. Screening data stored on user profile.
+- **Further mitigations:** Video demonstrations of correct form.
+- **Residual L×S:** 2 × 2 = 4 (acceptable) — pre-exercise safety check and formal screening questionnaire now live; residual to fall further once form videos are added.
+
 
 
 ### H02 — User relies on the app *instead of* seeking medical help; a problem is missed
@@ -140,7 +147,8 @@ to each hazard below as advisors sign off.
 ## Open actions (to close before deployment)
 - [x] CSO appointed + trained. — *Done v0.3: Mr Benjamin Zucker registered as CSO. Log to be formally reviewed and signed off before go-live.*
 - [x] Add explicit red-flag / "when to seek help" content (H02, H05). — *Done v0.2: persistent panel on every in-app view.*
-- [~] Add pre-start exercise safety screening (H01). — *Partial v0.2: pre-exercise safety check live; formal screening questionnaire still to add.*
+- [x] Add pre-start exercise safety screening (H01). — *Done v0.4: PAR-Q-style screening questionnaire added to onboarding (heart/lung, balance/falls, exercise restriction). Flagged users see a persistent caution banner on the exercise page. Pre-exercise safety check also live (v0.2).*
+
 - [ ] Minimum-calorie floor + condition cautions (H04).
 - [x] Crisis signposting in mindset modules (H05). — *Done v0.2: Samaritans 116 123 in the persistent panel (site-wide); reinforce within modules as content grows.*
 - [ ] WCAG 2.1 AA accessibility pass (H08).

@@ -54,10 +54,23 @@ function nextOnboardingStep() {
   const next = document.querySelector('[data-step="' + currentOnboardingStep + '"]');
   if (next) next.style.display = 'block';
 
-  // If entering step 5 (Oxford Score), render the questions
+  // If entering step 5 (Safety Screening), wire up the caution toggle
   if (currentOnboardingStep === 5) {
+    ['screen-heart-lung', 'screen-balance-falls', 'screen-exercise-limit'].forEach(function (id) {
+      var cb = document.getElementById(id);
+      if (cb) cb.addEventListener('change', function () {
+        var any = document.getElementById('screen-heart-lung').checked ||
+                  document.getElementById('screen-balance-falls').checked ||
+                  document.getElementById('screen-exercise-limit').checked;
+        document.getElementById('screening-caution').style.display = any ? 'block' : 'none';
+      });
+    });
+  }
+  // If entering step 6 (Oxford Score), render the questions
+  if (currentOnboardingStep === 6) {
     renderOnboardingOxford();
   }
+
 }
 
 function prevOnboardingStep() {
@@ -78,6 +91,17 @@ function completeOnboarding() {
 
   onboardingData.goal = document.getElementById('onboard-goal').value || '';
 
+  // Collect safety screening flags (set on step 5)
+  var screenHL = document.getElementById('screen-heart-lung');
+  var screenBF = document.getElementById('screen-balance-falls');
+  var screenEL = document.getElementById('screen-exercise-limit');
+  var screeningFlags = {
+    heartLung: !!(screenHL && screenHL.checked),
+    balanceFalls: !!(screenBF && screenBF.checked),
+    exerciseLimit: !!(screenEL && screenEL.checked)
+  };
+  screeningFlags.anyFlagged = screeningFlags.heartLung || screeningFlags.balanceFalls || screeningFlags.exerciseLimit;
+
   // Save to user profile
   currentUser.profile = {
     joint: onboardingData.joint,
@@ -90,9 +114,11 @@ function completeOnboarding() {
     activity: onboardingData.activity,
     goal: onboardingData.goal,
     units: onboardingData.units || 'metric',
+    screening: screeningFlags,
     safetyAcknowledged: true,
     safetyAcknowledgedDate: new Date().toISOString()
   };
+
 
   // Log initial weight
   if (currentUser.profile.weight) {
@@ -754,11 +780,12 @@ function submitOnboardingOxford() {
 
   showToast('✅ Your Oxford Score has been recorded!');
   
-  // Move to step 6 (Goal)
-  currentOnboardingStep = 6;
+  // Move to step 7 (Goal)
+  currentOnboardingStep = 7;
   document.querySelectorAll('.onboarding-step').forEach(function(s) { s.style.display = 'none'; });
-  var next = document.querySelector('[data-step="6"]');
+  var next = document.querySelector('[data-step="7"]');
   if (next) next.style.display = 'block';
+
 }
 
 /* ============================================
