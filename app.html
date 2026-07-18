@@ -771,8 +771,32 @@
             <button class="tab" onclick="showNutritionTab('weight')">Weight Tracker</button>
           </div>
 
+          <!-- Consult your doctor (collapsible safety check) -->
+          <details class="safety-check mb-lg">
+            <summary class="safety-check-summary">
+              <span class="safety-check-icon" aria-hidden="true">🩺</span>
+              <span class="safety-check-title">Consult your doctor before changing your diet if…</span>
+              <span class="safety-check-chevron" aria-hidden="true">▾</span>
+            </summary>
+            <div class="safety-check-body">
+              <p>The nutrition guidance in Joint Journey is designed for the general population. Please <strong>speak to your GP, surgeon, or a registered dietitian</strong> before making significant dietary changes if you have any of the following:</p>
+              <ul>
+                <li><strong>Diabetes</strong> (type 1 or type 2) — calorie changes can affect blood sugar control and medication doses</li>
+                <li><strong>An eating disorder</strong> (current or history of) — calorie tracking may not be appropriate for you</li>
+                <li><strong>Kidney disease</strong> — protein and fluid intake may need to be restricted</li>
+                <li><strong>Heart failure</strong> — fluid and salt intake may need to be managed</li>
+                <li><strong>Food allergies or intolerances</strong> — always check recipe ingredients</li>
+                <li><strong>You are taking warfarin or other blood thinners</strong> — some foods (especially green leafy vegetables) can interact with your medication</li>
+                <li><strong>You are underweight</strong> (BMI below 18.5) — weight loss is not appropriate for you</li>
+                <li><strong>You are pregnant or breastfeeding</strong></li>
+              </ul>
+              <p class="mb-0">Joint Journey's calorie and nutrition targets are <strong>estimates based on general guidelines</strong>. They are not a substitute for personalised dietary advice from a healthcare professional.</p>
+            </div>
+          </details>
+
           <!-- Calculator Tab -->
           <div id="nutrition-calculator" class="nutrition-tab">
+
             <div class="grid grid-2 mb-xl">
               <div class="card">
                 <h3>📊 Your Numbers</h3>

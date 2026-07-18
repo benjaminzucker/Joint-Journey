@@ -85,9 +85,10 @@ to each hazard below as advisors sign off.
 - **Cause:** Generic calorie/BMI calculation applied to someone for whom it's inappropriate (e.g. underweight, eating disorder, diabetes).
 - **Effect:** Unsafe weight loss / nutritional harm.
 - **Initial L×S:** 2 × 3 = 6
-- **Existing controls:** Presented as general guidance; estimates noted as approximate.
-- **Further mitigations:** Floor on minimum calories; signpost to GP/dietitian for medical conditions; exclude/caution for low BMI.
+- **Existing controls:** Presented as general guidance; estimates noted as approximate. Calorie deficit is only applied when BMI indicates weight to lose; deficit capped at a safe maximum (300–500 kcal/day) and never below an absolute calorie floor. No deficit is suggested for users with a healthy BMI. **(v0.4 — implemented) Collapsible "Consult your doctor" safety check** on the nutrition page listing conditions where dietary changes may be unsafe (diabetes, eating disorders, kidney disease, heart failure, warfarin, underweight/BMI < 18.5, pregnancy) with advice to speak to GP/dietitian first.
+- **Further mitigations:** None outstanding — core controls in place.
 - **Residual L×S:** 1 × 3 = 3 (acceptable)
+
 
 ### H05 — Mental-health content distresses a vulnerable user / misses risk
 - **Cause:** Modules on pain/anxiety surface distress; no route for a user in crisis.
@@ -149,7 +150,8 @@ to each hazard below as advisors sign off.
 - [x] Add explicit red-flag / "when to seek help" content (H02, H05). — *Done v0.2: persistent panel on every in-app view.*
 - [x] Add pre-start exercise safety screening (H01). — *Done v0.4: PAR-Q-style screening questionnaire added to onboarding (heart/lung, balance/falls, exercise restriction). Flagged users see a persistent caution banner on the exercise page. Pre-exercise safety check also live (v0.2).*
 
-- [ ] Minimum-calorie floor + condition cautions (H04).
+- [x] Nutrition safety controls (H04). — *Done v0.4: Calorie deficit capped at safe maximum (300–500 kcal/day), only applied when BMI indicates weight to lose. Collapsible "Consult your doctor" safety check added to nutrition page listing diabetes, eating disorders, kidney disease, heart failure, warfarin, underweight, and pregnancy.*
+
 - [x] Crisis signposting in mindset modules (H05). — *Done v0.2: Samaritans 116 123 in the persistent panel (site-wide); reinforce within modules as content grows.*
 - [ ] WCAG 2.1 AA accessibility pass (H08).
 - [x] Cross-reference DPIA for H07. — *Done v0.3: DPIA path, data controller, and data residency added to H07.*

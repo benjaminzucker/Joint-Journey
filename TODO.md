@@ -1,4 +1,3 @@
-# Joint Journey — Master To-Do List
 
 A living checklist. Updated as tasks are completed.
 

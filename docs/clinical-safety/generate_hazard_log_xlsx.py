@@ -93,13 +93,17 @@ HAZARDS = [
         "controls": (
             "\"Stop if sharp pain\" guidance; \"hold onto something sturdy\"; "
             "\"talk to your GP before starting\"; gentle/standard/active levelling; "
-            "warm-up instructions. Pre-exercise safety check collapsible (v0.2)."
+            "warm-up instructions. Pre-exercise safety check collapsible (v0.2). "
+            "PAR-Q-style safety screening questionnaire during onboarding (v0.4): "
+            "heart/lung, balance/falls, GP-restricted exercise. Flagged users see "
+            "persistent caution banner on exercise page."
         ),
-        "further": "Formal pre-start safety screening questionnaire; video demonstrations of correct form.",
-        "res_l": 2, "res_s": 3,
-        "status": "Partial — pre-exercise safety check live; formal questionnaire still to add.",
+        "further": "Video demonstrations of correct form.",
+        "res_l": 2, "res_s": 2,
+        "status": "Implemented (v0.4) — screening questionnaire + pre-exercise safety check live.",
         "domain": "Physiotherapy",
     },
+
     {
         "id": "H02",
         "title": "User relies on the app instead of seeking medical help; a problem is missed",
@@ -133,12 +137,19 @@ HAZARDS = [
         "cause": "Generic calorie/BMI calculation applied to someone for whom it's inappropriate.",
         "effect": "Unsafe weight loss / nutritional harm.",
         "init_l": 2, "init_s": 3,
-        "controls": "Presented as general guidance; estimates noted as approximate.",
-        "further": "Floor on minimum calories; signpost to GP/dietitian; exclude/caution for low BMI.",
+        "controls": (
+            "Presented as general guidance; estimates noted as approximate. "
+            "Deficit only applied when BMI indicates weight to lose; capped at safe maximum "
+            "(300–500 kcal/day); never below absolute calorie floor. "
+            "Collapsible \"Consult your doctor\" safety check on nutrition page (v0.4): "
+            "diabetes, eating disorders, kidney disease, heart failure, warfarin, underweight, pregnancy."
+        ),
+        "further": "None outstanding — core controls in place.",
         "res_l": 1, "res_s": 3,
-        "status": "OPEN — min-calorie floor + condition cautions still to implement.",
+        "status": "Implemented (v0.4) — deficit cap + condition cautions live.",
         "domain": "Dietetics",
     },
+
     {
         "id": "H05",
         "title": "Mental-health content distresses a vulnerable user / misses risk",
@@ -223,20 +234,27 @@ OPEN_ACTIONS = [
     ("CSO appointed + trained.", "DONE", "v0.3 — Mr Benjamin Zucker registered as CSO."),
     ("Red-flag / \"when to seek help\" content (H02, H05).", "DONE", "v0.2 — persistent panel on every in-app view."),
     ("Crisis signposting including Samaritans (H05).", "DONE", "v0.2 — in the persistent panel site-wide."),
-    ("Pre-exercise safety check (H01).", "PARTIAL", "v0.2 — safety check live; formal screening questionnaire still to add."),
+    ("Pre-exercise safety screening (H01).", "DONE", "v0.4 — PAR-Q-style screening questionnaire in onboarding + caution banner on exercise page. Pre-exercise safety check also live (v0.2)."),
     ("DPIA cross-referenced for H07.", "DONE", "v0.3 — DPIA path, data controller, data residency added."),
-    ("Minimum-calorie floor + condition cautions (H04).", "OPEN", "Implement in the nutrition/weight section of the app."),
+    ("Nutrition safety controls (H04).", "DONE", "v0.4 — Deficit capped at 300–500 kcal/day, only applied when BMI indicates weight to lose. \"Consult your doctor\" collapsible on nutrition page."),
     ("WCAG 2.1 AA accessibility pass (H08).", "OPEN", "Check contrast, touch targets, alt text, keyboard nav."),
     ("Clinical advisory board review and sign-off (H01–H10).", "OPEN", "Schedule first meeting; record in content-review-and-signoff-log."),
     ("Formal CSO sign-off of this log (bump to v1.0).", "OPEN", "After all above are closed."),
 ]
 
 CHANGES = [
+    ("0.4", "18/07/2026", (
+        "Safety screening questionnaire added to onboarding (PAR-Q-style: heart/lung, "
+        "balance/falls, exercise restriction). Caution banner on exercise page for flagged users. "
+        "\"Consult your doctor\" collapsible added to nutrition page. "
+        "H01 residual risk reduced to 2×2=4. H04 controls updated, action closed."
+    )),
     ("0.3", "18/07/2026", (
         "CSO registered (action closed). Manufacturer updated to Elan Health Ltd (17347255). "
         "DPIA cross-reference added to H07 (action closed). H09 and H10 added. "
         "Excel hazard log generator created."
     )),
+
     ("0.2", "13/07/2026", (
         "In-app safety controls implemented: persistent \"When to seek help\" header control "
         "(H02), crisis signposting including Samaritans (H05), pre-exercise safety check (H01)."
