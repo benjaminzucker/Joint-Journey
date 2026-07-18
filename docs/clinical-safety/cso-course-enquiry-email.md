@@ -40,6 +40,7 @@ I'm keen to complete training as soon as practical, so your earliest available
 dates would be very welcome.
 
 Many thanks,
-[Mr Benjamin Zucker]
-[role / organisation]
+Mr Benjamin Zucker
+Director & CSO, Elan Health Ltd (company number 17347255)
+
 [phone]

@@ -1,6 +1,7 @@
 # Joint Journey — Data Protection Impact Assessment (DPIA)
 
-**Version:** 0.1 (draft) · **Date:** [ ] · **Owner:** [Mr Benjamin Zucker]
+**Version:** 0.1 (draft) · **Date:** [ ] · **Data Controller:** Elan Health Ltd (company number 17347255) · **Owner:** Mr Benjamin Zucker
+
 **Status:** Working draft. To be reviewed before any pilot/deployment, and updated
 whenever processing changes. A DPIA is required because we process **special
 category (health) data** at scale.
@@ -15,7 +16,8 @@ Joint Journey is a web application supporting adults awaiting hip/knee replaceme
 It collects information the user enters and usage data, to deliver a personalised
 prehabilitation programme and to evaluate the service.
 
-- **Controller:** [Joint Journey Ltd — once incorporated] (currently the founder as sole trader/individual).
+- **Controller:** Elan Health Ltd (company number 17347255), 154 Beesmoor Road, Frampton Cotterell, Bristol, BS36 2JN.
+
 - **Processors / sub-processors:** Google Firebase (authentication, Firestore database, hosting); [Netlify] (static hosting); video hosting (YouTube/Vimeo embeds); [email provider for follow-ups]. Confirm data-residency (EU/UK vs US) for each.
 - **Users / data subjects:** adults (18+) on the waiting list for hip or knee replacement.
 

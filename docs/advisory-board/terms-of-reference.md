@@ -25,7 +25,7 @@ must not be published without the relevant advisor's documented sign-off.**
 ## 2. Membership
 | Seat | Discipline | Holder |
 |---|---|---|
-| Chair | Founder / surgical oversight (orthopaedics) | [Mr Benjamin Zucker] |
+| Chair | Founder / surgical oversight (orthopaedics) | Mr Benjamin Zucker |
 | Member | MSK / orthopaedic **Physiotherapist** (HCPC) | [ ] |
 | Member | Registered **Dietitian** (HCPC) | [ ] |
 | Member | Clinical / Health **Psychologist** (HCPC) or CBT therapist (BABCP) | [ ] |
@@ -34,7 +34,7 @@ must not be published without the relevant advisor's documented sign-off.**
 
 - All clinical members must hold **current professional registration** (HCPC/GMC/BABCP).
 - Members serve a renewable term of **[2 years]**.
-- The Clinical Safety Officer (CSO) for the product is **[Mr Benjamin Zucker]**
+- The Clinical Safety Officer (CSO) for the product is **Mr Benjamin Zucker**
   (see `../clinical-safety/`). The Board supports, but does not replace, the CSO.
 
 ## 3. Roles & responsibilities

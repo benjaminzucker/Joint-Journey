@@ -56,7 +56,7 @@ clinicians say yes to clear scope + purpose, not vague "join my startup."
 > would directly shape something I hope will help a lot of patients.
 >
 > Best wishes,
-> [Mr Benjamin Zucker] · [role] · [contact]
+> Mr Benjamin Zucker · [role] · [contact]
 
 ---
 
@@ -82,7 +82,7 @@ clinicians say yes to clear scope + purpose, not vague "join my startup."
 > expertise in making the nutrition side genuinely helpful and safe.
 >
 > Best wishes,
-> [Mr Benjamin Zucker] · [role] · [contact]
+> Mr Benjamin Zucker · [role] · [contact]
 
 ---
 

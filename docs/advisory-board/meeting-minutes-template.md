@@ -5,7 +5,7 @@
 ## Attendance
 | Name | Role / seat | Present? |
 |------|-------------|----------|
-| [Mr Benjamin Zucker] | Chair / CSO | |
+| Mr Benjamin Zucker | Chair / CSO | |
 | [ ] | Physiotherapy advisor | |
 | [ ] | Dietetics advisor | |
 | [ ] | Psychology advisor | |

@@ -84,7 +84,7 @@ def build_log():
     meta.add_run("Product / version: ").bold = True
     meta.add_run("Joint Journey [version] \u2003")
     meta.add_run("Log owner (CSO): ").bold = True
-    meta.add_run("[Mr Benjamin Zucker]")
+    meta.add_run("Mr Benjamin Zucker")
 
     doc.add_paragraph("")
 

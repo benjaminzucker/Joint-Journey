@@ -1060,3 +1060,135 @@
 }
 .jj-video-yt:hover { opacity: 1; }
 .jj-video-close:hover { background: rgba(255, 255, 255, 0.3); }
+
+/* ============================================================
+   SAFETY COLLAPSIBLES (hazard-log mitigations H01, H02, H05)
+   Native <details> — collapsed by default, accessible, calm.
+   ============================================================ */
+
+/* --- Header "When to seek help" control (persistent on every view) --- */
+.help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid rgba(192, 57, 43, 0.35);
+  border-radius: var(--radius-full, 9999px);
+  background: rgba(192, 57, 43, 0.06);
+  color: #c0392b;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+.help-link:hover { background: rgba(192, 57, 43, 0.12); }
+.help-link:focus-visible { outline: 3px solid #c0392b; outline-offset: 2px; }
+.help-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full, 9999px);
+  background: #c0392b;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+/* On small screens keep the icon but hide the text to save room */
+@media (max-width: 600px) {
+  .help-link-label { display: none; }
+  .help-link { padding: 6px 8px; }
+}
+
+/* --- "When to seek help" modal contents --- */
+.help-modal-body { padding-top: var(--space-sm); }
+.help-flag-list {
+  list-style: none;
+  margin: 0 0 var(--space-md);
+  padding: 0;
+}
+.help-flag-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-light, #eee);
+  line-height: 1.6;
+}
+.help-flag-list li:last-child { border-bottom: none; }
+.help-flag {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 48px;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: var(--radius-md, 12px);
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.05;
+  color: #fff;
+}
+.help-flag--emergency { background: #c0392b; }
+.help-flag--urgent { background: #e67e00; }
+.help-flag--gp { background: var(--green-600, #2f855a); }
+.help-flag--samaritans { background: #4a5568; font-size: 0.8rem; }
+.help-modal-note {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--text-muted, #888);
+  margin: 0 0 var(--space-md);
+}
+
+/* --- Pre-exercise safety check — top of Exercises page --- */
+
+.safety-check {
+  margin: 0 0 var(--space-xl);
+  border: 1px solid var(--amber-200, #ffe0b2);
+  border-left: 4px solid var(--amber-600, #FF8F00);
+  border-radius: var(--radius-md, 12px);
+  background: var(--amber-100, #FFF3E0);
+}
+.safety-check-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: #6b4a00;
+  border-radius: var(--radius-md, 12px);
+}
+.safety-check-summary::-webkit-details-marker { display: none; }
+.safety-check-summary:hover { background: rgba(255, 143, 0, 0.08); }
+.safety-check-summary:focus-visible {
+  outline: 3px solid var(--amber-600, #FF8F00);
+  outline-offset: 2px;
+}
+.safety-check-icon { flex-shrink: 0; font-size: 1.1rem; }
+.safety-check-title { flex: 1; }
+.safety-check-chevron {
+  color: #6b4a00;
+  transition: transform 0.2s ease;
+}
+.safety-check[open] .safety-check-chevron { transform: rotate(180deg); }
+.safety-check-body {
+  padding: 0 var(--space-md) var(--space-md);
+  color: #5a4200;
+  line-height: 1.7;
+}
+.safety-check-body ul {
+  margin: var(--space-sm) 0 0;
+  padding-left: 1.2em;
+}
+.safety-check-body li { margin-bottom: var(--space-xs, 4px); }
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .safety-help-chevron, .safety-check-chevron { transition: none; }
+}

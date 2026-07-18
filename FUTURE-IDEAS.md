@@ -17,7 +17,20 @@ A living document capturing ideas, features, and improvements to implement when 
 
 ---
 
+## 🩺 Clinical Safety & Governance (DCB0129)
+*Launch gate: the clinical safety work must be signed off before real users.*
+
+- [ ] **Complete CSO (Clinical Safety Officer) training** — required before hazard-log/safety-case sign-off. See NHS clinical safety documentation: https://digital.nhs.uk/services/clinical-safety/documentation
+- [ ] **CSO sign-off** of the Hazard Log and Intended Use / Safety Summary (see `docs/clinical-safety/`).
+- [ ] **Clinical advisory board content sign-off** (physio, dietetics, psychology).
+
+**Helpful contact:**
+- **Matthew Olson** — CSO training instructor. Has said he is **happy to be contacted for help** with the clinical safety work (DCB0129, CSO training, hazard log/safety case). Good first port of call for any clinical-safety questions as we prepare for launch.
+
+---
+
 ## 🟢 Pilot-Conditional - Trust Access Control (build ONLY if the pilot goes ahead)
+
 *Restricting sign-up so only patients recruited by the Trust can register. Do not build until a pilot is confirmed.*
 
 ### Invite-code gate for sign-up
@@ -167,5 +180,6 @@ A living document capturing ideas, features, and improvements to implement when 
 
 ---
 
-*Last updated: 3 July 2026*
+*Last updated: 13 July 2026*
+
 

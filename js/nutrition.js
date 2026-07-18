@@ -260,9 +260,7 @@ function calculateNutrition() {
       html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
       html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. We\'ve reduced this by <strong>300 calories</strong> - a gentle deficit.</p>';
       html += '</div></details>';
-      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein matters</summary><div style="margin-top:var(--space-sm);">';
-      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. This supports the muscle-strengthening work you\'re doing with your exercises. Our recipes are designed to be high in protein to help you hit this.</p>';
-      html += '</div></details>';
+      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary)
       html += '</div>';
 
       weightLossInfo.innerHTML = html;

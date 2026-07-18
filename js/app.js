@@ -760,3 +760,26 @@ function submitOnboardingOxford() {
   var next = document.querySelector('[data-step="6"]');
   if (next) next.style.display = 'block';
 }
+
+/* ============================================
+   WHEN TO SEEK HELP MODAL (persistent safety net)
+   Opened from the header control on every in-app view.
+   Mirrors the feedback/recipe modal show/hide pattern.
+   ============================================ */
+function openHelpModal() {
+  var overlay = document.getElementById('help-modal');
+  if (overlay) overlay.classList.add('active');
+}
+function closeHelpModal(event) {
+  // If triggered by a backdrop click, only close when the overlay itself was clicked
+  if (event && event.type === 'click' && event.target && event.target.id !== 'help-modal') return;
+  var overlay = document.getElementById('help-modal');
+  if (overlay) overlay.classList.remove('active');
+}
+// Esc closes the help modal if it is open
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    var overlay = document.getElementById('help-modal');
+    if (overlay && overlay.classList.contains('active')) overlay.classList.remove('active');
+  }
+});

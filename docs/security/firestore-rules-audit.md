@@ -1,6 +1,6 @@
 # Joint Journey — Firestore Security Rules Audit
 
-**Version:** 1.0 · **Date:** [insert] · **Auditor:** [Mr Benjamin Zucker]
+**Version:** 1.0 · **Date:** [insert] · **Auditor:** Mr Benjamin Zucker
 **Scope:** Access-control review of `firestore.rules` against the application's
 actual data-access patterns. Supports the DPIA (§7), the DTAC data-security
 section, and NHS IG / DSPT evidence.

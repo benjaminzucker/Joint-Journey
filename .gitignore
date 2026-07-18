@@ -21,3 +21,6 @@ analytics/serviceAccountKey.json
 analytics/retention-report.csv
 analytics/package-lock.json
 
+~$*
+*.pdf
+Learner Reflection*
