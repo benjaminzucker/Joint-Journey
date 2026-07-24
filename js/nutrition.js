@@ -270,10 +270,15 @@ function calculateNutrition() {
       weightLossInfo.style.display = 'block';
     } else {
       let html = '<div style="line-height:1.8;">';
-      html += '<h4 style="margin-bottom:var(--space-sm);">📖 How we calculated this</h4>';
-      html += '<p>You\'re at a healthy weight - well done! Your calorie target of <strong>' + tdee.toLocaleString() + '</strong> is set to maintain your current weight. There\'s no need to lose weight before surgery.</p>';
-      html += '<p>Focus on <strong>eating well</strong> - plenty of protein (target: <strong>' + proteinTarget + 'g per day</strong>), fruit and vegetables, and staying hydrated. Good nutrition helps your body heal faster after surgery.</p>';
+      html += '<p>You\'re at a healthy weight — well done! There\'s no need to lose weight before surgery. Focus on eating well and staying active.</p>';
+      html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong>. Since you\'re already at a healthy weight, we\'ve set your calorie target to <strong>maintain</strong> your current weight — no deficit needed.</p>';
+      html += '</div></details>';
+      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein matters</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. Even though you don\'t need to lose weight, protein is essential for surgery preparation — it helps your muscles stay strong for recovery and supports wound healing. Aim for protein-rich foods like chicken, fish, eggs, beans, and dairy. Our recipes are designed to help you hit this target.</p>';
+      html += '</div></details>';
       html += '</div>';
+
 
       weightLossInfo.innerHTML = html;
       weightLossInfo.style.display = 'block';
