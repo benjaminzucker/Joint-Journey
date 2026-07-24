@@ -9,7 +9,7 @@ import shutil, os
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
-# ── Shared styling helpers ──────────────────────────────────────────
+# -- Shared styling helpers ------------------------------------------
 
 GREEN = RGBColor(0x47, 0x59, 0x53)
 DARK = RGBColor(0x1F, 0x2D, 0x28)
@@ -47,7 +47,7 @@ def add_logo_header(doc, title):
     p3 = doc.add_paragraph()
     p3.paragraph_format.space_before = Pt(0)
     p3.paragraph_format.space_after = Pt(12)
-    run3 = p3.add_run('─' * 72)
+    run3 = p3.add_run('-' * 72)
     run3.font.size = Pt(8)
     run3.font.color.rgb = RGBColor(0xCC, 0xCC, 0xCC)
 
@@ -71,7 +71,7 @@ def save(doc, name):
 def create_cover_letter():
     doc = Document()
     set_style(doc)
-    add_logo_header(doc, 'Clinical Advisory Board — Welcome Pack')
+    add_logo_header(doc, 'Clinical Advisory Board - Welcome Pack')
     
     add_field(doc, 'Date', '[                    ]')
     add_field(doc, 'Dear', '[Advisor name]')
@@ -99,7 +99,7 @@ def create_cover_letter():
          'Please sign and return.'),
         ('2. Terms of Reference', 
          'Defines the Board\'s purpose, membership, responsibilities, and how '
-         'meetings will work. For your information — we will formally adopt '
+         'meetings will work. For your information - we will formally adopt '
          'these at the first Board meeting.'),
         ('3. Conflict of Interest Policy', 
          'Our policy on identifying and managing conflicts of interest. '
@@ -110,7 +110,7 @@ def create_cover_letter():
          'and protects both you and the company.'),
         ('5. Content Review & Sign-off Log', 
          'The log we will use to record your formal sign-off of clinical content '
-         'in your area of expertise. For reference — you will use this as we '
+         'in your area of expertise. For reference - you will use this as we '
          'develop content together.'),
         ('6. Reviewer Sign-off Statement', 
          'The individual sign-off statement you will complete when reviewing '
@@ -163,7 +163,7 @@ def create_cover_letter():
 def create_tor():
     doc = Document()
     set_style(doc)
-    add_logo_header(doc, 'Clinical Advisory Board — Terms of Reference')
+    add_logo_header(doc, 'Clinical Advisory Board - Terms of Reference')
     
     p = doc.add_paragraph()
     run = p.add_run('Version: ')
@@ -184,10 +184,10 @@ def create_tor():
         'awaiting hip or knee replacement. The Board exists to:'
     )
     purposes = [
-        'Assure clinical content — ensure the exercise, nutrition and mental-health/pain-preparation content is safe, evidence-based and appropriate.',
-        'Support clinical risk management — contribute to hazard identification and mitigation (feeding the DCB0129 clinical safety case).',
-        'Guide claims — advise on what can and cannot be claimed for the product.',
-        'Lend credibility — provide named clinical oversight for users, NHS trusts and funders.',
+        'Assure clinical content - ensure the exercise, nutrition and mental-health/pain-preparation content is safe, evidence-based and appropriate.',
+        'Support clinical risk management - contribute to hazard identification and mitigation (feeding the DCB0129 clinical safety case).',
+        'Guide claims - advise on what can and cannot be claimed for the product.',
+        'Lend credibility - provide named clinical oversight for users, NHS trusts and funders.',
     ]
     for purpose in purposes:
         doc.add_paragraph(purpose, style='List Bullet')
@@ -216,7 +216,7 @@ def create_tor():
         ('Member', 'MSK / orthopaedic Physiotherapist (HCPC)', '[                ]'),
         ('Member', 'Registered Dietitian (HCPC)', '[                ]'),
         ('Member', 'Clinical / Health Psychologist (HCPC) or CBT therapist (BABCP)', '[                ]'),
-        ('Member (recommended)', 'Patient representative (PPIE) — lived experience of joint replacement', '[                ]'),
+        ('Member (recommended)', 'Patient representative (PPIE) - lived experience of joint replacement', '[                ]'),
         ('Optional', 'GP / pre-operative nurse', '[                ]'),
     ]
     for i, (seat, disc, holder) in enumerate(rows_data, 1):
@@ -308,7 +308,7 @@ def create_tor():
     )
     
     doc.add_paragraph('')
-    doc.add_paragraph('─' * 50)
+    doc.add_paragraph('-' * 50)
     add_field(doc, 'Adopted by the Board on')
     add_field(doc, 'Chair signature')
     
@@ -353,7 +353,7 @@ def create_coi_policy():
     ]
     for label, desc in types:
         p = doc.add_paragraph()
-        run = p.add_run(f'{label} — ')
+        run = p.add_run(f'{label} - ')
         run.bold = True
         p.add_run(desc)
     
@@ -361,7 +361,7 @@ def create_coi_policy():
     examples = [
         'An advisor employed by a trust that might pilot or purchase Joint Journey.',
         'An advisor with shares in, or paid by, a competing prehab/physio product.',
-        'A personal friendship between the founder and an advisor (declare it — it does not bar the role, but should be on record).',
+        'A personal friendship between the founder and an advisor (declare it - it does not bar the role, but should be on record).',
     ]
     for ex in examples:
         doc.add_paragraph(ex, style='List Bullet')
@@ -401,7 +401,7 @@ def create_coi_policy():
     )
     
     doc.add_paragraph('')
-    doc.add_paragraph('─' * 50)
+    doc.add_paragraph('-' * 50)
     add_field(doc, 'Approved by')
     add_field(doc, 'Date')
     
@@ -432,7 +432,7 @@ def create_coi_form():
     doc.add_heading('Declarations', level=2)
     doc.add_paragraph(
         'Please declare any interests that could (or could appear to) influence your '
-        'advisory role with Joint Journey. If in doubt, declare it — it is always better '
+        'advisory role with Joint Journey. If in doubt, declare it - it is always better '
         'to over-declare than under-declare.'
     )
     
@@ -463,7 +463,7 @@ def create_coi_form():
     p = doc.add_paragraph()
     run = p.add_run('☐  ')
     run.font.size = Pt(14)
-    run2 = p.add_run('Nil to declare — ')
+    run2 = p.add_run('Nil to declare - ')
     run2.bold = True
     p.add_run(
         'I confirm that I have no interests to declare at this time. '
@@ -471,7 +471,7 @@ def create_coi_form():
     )
     
     doc.add_paragraph('')
-    doc.add_paragraph('─' * 50)
+    doc.add_paragraph('-' * 50)
     doc.add_paragraph('')
     add_field(doc, 'Signed')
     add_field(doc, 'Print name')
