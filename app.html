@@ -15,7 +15,7 @@
   <meta name="description" content="Joint Journey - Your personalised prehabilitation programme">
   <title>Joint Journey</title>
   <link rel="stylesheet" href="css/styles.css?v=2">
-  <link rel="stylesheet" href="css/app.css?v=2">
+  <link rel="stylesheet" href="css/app.css?v=3">
   <link rel="stylesheet" href="css/a11y.css?v=2">
 </head>
 <body>
@@ -1249,22 +1249,22 @@
             <strong>You don't need to worry about this yet.</strong> This section is here so you can read it in advance and feel prepared. It will be most useful in the days and weeks after your surgery.
           </div>
 
-          <div class="grid grid-2 mb-xl">
-            <div class="card" style="cursor:pointer;" onclick="showAfterSurgerySection('first-weeks')">
+          <div class="grid grid-2 mb-xl" id="after-surgery-modules">
+            <button class="card" style="cursor:pointer;text-align:left;border:1px solid var(--border-light);background:var(--bg-white);" onclick="showAfterSurgerySection('first-weeks')">
               <span class="icon-emoji-lg jj-icon" data-jjicon="calendar" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Your First Few Weeks at Home</h3>
               <p>Support, pain relief, swelling and when you can drive</p>
-            </div>
-            <div class="card" style="cursor:pointer;" id="after-hip-precautions-card" onclick="showAfterSurgerySection('hip-precautions')">
+            </button>
+            <button class="card" style="cursor:pointer;text-align:left;border:1px solid var(--border-light);background:var(--bg-white);" id="after-hip-precautions-card" onclick="showAfterSurgerySection('hip-precautions')">
               <span class="icon-emoji-lg jj-icon" data-jjicon="warning" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Hip Precautions</h3>
               <p>Important movements to avoid after hip replacement</p>
-            </div>
-            <div class="card" style="cursor:pointer;" id="after-knee-guide-card" onclick="showAfterSurgerySection('knee-guide')">
+            </button>
+            <button class="card" style="cursor:pointer;text-align:left;border:1px solid var(--border-light);background:var(--bg-white);" id="after-knee-guide-card" onclick="showAfterSurgerySection('knee-guide')">
               <span class="icon-emoji-lg jj-icon" data-jjicon="knee" data-jjcolor="terracotta"></span>
               <h3 class="mt-md">Knee Replacement Guide</h3>
               <p>What to expect and how to manage after knee surgery</p>
-            </div>
+            </button>
           </div>
 
           <!-- After Surgery content area -->
@@ -1468,12 +1468,12 @@
   <script defer src="js/programme-levels.js?v=2"></script>
   <script defer src="js/oxford-score.js?v=2"></script>
   <script defer src="js/auth.js?v=2"></script>
-  <script defer src="js/app.js?v=4"></script>
+  <script defer src="js/app.js?v=5"></script>
   <script defer src="js/exercises.js?v=4"></script>
-  <script defer src="js/nutrition.js?v=3"></script>
+  <script defer src="js/nutrition.js?v=4"></script>
   <script defer src="js/recipes.js?v=2"></script>
   <script defer src="js/mindset.js?v=2"></script>
-  <script defer src="js/getting-ready.js?v=3"></script>
+  <script defer src="js/getting-ready.js?v=4"></script>
   <script defer src="js/feedback.js?v=2"></script>
 
 </body>

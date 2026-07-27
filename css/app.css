@@ -158,7 +158,8 @@
 }
 
 .nav-label {
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.3;
 }
 
 .app-main {
@@ -676,7 +677,7 @@
 }
 
 @media (max-width: 480px) {
-  .grid-4 {
+  .grid-4, .grid-2 {
     grid-template-columns: 1fr;
   }
 

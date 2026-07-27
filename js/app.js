@@ -215,6 +215,9 @@ function closeMobileMenu() {
 function initApp() {
   if (!currentUser) return;
 
+  // Auto-advance week based on time since signup
+  syncCurrentWeek();
+
   // Set header greeting
   const headerGreeting = document.getElementById('header-greeting');
   if (headerGreeting) {
@@ -229,6 +232,24 @@ function initApp() {
 
   // Navigate to dashboard
   navigateTo('dashboard');
+}
+
+// Calculates the expected week based on how long the user has been enrolled
+// and advances currentWeek if time has moved on (never goes backwards).
+function syncCurrentWeek() {
+  if (!currentUser || !currentUser.createdAt) return;
+  var created = new Date(currentUser.createdAt);
+  var now = new Date();
+  var msSinceSignup = now.getTime() - created.getTime();
+  var weeksSinceSignup = Math.floor(msSinceSignup / (7 * 86400000)) + 1; // week 1 in the first 7 days
+  var totalWeeks = getTotalProgrammeWeeks();
+  var expectedWeek = Math.max(1, Math.min(weeksSinceSignup, totalWeeks));
+  var storedWeek = currentUser.progress.currentWeek || 1;
+  // Only advance forward, never go back
+  if (expectedWeek > storedWeek) {
+    currentUser.progress.currentWeek = expectedWeek;
+    saveUser();
+  }
 }
 
 // ===== DASHBOARD =====

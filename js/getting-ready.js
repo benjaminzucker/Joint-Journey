@@ -492,7 +492,8 @@ function initAfterSurgery() {
 
 function showAfterSurgeryModules() {
   document.getElementById('after-surgery-content').style.display = 'none';
-  document.querySelectorAll('#page-after-surgery > .grid').forEach(function(g) { g.style.display = 'grid'; });
+  var modules = document.getElementById('after-surgery-modules');
+  if (modules) modules.style.display = '';
 }
 
 function showAfterSurgerySection(sectionId) {
@@ -500,8 +501,13 @@ function showAfterSurgerySection(sectionId) {
   if (!section) return;
 
   // Hide module cards, show content
-  document.querySelectorAll('#page-after-surgery > .grid').forEach(function(g) { g.style.display = 'none'; });
+  var modules = document.getElementById('after-surgery-modules');
+  if (modules) modules.style.display = 'none';
   document.getElementById('after-surgery-content').style.display = 'block';
+  // Scroll to top so the content is visible (especially on mobile)
+  var mainEl = document.querySelector('.app-main');
+  if (mainEl) mainEl.scrollTop = 0;
+  window.scrollTo(0, 0);
 
   var html = '<h2>' + section.title + '</h2>';
   html += section.content;
