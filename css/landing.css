@@ -56,26 +56,32 @@
 
 /* --- Hero --- */
 .hero {
-  padding: var(--space-md) 0 var(--space-sm);
+  /* Fill the remaining viewport below header + strip */
+  min-height: calc(100vh - 70px - 36px);
+  padding: var(--space-lg) 0 var(--space-md);
   background: linear-gradient(180deg, var(--bg-body) 0%, var(--green-50) 100%);
+  display: flex;
+  align-items: stretch;
 }
 
 .hero .container {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-lg);
-  row-gap: var(--space-sm);
-  align-items: start;
+  grid-template-rows: 1fr auto;
+  gap: var(--space-xl);
+  row-gap: var(--space-md);
+  align-items: center;
+  flex: 1;
 }
 
 .hero-badge {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-lg);
 }
 
 .hero h1 {
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
   line-height: 1.15;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .hero h1 em {
@@ -90,10 +96,10 @@
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .hero-evidence {
@@ -103,12 +109,12 @@
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
   border-left: 4px solid var(--green-600);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .hero-cta {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   flex-wrap: wrap;
   margin-bottom: 0;
 }
@@ -124,19 +130,19 @@
 .hero-visual {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   margin-top: 0;
 }
 
 .hero-card {
   background: var(--bg-white);
   border-radius: var(--radius-lg);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-light);
   display: flex;
-  align-items: center;
-  gap: var(--space-sm);
+  align-items: flex-start;
+  gap: var(--space-md);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
@@ -152,7 +158,7 @@
 
 .hero-card p {
   margin-bottom: 0;
-  font-size: var(--font-size-xs, 0.8rem);
+  font-size: var(--font-size-sm);
   line-height: 1.4;
 }
 
@@ -455,6 +461,7 @@
 
   .hero {
     padding: var(--space-2xl) 0;
+    min-height: auto;
   }
 
   .hero-visual {
