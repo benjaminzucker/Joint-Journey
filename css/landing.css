@@ -56,26 +56,26 @@
 
 /* --- Hero --- */
 .hero {
-  padding: var(--space-xl) 0;
+  padding: var(--space-md) 0 var(--space-sm);
   background: linear-gradient(180deg, var(--bg-body) 0%, var(--green-50) 100%);
 }
 
 .hero .container {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-2xl);
-  row-gap: var(--space-md);
+  gap: var(--space-lg);
+  row-gap: var(--space-sm);
   align-items: start;
 }
 
 .hero-badge {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
 }
 
 .hero h1 {
-  font-size: var(--font-size-4xl);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   line-height: 1.15;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .hero h1 em {
@@ -90,28 +90,27 @@
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--space-md);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
 }
 
 .hero-evidence {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   color: var(--green-900);
   background: var(--green-100);
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
   border-left: 4px solid var(--green-600);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .hero-cta {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
 }
 
 .hero-reassurance {
@@ -125,19 +124,19 @@
 .hero-visual {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  margin-top: 120px;
+  gap: var(--space-sm);
+  margin-top: 0;
 }
 
 .hero-card {
   background: var(--bg-white);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-light);
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-lg);
+  align-items: center;
+  gap: var(--space-sm);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
@@ -153,7 +152,8 @@
 
 .hero-card p {
   margin-bottom: 0;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs, 0.8rem);
+  line-height: 1.4;
 }
 
 .hero-card-1 { border-left: 4px solid var(--green-600); }
