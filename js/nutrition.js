@@ -34,17 +34,18 @@ function showNutritionTab(tab) {
 
 // ===== GOAL WEIGHT =====
 // Goal-weight rule:
-//   BMI <= 33  -> aim for BMI 25
-//   BMI  > 33  -> aim for BMI 30
-// The goal is the ideal-BMI weight IF it can be reached by the surgery date
+//   BMI > 30   -> aim for BMI 30 (capped by max safe deficit)
+//   BMI 18.5-30 -> maintain weight, focus on protein
+//   BMI < 18.5 -> gentle weight gain
+// The goal is the BMI-30 weight IF it can be reached by the surgery date
 // without exceeding the maximum safe daily deficit; otherwise it is the best
 // weight realistically achievable by that date.
 function computeGoalWeight(weight, height, bmi, tdee, minCal) {
   var heightM = height / 100;
-  var idealBMI = bmi > 33 ? 30 : 25;
+  var idealBMI = 30;
 
-  // Already at or below the ideal band - no weight-loss goal needed
-  if (bmi <= idealBMI) {
+  // BMI 30 or below - no weight-loss goal needed
+  if (bmi <= 30) {
     return { needsLoss: false, idealBMI: idealBMI };
   }
 
@@ -152,16 +153,13 @@ function calculateNutrition() {
   const bmiMsg = document.getElementById('bmi-message');
   if (bmi < 18.5) {
     bmiMsg.className = 'alert alert-warning';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Underweight.</strong> You may benefit from speaking with your GP about nutrition before surgery.';
-  } else if (bmi < 25) {
-    bmiMsg.className = 'alert alert-success';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Healthy weight! 🎉</strong> You\'re in a great position for surgery. Focus on maintaining your weight and eating plenty of protein.';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Underweight.</strong> Being underweight before surgery can slow wound healing and recovery. We recommend gaining weight gently, focusing on protein-rich foods to build muscle mass. Please also speak with your GP about nutrition before surgery.';
   } else if (bmi < 30) {
-    bmiMsg.className = 'alert alert-info';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Slightly overweight.</strong> You\'re not far off. Even a small amount of weight loss can make surgery easier and recovery faster.';
+    bmiMsg.className = 'alert alert-success';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Good to go! 🎉</strong> Your weight is fine for surgery. Focus on maintaining it and eating plenty of protein to build and protect muscle mass.';
   } else {
     bmiMsg.className = 'alert alert-warning';
-    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Your BMI is above 30.</strong> Losing some weight before surgery can significantly improve your outcomes. We\'ll help you get there with manageable targets.';
+    bmiMsg.innerHTML = '<strong>BMI ' + bmi.toFixed(1) + ' - Your BMI is above 30.</strong> Losing some weight before surgery can reduce your risk of complications. We\'ll help you get there with manageable targets.';
   }
   bmiMsg.style.display = 'block';
 
@@ -252,33 +250,36 @@ function calculateNutrition() {
 
       weightLossInfo.innerHTML = html;
       weightLossInfo.style.display = 'block';
-    } else if (bmi > 25) {
-      calorieTarget = Math.max(tdee - 300, minCal);
+    } else if (bmi >= 18.5) {
+      // BMI 18.5-30: maintain weight, focus on protein and muscle
+      // No calorie deficit - calorieTarget stays at tdee
 
       let html = '<div style="line-height:1.8;">';
-      html += '<p><strong>⚖️ What to expect:</strong> about <strong>0.25-0.5kg per week</strong> of gradual weight loss. No crash diets, no misery - just slow and steady progress. Even a few kilos makes surgery easier and recovery faster.</p>';
+      html += '<p><strong>💪 Your focus: maintain and build muscle.</strong> Your weight is fine for surgery. There is no need to lose weight. The best thing you can do is eat enough to fuel your exercises and get plenty of protein to build and protect muscle mass.</p>';
       html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
-      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong> to maintain your current weight. We\'ve reduced this by <strong>300 calories</strong> - a gentle deficit.</p>';
+      html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong>. We have set your calorie target to <strong>maintain</strong> your current weight so you can focus on building strength for surgery.</p>';
       html += '</div></details>';
       html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein matters</summary><div style="margin-top:var(--space-sm);">';
-      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. This supports the muscle-strengthening work you\'re doing with your exercises. Our recipes are designed to be high in protein to help you hit this.</p>';
+      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. Protein is essential for surgery preparation - it helps your muscles stay strong for recovery and supports wound healing. Aim for protein-rich foods like chicken, fish, eggs, beans, and dairy. Our recipes are designed to help you hit this target.</p>';
       html += '</div></details>';
       html += '</div>';
-
 
       weightLossInfo.innerHTML = html;
       weightLossInfo.style.display = 'block';
     } else {
+      // BMI < 18.5: underweight - gentle surplus to gain weight
+      calorieTarget = tdee + 250;
+
       let html = '<div style="line-height:1.8;">';
-      html += '<p>You\'re at a healthy weight — well done! There\'s no need to lose weight before surgery. Focus on eating well and staying active.</p>';
+      html += '<p><strong>🍽️ Your focus: gentle weight gain.</strong> Being underweight before surgery can slow wound healing and recovery. We recommend eating a little more than usual, focusing on protein-rich meals and snacks to build muscle mass before your operation.</p>';
       html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
-      html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong>. Since you\'re already at a healthy weight, we\'ve set your calorie target to <strong>maintain</strong> your current weight — no deficit needed.</p>';
+      html += '<p>Based on your age, height, weight, and activity level, your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong>. We have added <strong>250 calories</strong> to encourage gentle, steady weight gain - about 0.25kg per week.</p>';
       html += '</div></details>';
       html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein matters</summary><div style="margin-top:var(--space-sm);">';
-      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. Even though you don\'t need to lose weight, protein is essential for surgery preparation — it helps your muscles stay strong for recovery and supports wound healing. Aim for protein-rich foods like chicken, fish, eggs, beans, and dairy. Our recipes are designed to help you hit this target.</p>';
+      html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of body weight. Protein is especially important for you - it helps build muscle mass and supports wound healing after surgery. Aim for protein-rich foods at every meal: chicken, fish, eggs, beans, dairy, and nuts. Our recipes are designed to help you hit this target.</p>';
       html += '</div></details>';
+      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm); margin-top:var(--space-md);">We also recommend speaking with your GP about nutrition before surgery.</p>';
       html += '</div>';
-
 
       weightLossInfo.innerHTML = html;
       weightLossInfo.style.display = 'block';

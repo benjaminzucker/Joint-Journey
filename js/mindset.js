@@ -164,12 +164,11 @@ const MINDSET_MODULES = [
         <h3>The Evidence</h3>
         <p>Studies show that patients who actively engage in prehabilitation:</p>
         <ul>
-          <li>Spend <strong>1-2 fewer days</strong> in hospital</li>
+          <li>Spend on average <strong>half a day less</strong> in hospital, and those on full enhanced recovery pathways can see reductions of 1-2 days</li>
           <li>Need <strong>less pain medication</strong></li>
-          <li>Return to driving <strong>2-3 weeks earlier</strong></li>
-          <li>Return to work <strong>4-6 weeks earlier</strong></li>
-          <li>Report higher <strong>satisfaction</strong> at 12 months</li>
+          <li>Report higher <strong>satisfaction</strong> at 6 months</li>
         </ul>
+        <p>Better preoperative function is also associated with earlier return to driving, so getting stronger now has real practical benefits too.</p>
         
         <h3>On Hard Days</h3>
         <p>There will be days when you don't want to exercise. Days when the pain is bad. Days when you wonder if it's worth it.</p>

@@ -649,7 +649,7 @@ const HIP_EXERCISES_ACTIVE = {
         name: "Walking Programme",
         video: null,
         sets: 1, reps: "15–20 min walk",
-        description: "Walk at a brisk, comfortable pace. Choose a flat route. This builds cardiovascular fitness that will speed your recovery enormously.",
+        description: "Walk at a brisk, comfortable pace. Choose a flat route. Cardiovascular fitness predicts faster recovery, and walking is one of the best ways to build it.",
         progression: [
           { week: 1, sets: 1, reps: "10 min walk" },
           { week: 2, sets: 1, reps: "15 min walk" },
@@ -980,7 +980,7 @@ const KNEE_EXERCISES_ACTIVE = {
         name: "Step Ups with Slow Descent",
         video: "wfhXnLILqdk",
         sets: 3, reps: "12 each",
-        description: "Step up, 4-second controlled step down. The eccentric phase builds the most strength.",
+        description: "Step up, 4-second controlled step down. Slow, controlled lowering builds strength effectively and is great preparation for stairs.",
         progression: [
           { week: 5, sets: 3, reps: "10 each (3 sec)" },
           { week: 6, sets: 3, reps: "12 each (3 sec)" },
