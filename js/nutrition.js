@@ -179,14 +179,26 @@ function calculateNutrition() {
     }
     const tdee = Math.round(bmr * factor);
 
-    // Protein: 1.2g per kg of estimated lean body mass
+    // Detect "surgery prep mode": <=4 weeks to surgery
+    var surgeryPrepMode = false;
+    var weeksToSurgeryGlobal = null;
+    if (currentUser && currentUser.profile.surgeryDate) {
+      var surgeryMsGlobal = new Date(currentUser.profile.surgeryDate).getTime() - Date.now();
+      weeksToSurgeryGlobal = Math.max(0, Math.round(surgeryMsGlobal / (7 * 86400000)));
+      if (weeksToSurgeryGlobal <= 4 && surgeryMsGlobal > 0) {
+        surgeryPrepMode = true;
+      }
+    }
+
+    // Protein: 1.2g per kg of estimated lean body mass (1.5g in surgery prep mode)
     // For BMI > 25, use adjusted body weight to avoid overestimating
+    var proteinPerKg = surgeryPrepMode ? 1.5 : 1.2;
     let proteinWeight = weight;
     if (bmi > 25) {
       const idealWeight = 25 * Math.pow(height / 100, 2);
       proteinWeight = idealWeight + 0.25 * (weight - idealWeight);
     }
-    const proteinTarget = Math.round(proteinWeight * 1.2);
+    const proteinTarget = Math.round(proteinWeight * proteinPerKg);
 
     let calorieTarget = tdee;
     const weightLossInfo = document.getElementById('weight-loss-info');
@@ -194,7 +206,48 @@ function calculateNutrition() {
     // patients are doing a prehab exercise programme and need to preserve muscle
     const minCal = sex === 'male' ? 1600 : sex === 'na' ? 1500 : 1400;
 
-    if (bmi > 30) {
+    // SURGERY PREP MODE: <=4 weeks to surgery - switch everyone to maintenance
+    // to ensure the body is well-nourished and anabolic at time of surgery
+    if (surgeryPrepMode && bmi > 30) {
+      // Override: no deficit, maintain weight
+      calorieTarget = tdee;
+
+      let html = '<div style="line-height:1.8;">';
+      html += '<div class="alert alert-success" style="margin-bottom:var(--space-md);"><strong>🏥 Surgery Prep Mode</strong> - Your surgery is ' + weeksToSurgeryGlobal + (weeksToSurgeryGlobal === 1 ? ' week' : ' weeks') + ' away. We have switched you to maintenance calories.</div>';
+      html += '<p><strong>Why we have stopped the deficit:</strong> Research shows that being in the best possible nutritional state at the time of surgery leads to better outcomes. We want your body to be well-fuelled, with strong nutritional stores, when you go in for your operation.</p>';
+      html += '<p>The weight you have already lost has done its job. Now it is time to <strong>maintain your weight, eat plenty of protein, and keep doing your exercises</strong>. This is the best thing you can do in these final weeks.</p>';
+      html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong>. We have set your calorie target to <strong>match this exactly</strong> so your body is maintaining weight and building nutritional reserves for surgery and recovery.</p>';
+      html += '</div></details>';
+      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein is even more important now</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Your protein target has increased to <strong>' + proteinTarget + 'g per day</strong> (1.5g per kg of lean body weight). In the weeks before surgery, extra protein helps build up your body\'s reserves for wound healing and muscle recovery. Aim for protein at every meal and snack.</p>';
+      html += '</div></details>';
+      html += '</div>';
+
+      weightLossInfo.innerHTML = html;
+      weightLossInfo.style.display = 'block';
+    } else if (surgeryPrepMode) {
+      // Surgery prep mode for BMI <=30 users - same maintenance but with prep messaging
+      // calorieTarget stays at tdee (or tdee+250 for underweight, handled below)
+
+      if (bmi < 18.5) {
+        calorieTarget = tdee + 250;
+      }
+
+      let html = '<div style="line-height:1.8;">';
+      html += '<div class="alert alert-success" style="margin-bottom:var(--space-md);"><strong>🏥 Surgery Prep Mode</strong> - Your surgery is ' + weeksToSurgeryGlobal + (weeksToSurgeryGlobal === 1 ? ' week' : ' weeks') + ' away. Focus on eating well and keeping up your exercises.</div>';
+      html += '<p><strong>You are in great shape for surgery.</strong> In these final weeks, focus on maintaining your weight, eating plenty of protein, and continuing your exercises. Your body needs to be well-fuelled going into surgery.</p>';
+      html += '<details style="margin-top:var(--space-md);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">📖 How we calculated this</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Your body uses roughly <strong>' + tdee.toLocaleString() + ' calories per day</strong>. Your calorie target is set to <strong>maintain</strong> your current weight.</p>';
+      html += '</div></details>';
+      html += '<details style="margin-top:var(--space-sm);"><summary style="cursor:pointer;font-weight:600;color:var(--text-secondary);">🥩 Why protein is even more important now</summary><div style="margin-top:var(--space-sm);">';
+      html += '<p>Your protein target has increased to <strong>' + proteinTarget + 'g per day</strong> (1.5g per kg of lean body weight). In the weeks before surgery, extra protein helps build up your body\'s reserves for wound healing and muscle recovery. Aim for protein at every meal and snack.</p>';
+      html += '</div></details>';
+      html += '</div>';
+
+      weightLossInfo.innerHTML = html;
+      weightLossInfo.style.display = 'block';
+    } else if (bmi > 30) {
       const targetWeight = 30 * Math.pow(height / 100, 2);
       const weightToLose = weight - targetWeight;
 
@@ -246,6 +299,7 @@ function calculateNutrition() {
       html += '<p>Your protein target is <strong>' + proteinTarget + 'g per day</strong>, based on 1.2g per kg of lean body weight. We\'ve adjusted this for your body composition so it\'s realistic and achievable. Protein is essential because you\'re doing strengthening exercises, your muscles need it to repair and grow. Our recipes are designed to help you hit this target.</p>';
       html += '</div></details>';
       html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm); margin-top:var(--space-md);">We\'ve set a minimum of ' + minCal.toLocaleString() + ' calories per day, we\'ll never suggest going below this, as it wouldn\'t be safe or sustainable.</p>';
+      html += '<p style="color:var(--text-muted); font-size:var(--font-size-sm);">Our programme combines weight loss with strengthening exercises and high protein intake specifically to protect your muscle mass. This is important because losing weight without exercise or adequate protein can lead to muscle loss, which would be counterproductive before surgery. As your surgery approaches (4 weeks out), we will automatically switch you to maintenance calories to make sure your body is well-nourished going in.</p>';
       html += '</div>';
 
       weightLossInfo.innerHTML = html;
@@ -294,9 +348,17 @@ function calculateNutrition() {
     }
 
     // Goal weight (drives the banner here and the Weight Tracker feedback)
+    // In surgery prep mode, suppress the goal weight banner and clear the goal
+    // so the weight tracker doesn't show "X kg to go" messaging
     var goal = computeGoalWeight(weight, height, bmi, tdee, minCal);
-    renderGoalWeightBanner(goal, tdee - calorieTarget);
-    currentUser.profile.goalWeight = goal.needsLoss ? goal.goalWeight : null;
+    if (surgeryPrepMode) {
+      var el = document.getElementById('goal-weight-banner');
+      if (el) el.style.display = 'none';
+      currentUser.profile.goalWeight = null;
+    } else {
+      renderGoalWeightBanner(goal, tdee - calorieTarget);
+      currentUser.profile.goalWeight = goal.needsLoss ? goal.goalWeight : null;
+    }
     currentUser.profile.goalBMI = goal.idealBMI;
 
     // Save updated profile
