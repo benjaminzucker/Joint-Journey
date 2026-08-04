@@ -543,12 +543,8 @@ function updateStreak() {
 // ===== JOINT VISIBILITY =====
 function updateJointVisibility() {
   const joint = currentUser.profile.joint;
-  const hipCard = document.getElementById('hip-precautions-card');
   const kneeCard = document.getElementById('knee-guide-card');
 
-  if (hipCard) {
-    hipCard.style.display = (joint === 'knee') ? 'none' : 'block';
-  }
   if (kneeCard) {
     kneeCard.style.display = (joint === 'hip') ? 'none' : 'block';
   }

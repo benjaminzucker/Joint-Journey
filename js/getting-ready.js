@@ -200,77 +200,14 @@ const GETTING_READY_SECTIONS = {
 
         <h4>🚗 Driving</h4>
         <ul>
-          <li>Most people <strong>can't drive for around 6 weeks</strong>, but this varies.</li>
-          <li>You should only drive again when you can <strong>safely perform an emergency stop</strong> and are no longer taking strong pain medication that could affect you.</li>
-          <li><strong>Always check with your surgeon first</strong>, and let your car insurer know - driving too soon could invalidate your insurance.</li>
+          <li>Most people are back to driving somewhere between <strong>4 and 6 weeks</strong>. A right-sided operation usually takes a little longer, as does driving a manual.</li>
+          <li>Before you drive again you must be <strong>off strong (opioid) painkillers</strong>, able to move your leg comfortably, and confident you could perform an <strong>emergency stop</strong>.</li>
+          <li><strong>Check with your surgical team</strong>, and let your insurer know.</li>
         </ul>
 
         <div class="pro-tip">
           <strong>💡 Remember:</strong> Recovery isn't a race. Some days will be better than others, and that's completely normal. Keep doing your exercises, take your medication, rest when you need to, and celebrate the small wins.
         </div>
-      </div>
-    `
-  },
-  'hip-precautions': {
-    title: '⚠️ Hip Precautions',
-    content: `
-      <div class="getting-ready-article">
-        <h3>Important: Movements to Avoid After Hip Replacement</h3>
-        <p>After hip replacement surgery, there are certain movements you need to avoid for the first <strong>6-12 weeks</strong> (your surgeon will tell you exactly how long). These precautions protect your new hip while the tissues heal around it.</p>
-        
-        <div class="precaution-warning">
-          <h4>⚠️ The Three Main Rules</h4>
-          <ol>
-            <li><strong>Don't bend your hip past 90 degrees</strong> - don't bring your knee higher than your hip</li>
-            <li><strong>Don't cross your legs</strong> - keep your legs apart</li>
-            <li><strong>Don't twist your operated leg inwards</strong> - keep your toes pointing forward or slightly outward</li>
-          </ol>
-          <p><strong>Remember:</strong> These are temporary. Once healed, your new hip will be able to do all the things your old hip couldn't.</p>
-        </div>
-        
-        <h3>What This Means Day-to-Day</h3>
-        
-        <h4>🪑 Sitting</h4>
-        <ul>
-          <li>Use a <strong>raised chair</strong> - your knees should be lower than your hips</li>
-          <li><strong>Don't lean forward</strong> to pick things up from the floor</li>
-          <li>Don't sit on <strong>low, soft sofas</strong></li>
-        </ul>
-        
-        <h4>🛏️ Sleeping</h4>
-        <ul>
-          <li>Sleep on your <strong>back</strong> for the first few weeks</li>
-          <li>Put a <strong>pillow between your knees</strong> if lying on your non-operated side</li>
-          <li>Don't roll onto your <strong>operated side</strong> until your surgeon says it's okay</li>
-        </ul>
-        
-        <h4>👟 Getting Dressed</h4>
-        <ul>
-          <li>Use a <strong>long-handled shoe horn</strong></li>
-          <li>Use a <strong>sock aid</strong> or ask someone to help with socks</li>
-          <li>Don't bend down to put on shoes</li>
-          <li>Step into trousers with your <strong>operated leg first</strong></li>
-        </ul>
-        
-        <h4>🚶 Walking</h4>
-        <ul>
-          <li>Use your <strong>walking aids</strong> as instructed</li>
-          <li>Take <strong>small steps</strong></li>
-          <li>Don't <strong>pivot</strong> on your operated leg - take small steps to turn</li>
-        </ul>
-        
-        <div class="pro-tip">
-          <strong>💡 The Easy Way to Remember:</strong> Think of your operated hip as having a "cone" in front of it. Don't bring your knee inside that cone (don't cross the midline of your body), and don't bend past 90 degrees.
-        </div>
-        
-        <h3>Equipment That Helps</h3>
-        <ul>
-          <li><strong>Grabber/reacher</strong> - pick things up without bending</li>
-          <li><strong>Long-handled shoe horn</strong></li>
-          <li><strong>Sock aid</strong></li>
-          <li><strong>Perching stool</strong> - for kitchen tasks</li>
-          <li><strong>Cushion raiser</strong> - for car seats and low chairs</li>
-        </ul>
       </div>
     `
   },
@@ -281,18 +218,18 @@ const GETTING_READY_SECTIONS = {
         <h3>What to Expect After Knee Replacement</h3>
         <p>Knee replacement recovery is different from hip replacement. The knee tends to be more swollen and stiff initially, but the good news is there are <strong>fewer movement restrictions</strong> than with hip replacement.</p>
         
+        <div class="precaution-warning">
+          <h4>⚠️ Swelling Is Normal</h4>
+          <p>Swelling is a normal part of healing after a knee replacement. It's usually at its worst in the first week or so, then settles gradually. Most people still have some swelling at <strong>3-6 months</strong>, and a degree of puffiness — especially at the end of the day or after activity — can persist for a year or more.</p>
+        </div>
+
         <h3>The Key Goals After Surgery</h3>
         <ol>
-          <li><strong>Straighten your knee fully</strong> (extension) - this is the most important goal</li>
-          <li><strong>Bend your knee to 90 degrees</strong> - enough to climb stairs and sit comfortably</li>
-          <li><strong>Strengthen your thigh muscles</strong> - the quadriceps are king</li>
-          <li><strong>Walk confidently</strong> - without a limp</li>
+          <li><strong>Get the knee fully straight</strong> — this is the <strong>single most important goal</strong></li>
+          <li><strong>Build your bend</strong> — around 90° in the first week or two, aiming for 100°+ by 6-7 weeks and more beyond</li>
+          <li><strong>Strengthen the quadriceps</strong> — the first two weeks matter most, then keep progressing for 6 months and beyond</li>
+          <li><strong>Work towards walking evenly without a limp</strong> — this improves steadily and often takes 6-12 months to fully return</li>
         </ol>
-        
-        <div class="precaution-warning">
-          <h4>⚠️ Important: Swelling Is Normal</h4>
-          <p>Your knee WILL swell after surgery. This is completely normal. Swelling can last for <strong>3-6 months</strong>. Don't be alarmed. Use ice, elevation, and gentle movement to manage it.</p>
-        </div>
         
         <h3>Managing Swelling</h3>
         <h4>The RICE Principle</h4>
@@ -308,15 +245,21 @@ const GETTING_READY_SECTIONS = {
         
         <p>The exercises you've been doing in Joint Journey are <strong>building the quad strength</strong> that will make your post-surgery exercises feel familiar rather than impossible.</p>
         
-        <h3>Timeline</h3>
+        <h3>Recovery Timeline</h3>
         <ul>
-          <li><strong>Day 1:</strong> You'll be up and walking with support. Yes, really!</li>
-          <li><strong>Days 1-3:</strong> Hospital stay. Exercises start immediately.</li>
-          <li><strong>Weeks 1-2:</strong> Walking with crutches/frame. Doing exercises 3-4 times daily.</li>
-          <li><strong>Weeks 2-6:</strong> Gradually increasing walking distance. Reducing walking aids.</li>
-          <li><strong>Weeks 6-12:</strong> Most people are walking without aids. Driving again (usually 6 weeks).</li>
-          <li><strong>3-6 months:</strong> Significant improvement. Back to most normal activities.</li>
-          <li><strong>12 months:</strong> Full recovery for most people.</li>
+          <li><strong>Day 1:</strong> Up and walking with a frame or crutches.</li>
+          <li><strong>Weeks 4-6:</strong> Most people are walking without any aid, though a stick for longer distances is fine.</li>
+          <li><strong>3 months:</strong> The biggest single leap — most of your pain relief and function is back by now.</li>
+          <li><strong>6 months:</strong> Around 90% of your recovery is complete; swelling and stiffness are still settling.</li>
+          <li><strong>12 months and beyond:</strong> The last refinements — walking speed, stairs, and confidence — keep improving, and knees often continue to feel better into the second year and beyond.</li>
+        </ul>
+
+        <h3>Pain Timeline</h3>
+        <ul>
+          <li><strong>Days 1-3:</strong> Pain is at its worst and is controlled with regular paracetamol and anti-inflammatories, plus stronger tablets as needed.</li>
+          <li><strong>Weeks 2-4:</strong> Most people have stopped the strong painkillers.</li>
+          <li><strong>3 months:</strong> The turning point, when most of the pain relief has arrived and many people say they wish they'd done it sooner.</li>
+          <li><strong>12 months:</strong> The pain is largely forgotten.</li>
         </ul>
         
         <div class="pro-tip">
@@ -475,17 +418,15 @@ function initGettingReady() {
 }
 
 // ===== AFTER YOUR SURGERY =====
-// Reuses content from GETTING_READY_SECTIONS (first-weeks, hip-precautions, knee-guide)
+// Reuses content from GETTING_READY_SECTIONS (first-weeks, knee-guide)
 // but renders into the separate After Surgery page.
 
 function initAfterSurgery() {
   showAfterSurgeryModules();
-  // Hide hip/knee cards based on the user's joint
+  // Hide knee card for hip-only patients
   if (currentUser) {
     var joint = currentUser.profile.joint;
-    var hipCard = document.getElementById('after-hip-precautions-card');
     var kneeCard = document.getElementById('after-knee-guide-card');
-    if (hipCard) hipCard.style.display = (joint === 'knee') ? 'none' : '';
     if (kneeCard) kneeCard.style.display = (joint === 'hip') ? 'none' : '';
   }
 }

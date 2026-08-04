@@ -16,12 +16,10 @@ const MINDSET_MODULES = [
         <p>This doesn't mean your pain isn't real - it absolutely is. But it does mean that your thoughts, feelings, beliefs, and expectations all influence how much pain you experience.</p>
         
         <h3>Why This Matters for Your Surgery</h3>
-        <p>Research consistently shows that patients who understand pain science before surgery:</p>
+        <p>Research shows that patients who prepare mentally before surgery - through goal setting, mental visualisation, and understanding what to expect - have better experiences:</p>
         <ul>
-          <li>Use <strong>less pain medication</strong> after surgery</li>
-          <li>Report <strong>less pain</strong> in the weeks after surgery</li>
-          <li>Return to normal activities <strong>faster</strong></li>
-          <li>Are <strong>more satisfied</strong> with their outcome</li>
+          <li>Patients who undertake goal setting and mental visualisation before surgery use <strong>less pain medication</strong></li>
+          <li>Pain science education is linked to <strong>higher satisfaction</strong> with the outcome</li>
         </ul>
         
         <div class="key-point">
@@ -40,7 +38,6 @@ const MINDSET_MODULES = [
         
         <h3>Things That Turn Pain Volume DOWN</h3>
         <ul>
-          <li><strong>Understanding</strong> - knowing what to expect reduces fear</li>
           <li><strong>Movement</strong> - gentle exercise produces natural pain-relieving chemicals</li>
           <li><strong>Good sleep</strong> - your body heals and recalibrates during sleep</li>
           <li><strong>Positive beliefs</strong> - believing you'll recover well actually helps you do so</li>
@@ -50,7 +47,7 @@ const MINDSET_MODULES = [
         
         <div class="exercise-box">
           <h4>🧘 Try This: The 4-7-8 Breathing Technique</h4>
-          <p>This is a powerful relaxation technique that reduces anxiety and can help manage pain:</p>
+          <p>Slow breathing with a long exhale - such as the 4-7-8 pattern - shifts the body toward its 'rest and recover' state, helping to calm anxiety and taking the edge off pain:</p>
           <ol>
             <li>Breathe in through your nose for <strong>4 seconds</strong></li>
             <li>Hold your breath for <strong>7 seconds</strong></li>
@@ -63,12 +60,10 @@ const MINDSET_MODULES = [
         <h3>What to Expect After Surgery</h3>
         <p>Here's the honest truth about pain after joint replacement:</p>
         <ul>
-          <li><strong>Days 1-3:</strong> Pain is managed with medication. You'll be up and walking with support.</li>
-          <li><strong>Weeks 1-3:</strong> Pain is significant but manageable. It gets a little better each day.</li>
-          <li><strong>Weeks 3-6:</strong> A noticeable improvement. Most people are off strong painkillers.</li>
-          <li><strong>Months 2-3:</strong> Pain is much less. Some stiffness and aching.</li>
-          <li><strong>Months 3-6:</strong> Most people say "I wish I'd done it sooner."</li>
-          <li><strong>12 months:</strong> You'll have largely forgotten what the pain was like.</li>
+          <li><strong>Days 1-3:</strong> Pain is at its worst and is controlled with regular paracetamol and anti-inflammatories, plus stronger tablets as needed.</li>
+          <li><strong>Weeks 2-4:</strong> Most people have stopped the strong painkillers.</li>
+          <li><strong>3 months:</strong> The turning point - most of the pain relief has arrived and many people say they wish they'd done it sooner.</li>
+          <li><strong>12 months:</strong> The pain is largely forgotten.</li>
         </ul>
         
         <blockquote>"The pain you're in now is the pain of waiting. The pain after surgery is the pain of healing. There is a world of difference."</blockquote>
@@ -87,7 +82,7 @@ const MINDSET_MODULES = [
         
         <blockquote>"Patients who believe they will do well after surgery, DO do well after surgery."</blockquote>
         
-        <p>This isn't wishful thinking. It's backed by dozens of research studies. Your <strong>self-efficacy</strong> - your belief in your own ability to cope and recover - is one of the strongest predictors of a good outcome.</p>
+        <p>This isn't wishful thinking. It's backed by research. Your <strong>self-efficacy</strong> - your belief in your own ability to cope and recover - predicts a good outcome.</p>
         
         <h3>Why Confidence Matters</h3>
         <p>When you believe you'll recover well:</p>
@@ -107,7 +102,7 @@ const MINDSET_MODULES = [
         <h3>Common Fears - Addressed</h3>
         
         <h4>"What if the surgery doesn't work?"</h4>
-        <p>Joint replacement is one of the most successful operations in all of medicine. <strong>Over 95% of patients</strong> are satisfied with their outcome. The technology and surgical techniques have never been better.</p>
+        <p>Joint replacement is one of the most successful operations in medicine. <strong>The vast majority of patients are glad they had it done.</strong> The technology and surgical techniques have never been better.</p>
         
         <h4>"What if I can't cope with the pain?"</h4>
         <p>Pain management after surgery is excellent. You won't be left in pain. The medical team will work with you to keep it manageable. And it DOES get better - every single day.</p>
@@ -219,7 +214,7 @@ const MINDSET_MODULES = [
         </ul>
         
         <h4>4. Keep a Gratitude Journal</h4>
-        <p>Every evening, write down three things you're grateful for. They can be tiny. Research shows this simple practice has a measurable effect on wellbeing.</p>
+        <p>Every evening, write down three things you're grateful for. They can be tiny. Research shows that gratitude journaling can measurably improve wellbeing within 2 weeks.</p>
         
         <h4>5. Limit "Dr Google"</h4>
         <p>It's tempting to search the internet for surgery stories. But horror stories get shared more than success stories. If you want reassurance, ask your surgeon or physiotherapist.</p>
@@ -269,7 +264,7 @@ const MINDSET_MODULES = [
         
         <h4>🛏️ Your Bedroom</h4>
         <ul>
-          <li>Keep it <strong>cool</strong> (16-18°C is ideal)</li>
+          <li>Keep it <strong>cool</strong> (around 18°C is ideal)</li>
           <li>Keep it <strong>dark</strong> - use blackout curtains or an eye mask</li>
           <li>Keep it <strong>quiet</strong> - earplugs if needed</li>
           <li>Reserve the bed for sleep (and intimacy) only - no TV or phones</li>
@@ -279,7 +274,7 @@ const MINDSET_MODULES = [
         <ul>
           <li>Go to bed and wake up at the <strong>same time</strong> every day</li>
           <li>Wind down for <strong>30-60 minutes</strong> before bed (no screens)</li>
-          <li>Avoid caffeine after <strong>2pm</strong></li>
+          <li>Avoid caffeine after <strong>lunch</strong></li>
           <li>Avoid alcohol close to bedtime (it disrupts sleep quality)</li>
           <li>If you nap, keep it to <strong>20 minutes before 3pm</strong></li>
         </ul>
@@ -288,8 +283,8 @@ const MINDSET_MODULES = [
         <ul>
           <li>Take pain relief <strong>30 minutes before bed</strong> (as prescribed)</li>
           <li>Use <strong>pillows</strong> to support your affected joint</li>
-          <li>For hips: a pillow between your knees can help</li>
-          <li>For knees: avoid putting a pillow under the knee - let it straighten naturally. A pillow under your ankle can support the leg while keeping the knee straight</li>
+          <li>For hips: many people find a pillow between their knees helps sleep, whether you're on your back or on your side</li>
+          <li>For knees: avoid putting a pillow under the knee - let it straighten</li>
           <li>Try gentle stretches before bed</li>
         </ul>
         
@@ -517,7 +512,7 @@ const MINDSET_MODULES = [
 const DAILY_MINDSET_EXERCISES = [
   {
     title: "Breathing: 4-7-8 Technique",
-    instruction: "Breathe in through your nose for 4 seconds. Hold for 7 seconds. Breathe out slowly through your mouth for 8 seconds. Do this 4 times. This activates your vagus nerve - it physically lowers your heart rate and reduces pain sensitivity. It's not relaxation nonsense, it's physiology.",
+    instruction: "Breathe in through your nose for 4 seconds. Hold for 7 seconds. Breathe out slowly through your mouth for 8 seconds. Do this 4 times. Slow breathing with a long exhale shifts your body toward its 'rest and recover' state, helping to calm anxiety and taking the edge off pain. It's not relaxation nonsense, it's physiology.",
     duration: "2 minutes"
   },
   {
@@ -537,17 +532,17 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Call or Text Someone",
-    instruction: "Get in touch with someone today. Doesn't have to be about your surgery. A friend, family member, old colleague. People who stay socially connected before surgery have measurably better outcomes. That's not a feel-good statement - it's in the research.",
+    instruction: "Get in touch with someone today. Doesn't have to be about your surgery. A friend, family member, old colleague. Social connection before surgery is associated with better outcomes after surgery. That's not a feel-good statement - it's in the research.",
     duration: "5 minutes"
   },
   {
     title: "Box Breathing",
-    instruction: "Breathe in for 4 seconds. Hold for 4 seconds. Out for 4 seconds. Hold for 4 seconds. Repeat 5 times. This is what the military use to stay calm under pressure. If it works for them, it'll work for you on surgery day.",
+    instruction: "Breathe in for 4 seconds. Hold for 4 seconds. Out for 4 seconds. Hold for 4 seconds. Repeat 5 times. This is what the military use to stay calm under pressure, and it's particularly helpful for anticipation - the night before surgery, or in the anaesthetic room.",
     duration: "2 minutes"
   },
   {
     title: "Write Down Your Worries",
-    instruction: "Take a piece of paper and write down whatever's worrying you about your surgery. Get it out of your head and onto paper. Then for each worry, write one fact that counters it. For example: 'What if it doesn't work?' → '95% of patients are satisfied with their joint replacement.' Worries shrink when you look at them properly.",
+    instruction: "Take a piece of paper and write down whatever's worrying you about your surgery. Get it out of your head and onto paper. Then for each worry, write one fact that counters it. For example: 'What if it doesn't work?' → 'The vast majority of patients are glad they had it done.' Worries shrink when you look at them properly.",
     duration: "5 minutes"
   },
   {
@@ -557,7 +552,7 @@ const DAILY_MINDSET_EXERCISES = [
   },
   {
     title: "Plan Tomorrow's Exercise",
-    instruction: "Look at tomorrow's exercises now. Read through them. Know what you're doing. People who plan when and where they'll exercise are 2-3 times more likely to actually do it. Don't leave it to chance - decide now: what time tomorrow will you do your exercises?",
+    instruction: "Look at tomorrow's exercises now. Read through them. Know what you're doing. Deciding in advance exactly when and where you'll do your exercises makes you significantly more likely to actually do them - this is called implementation intentions. Don't leave it to chance - decide now: what time tomorrow will you do your exercises?",
     duration: "2 minutes"
   },
   {
@@ -639,11 +634,6 @@ const DAILY_MINDSET_EXERCISES = [
     title: "Eat a Meal Slowly",
     instruction: "At your next meal, eat slowly and pay attention to the food. Taste it properly. Put your fork down between bites. This isn't about mindfulness for its own sake - eating slowly helps you feel full sooner (useful if you're trying to lose weight) and improves digestion. Two birds, one stone.",
     duration: "15 minutes"
-  },
-  {
-    title: "Cold Water Face Splash",
-    instruction: "Splash cold water on your face 5 times. This triggers your 'dive reflex' - it immediately slows your heart rate and calms your nervous system. It sounds too simple to work, but it's used in A&E departments to manage acute anxiety. Keep this one in your back pocket for surgery day morning.",
-    duration: "1 minute"
   },
   {
     title: "Write a Question for Your Surgeon",
