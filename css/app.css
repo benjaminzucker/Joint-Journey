@@ -174,6 +174,51 @@
   margin-bottom: var(--space-xl);
 }
 
+/* Dashboard header: greeting left, How to Use card right */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+/* "How to Use" card-style button */
+.how-to-use-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 110px;
+  height: 110px;
+  padding: var(--space-md);
+  border: 2px solid var(--green-200);
+  border-radius: var(--radius-lg);
+  background: var(--green-50);
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.how-to-use-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.how-to-use-card-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .how-to-use-card {
+    width: 90px;
+    height: 90px;
+    padding: var(--space-sm);
+  }
+}
+
 .page-title {
   font-size: var(--font-size-3xl);
   margin-bottom: var(--space-sm);
