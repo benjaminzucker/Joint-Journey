@@ -198,6 +198,14 @@ const GETTING_READY_SECTIONS = {
           <li>Some swelling is completely normal and can last several months, especially after knee replacement.</li>
         </ul>
 
+        <h4>🚿 Showering and Bathing</h4>
+        <ul>
+          <li>If you have a <strong>waterproof dressing</strong>, you can usually shower within a <strong>couple of days</strong> of surgery. Ask your surgical team to confirm.</li>
+          <li><strong>Do not have a bath or soak in water for at least 4 weeks</strong> after surgery, to protect your wound while it heals.</li>
+          <li>Use a <strong>shower stool</strong> and a <strong>non-slip bath mat</strong> for safety.</li>
+          <li>Pat the wound area dry gently - do not rub.</li>
+        </ul>
+
         <h4>🚗 Driving</h4>
         <ul>
           <li>Most people are back to driving somewhere between <strong>4 and 6 weeks</strong>. A right-sided operation usually takes a little longer, as does driving a manual.</li>
@@ -220,15 +228,15 @@ const GETTING_READY_SECTIONS = {
         
         <div class="precaution-warning">
           <h4>⚠️ Swelling Is Normal</h4>
-          <p>Swelling is a normal part of healing after a knee replacement. It's usually at its worst in the first week or so, then settles gradually. Most people still have some swelling at <strong>3-6 months</strong>, and a degree of puffiness — especially at the end of the day or after activity — can persist for a year or more.</p>
+          <p>Swelling is a normal part of healing after a knee replacement. It's usually at its worst in the first week or so, then settles gradually. Most people still have some swelling at <strong>3-6 months</strong>, and a degree of puffiness  - especially at the end of the day or after activity  - can persist for a year or more.</p>
         </div>
 
         <h3>The Key Goals After Surgery</h3>
         <ol>
-          <li><strong>Get the knee fully straight</strong> — this is the <strong>single most important goal</strong></li>
-          <li><strong>Build your bend</strong> — around 90° in the first week or two, aiming for 100°+ by 6-7 weeks and more beyond</li>
-          <li><strong>Strengthen the quadriceps</strong> — the first two weeks matter most, then keep progressing for 6 months and beyond</li>
-          <li><strong>Work towards walking evenly without a limp</strong> — this improves steadily and often takes 6-12 months to fully return</li>
+          <li><strong>Get the knee fully straight</strong>  - this is the <strong>single most important goal</strong></li>
+          <li><strong>Build your bend</strong> - this is the focus of early rehab. Aim for around 90 degrees in the first week or two, building to 100+ degrees by 6-7 weeks and continuing beyond. The more you work on your bend, the better your long-term function will be</li>
+          <li><strong>Strengthen the quadriceps</strong> - the first two weeks matter most, then keep progressing for 6 months and beyond</li>
+          <li><strong>Work towards walking evenly without a limp</strong> - this improves steadily and usually takes 6 months to a year to fully return</li>
         </ol>
         
         <h3>Managing Swelling</h3>
@@ -247,11 +255,11 @@ const GETTING_READY_SECTIONS = {
         
         <h3>Recovery Timeline</h3>
         <ul>
-          <li><strong>Day 1:</strong> Up and walking with a frame or crutches.</li>
+          <li><strong>Day 0-1:</strong> Up and walking with a frame or crutches, often on the same day as surgery or the morning after.</li>
           <li><strong>Weeks 4-6:</strong> Most people are walking without any aid, though a stick for longer distances is fine.</li>
-          <li><strong>3 months:</strong> The biggest single leap — most of your pain relief and function is back by now.</li>
+          <li><strong>3 months:</strong> The biggest single leap  - most of your pain relief and function is back by now.</li>
           <li><strong>6 months:</strong> Around 90% of your recovery is complete; swelling and stiffness are still settling.</li>
-          <li><strong>12 months and beyond:</strong> The last refinements — walking speed, stairs, and confidence — keep improving, and knees often continue to feel better into the second year and beyond.</li>
+          <li><strong>12 months and beyond:</strong> The last refinements  - walking speed, stairs, and confidence  - keep improving, and knees often continue to feel better into the second year and beyond.</li>
         </ul>
 
         <h3>Pain Timeline</h3>

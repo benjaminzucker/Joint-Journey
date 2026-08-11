@@ -432,7 +432,7 @@ const HIP_EXERCISES = {
         name: "Floor Transfer Practice",
         video: "ohiJAzQ7VL4",
         sets: 1, reps: "3 each way",
-        description: "Practice getting down to the floor and back up again safely. Use a sturdy chair for support. Important safety skill. Only attempt if you feel confident.",
+        description: "Practice getting down to the floor and back up again safely. Use a sturdy chair for support. If you do end up on the floor, try to get up if you feel safe to do so. Important safety skill. Only attempt if you feel confident.",
         progression: [
           { week: 9, sets: 1, reps: "2 (with support)" },
           { week: 10, sets: 1, reps: "2 (with support)" },
@@ -742,7 +742,7 @@ const KNEE_EXERCISES = {
         name: "Floor Transfer Practice",
         video: "ohiJAzQ7VL4",
         sets: 1, reps: "3 each way",
-        description: "Practice getting down to the floor and back up using a chair. Important safety skill.",
+        description: "Practice getting down to the floor and back up using a chair. If you do end up on the floor, try to get up if you feel safe to do so. Important safety skill.",
         progression: [
           { week: 9, sets: 1, reps: "2 (with support)" },
           { week: 10, sets: 1, reps: "2 (with support)" },

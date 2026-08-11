@@ -57,9 +57,9 @@ to each hazard below as advisors sign off.
 - **Cause:** Generic programme not suited to a specific comorbidity; user pushes too hard.
 - **Effect:** Musculoskeletal injury, fall, pain flare.
 - **Initial L×S:** 3 × 3 = 9
-- **Existing controls:** "Stop if sharp pain" guidance; "hold onto something sturdy"; "talk to your GP before starting if you have heart/respiratory/balance issues"; gentle/standard/active levelling; warm-up instructions. **(v0.2 — implemented) Pre-exercise safety check** collapsible at the top of the exercise programme: warm up, use support/footwear, stop for sharp pain/dizziness/chest pain/breathlessness, use gentle isometric holds on sore days, and check with GP/physio first if relevant. **(v0.4 — implemented) Safety screening questionnaire** during onboarding (PAR-Q-style: heart/lung condition, balance/falls, GP-restricted exercise). Flagged users see a persistent caution banner on the exercise page advising GP/physio consultation before starting. Screening data stored on user profile.
+- **Existing controls:** "Stop if sharp pain" guidance; "hold onto something sturdy"; "talk to your GP before starting if you have heart/respiratory/balance issues"; gentle/standard/active levelling; warm-up instructions. **(v0.2 - implemented) Pre-exercise safety check** collapsible at the top of the exercise programme: warm up, use support/footwear, stop for sharp pain/dizziness/chest pain/breathlessness, use gentle isometric holds on sore days, and check with GP/physio first if relevant. **(v0.4 - implemented) Safety screening questionnaire** during onboarding (PAR-Q-style: heart/lung condition, balance/falls, GP-restricted exercise). Flagged users see a persistent caution banner on the exercise page advising GP/physio consultation before starting. Screening data stored on user profile. **(v0.5 - advisory board review, Aug 2026) Floor transfer exercise updated:** description now advises "try to get up if you feel safe to do so" rather than implying the user must always get up. Only attempt if confident; use sturdy chair for support.
 - **Further mitigations:** Video demonstrations of correct form.
-- **Residual L×S:** 2 × 2 = 4 (acceptable) — pre-exercise safety check and formal screening questionnaire now live; residual to fall further once form videos are added.
+- **Residual L×S:** 2 × 2 = 4 (acceptable) - pre-exercise safety check and formal screening questionnaire now live; floor transfer wording reviewed by advisory board; residual to fall further once form videos are added.
 
 
 
@@ -94,9 +94,9 @@ to each hazard below as advisors sign off.
 - **Cause:** Modules on pain/anxiety surface distress; no route for a user in crisis.
 - **Effect:** Worsening distress; missed safeguarding/crisis situation.
 - **Initial L×S:** 2 × 4 = 8
-- **Existing controls:** Evidence-based supportive content. **(v0.2 — implemented) Crisis signposting** — the persistent "When to seek help" panel (site-wide, including the wellbeing content) surfaces **Samaritans 116 123**, plus 111/999 and GP routes, and states the app does not replace the user's healthcare team.
+- **Existing controls:** Evidence-based supportive content. **(v0.2 - implemented) Crisis signposting** - the persistent "When to seek help" panel (site-wide, including the wellbeing content) surfaces **Samaritans 116 123**, plus 111/999 and GP routes, and states the app does not replace the user's healthcare team. **(v0.5 - advisory board review, Aug 2026) Explicit mental health crisis entry added** to the "When to seek help" panel: call 999 if in immediate danger; call 111 and select the mental health option for urgent mental health support. Samaritans entry expanded to include "having thoughts of self-harm" and note availability as 24/7, 365 days a year.
 - **Further mitigations:** Reinforce "this is not therapy" framing and repeat crisis signposting within individual mindset modules as content grows.
-- **Residual L×S:** 1 × 4 = 4 (acceptable) — crisis signposting now live site-wide.
+- **Residual L×S:** 1 × 4 = 4 (acceptable) - crisis signposting now live site-wide with explicit mental health crisis routes.
 
 
 ### H06 — Software error displays wrong data (weight, score, progress)
