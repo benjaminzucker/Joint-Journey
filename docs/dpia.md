@@ -1,6 +1,6 @@
 # Joint Journey — Data Protection Impact Assessment (DPIA)
 
-**Version:** 0.1 (draft) · **Date:** [ ] · **Data Controller:** Elan Health Ltd (company number 17347255) · **Owner:** Mr Benjamin Zucker
+**Version:** 0.2 (draft) · **Date:** 15/08/2026 · **Data Controller:** Elan Health Ltd (company number 17347255) · **Owner:** Mr Benjamin Zucker
 
 **Status:** Working draft. To be reviewed before any pilot/deployment, and updated
 whenever processing changes. A DPIA is required because we process **special
@@ -18,7 +18,7 @@ prehabilitation programme and to evaluate the service.
 
 - **Controller:** Elan Health Ltd (company number 17347255), 154 Beesmoor Road, Frampton Cotterell, Bristol, BS36 2JN.
 
-- **Processors / sub-processors:** Google Firebase (authentication, Firestore database, hosting); [Netlify] (static hosting); video hosting (YouTube/Vimeo embeds); [email provider for follow-ups]. Confirm data-residency (EU/UK vs US) for each.
+- **Processors / sub-processors:** See `sub-processor-register.md` for full details. Summary: Google Firebase (authentication, Firestore database, Cloud Storage) - database in europe-west2 (London, UK); Netlify (static hosting - no personal data stored). Google Analytics was previously used but has been removed (August 2026). No email marketing processor currently in use.
 - **Users / data subjects:** adults (18+) on the waiting list for hip or knee replacement.
 
 ## 2. Data we collect
@@ -61,12 +61,14 @@ Collected after surgery, via in-app prompt and/or follow-up email:
 
 ## 5. Data subject rights
 - Access, rectification, erasure, restriction, portability, and objection are supported.
-- A clear route to request these (in-app / email). Account deletion removes personal data within [30 days].
+- A clear route to request these (in-app / email to hello@jointjourney.org). Account deletion removes personal data within 30 days.
 
 ## 6. Retention
 - Active-account data retained while the account is active.
-- Evaluation data retained for [X years] in pseudonymised form, then deleted/aggregated.
-- Inactive accounts deleted/anonymised after [24 months] of inactivity (confirm policy).
+- Evaluation data retained for 5 years in pseudonymised form, then deleted/aggregated.
+- Inactive accounts deleted/anonymised after 24 months of inactivity.
+- Feedback data retained for the lifetime of the product, reviewed periodically.
+- See `ropa.md` for per-activity retention periods.
 
 ## 7. Security measures (cross-ref DTAC + Hazard Log H07)
 - **Data residency:** Cloud Firestore (database) and Cloud Storage are both
@@ -77,8 +79,12 @@ Collected after surgery, via in-app prompt and/or follow-up email:
 - Encryption in transit (HTTPS) and at rest (Firebase default).
 - Authenticated access; Firestore security rules (`firestore.rules`) restrict each user to their own data. **Independently reviewed — see `docs/security/firestore-rules-audit.md` (result: PASS, per-user isolation enforced; feedback collection hardened against uid-spoofing and oversized writes).**
 - Least-privilege admin access; MFA on admin/founder accounts.
-- Cyber Essentials (planned); backups; documented incident/breach response (notify ICO within 72h if required).
+- Cyber Essentials (planned).
+- Incident/breach response documented - see `security/breach-response-runbook.md` (notify ICO within 72h if required).
 - App Check and Firestore rules regression tests recommended before wider rollout.
+- Google Analytics removed (August 2026) - no third-party analytics cookies or US data transfers for browsing behaviour.
+- Sub-processor register maintained - see `sub-processor-register.md`.
+- Records of processing activities maintained - see `ropa.md`.
 
 ## 8. Risks & mitigations
 | Risk | Likelihood | Impact | Mitigation | Residual |
@@ -97,8 +103,8 @@ Collected after surgery, via in-app prompt and/or follow-up email:
 - [ ] ICO consultation only if high residual risk remains (not anticipated).
 
 ## 10. Outcome / sign-off
-- DPIA outcome: [proceed / proceed with conditions / do not proceed].
-- Actions to close before go-live: confirm data residency; finalise retention periods; complete Cyber Essentials; document joint-controller arrangement with trust.
+- DPIA outcome: **Proceed with conditions** (complete Cyber Essentials; build in-app data export/delete; finalise joint-controller arrangement with pilot trust).
+- Data residency: confirmed (europe-west2, London). Retention periods: confirmed (see section 6). Sub-processors: documented (see sub-processor-register.md). Breach response: documented (see security/breach-response-runbook.md). Google Analytics: removed.
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|

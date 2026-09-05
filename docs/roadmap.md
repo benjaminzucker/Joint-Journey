@@ -56,13 +56,13 @@ Markers: ✅ done · [~] in progress · 👉 current focus.
 *Goal: become something an NHS trust is allowed to deploy. Most is documentation/design and needs no trust — a good use of waiting time.*
 
 - [~] **Pilot designed as a service evaluation + data plan** — drafted → `pilot-service-evaluation-plan.md`. Finalise outcomes + data export.
-- [~] **Clinical safety (DCB0129)** — drafts done → `clinical-safety/hazard-log.md`, `clinical-safety/clinical-safety-case-report.md`. Still: appoint/​train CSO (Ben), close open safety actions, sign off.
-- [~] **Data protection** — DPIA drafted → `dpia.md`; **data residency confirmed (London, `europe-west2`)** ✅. Still: finalise retention periods, legal entity & processor list, lawful basis, data-sharing/joint-controller agreement (with trust), and DPO/sign-off. Plus build in-app export/delete-my-data flow.
-- [~] **Security** — Firestore rules **audited + hardened + deployed** ✅ (`security/firestore-rules-audit.md`). Still: Cyber Essentials (do now); NHS DSPT; enable App Check; basic penetration test; breach-response runbook + ROPA.
-- [~] **DTAC pack** — readiness tracked → `dtac-readiness-checklist.md`. **Accessibility: WCAG 2.1 AA pass done** ✅ (`css/a11y.css`). Still bundle the other areas (clinical safety, data protection, security, interoperability, usability). *Note: review/remove Google Analytics before a trust pilot.*
-- [ ] **Housekeeping** — company formation; insurance (professional indemnity + product liability); basic IP/trademark.
+- [~] **Clinical safety (DCB0129)** — Hazard Log v0.5 ✅, Case Report v0.2 ✅, CSO appointed ✅, most safety actions closed ✅, advisory board content review (Aug 2026) ✅. Still: formal advisory board sign-off of all domains; CSO sign-off (bump to v1.0).
+- [~] **Data protection** — DPIA v0.2 ✅; data residency confirmed ✅; retention periods confirmed ✅; sub-processor register ✅; ROPA ✅; lawful basis documented ✅; Google Analytics removed ✅. Still: data-sharing agreement (with trust); in-app export/delete-my-data flow; ICO registration check.
+- [~] **Security** — Firestore rules audited + hardened + deployed ✅; breach-response runbook ✅; encryption in transit + at rest ✅; MFA on admin ✅. Still: Cyber Essentials (do now, ~£300); App Check; basic penetration test.
+- [~] **DTAC pack** — readiness checklist fully updated (15/08/2026) ✅; WCAG 2.1 AA pass ✅; accessibility statement ✅; interoperability statement ✅; Google Analytics removed ✅. Still: Cyber Essentials; user testing write-up; in-app data export.
+- [~] **Housekeeping** — company formed (Elan Health Ltd, 17347255) ✅. Still: insurance (professional indemnity + product liability); basic IP/trademark.
 
-> **Can do now without a trust:** ✅ DPIA (residency done) · ✅ WCAG 2.1 AA accessibility pass · ✅ Firestore rules hardened/deployed · Cyber Essentials · finish clinical-safety docs + book CSO training · lock the evaluation outcome set + data export · breach-response runbook.
+> **Still to do (no trust required):** Cyber Essentials (~£300, self-assessment) · formal CSO sign-off · in-app data export/delete flow · documented user testing results · App Check.
 
 ---
 
