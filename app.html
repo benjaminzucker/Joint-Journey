@@ -1376,6 +1376,26 @@
               <p id="account-member-since"></p>
               <button class="btn btn-ghost btn-block mt-xl" onclick="handleLogout()" style="color: var(--error);">Log Out</button>
             </div>
+
+            <!-- ===== YOUR DATA & PRIVACY (UK GDPR rights) ===== -->
+            <div class="card">
+              <h3>Your Data &amp; Privacy</h3>
+              <p class="form-hint">You are in control of your data. You can download everything we hold about you, or permanently delete your account at any time.</p>
+
+              <div class="mb-lg mt-lg">
+                <h5>Download my data</h5>
+                <p class="form-hint mb-sm">Get a copy of all the information stored in your account (profile, progress, logs) as a file. This supports your right to data portability.</p>
+                <button class="btn btn-secondary btn-block" onclick="exportMyData()">Download my data (JSON)</button>
+              </div>
+
+              <hr style="border: none; border-top: 1px solid var(--border-light); margin: var(--space-xl) 0;">
+
+              <div class="mb-lg">
+                <h5 style="color: var(--error);">Delete my account</h5>
+                <p class="form-hint mb-sm">Permanently delete your account and all associated data. This cannot be undone. You will be asked to confirm.</p>
+                <button class="btn btn-ghost btn-block" onclick="openDeleteAccountModal()" style="color: var(--error); border: 1px solid var(--error);">Delete my account</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1452,6 +1472,27 @@
     </div>
   </div>
 
+  <!-- ===== DELETE ACCOUNT MODAL ===== -->
+  <div id="delete-account-modal" class="modal-overlay" onclick="closeDeleteAccountModal(event)">
+    <div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-labelledby="delete-account-title">
+      <div class="modal-header">
+        <h3 id="delete-account-title" style="color: var(--error);">Delete my account</h3>
+        <button class="modal-close" onclick="closeDeleteAccountModal()" aria-label="Close">&times;</button>
+      </div>
+      <div>
+        <p><strong>This will permanently delete your account and all your data</strong> - your profile, exercise progress, weight and mood logs, and scores. This cannot be undone.</p>
+        <p class="form-hint mb-md">We recommend downloading your data first if you would like to keep a copy.</p>
+        <div class="form-group">
+          <label class="form-label" for="delete-confirm-password">For your security, please enter your password to confirm:</label>
+          <input type="password" id="delete-confirm-password" class="form-input" autocomplete="current-password" placeholder="Your password">
+        </div>
+        <div id="delete-account-error" class="form-error" style="display:none;"></div>
+        <button class="btn btn-block" onclick="confirmDeleteAccount()" style="background: var(--error); color: white;">Permanently delete my account</button>
+        <button class="btn btn-ghost btn-block mt-sm" onclick="closeDeleteAccountModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== SCRIPTS ===== -->
   <!-- Firebase SDK -->
   <!-- defer: browser downloads all scripts in parallel, then executes them in
@@ -1467,7 +1508,7 @@
   <script defer src="js/data.js?v=3"></script>
   <script defer src="js/programme-levels.js?v=2"></script>
   <script defer src="js/oxford-score.js?v=2"></script>
-  <script defer src="js/auth.js?v=2"></script>
+  <script defer src="js/auth.js?v=3"></script>
   <script defer src="js/app.js?v=5"></script>
   <script defer src="js/exercises.js?v=4"></script>
   <script defer src="js/nutrition.js?v=4"></script>

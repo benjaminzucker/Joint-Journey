@@ -31,7 +31,7 @@ complete the NHS Digital Technology Assessment Criteria quickly when a trust ask
 - ✅ Google Analytics removed (August 2026) - no third-party analytics, no US data transfers for browsing
 - ⬜ Data-sharing agreement template (for trust pilots) - *draft when trust identified*
 - ⬜ ICO registration - *check if required given consent-based processing*
-- ⬜ In-app data export / delete-my-data flow (Art. 17/20) - *user can request via email; automated flow to build*
+- ✅ In-app data export / delete-my-data flow (Art. 15/17/20) - *self-service "Download my data" and "Delete my account" in My Account. Deletion clears Firestore + Auth + localStorage cache; delete requires password re-authentication.*
 
 ## C. Technical security
 - ✅ Authenticated accounts (Firebase Auth)
@@ -68,10 +68,10 @@ complete the NHS Digital Technology Assessment Criteria quickly when a trust ask
 
 1. **Cyber Essentials** - self-assessment via IASME (~£300). Can do now, no trust required.
 2. **Formal CSO sign-off** of Hazard Log → v1.0. Dependent on advisory board sign-off completing.
-3. **In-app data export/delete** - build user-facing "download my data" / "delete my account" flow.
-4. **Data-sharing agreement template** - draft when a pilot trust is identified.
-5. **App Check** - enable Firebase App Check to prevent API abuse from scripts.
-6. **Documented user testing results** - write up findings from patient testing sessions.
+3. **Data-sharing agreement template** - draft when a pilot trust is identified.
+4. **App Check** - enable Firebase App Check to prevent API abuse from scripts.
+5. **Documented user testing results** - write up findings from patient testing sessions.
+6. **Automated retention enforcement** - mechanism to delete/anonymise inactive accounts after 24 months (currently a documented policy; needs a scheduled job).
 
 ## Notes
 - Google Analytics has been removed from all pages (August 2026). All engagement data is tracked via Firestore (user's own account data, never sent to third parties). No analytics cookies are used.

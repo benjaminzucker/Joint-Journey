@@ -272,6 +272,122 @@ function saveUserNow() {
   return Promise.resolve();
 }
 
+// ============================================================================
+//  DATA RIGHTS - Export (portability) and Delete (erasure)
+//  Supports UK GDPR Articles 15, 17 & 20, and DTAC data-protection requirements.
+// ============================================================================
+
+// ===== EXPORT MY DATA (Art. 15 access / Art. 20 portability) =====
+function exportMyData() {
+  if (!currentUser) {
+    showToast('No account data found to export.', 'warning');
+    return;
+  }
+
+  // Build a clean, human-readable export of everything we hold about the user.
+  var exportPayload = {
+    exportedAt: new Date().toISOString(),
+    exportedFrom: 'Joint Journey',
+    note: 'This file contains all the personal data stored in your Joint Journey account.',
+    account: currentUser
+  };
+
+  try {
+    var dataStr = JSON.stringify(exportPayload, null, 2);
+    var blob = new Blob([dataStr], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+
+    var stamp = new Date().toISOString().slice(0, 10);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'joint-journey-my-data-' + stamp + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showToast('Your data has been downloaded.', 'success');
+  } catch (err) {
+    console.error('Export failed:', err);
+    showToast('Sorry, the download failed. Please try again.', 'error');
+  }
+}
+
+// ===== DELETE ACCOUNT (Art. 17 erasure) =====
+function openDeleteAccountModal() {
+  var modal = document.getElementById('delete-account-modal');
+  var err = document.getElementById('delete-account-error');
+  var pw = document.getElementById('delete-confirm-password');
+  if (err) { err.style.display = 'none'; err.textContent = ''; }
+  if (pw) { pw.value = ''; }
+  if (modal) modal.classList.add('active');
+}
+
+function closeDeleteAccountModal(event) {
+  // If a click bubbled up from inside the modal, ignore it (only close on overlay click or explicit call).
+  if (event && event.target && event.target.id !== 'delete-account-modal' && event.type === 'click') {
+    return;
+  }
+  var modal = document.getElementById('delete-account-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function confirmDeleteAccount() {
+  var err = document.getElementById('delete-account-error');
+  var pwEl = document.getElementById('delete-confirm-password');
+  var password = pwEl ? pwEl.value : '';
+
+  function showDeleteError(msg) {
+    if (err) { err.textContent = msg; err.style.display = 'block'; }
+  }
+
+  var user = auth.currentUser;
+  if (!user) {
+    showDeleteError('You are not signed in. Please log in again.');
+    return;
+  }
+  if (!password) {
+    showDeleteError('Please enter your password to confirm.');
+    return;
+  }
+
+  var btn = document.querySelector('#delete-account-modal button[onclick="confirmDeleteAccount()"]');
+  if (btn) { btn.disabled = true; btn.textContent = 'Deleting...'; }
+
+  // Re-authenticate first (Firebase requires recent login to delete an account).
+  var credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
+  user.reauthenticateWithCredential(credential)
+    .then(function() {
+      // 1) Delete the Firestore document (their health data).
+      return db.collection('users').doc(user.uid).delete();
+    })
+    .then(function() {
+      // 2) Clear the local cache so no health data lingers in the browser.
+      localStorage.removeItem('jj_user');
+      localStorage.removeItem('jj_users');
+      // 3) Delete the Firebase Auth account itself.
+      return user.delete();
+    })
+    .then(function() {
+      currentUser = null;
+      firebaseUid = null;
+      closeDeleteAccountModal();
+      showScreen('login');
+      showToast('Your account and all your data have been permanently deleted.', 'success');
+    })
+    .catch(function(error) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Permanently delete my account'; }
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+        showDeleteError('Incorrect password. Please try again.');
+      } else if (error.code === 'auth/too-many-requests') {
+        showDeleteError('Too many attempts. Please wait a few minutes and try again.');
+      } else {
+        console.error('Account deletion failed:', error);
+        showDeleteError('Something went wrong. Please try again, or contact hello@jointjourney.org.');
+      }
+    });
+}
+
 // ===== ERROR DISPLAY =====
 function showError(form, message) {
   var el = document.getElementById(form + '-error');

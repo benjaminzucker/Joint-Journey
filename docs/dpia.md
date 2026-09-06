@@ -61,7 +61,8 @@ Collected after surgery, via in-app prompt and/or follow-up email:
 
 ## 5. Data subject rights
 - Access, rectification, erasure, restriction, portability, and objection are supported.
-- A clear route to request these (in-app / email to hello@jointjourney.org). Account deletion removes personal data within 30 days.
+- **Self-service tools (in My Account → Your Data & Privacy):** users can instantly **download all their data** (JSON export - access/portability) and **permanently delete their account** (erasure). Deletion removes the Firestore document, the Firebase Auth account, and the browser localStorage cache; it requires password re-authentication for security.
+- Other rights (rectification, restriction, objection) via email to hello@jointjourney.org, responded to within 30 days.
 
 ## 6. Retention
 - Active-account data retained while the account is active.
