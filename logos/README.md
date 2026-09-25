@@ -3,25 +3,28 @@
 High-resolution logo files for presentations, documents, and print.
 Brand colours: **Three Farm Green `#475953`** and **Amber `#FF8F00`**.
 
+All PNGs are rendered from the vector SVGs using headless Chrome (with the real
+Inter webfont for the wordmark), so they are genuinely sharp - not upscaled.
+
 ## Which file do I use?
 
-### For PowerPoint / Keynote / Word (use the PNGs)
-| Need | File |
-|------|------|
-| Full logo on a **white / light** slide | `full-logo-light-bg-2400.png` |
-| Full logo on a **dark / green** slide | `full-logo-dark-bg-2400.png` |
-| Full logo as a self-contained **green banner** | `full-logo-on-green-2400.png` |
-| Just the **icon** (no text) on a light slide | `icon-transparent-2048.png` |
-| Just the **icon** on a green tile (app-icon look) | `icon-on-green-2048.png` |
+### For PowerPoint / Keynote / Word - use the maximum-quality PNGs
+| Need | Best file (max quality) |
+|------|-------------------------|
+| Full logo on a **white / light** slide | `full-logo-light-bg-4800.png` |
+| Full logo on a **dark / green** slide | `full-logo-dark-bg-4800.png` |
+| Full logo as a self-contained **green banner** | `full-logo-on-green-4800.png` |
+| Just the **icon** (no text) on a light slide | `icon-transparent-4096.png` |
+| Just the **icon** on a green tile (app-icon look) | `icon-on-green-4096.png` |
 
-- Use the **2400 / 2048** versions for anything full-screen or projected - they're razor-sharp.
-- Use the **1200 / 1024 / 512** versions for smaller placements (slide corners, headers) to keep file size down.
-- The transparent PNGs have a see-through background, so they sit cleanly on any colour.
+- The **4096 / 4800** versions are maximum quality - use these for title slides, full-screen, or anything projected. They stay crisp however large you scale them.
+- The **2048 / 2400** versions are provided as smaller alternatives for inline use (slide corners, headers) where file size matters.
+- The transparent PNGs (light-bg, dark-bg, and both icons) have a see-through background, so they sit cleanly on any colour.
 
-### For the web / scalable use (use the SVGs)
+### For the web / scalable use - use the SVGs
 The `.svg` files are vector - infinitely scalable with no quality loss. Use these
 wherever the tool supports SVG (modern web, Figma, Illustrator). PowerPoint's SVG
-support is patchy, which is why PNGs are provided above.
+support is patchy, which is why the high-res PNGs above are provided.
 
 ## Files
 
@@ -33,22 +36,27 @@ support is patchy, which is why PNGs are provided above.
 - `full-logo-on-green.svg` - icon + white wordmark on a green banner
 
 **Exported (raster PNG):**
-- `icon-transparent-{512,1024,2048}.png`
-- `icon-on-green-{512,1024,2048}.png`
-- `full-logo-light-bg-{1200,2400}.png`
-- `full-logo-dark-bg-{1200,2400}.png`
-- `full-logo-on-green-{1200,2400}.png`
+- `icon-transparent-{2048,4096}.png`
+- `icon-on-green-{2048,4096}.png`
+- `full-logo-light-bg-{2400,4800}.png`
+- `full-logo-dark-bg-{2400,4800}.png`
+- `full-logo-on-green-{2400,4800}.png`
 
-## Regenerating the PNGs
-From this folder, using macOS's built-in `sips`:
+## Regenerating the PNGs (high quality)
+PNGs are rendered with headless Chrome, which rasterises the vector at full
+resolution (macOS's `sips` upscales a tiny bitmap and looks pixelated, so it is
+not used). Each SVG is wrapped in an HTML page at a *logical* size, then Chrome
+supersamples it with `--force-device-scale-factor=8`:
+
 ```bash
-for sz in 512 1024 2048; do
-  sips -s format png --resampleWidth $sz icon-transparent.svg --out icon-transparent-${sz}.png
-  sips -s format png --resampleWidth $sz icon-on-green.svg --out icon-on-green-${sz}.png
-done
-for sz in 1200 2400; do
-  sips -s format png --resampleWidth $sz full-logo-light-bg.svg --out full-logo-light-bg-${sz}.png
-  sips -s format png --resampleWidth $sz full-logo-dark-bg.svg --out full-logo-dark-bg-${sz}.png
-  sips -s format png --resampleWidth $sz full-logo-on-green.svg --out full-logo-on-green-${sz}.png
-done
+CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+# Example: icon at 512 logical x8 = 4096px; logo at 600x135 logical x8 = 4800x1080.
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars \
+  --force-device-scale-factor=8 --default-background-color=00000000 \
+  --virtual-time-budget=4000 --window-size=512,512 \
+  --screenshot=icon-transparent-4096.png icon-transparent.render.html
 ```
+(Drop `--default-background-color=00000000` for the solid-green versions. The
+`.render.html` wrappers load Inter from Google Fonts so the wordmark matches the
+website exactly. For higher still, increase the scale factor, e.g. x16 = 8192px.)
+
