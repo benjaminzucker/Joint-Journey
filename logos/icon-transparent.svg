@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Joint Journey">
+  <!-- Outlined mountain + amber flag, transparent background (matches site header mark) -->
+  <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.12"/>
+  <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+  <line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2" stroke-linecap="round"/>
+  <path d="M30 2 L38 5 L30 7" fill="#FF8F00"/>
+</svg>

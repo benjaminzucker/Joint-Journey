@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" role="img" aria-label="Joint Journey logo">
+  <!-- For light/white backgrounds: dark green text -->
+  <!-- Icon -->
+  <g transform="translate(8, 12)">
+    <path d="M4 42 L20 10 L24 18 L30 8 L46 42 Z" fill="#475953" opacity="0.12"/>
+    <path d="M4 42 L20 10 L24 18 L30 8 L46 42" stroke="#475953" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+    <line x1="30" y1="8" x2="30" y2="2" stroke="#475953" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 2 L38 5 L30 7" fill="#FF8F00"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="66" y="46" font-family="Inter, 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="30" letter-spacing="-0.5">
+    <tspan fill="#475953" font-weight="400">Joint</tspan><tspan fill="#475953" font-weight="700">Journey</tspan>
+  </text>
+</svg>
