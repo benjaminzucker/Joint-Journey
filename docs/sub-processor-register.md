@@ -27,5 +27,5 @@
 
 - **No advertising or marketing processors** are used.
 - **No data is sold** to any third party.
-- **Video content** is linked to (YouTube/Vimeo) but no personal data is sent to these platforms beyond standard browser requests when a user clicks a video link.
+- **Exercise videos** are YouTube videos shown in an in-app player. The player only loads when the user taps "Watch Video" (nothing is loaded from YouTube on page load), and it uses YouTube's privacy-enhanced mode (`youtube-nocookie.com`), which does not set tracking cookies until the video is played. No account data is sent to YouTube. These videos are being progressively replaced with Joint Journey's own animations, which load no third-party content.
 - This register will be updated whenever a sub-processor is added or removed. Users will be notified of material changes via the privacy policy.

@@ -366,7 +366,7 @@ function openVideoModal(videoId, encodedName, event) {
         '</div>' +
       '</div>' +
       '<div class="jj-video-frame">' +
-        '<iframe src="https://www.youtube.com/embed/' + videoId + '?rel=0&playsinline=1" title="' + (name || 'Exercise video') + '" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' +
+        '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId + '?rel=0&playsinline=1" title="' + (name || 'Exercise video') + '" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' +
       '</div>' +
     '</div>';
   overlay.addEventListener('click', function (e) { if (e.target === overlay) closeVideoModal(); });
