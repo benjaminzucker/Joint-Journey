@@ -122,9 +122,11 @@
     el('circle', { cx: S.eyeLight.cx, cy: S.eyeLight.cy, r: S.eyeLight.r, fill: '#FFFFFF' }, head);
     line(head, S.brow, C.hairShade, 1.1);
     line(head, S.smile, C.skinShade, 0.9);
+    // Extra amber glows for muscles not on the near thigh (glutes, hamstrings): p.glows = [{a, b, o, w}]
+    var extra = group(g);
     var nearArm = buildArm(g, false);
     return { mid: mid, pelvis: pelvis, shirt: shirt, shadow: shadow, farArm: farArm, farLeg: farLeg, torso: torso, neck: neck, head: head,
-             nearLeg: nearLeg, nearArm: nearArm };
+             nearLeg: nearLeg, nearArm: nearArm, extra: extra };
   }
 
   function drawLeg(L, leg, hl, k) {
@@ -161,6 +163,20 @@
       ' Q-12.4,' + n(by) + ' -12.5,' + n(by - 1.5) + ' Z';
   }
 
+  function drawGlows(g, list) {
+    list = list || [];
+    while (g.childNodes.length < list.length) {
+      el('path', { stroke: C.glow, 'stroke-linecap': 'round', fill: 'none' }, g);
+    }
+    for (var i = 0; i < g.childNodes.length; i++) {
+      var n = g.childNodes[i], q = list[i];
+      if (!q) { n.setAttribute('opacity', 0); continue; }
+      n.setAttribute('d', 'M' + q.a[0].toFixed(2) + ',' + q.a[1].toFixed(2) + 'L' + q.b[0].toFixed(2) + ',' + q.b[1].toFixed(2));
+      n.setAttribute('stroke-width', q.w || 9);
+      n.setAttribute('opacity', (0.6 * A.clamp(q.o, 0, 1)).toFixed(2));
+    }
+  }
+
   function drawCharacter(c, p) {
     var b = p.body;
     var lean = deg(Math.atan2(b.neck[0] - b.hip[0], b.hip[1] - b.neck[1]));   // 0 = upright
@@ -184,8 +200,13 @@
     place(c.neck, b.neck, lean);
     place(c.head, b.head, lying ? lean + 6 : lean * 0.6 + 2);   // when lying, face points up
     drawLeg(c.nearLeg, p.near, p.hl, k);
+    drawGlows(c.extra, p.glows);
     drawArm(c.nearArm, p.nearArm);
   }
+
+  // Shared drawing helpers for the front/back view figure (jj-anim-front.js)
+  A.charUtil = { limbPath: limbPath, LEG: LEG, ARM: ARM, SLEEVE: SLEEVE, place: place, part: part,
+                 line: line, group: group, mix: mix, drawGlows: drawGlows };
 
   A.buildFigure = buildCharacter;
   A.drawFigure = drawCharacter;

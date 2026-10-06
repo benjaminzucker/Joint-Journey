@@ -1106,6 +1106,15 @@
 }
 .jj-video-yt:hover { opacity: 1; }
 .jj-video-close:hover { background: rgba(255, 255, 255, 0.3); }
+/* Original exercise animation shown in the same overlay */
+.jj-anim-frame {
+  background: #fff;
+  padding: 8px;
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+}
+.jj-anim-frame .jj-anim { border: 0; padding: 4px; }
+.jj-video-dialog:has(.jj-anim-frame) { max-width: 640px; background: #fff; }
 
 /* ============================================================
    SAFETY COLLAPSIBLES (hazard-log mitigations H01, H02, H05)

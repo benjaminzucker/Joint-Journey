@@ -49,6 +49,7 @@ const KNEE_ISOMETRICS = [
   {
     id: "iso-k1",
     name: "Static Quad Sets",
+    animation: "static-quad-sets",
     sets: 2, reps: "5 each leg, hold 5 sec",
     description: "Sitting or lying with your leg straight out, tighten your thigh muscle and gently push the back of your knee down. Hold, then relax. Builds the quadriceps strength that's vital for knee recovery - without moving the joint.",
     progression: [
@@ -61,6 +62,7 @@ const KNEE_ISOMETRICS = [
   {
     id: "iso-k2",
     name: "Inner-Range Quad Hold",
+    animation: "inner-range-quad-hold",
     sets: 2, reps: "5 each leg, hold 5 sec",
     description: "Place a rolled-up towel under your knee. Tighten your thigh to lift your heel and straighten the knee, keeping the back of the knee resting on the towel. Hold, then lower slowly. Strengthens the inner part of the thigh muscle.",
     progression: [
@@ -73,6 +75,7 @@ const KNEE_ISOMETRICS = [
   {
     id: "iso-k3",
     name: "Isometric Hamstring (Heel Dig)",
+    animation: "heel-dig",
     sets: 2, reps: "5 each leg, hold 5 sec",
     description: "Sitting on a chair with your heel on the floor and knee slightly bent, dig your heel down and back into the floor as if trying to bend your knee - but don't let anything move. Hold, then relax. Gently works the hamstrings.",
     progression: [
@@ -85,6 +88,7 @@ const KNEE_ISOMETRICS = [
   {
     id: "iso-k4",
     name: "Glute Sets",
+    animation: "glute-sets",
     sets: 2, reps: "5 holds, hold 5 sec",
     description: "Sitting or lying, squeeze your buttocks together as firmly as is comfortable. Hold, then relax. Strong glutes support and take load off the knee.",
     progression: [
@@ -100,6 +104,7 @@ const HIP_ISOMETRICS = [
   {
     id: "iso-h1",
     name: "Glute Sets",
+    animation: "glute-sets",
     sets: 2, reps: "5 holds, hold 5 sec",
     description: "Sitting or lying, squeeze your buttocks together as firmly as is comfortable. Hold, then relax. Strengthens the muscles that stabilise your hip - without moving the joint.",
     progression: [
@@ -112,6 +117,7 @@ const HIP_ISOMETRICS = [
   {
     id: "iso-h2",
     name: "Isometric Hip Abduction",
+    animation: "isometric-hip-abduction",
     sets: 2, reps: "5 holds, hold 5 sec",
     description: "Sitting tall, place a hand on the outside of each knee. Push your knees outwards against your hands, resisting so that nothing actually moves. Hold, then relax. Strengthens the important muscles on the outside of the hip.",
     progression: [
@@ -124,6 +130,7 @@ const HIP_ISOMETRICS = [
   {
     id: "iso-h3",
     name: "Isometric Hip Adduction",
+    animation: "isometric-hip-adduction",
     sets: 2, reps: "5 holds, hold 5 sec",
     description: "Place a cushion or rolled-up towel between your knees. Squeeze your knees together into the cushion. Hold, then relax. Strengthens the inner-thigh muscles that support the hip.",
     progression: [
@@ -136,6 +143,7 @@ const HIP_ISOMETRICS = [
   {
     id: "iso-h4",
     name: "Static Quad Sets",
+    animation: "static-quad-sets",
     sets: 2, reps: "5 each leg, hold 5 sec",
     description: "Sitting or lying with your leg straight, tighten your thigh and gently push the back of your knee down. Hold, then relax. Keeps the thigh strong to support both hip and knee.",
     progression: [
@@ -156,6 +164,7 @@ const HIP_EXERCISES = {
       {
         id: "h1",
         name: "Ankle Pumps",
+        animation: "ankle-pumps",
         video: "KxfFzSOAT7g",
         sets: 2, reps: "15 each foot",
         description: "Sitting or lying down, pump your feet up and down as if pressing a car pedal. This improves circulation and keeps ankles mobile.",
@@ -169,6 +178,7 @@ const HIP_EXERCISES = {
       {
         id: "h2",
         name: "Seated Knee Extension",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "8 each leg",
         description: "Sitting in a chair, slowly straighten one leg out in front of you. Hold for 3 seconds, then slowly lower. This strengthens your thigh muscles (quadriceps).",
@@ -182,6 +192,7 @@ const HIP_EXERCISES = {
       {
         id: "h3",
         name: "Seated Marching",
+        animation: "seated-marching",
         video: "1hAQp7gIK8o",
         sets: 2, reps: "30 seconds",
         description: "Sitting tall in a chair, march your legs up and down, lifting your knees as high as is comfortable. Keep a steady rhythm.",
@@ -195,6 +206,7 @@ const HIP_EXERCISES = {
       {
         id: "h4",
         name: "Chair Sit-to-Stand",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "6",
         description: "From a sturdy chair, stand up using your legs (use armrests if needed), then slowly sit back down with control. This is one of the most important functional exercises.",
@@ -208,6 +220,7 @@ const HIP_EXERCISES = {
       {
         id: "h5",
         name: "Standing Hip Abduction",
+        animation: "standing-hip-abduction",
         video: "E36nkfxG15U",
         sets: 2, reps: "8 each leg",
         description: "Holding the kitchen worktop, slowly slide one leg out to the side, keeping your body upright. Bring it back. This strengthens the muscles around your hip.",
@@ -221,6 +234,7 @@ const HIP_EXERCISES = {
       {
         id: "h6",
         name: "Standing Hip Extension",
+        animation: "standing-hip-extension",
         video: "ysG2GAdq2Uw",
         sets: 2, reps: "8 each leg",
         description: "Holding the worktop, slowly move one leg backwards, keeping your knee straight. Squeeze your buttock at the top. Return slowly.",
@@ -234,6 +248,7 @@ const HIP_EXERCISES = {
       {
         id: "h7",
         name: "Heel Raises",
+        animation: "heel-raises",
         video: "4Wn5ugI7VU8",
         sets: 2, reps: "10",
         description: "Holding the worktop for balance, rise up onto your toes, hold for 2 seconds, then slowly lower back down. Strengthens your calves.",
@@ -254,6 +269,7 @@ const HIP_EXERCISES = {
       {
         id: "h8",
         name: "Chair Sit-to-Stand (Progressed)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "10",
         description: "From a sturdy chair, stand up using mainly your legs (minimal arm use). Sit down slowly, taking 3 seconds to lower yourself. Control is key.",
@@ -267,6 +283,7 @@ const HIP_EXERCISES = {
       {
         id: "h9",
         name: "Step Ups (Bottom Stair)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 2, reps: "8 each leg",
         description: "Using the bottom stair and holding the banister, step up with one foot, bring the other up to join, then step back down. Lead with a different leg each time.",
@@ -280,6 +297,7 @@ const HIP_EXERCISES = {
       {
         id: "h11",
         name: "Standing Hip Abduction (Progressed)",
+        animation: "standing-hip-abduction",
         video: "E36nkfxG15U",
         sets: 3, reps: "12 each leg",
         description: "As before, but slower (3 seconds out, 3 seconds back). Focus on controlling the movement throughout.",
@@ -293,6 +311,7 @@ const HIP_EXERCISES = {
       {
         id: "h12",
         name: "Tandem Standing (Balance)",
+        animation: "tandem-standing",
         video: "F3tYhTA_97g",
         sets: 3, reps: "hold 20 seconds each side",
         description: "Stand with one foot directly in front of the other (heel to toe), holding the worktop lightly. Try to reduce hand support over time. This builds balance.",
@@ -306,6 +325,7 @@ const HIP_EXERCISES = {
       {
         id: "h13",
         name: "Bridging",
+        animation: "bridging",
         video: "Rq3EXYus03E",
         sets: 3, reps: "10",
         description: "Lie on your back with knees bent. Squeeze your buttocks and lift your hips off the bed/floor. Hold for 3 seconds, then lower slowly. Strengthens buttocks and core.",
@@ -319,6 +339,7 @@ const HIP_EXERCISES = {
       {
         id: "h15",
         name: "Seated Knee Extension (Progressed)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 3, reps: "10 each leg",
         description: "As before, but hold at the top for 5 seconds. Really squeeze your thigh muscle at the top of the movement.",
@@ -339,6 +360,7 @@ const HIP_EXERCISES = {
       {
         id: "h16",
         name: "Chair Sit-to-Stand (No Arms)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "12",
         description: "Stand from a chair with arms crossed on your chest. Sit down slowly taking 4 seconds. If this is too hard, use a higher seat.",
@@ -352,6 +374,7 @@ const HIP_EXERCISES = {
       {
         id: "h17",
         name: "Step Ups with Controlled Descent",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "10 each leg",
         description: "Step up onto the bottom stair, then step down slowly - taking 3 seconds to lower yourself. This mimics going downstairs, which is important for daily life.",
@@ -365,6 +388,7 @@ const HIP_EXERCISES = {
       {
         id: "h18",
         name: "Kitchen Worktop Press-Ups",
+        animation: "kitchen-worktop-press-ups",
         video: "57YFsNesJnY",
         sets: 3, reps: "10",
         description: "Stand arm's length from the kitchen worktop. Place hands on the edge and do a press-up movement. Builds upper body strength for using walking aids. ⚠️ Do not do this exercise if your kitchen floor is slippery or if you are not wearing appropriate footwear - there is a risk of slipping.",
@@ -378,6 +402,7 @@ const HIP_EXERCISES = {
       {
         id: "h19",
         name: "Single Leg Balance",
+        animation: "single-leg-balance",
         video: "Dtgh2_LFkBQ",
         sets: 3, reps: "hold 15 sec each leg",
         description: "Stand near the worktop. Lift one foot slightly off the ground. Try to balance with minimal hand support. This is crucial for walking confidence.",
@@ -391,6 +416,7 @@ const HIP_EXERCISES = {
       {
         id: "h20",
         name: "Side Stepping",
+        animation: "side-stepping",
         video: "C0kFihNtCtA",
         sets: 2, reps: "10 steps each direction",
         description: "Holding the worktop, take sideways steps along its length. Keep your toes pointing forward. Step, bring feet together, step again.",
@@ -404,6 +430,7 @@ const HIP_EXERCISES = {
       {
         id: "h21",
         name: "Bridging with Hold",
+        animation: "bridging",
         video: "Rq3EXYus03E",
         sets: 3, reps: "10, hold 5 sec",
         description: "Lie on your back, lift hips, hold for 5 seconds at the top. Squeeze buttocks hard. This builds the gluteal strength essential for walking.",
@@ -417,6 +444,7 @@ const HIP_EXERCISES = {
       {
         id: "h22",
         name: "Standing March",
+        animation: "standing-march",
         video: "16oJspYFz7s",
         sets: 2, reps: "60 seconds",
         description: "March on the spot, lifting knees to hip height if possible. Pump your arms. This builds cardiovascular fitness for recovery.",
@@ -430,6 +458,7 @@ const HIP_EXERCISES = {
       {
         id: "h23",
         name: "Floor Transfer Practice",
+        animation: "floor-transfer",
         video: "ohiJAzQ7VL4",
         sets: 1, reps: "3 each way",
         description: "Practice getting down to the floor and back up again safely. Use a sturdy chair for support. If you do end up on the floor, try to get up if you feel safe to do so. Important safety skill. Only attempt if you feel confident.",
@@ -443,6 +472,7 @@ const HIP_EXERCISES = {
       {
         id: "h14",
         name: "Heel-to-Toe Walking",
+        animation: "heel-to-toe-walking",
         video: "2UYkGxizSkc",
         sets: 1, reps: "10 steps × 3",
         description: "Walk in a straight line placing your heel directly in front of your toes each step. Use a wall for light support if needed. Builds balance and confidence.",
@@ -466,6 +496,7 @@ const KNEE_EXERCISES = {
       {
         id: "k1",
         name: "Ankle Pumps",
+        animation: "ankle-pumps",
         video: "KxfFzSOAT7g",
         sets: 2, reps: "15 each foot",
         description: "Sitting or lying down, pump your feet up and down. Improves circulation and keeps ankles mobile.",
@@ -479,6 +510,7 @@ const KNEE_EXERCISES = {
       {
         id: "k2",
         name: "Seated Knee Extension",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "8 each leg",
         description: "Sitting in a chair, slowly straighten one leg out. Hold for 3 seconds at the top, squeezing your thigh. Slowly lower. This is THE most important exercise for knee replacement.",
@@ -492,6 +524,7 @@ const KNEE_EXERCISES = {
       {
         id: "k3",
         name: "Seated Heel Slides",
+        animation: "seated-heel-slides",
         video: "RSv7E5AJMCg",
         sets: 2, reps: "10 each leg",
         description: "Sitting in a chair, slide your foot back under the chair as far as is comfortable, bending your knee. Slide it back out. This works on knee range of movement.",
@@ -505,6 +538,7 @@ const KNEE_EXERCISES = {
       {
         id: "k4",
         name: "Chair Sit-to-Stand",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "6",
         description: "From a sturdy chair, stand up using your legs (use armrests if needed), then slowly sit back down with control.",
@@ -518,6 +552,7 @@ const KNEE_EXERCISES = {
       {
         id: "k5",
         name: "Standing Knee Bend",
+        animation: "standing-knee-bend",
         video: "k4TDxANOD4M",
         sets: 2, reps: "8 each leg",
         description: "Holding the worktop, stand on one leg and slowly bend the other knee, bringing your heel towards your buttock. Go only as far as comfortable. Slowly lower.",
@@ -531,6 +566,7 @@ const KNEE_EXERCISES = {
       {
         id: "k6",
         name: "Heel Raises",
+        animation: "heel-raises",
         video: "4Wn5ugI7VU8",
         sets: 2, reps: "10",
         description: "Holding the worktop for balance, rise up onto your toes, hold for 2 seconds, then slowly lower. Strengthens calves.",
@@ -544,6 +580,7 @@ const KNEE_EXERCISES = {
       {
         id: "k7",
         name: "Seated Marching",
+        animation: "seated-marching",
         video: "1hAQp7gIK8o",
         sets: 2, reps: "30 seconds",
         description: "Sitting tall, march your legs up and down, lifting knees as high as comfortable.",
@@ -557,6 +594,7 @@ const KNEE_EXERCISES = {
       {
         id: "k8a",
         name: "Inner Range Quads",
+        animation: "inner-range-quad-hold",
         video: "8rp5BB3qE6o",
         sets: 2, reps: "10 each leg, hold 5 sec",
         description: "Place a rolled-up towel under your knee. Press the back of your knee down into the towel, tightening your thigh muscle. Hold for 5 seconds, then release. This is the same exercise you'll do in hospital after surgery - learning it now means you'll be ahead of the game.",
@@ -577,6 +615,7 @@ const KNEE_EXERCISES = {
       {
         id: "k8",
         name: "Chair Sit-to-Stand (Progressed)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "10",
         description: "Stand from a chair with minimal arm use. Sit down taking 3 seconds to lower. Focus on both legs working equally.",
@@ -590,6 +629,7 @@ const KNEE_EXERCISES = {
       {
         id: "k9",
         name: "Step Ups (Bottom Stair)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 2, reps: "8 each leg",
         description: "Using the bottom stair and holding the banister, step up then step down with control.",
@@ -603,6 +643,7 @@ const KNEE_EXERCISES = {
       {
         id: "k11",
         name: "Standing Knee Bend (Progressed)",
+        animation: "standing-knee-bend",
         video: "k4TDxANOD4M",
         sets: 3, reps: "12 each leg",
         description: "As before but going slower (3 seconds to bend, 3 to straighten). Try to bend a little further each week.",
@@ -616,6 +657,7 @@ const KNEE_EXERCISES = {
       {
         id: "k12",
         name: "Tandem Standing (Balance)",
+        animation: "tandem-standing",
         video: "F3tYhTA_97g",
         sets: 3, reps: "hold 20 seconds each side",
         description: "Stand heel to toe, holding worktop lightly. Build balance confidence.",
@@ -629,6 +671,7 @@ const KNEE_EXERCISES = {
       {
         id: "k13",
         name: "Straight Leg Raise",
+        animation: "straight-leg-raise",
         video: "khnALX2LAOs",
         sets: 3, reps: "10 each leg",
         description: "Lying on your back, bend one knee. Keep the other leg straight and lift it to the height of the bent knee. Hold 3 seconds. Builds quad strength.",
@@ -642,6 +685,7 @@ const KNEE_EXERCISES = {
       {
         id: "k15",
         name: "Seated Knee Extension (Hold)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 3, reps: "10, hold 5 sec",
         description: "Straighten leg, hold 5 seconds at top, squeezing your thigh hard. This builds the quad strength critical for knee replacement recovery.",
@@ -662,6 +706,7 @@ const KNEE_EXERCISES = {
       {
         id: "k16",
         name: "Chair Sit-to-Stand (No Arms)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "12",
         description: "Arms crossed, stand and sit with full control. Slow descent. Your quads will thank you after surgery.",
@@ -675,6 +720,7 @@ const KNEE_EXERCISES = {
       {
         id: "k17",
         name: "Step Ups & Downs (Controlled)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "10 each leg",
         description: "Step up onto bottom stair, step down taking 3 seconds. Control on the way down is more important than the way up.",
@@ -688,6 +734,7 @@ const KNEE_EXERCISES = {
       {
         id: "k18",
         name: "Kitchen Worktop Press-Ups",
+        animation: "kitchen-worktop-press-ups",
         video: "57YFsNesJnY",
         sets: 3, reps: "10",
         description: "Arms-length from worktop, do press-ups. Builds arm strength for crutches/walking frame. ⚠️ Do not do this exercise if your kitchen floor is slippery or if you are not wearing appropriate footwear - there is a risk of slipping.",
@@ -701,6 +748,7 @@ const KNEE_EXERCISES = {
       {
         id: "k19",
         name: "Single Leg Balance",
+        animation: "single-leg-balance",
         video: "Dtgh2_LFkBQ",
         sets: 3, reps: "hold 15 sec each",
         description: "Near worktop, lift one foot slightly. Balance with minimal support.",
@@ -714,6 +762,7 @@ const KNEE_EXERCISES = {
       {
         id: "k21",
         name: "Side Stepping",
+        animation: "side-stepping",
         video: "C0kFihNtCtA",
         sets: 2, reps: "10 each direction",
         description: "Sideways steps along the worktop. Toes forward. Step, together, step.",
@@ -727,6 +776,7 @@ const KNEE_EXERCISES = {
       {
         id: "k22",
         name: "Standing March",
+        animation: "standing-march",
         video: "16oJspYFz7s",
         sets: 2, reps: "60 seconds",
         description: "March on the spot, knees up. Pump arms. Builds cardiovascular fitness.",
@@ -740,6 +790,7 @@ const KNEE_EXERCISES = {
       {
         id: "k23",
         name: "Floor Transfer Practice",
+        animation: "floor-transfer",
         video: "ohiJAzQ7VL4",
         sets: 1, reps: "3 each way",
         description: "Practice getting down to the floor and back up using a chair. If you do end up on the floor, try to get up if you feel safe to do so. Important safety skill.",
@@ -753,6 +804,7 @@ const KNEE_EXERCISES = {
       {
         id: "k14",
         name: "Heel-to-Toe Walking",
+        animation: "heel-to-toe-walking",
         video: "2UYkGxizSkc",
         sets: 1, reps: "10 steps × 3",
         description: "Walk in a line, heel touching toes. Wall nearby for safety.",

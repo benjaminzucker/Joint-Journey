@@ -121,7 +121,7 @@
 
   global.JJAnim = {
     COL: COL, L: L, FLOOR: FLOOR, ANKLE_Y: ANKLE_Y,
-    rad: rad, clamp: clamp, lerp: lerp, ease: ease, along: along,
+    rad: rad, clamp: clamp, lerp: lerp, ease: ease, along: along, up: up,
     body: body, legFK: legFK, legIK: legIK, armFK: armFK, armIK: armIK, sample: sample,
     el: el, buildFigure: buildFigure, drawFigure: drawFigure,
     exercises: {}

@@ -103,9 +103,7 @@ function renderIsometricSession() {
     html += '<div class="exercise-name">' + ex.name + '</div>';
     html += '<div class="exercise-detail">' + adj.sets + ' sets × ' + adj.reps + (intensity !== 0 ? ' <span class="intensity-tag">' + adj.label + '</span>' : '') + '</div>';
     html += '<div class="exercise-detail" style="margin-top:4px; color:var(--text-secondary);">' + ex.description + '</div>';
-    if (ex.video) {
-      html += '<button type="button" class="video-link" onclick="openVideoModal(\'' + ex.video + '\', \'' + encodeURIComponent(ex.name) + '\', event)" style="display:inline-block; margin-top:8px; padding:6px 14px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-size:0.85rem; font-weight:600;">📺 Watch Video</button>';
-    }
+    html += demoButtonHtml(ex);
     html += '</div>';
     html += '<div class="exercise-difficulty" onclick="event.stopPropagation()" title="Find this too easy or too hard? Adjust just this exercise.">';
     html += '<button type="button" class="diff-btn" aria-label="Make this exercise harder" ' + (intensity >= 2 ? 'disabled' : '') + ' onclick="adjustExerciseIntensity(\'' + ex.id + '\', 1, event)">▲</button>';
@@ -224,9 +222,7 @@ function renderExerciseSession() {
     html += '<div class="exercise-name">' + ex.name + '</div>';
     html += '<div class="exercise-detail">' + adj.sets + ' sets × ' + adj.reps + (intensity !== 0 ? ' <span class="intensity-tag">' + adj.label + '</span>' : '') + '</div>';
     html += '<div class="exercise-detail" style="margin-top:4px; color:var(--text-secondary);">' + ex.description + '</div>';
-    if (ex.video) {
-      html += '<button type="button" class="video-link" onclick="openVideoModal(\'' + ex.video + '\', \'' + encodeURIComponent(ex.name) + '\', event)" style="display:inline-block; margin-top:8px; padding:6px 14px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-size:0.85rem; font-weight:600;">📺 Watch Video</button>';
-    }
+    html += demoButtonHtml(ex);
     html += '</div>';
     // Per-exercise difficulty controls (intensity nudge) - stopPropagation so taps here don't tick the exercise
     html += '<div class="exercise-difficulty" onclick="event.stopPropagation()" title="Find this too easy or too hard? Adjust just this exercise.">';
@@ -345,6 +341,62 @@ function applyIntensity(prog, intensity) {
 }
 
 /* ============================================
+   EXERCISE DEMO - original Joint Journey animation
+   where one exists (animations/), otherwise the
+   YouTube video. Animated exercises show the
+   animation only, so patients see one consistent
+   demonstration.
+   ============================================ */
+
+var DEMO_BTN_STYLE = 'display:inline-block; margin-top:8px; padding:6px 14px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-size:0.85rem; font-weight:600;';
+
+function hasAnimation(key) {
+  return !!(key && window.JJAnimations && window.JJAnim && window.JJAnim.exercises[key]);
+}
+
+function demoButtonHtml(ex) {
+  var name = encodeURIComponent(ex.name);
+  if (hasAnimation(ex.animation)) {
+    return '<button type="button" class="video-link" onclick="openAnimationModal(\'' + ex.animation + '\', \'' + name + '\', \'' + (ex.video || '') + '\', event)" style="' + DEMO_BTN_STYLE + '">▶ Show me how</button>';
+  }
+  if (ex.video) {
+    return '<button type="button" class="video-link" onclick="openVideoModal(\'' + ex.video + '\', \'' + name + '\', event)" style="' + DEMO_BTN_STYLE + '">📺 Watch Video</button>';
+  }
+  return '';
+}
+
+function openAnimationModal(key, encodedName, fallbackVideo, event) {
+  if (event) event.stopPropagation();
+  if (!hasAnimation(key)) {
+    if (fallbackVideo) openVideoModal(fallbackVideo, encodedName, event);
+    return;
+  }
+  var name = encodedName ? decodeURIComponent(encodedName) : '';
+  closeVideoModal();
+  var overlay = document.createElement('div');
+  overlay.id = 'jj-video-modal';
+  overlay.className = 'jj-video-overlay';
+  overlay.innerHTML =
+    '<div class="jj-video-dialog" role="dialog" aria-modal="true" aria-label="' + (name || 'Exercise demonstration') + '">' +
+      '<div class="jj-video-header">' +
+        '<span class="jj-video-title">' + (name || 'Exercise demonstration') + '</span>' +
+        '<div class="jj-video-actions">' +
+          '<button type="button" class="jj-video-close" aria-label="Close demonstration" onclick="closeVideoModal()">✕</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="jj-anim-frame"></div>' +
+    '</div>';
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeVideoModal(); });
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  document._jjAnim = window.JJAnimations.mount(overlay.querySelector('.jj-anim-frame'), key);
+  document._jjVideoEsc = function (e) { if (e.key === 'Escape') closeVideoModal(); };
+  document.addEventListener('keydown', document._jjVideoEsc);
+  var btn = overlay.querySelector('.jj-anim-toggle');
+  if (btn) btn.focus();
+}
+
+/* ============================================
    VIDEO MODAL - plays exercise videos in an
    in-app overlay so users are never taken off site.
    ============================================ */
@@ -378,6 +430,7 @@ function openVideoModal(videoId, encodedName, event) {
 
 function closeVideoModal() {
   var m = document.getElementById('jj-video-modal');
+  if (document._jjAnim) { document._jjAnim.destroy(); document._jjAnim = null; }
   if (m && m.parentNode) m.parentNode.removeChild(m);
   document.body.style.overflow = '';
   if (document._jjVideoEsc) {

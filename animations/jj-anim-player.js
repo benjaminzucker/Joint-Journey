@@ -39,7 +39,10 @@
     fig.appendChild(svg);
     var sceneUpdate = spec.scene ? spec.scene(A.el('g', {}, svg), id) : null;
     var figG = A.el('g', {}, svg);
-    var figure = A.buildFigure(figG);
+    // spec.view = 'front' uses the front/back view figure (jj-anim-front.js)
+    var build = spec.view === 'front' ? A.front.build : A.buildFigure;
+    var draw = spec.view === 'front' ? A.front.draw : A.drawFigure;
+    var figure = build(figG);
     if (spec.midground) spec.midground(figure.mid);   // drawn in front of the far leg, behind the near leg
     // Optional second figure for crossfades: pose.blend = { pose: otherPose, mix: 0-1 }
     var figG2 = null, figure2 = null;
@@ -75,7 +78,7 @@
     function render() {
       var phase = (elapsed % spec.period) / spec.period;
       var pose = spec.pose(phase, elapsed);
-      A.drawFigure(figure, pose);
+      draw(figure, pose);
       if (figure2) {
         var m = pose.blend ? pose.blend.mix : 0;
         if (pose.blend) A.drawFigure(figure2, pose.blend.pose);
