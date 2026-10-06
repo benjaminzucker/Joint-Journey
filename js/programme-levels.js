@@ -103,6 +103,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh1",
         name: "Seated Ankle Pumps",
+        animation: "ankle-pumps",
         video: "KxfFzSOAT7g",
         sets: 2, reps: "10 each foot",
         description: "Sitting comfortably in a chair, pump your feet up and down slowly. This improves circulation, especially important if you spend a lot of time sitting.",
@@ -116,6 +117,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh2",
         name: "Seated Knee Extension (Gentle)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "6 each leg",
         description: "Sitting in a sturdy chair, slowly straighten one leg. You don't need to get it fully straight, go as far as is comfortable. Hold briefly, then lower slowly.",
@@ -129,6 +131,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh3",
         name: "Seated Marching (Gentle)",
+        animation: "seated-marching",
         video: "1hAQp7gIK8o",
         sets: 1, reps: "15 seconds",
         description: "Sitting tall, gently lift your knees alternately as if marching. Go at your own pace, there's no rush. Even small lifts count.",
@@ -142,6 +145,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh4",
         name: "Seated Hip Abduction",
+        animation: "seated-hip-abduction",
         video: "E36nkfxG15U",
         sets: 2, reps: "6 each leg",
         description: "Sitting in a chair with feet flat, slide one foot out to the side along the floor, then bring it back. This gently works the muscles around your hip without bearing weight.",
@@ -155,6 +159,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh5",
         name: "Chair Sit-to-Stand (Supported)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 1, reps: "3",
         description: "Using a sturdy chair with armrests, push up to standing using both arms. Stand for a moment, then slowly sit back down. It's fine to use your arms fully, we'll reduce this over time.",
@@ -175,6 +180,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh6",
         name: "Supported Standing Hip Abduction",
+        animation: "standing-hip-abduction",
         video: "E36nkfxG15U",
         sets: 2, reps: "6 each leg",
         description: "Holding the kitchen worktop firmly with both hands, slowly slide one leg out to the side. Keep the movement small and controlled. Bring it back.",
@@ -188,6 +194,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh7",
         name: "Supported Standing Hip Extension",
+        animation: "standing-hip-extension",
         video: "ysG2GAdq2Uw",
         sets: 2, reps: "6 each leg",
         description: "Holding the worktop with both hands, slowly move one leg backwards a small amount. Squeeze your buttock gently. Return. Keep your back straight.",
@@ -201,6 +208,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh8",
         name: "Chair Sit-to-Stand (Progressing)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "5",
         description: "Continue standing from a chair, but try to use your arms a little less each week. A higher chair or cushion makes this easier if needed.",
@@ -214,6 +222,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh9",
         name: "Heel Raises (Supported)",
+        animation: "heel-raises",
         video: "4Wn5ugI7VU8",
         sets: 2, reps: "6",
         description: "Holding the worktop with both hands, rise gently onto your toes, hold for a moment, then lower. Small movements are fine.",
@@ -227,6 +236,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh10",
         name: "Seated Knee Extension (Progressed)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "8 each leg",
         description: "As before, but try to hold at the top for 2–3 seconds. You should feel your thigh muscle working. Slow and steady.",
@@ -247,6 +257,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh11",
         name: "Supported Step Ups (Half Step)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 2, reps: "5 each leg",
         description: "Using a low step or thick book (5–10cm high), step up holding the wall or banister firmly. Step down with control. A small step is perfectly fine.",
@@ -260,6 +271,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh12",
         name: "Bridging (Gentle)",
+        animation: "bridging",
         video: "Rq3EXYus03E",
         sets: 2, reps: "6",
         description: "Lying on your back with knees bent, gently lift your hips a small amount off the bed. Hold briefly, lower. Even a small lift works your muscles.",
@@ -273,6 +285,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh13",
         name: "Supported Side Stepping",
+        animation: "side-stepping",
         video: "C0kFihNtCtA",
         sets: 2, reps: "6 each direction",
         description: "Holding the worktop firmly, take small sideways steps. Keep your toes forward. This builds hip muscle strength.",
@@ -286,6 +299,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh14",
         name: "Kitchen Worktop Press-Ups (Gentle)",
+        animation: "kitchen-worktop-press-ups",
         video: "57YFsNesJnY",
         sets: 2, reps: "5",
         description: "Standing at arm's length from the worktop, lean in and push back. This builds arm strength for walking aids after surgery. ⚠️ Ensure non-slip footwear.",
@@ -299,6 +313,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh15",
         name: "Standing March (Supported)",
+        animation: "standing-march",
         video: "16oJspYFz7s",
         sets: 2, reps: "30 seconds",
         description: "Holding the worktop, march gently on the spot. Lift your knees only as high as is comfortable. This builds stamina for recovery.",
@@ -312,6 +327,7 @@ const HIP_EXERCISES_GENTLE = {
       {
         id: "gh16",
         name: "Chair Sit-to-Stand (Best Effort)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "6",
         description: "By now you should be using less arm support. Do your best, even a small improvement from week 1 is a win.",
@@ -336,6 +352,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk1",
         name: "Seated Ankle Pumps",
+        animation: "ankle-pumps",
         video: "KxfFzSOAT7g",
         sets: 2, reps: "10 each foot",
         description: "Sitting comfortably, pump your feet up and down slowly. Improves circulation, especially important before knee surgery.",
@@ -349,6 +366,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk2",
         name: "Seated Knee Extension (Gentle)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "6 each leg",
         description: "Sitting in a sturdy chair, slowly straighten one leg. Don't worry about getting it fully straight, go as far as comfortable. Hold briefly, lower slowly. This is THE key exercise for knee replacement prep.",
@@ -362,6 +380,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk3",
         name: "Seated Heel Slides (Gentle)",
+        animation: "seated-heel-slides",
         video: "RSv7E5AJMCg",
         sets: 2, reps: "8 each leg",
         description: "Sitting in a chair, slide your foot back gently under the chair, bending your knee. Go only as far as comfortable. Slide back out. Works on knee range of movement.",
@@ -375,6 +394,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk4",
         name: "Inner Range Quads (Gentle)",
+        animation: "inner-range-quad-hold",
         video: "8rp5BB3qE6o",
         sets: 2, reps: "6 each leg",
         description: "Place a rolled towel under your knee while sitting. Press the back of your knee into the towel, tightening your thigh. Hold 3 seconds, release. This is the same exercise you'll do in hospital.",
@@ -388,6 +408,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk5",
         name: "Chair Sit-to-Stand (Supported)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 1, reps: "3",
         description: "Using a sturdy chair with armrests, push up to standing using both arms. Stand briefly, then slowly sit back down. Use your arms as much as needed.",
@@ -408,6 +429,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk6",
         name: "Supported Standing Knee Bend",
+        animation: "standing-knee-bend",
         video: "k4TDxANOD4M",
         sets: 2, reps: "6 each leg",
         description: "Holding the worktop firmly with both hands, slowly bend one knee, bringing heel towards buttock. Go only as far as comfortable, even a small bend counts.",
@@ -421,6 +443,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk7",
         name: "Chair Sit-to-Stand (Progressing)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "5",
         description: "Continue practising, trying to use your arms a little less each week. A higher seat makes this easier.",
@@ -434,6 +457,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk8",
         name: "Heel Raises (Supported)",
+        animation: "heel-raises",
         video: "4Wn5ugI7VU8",
         sets: 2, reps: "6",
         description: "Holding worktop with both hands, gently rise onto toes, hold briefly, lower. Small movements are fine.",
@@ -447,6 +471,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk9",
         name: "Seated Knee Extension (Progressed)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 2, reps: "8 each leg",
         description: "Hold at the top for 2–3 seconds now. Squeeze your thigh. This quad strength is critical for recovery.",
@@ -460,6 +485,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk10",
         name: "Seated Marching (Progressed)",
+        animation: "seated-marching",
         video: "1hAQp7gIK8o",
         sets: 2, reps: "20 seconds",
         description: "Sitting tall, march with a little more pace and height than before. Building stamina.",
@@ -480,6 +506,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk11",
         name: "Supported Step Ups (Half Step)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 2, reps: "5 each leg",
         description: "Using a low step (5–10cm), step up holding wall/banister firmly. Step down with control. Small step is fine.",
@@ -493,6 +520,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk12",
         name: "Straight Leg Raise (Gentle)",
+        animation: "straight-leg-raise",
         video: "khnALX2LAOs",
         sets: 2, reps: "6 each leg",
         description: "Lying down, bend one knee. Keep the other straight and lift it a small amount. Hold 2 seconds. Lower slowly.",
@@ -506,6 +534,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk13",
         name: "Supported Side Stepping",
+        animation: "side-stepping",
         video: "C0kFihNtCtA",
         sets: 2, reps: "6 each direction",
         description: "Holding worktop firmly, take small sideways steps. Toes forward.",
@@ -519,6 +548,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk14",
         name: "Kitchen Worktop Press-Ups (Gentle)",
+        animation: "kitchen-worktop-press-ups",
         video: "57YFsNesJnY",
         sets: 2, reps: "5",
         description: "Lean into worktop, push back. Builds arm strength for crutches. ⚠️ Non-slip footwear essential.",
@@ -532,6 +562,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk15",
         name: "Standing March (Supported)",
+        animation: "standing-march",
         video: "16oJspYFz7s",
         sets: 2, reps: "30 seconds",
         description: "Holding worktop, march gently on the spot. Knees only as high as comfortable.",
@@ -545,6 +576,7 @@ const KNEE_EXERCISES_GENTLE = {
       {
         id: "gk16",
         name: "Chair Sit-to-Stand (Best Effort)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 2, reps: "6",
         description: "Use as little arm support as you can manage. Any improvement from week 1 is a win.",
@@ -569,6 +601,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah1",
         name: "Chair Sit-to-Stand (Arms Crossed)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "10",
         description: "From a standard-height chair with arms crossed on your chest, stand up and sit down with control. Take 3 seconds to lower. You should find this achievable, we'll make it harder.",
@@ -582,6 +615,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah2",
         name: "Standing Hip Abduction (Slow Tempo)",
+        animation: "standing-hip-abduction",
         video: "E36nkfxG15U",
         sets: 3, reps: "12 each leg",
         description: "Holding worktop with one hand, take 3 seconds to lift your leg out to the side, hold 2 seconds, 3 seconds to lower. Slow tempo builds more strength.",
@@ -595,6 +629,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah3",
         name: "Standing Hip Extension (Slow Tempo)",
+        animation: "standing-hip-extension",
         video: "ysG2GAdq2Uw",
         sets: 3, reps: "12 each leg",
         description: "Holding worktop, take 3 seconds to move leg back, squeeze buttock for 2 seconds, 3 seconds to return. Controlled throughout.",
@@ -608,6 +643,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah4",
         name: "Step Ups (Bottom Stair)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "10 each leg",
         description: "Step up onto the bottom stair, step down with control. Use banister lightly for balance only, let your legs do the work.",
@@ -621,6 +657,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah5",
         name: "Bridging",
+        animation: "bridging",
         video: "Rq3EXYus03E",
         sets: 3, reps: "12",
         description: "Lying on your back, knees bent, lift hips fully and squeeze buttocks hard at the top. Hold 3 seconds. Lower with control.",
@@ -634,6 +671,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah6",
         name: "Tandem Standing (Balance)",
+        animation: "tandem-standing",
         video: "F3tYhTA_97g",
         sets: 3, reps: "hold 20 sec each side",
         description: "Stand heel to toe. Try with just fingertips on the worktop, progressing to no hands.",
@@ -667,6 +705,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah8",
         name: "Chair Sit-to-Stand (Low Chair)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "15",
         description: "Use a lower chair or remove the cushion. Arms crossed. Slow 4-second descent. This significantly builds quad and glute strength.",
@@ -680,6 +719,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah9",
         name: "Single Leg Balance",
+        animation: "single-leg-balance",
         video: "Dtgh2_LFkBQ",
         sets: 3, reps: "hold 25 sec each",
         description: "Stand near worktop. Lift one foot off the ground. Aim to reduce hand support to fingertips, then no hands.",
@@ -693,6 +733,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah10",
         name: "Step Ups with Controlled Descent",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "12 each",
         description: "Step up and take 4 seconds to step back down. The slow descent is where the strength gains come from.",
@@ -706,6 +747,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah11",
         name: "Side Stepping (With Resistance Band)",
+        animation: "side-stepping",
         video: "C0kFihNtCtA",
         sets: 3, reps: "12 each direction",
         description: "If you have a resistance band, place it around your ankles. Side step along the worktop. Without a band, just do more reps with slow tempo.",
@@ -719,6 +761,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah12",
         name: "Bridging with Hold",
+        animation: "bridging",
         video: "Rq3EXYus03E",
         sets: 3, reps: "12, hold 5 sec",
         description: "Lift hips, hold 5 seconds squeezing hard. For extra challenge, try lifting one foot slightly off the ground at the top.",
@@ -752,6 +795,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah14",
         name: "Chair Sit-to-Stand (Single Leg Bias)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "8 each leg",
         description: "Sit down to a chair predominantly using one leg (other foot stays on the ground for safety). Alternate legs. This builds single-leg strength.",
@@ -765,6 +809,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah15",
         name: "Step Ups (Full Stair Height)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "12 each",
         description: "Full stair step, 4-second controlled descent. Minimal hand support on banister.",
@@ -778,6 +823,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah16",
         name: "Single Leg Balance (Eyes Closed)",
+        animation: "single-leg-balance",
         video: "Dtgh2_LFkBQ",
         sets: 3, reps: "hold 15 sec each",
         description: "Near worktop for safety. Balance on one leg with eyes closed. This dramatically improves proprioception. Touch worktop any time you need to.",
@@ -791,6 +837,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah17",
         name: "Kitchen Worktop Press-Ups (Feet Back)",
+        animation: "kitchen-worktop-press-ups",
         video: "57YFsNesJnY",
         sets: 3, reps: "15",
         description: "Step feet further back to increase difficulty. Full range. Builds upper body for walking aids. ⚠️ Non-slip footwear essential.",
@@ -804,6 +851,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah18",
         name: "Bridging (Single Leg)",
+        animation: "bridging",
         video: "Rq3EXYus03E",
         sets: 3, reps: "8 each leg",
         description: "Bridge up on both legs, then extend one leg while holding the bridge. Lower on both legs. Excellent glute and core challenge.",
@@ -817,6 +865,7 @@ const HIP_EXERCISES_ACTIVE = {
       {
         id: "ah19",
         name: "Floor Transfer Practice",
+        animation: "floor-transfer",
         video: "ohiJAzQ7VL4",
         sets: 1, reps: "5",
         description: "Get down to the floor and back up confidently. Use a chair if needed. Important safety skill.",
@@ -854,6 +903,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak1",
         name: "Chair Sit-to-Stand (Arms Crossed)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "10",
         description: "Arms crossed, stand and sit with full control. 3-second descent. Focus on both legs working equally.",
@@ -867,6 +917,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak2",
         name: "Seated Knee Extension (Slow Tempo)",
+        animation: "seated-knee-extension",
         video: "9Du-oWjs_lE",
         sets: 3, reps: "12 each leg",
         description: "Straighten leg taking 3 seconds up, hold 3 seconds at top, 3 seconds down. Squeeze your quad hard at the top. This tempo builds serious strength.",
@@ -880,6 +931,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak3",
         name: "Step Ups (Bottom Stair)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "10 each leg",
         description: "Step up, step down with control. Light banister touch for balance only.",
@@ -893,6 +945,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak4",
         name: "Standing Knee Bend (Deep)",
+        animation: "standing-knee-bend",
         video: "k4TDxANOD4M",
         sets: 3, reps: "12 each",
         description: "Holding worktop with one hand, bend knee bringing heel as close to buttock as you can. Slow 3 seconds each way.",
@@ -906,6 +959,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak5",
         name: "Straight Leg Raise",
+        animation: "straight-leg-raise",
         video: "khnALX2LAOs",
         sets: 3, reps: "12 each",
         description: "Lying down, one knee bent, lift the straight leg. Hold 3 seconds. Lower with control. Really squeeze the quad.",
@@ -919,6 +973,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak6",
         name: "Tandem Standing (Balance)",
+        animation: "tandem-standing",
         video: "F3tYhTA_97g",
         sets: 3, reps: "hold 20 sec each",
         description: "Heel to toe, fingertips on worktop progressing to no hands.",
@@ -952,6 +1007,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak8",
         name: "Chair Sit-to-Stand (Low Chair)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "15",
         description: "Lower chair, arms crossed, 4-second descent. Builds serious quad strength.",
@@ -965,6 +1021,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak9",
         name: "Single Leg Balance",
+        animation: "single-leg-balance",
         video: "Dtgh2_LFkBQ",
         sets: 3, reps: "hold 25 sec each",
         description: "Reduce hand support to fingertips, then no hands.",
@@ -978,6 +1035,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak10",
         name: "Step Ups with Slow Descent",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "12 each",
         description: "Step up, 4-second controlled step down. Slow, controlled lowering builds strength effectively and is great preparation for stairs.",
@@ -991,6 +1049,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak11",
         name: "Side Stepping (With Resistance Band)",
+        animation: "side-stepping",
         video: "C0kFihNtCtA",
         sets: 3, reps: "12 each direction",
         description: "Band around ankles if available. Slow, controlled side steps. Without band, do more reps slowly.",
@@ -1004,6 +1063,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak12",
         name: "Straight Leg Raise (Weighted)",
+        animation: "straight-leg-raise",
         video: "khnALX2LAOs",
         sets: 3, reps: "12 each",
         description: "Add an ankle weight (0.5–1kg) or heavy shoe. Hold 3 seconds at top. Builds quad strength fast.",
@@ -1037,6 +1097,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak14",
         name: "Chair Sit-to-Stand (Single Leg Bias)",
+        animation: "chair-sit-to-stand",
         video: "5yxfzyzEzBY",
         sets: 3, reps: "8 each leg",
         description: "Lower onto the chair predominantly using one leg. Other foot stays on ground for safety. Alternate.",
@@ -1050,6 +1111,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak15",
         name: "Step Ups (Full Stair, No Hands)",
+        animation: "step-ups",
         video: "wfhXnLILqdk",
         sets: 3, reps: "12 each",
         description: "Full stair height, minimal to no hand support. 4-second descent.",
@@ -1063,6 +1125,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak16",
         name: "Single Leg Balance (Eyes Closed)",
+        animation: "single-leg-balance",
         video: "Dtgh2_LFkBQ",
         sets: 3, reps: "hold 15 sec each",
         description: "Near worktop for safety. Eyes closed. Dramatically improves proprioception.",
@@ -1076,6 +1139,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak17",
         name: "Kitchen Worktop Press-Ups (Feet Back)",
+        animation: "kitchen-worktop-press-ups",
         video: "57YFsNesJnY",
         sets: 3, reps: "15",
         description: "Feet further back for more challenge. Full range. ⚠️ Non-slip footwear.",
@@ -1089,6 +1153,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak18",
         name: "Heel-to-Toe Walking",
+        animation: "heel-to-toe-walking",
         video: "2UYkGxizSkc",
         sets: 1, reps: "15 steps × 3",
         description: "Walk heel to toe in a line. Try without wall support. Builds balance and confidence.",
@@ -1102,6 +1167,7 @@ const KNEE_EXERCISES_ACTIVE = {
       {
         id: "ak19",
         name: "Floor Transfer Practice",
+        animation: "floor-transfer",
         video: "ohiJAzQ7VL4",
         sets: 1, reps: "5",
         description: "Get down to the floor and back up confidently.",

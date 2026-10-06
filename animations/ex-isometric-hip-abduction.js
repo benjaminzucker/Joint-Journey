@@ -101,3 +101,47 @@
     }
   };
 })(window.JJAnim);
+
+/* Seated Hip Abduction (moving version, DRAFT): one foot slides out to the side
+   along the floor and back, then the other. Same seated front view as above. */
+(function (A) {
+  'use strict';
+  var F = A.front, CX = 160, PV = [160, 152], KNEE_Y = 160, ANKLE_Y = A.ANKLE_Y + 1;
+  A.exercises['seated-hip-abduction'] = {
+    title: 'Seated Hip Abduction',
+    view: 'front',
+    alt: 'Seen from the front, a person sitting in a chair with feet flat slides one foot out to the side along the floor, then brings it back, then does the same with the other foot.',
+    tip: 'Keep your foot in contact with the floor and move slowly. Only go as far as is comfortable.',
+    period: 10,
+    poster: 0.22,
+    keys: [
+      { t: 0.00, v: { l: 0, r: 0 }, caption: 'Sit tall, feet flat on the floor' },
+      { t: 0.06, v: { l: 0, r: 0 }, caption: 'Slide one foot out to the side' },
+      { t: 0.22, v: { l: 0, r: 1 }, caption: 'Slide one foot out to the side' },
+      { t: 0.27, v: { l: 0, r: 1 }, caption: 'Bring it back slowly' },
+      { t: 0.43, v: { l: 0, r: 0 }, caption: 'Now the other foot' },
+      { t: 0.56, v: { l: 0, r: 0 }, caption: 'Now the other foot' },
+      { t: 0.72, v: { l: 1, r: 0 }, caption: 'Now the other foot' },
+      { t: 0.77, v: { l: 1, r: 0 }, caption: 'Bring it back slowly' },
+      { t: 0.93, v: { l: 0, r: 0 }, caption: 'Relax, then repeat' },
+      { t: 1.00, v: { l: 0, r: 0 } }
+    ],
+    scene: function (g) { A.props.floor(g); F.props.chair(g, CX); return null; },
+    pose: function (phase) {
+      var s = A.sample(this.keys, phase, this.period), l = s.v.l, r = s.v.r;
+      var hips = F.hipJoints(PV, 0), sh = F.shoulders(PV, 0);
+      function lg(i, side, o) {   // foot slides 30 px out along the floor; knee follows part of the way
+        var foot = [CX + side * (14 + 30 * o), ANKLE_Y];
+        return F.legVia(hips[i], [CX + side * (15 + 13 * o), KNEE_Y + 2 * o], foot);
+      }
+      return {
+        pelvis: PV, tilt: 0, face: true,
+        legs: [lg(0, -1, l), lg(1, 1, r)],
+        arms: [F.arm(sh[0], [CX - 30, PV[1] - 2], -1), F.arm(sh[1], [CX + 30, PV[1] - 2], 1)],   // hands resting on the seat edge
+        armsFront: true,
+        glows: [[-1, l], [1, r]].map(function (q) { return { a: [CX + q[0] * 15, PV[1] - 8], b: [CX + q[0] * 19, PV[1] + 4], o: q[1], w: 7 }; }),
+        caption: s.caption
+      };
+    }
+  };
+})(window.JJAnim);

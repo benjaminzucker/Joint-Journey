@@ -354,8 +354,22 @@ function hasAnimation(key) {
   return !!(key && window.JJAnimations && window.JJAnim && window.JJAnim.exercises[key]);
 }
 
+// Fallback for exercises without an animation field (e.g. new programme levels):
+// match the start of the exercise name against the animation titles.
+function guessAnimation(ex) {
+  if (!window.JJAnim) return null;
+  var name = ex.name.toLowerCase().replace(/^(supported|seated) /, '');
+  var best = null, bestLen = 0;
+  Object.keys(window.JJAnim.exercises).forEach(function (key) {
+    var t = window.JJAnim.exercises[key].title.toLowerCase().replace(/ \(.*\)$/, '').replace(/^(supported|seated) /, '');
+    if (name.indexOf(t) === 0 && t.length > bestLen) { best = key; bestLen = t.length; }
+  });
+  return best;
+}
+
 function demoButtonHtml(ex) {
   var name = encodeURIComponent(ex.name);
+  if (!ex.animation) ex.animation = guessAnimation(ex);
   if (hasAnimation(ex.animation)) {
     return '<button type="button" class="video-link" onclick="openAnimationModal(\'' + ex.animation + '\', \'' + name + '\', \'' + (ex.video || '') + '\', event)" style="' + DEMO_BTN_STYLE + '">▶ Show me how</button>';
   }
